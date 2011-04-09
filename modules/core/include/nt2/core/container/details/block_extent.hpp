@@ -27,19 +27,33 @@ namespace nt2 { namespace details
     ////////////////////////////////////////////////////////////////////////////
     struct type_
     {
-      typename boost::fusion::result_of::value_at_c<Bases const,0>::type& base_;
-      typename boost::fusion::result_of::value_at_c<Sizes const,0>::type& size_;
+      static typename
+      boost::fusion::result_of::value_at_c<Bases const,0>::type& base_;
+      static typename
+      boost::fusion::result_of::value_at_c<Sizes const,0>::type& size_;
+
       BOOST_TYPEOF_NESTED_TYPEDEF_TPL( nested, base_ + size_ -1 )
   
       typedef typename nested::type type;
     };
     
     typedef typename type_::type difference_type;
-    
-    ////////////////////////////////////////////////////////////////////////////
-    // Check that Bases adn Sizes have correct size
-    ////////////////////////////////////////////////////////////////////////////
 
+    ////////////////////////////////////////////////////////////////////////////
+    // Check that Bases and Sizes have correct size
+    ////////////////////////////////////////////////////////////////////////////
+    NT2_STATIC_ASSERT ( (     boost::mpl::size<Sizes>::value
+                          ==  boost::mpl::size<Bases>::value
+                        )
+                      , NT2_STATIC_BASE_AND_SIZE_MISMATCH_IN_BLOCK_DEFINITION
+                      , "A data block with mismatched number of dimensions for "
+                        "size and base index parameters was being built. Check "
+                        " your table declaration is actually correct."
+                      );
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Check that Bases and Sizes have correct size
+    ////////////////////////////////////////////////////////////////////////////
     block_extent ( Bases const& b, Sizes const& s)
                 : block_size<Sizes>(s)
                 , block_base<Bases>(b)
