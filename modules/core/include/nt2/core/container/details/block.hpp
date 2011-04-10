@@ -6,174 +6,104 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_CORE_CONTAINER_DETAILS_BLOCK1D_HPP_INCLUDED
-#define NT2_CORE_CONTAINER_DETAILS_BLOCK1D_HPP_INCLUDED
+#ifndef NT2_CORE_CONTAINER_DETAILS_BLOCK_HPP_INCLUDED
+#define NT2_CORE_CONTAINER_DETAILS_BLOCK_HPP_INCLUDED
 
-////////////////////////////////////////////////////////////////////////////////
-// Defines a 1D block of memory to be used by 1D container
-// This is a specialisation of block<T,N,S> as 1D block are quite frequent and
-// can be optimized out of all Fusion meta-programming layer
-////////////////////////////////////////////////////////////////////////////////
-
-#include <boost/mpl/size.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <nt2/core/settings/allocator.hpp>
-#include <nt2/core/settings/meta/options.hpp>
+#include <nt2/core/container/details/block_data.hpp>
+#include <nt2/core/container/details/block_access.hpp>
 
 namespace nt2 { namespace container
 {
   //////////////////////////////////////////////////////////////////////////////
-  // 1D block is basically a buffer with specialized behavior
+  // Defines a block of memory to be used stored on the CPU heap
   //////////////////////////////////////////////////////////////////////////////
-  template<class T,class S> struct  block<T,boost::mpl::int_<1>,S>
+  template< class Type, class Extend
+          , class Bases, class Sizes, class StorageOrder
+          , class Allocator, class Padding
+          >
+  struct  block<Type,Extend,Bases,Sizes,StorageOrder,heap_(Allocator),Padding>
+        : details::block_extent<Bases,Sizes>
+        , details::block_data<Type,heap_(Allocator),Extend>
+        , details::block_access<Type, StorageOrder>
   {
+    ////////////////////////////////////////////////////////////////////////////
+    // block parent types
+    ////////////////////////////////////////////////////////////////////////////
+    typedef details::block_extent<Bases,Sizes>                extent_parent;
+    typedef details::block_data<Type,heap_(Allocator),Extend> data_parent;
+    typedef details::block_access<Type, StorageOrder>         access_parent;
+
     ////////////////////////////////////////////////////////////////////////////
     // block hierarchy
     ////////////////////////////////////////////////////////////////////////////
     //typedef xxx nt2_hierarchy_tag;
 
     ////////////////////////////////////////////////////////////////////////////
-    // Data type
-    // TODO: Make a fusion::vector of buffer if T is composite
+    // block is a RandonAccessSequence
     ////////////////////////////////////////////////////////////////////////////
-    typedef typename meta::
-    option< S
-          , options::allocator_
-          , nt2::memory::allocator<boost::mpl::_>
-          >::type                                           allocator_type;
-
-    typedef memory::buffer< T
-                          , typename boost::mpl::
-                            apply<allocator_type,T>::type
-                          >                                 data_type;
+    typedef Type       value_type;
+//    typedef typename buffer_type::pointer          iterator;
+//    typedef typename buffer_type::const_pointer    const_iterator;
+    typedef typename access_parent::reference        reference;
+    typedef typename access_parent::const_reference  const_reference;
+    typedef typename extent_parent::size_type        size_type;
+    typedef typename extent_parent::difference_type  difference_type;
+    typedef typename extent_parent::difference_type  index_type;
 
     ////////////////////////////////////////////////////////////////////////////
-    // Sequence interface
+    // Constructors and stuff
     ////////////////////////////////////////////////////////////////////////////
-    typedef typename data_type::value_type       value_type;
-    typedef typename data_type::pointer          pointer;
-    typedef typename data_type::const_pointer    const_pointer;
-    typedef typename data_type::reference        reference;
-    typedef typename data_type::const_reference  const_reference;
-    typedef typename data_type::size_type        size_type;
-    typedef typename data_type::difference_type  difference_type;
-    typedef typename data_type::difference_type  index_type;
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Size related methods
-    // size,lower and upper require a dimension, return 1 if out of bound
-    // size has a std conformant version that return total number of elements
-    ////////////////////////////////////////////////////////////////////////////
-    size_t    size() const { return mData.size();  }
-
-    template<std::size_t I>
-    size_t    size() const { return (I==1) ? mData.size()   : 1;  }
-
-    template<std::size_t I>
-    ptrdiff_t lower() const { return (I==1) ? mData.lower()  : 1;  }
-
-    template<std::size_t I>
-    ptrdiff_t upper() const { return (I==1) ? mData.upper()  : 1;  }
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Range interface
-    // TODO: Make iterator be some linear_indexed_(const_)iterator
-    ////////////////////////////////////////////////////////////////////////////
-    typedef pointer       iterator;
-    typedef const_pointer const_iterator;
-
-    iterator        begin()       { return mData.begin(); }
-    const_iterator  begin() const { return mData.begin(); }
-    iterator        end()         { return mData.end();   }
-    const_iterator  end()   const { return mData.end();   }
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Default constructor
-    ////////////////////////////////////////////////////////////////////////////
-    block() : mData() {}
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Copy constructor
-    ////////////////////////////////////////////////////////////////////////////
-    block( block const& src ) : data_type(src.mData) {}
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Constructor taking a Base and a Size fusion random access sequence
-    ////////////////////////////////////////////////////////////////////////////
-    template<class Bases,class Sizes>
-    block ( Bases const& b
-          , Sizes const& s
-          , typename
-            boost::enable_if_c<   (boost::mpl::size<Bases>::value == 1)
-                              &&  (boost::mpl::size<Sizes>::value == 1)
-                              >::type* =0
-          )
-          : mData ( boost::fusion::at_c<0>(b)
-                  , boost::fusion::at_c<0>(s)
-                  )
-    {}
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Destructor
-    ////////////////////////////////////////////////////////////////////////////
-    ~block() {}
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Assignment
-    ////////////////////////////////////////////////////////////////////////////
-    block& operator=(block const& src) { mData = src.mData; return *this; }
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Initialization taking a Base and a Size fusion random access sequence
-    ////////////////////////////////////////////////////////////////////////////
-    template<class Bases,class Sizes>
-    typename boost::enable_if_c < (boost::mpl::size<Bases>::value == 1)
-                               && (boost::mpl::size<Sizes>::value == 1)
-                                >::type
-    init ( Bases const& b , Sizes const& s )
+    block(Bases const& bs, Sizes const& sz, Allocator const& a = Allocator())
+          : extent_parent(bs,sz)
     {
-      mData.restructure ( boost::fusion::at_c<0>(b)
-                        , boost::fusion::at_c<0>(s)
+      init();
+      link();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Data access
+    ////////////////////////////////////////////////////////////////////////////
+    template<class Position>
+    reference operator()(Position const& p)
+    {
+      return access_parent::
+              at( p
+                , data_parent::template data<Extend::value>()
+                );
+    }
+
+    template<class Position>
+    const_reference operator()(Position const& p) const
+    {
+      return access_parent::
+              at( p
+                , data_parent::template data<Extend::value>()
+                );
+    }
+
+    protected:
+    ////////////////////////////////////////////////////////////////////////////
+    // Initialize a NRC block
+    ////////////////////////////////////////////////////////////////////////////
+    void init()
+    {
+      boost::fusion::nview<Sizes const,StorageOrder>  sz(extent_parent::mSize);
+      boost::fusion::nview<Bases const,StorageOrder>  bz(extent_parent::mBase);
+      data_parent::init ( Extend(), bz, sz, Padding()
+                        , typename meta::is_composite<Type>::type()
                         );
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    // Swapping
+    // Link indexes and data, NRC style and recursively
     ////////////////////////////////////////////////////////////////////////////
-    void swap( block& src ) { swap(mData,src.mData); }
-
-    ////////////////////////////////////////////////////////////////////////////
-    // resize/rebase/restructure block
-    ////////////////////////////////////////////////////////////////////////////
-    template<class Diff>  void rebase(Diff b) { mData.rebase(b); }
-    template<class Size>  void resize(Size s) { mData.resize(s); }
-
-    template<class Base,class Size>
-    void restructure( Base const& b, Size const& s )
+    void link()
     {
-      mData.restructure(b,s);
+      boost::fusion::nview<Sizes const,StorageOrder>  sz(extent_parent::mSize);
+      data_parent::link ( Extend(), sz, Padding()
+                        , typename meta::is_composite<Type>::type()
+                        );
     }
-
-    ////////////////////////////////////////////////////////////////////////////
-    // IndexedContainer Interface
-    ////////////////////////////////////////////////////////////////////////////
-    template<class Position>
-    reference operator()(Position const& pos)
-    {
-      return mData[boost::fusion::at_c<0>(pos)];
-    }
-
-    template<class Position>
-    const_reference operator()(Position const& pos) const
-    {
-      return mData[boost::fusion::at_c<0>(pos)];
-    }
-
-    private:
-    ////////////////////////////////////////////////////////////////////////////
-    // Data member
-    ////////////////////////////////////////////////////////////////////////////
-    data_type mData;
   };
 } }
 
