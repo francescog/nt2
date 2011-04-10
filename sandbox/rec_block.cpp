@@ -6,6 +6,7 @@
 #include <nt2/sdk/memory/lead_padding.hpp>
 
 #include <nt2/core/container/details/block.hpp>
+#include <nt2/core/container/table.hpp>
 
 using namespace std;
 
