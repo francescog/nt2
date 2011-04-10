@@ -26,8 +26,9 @@ namespace nt2 { namespace container
         ::or_ <
               //  Terminals are block, named and unnamed constants
                 boost::proto::terminal< block < boost::proto::_
-                                              , boost::proto::_
-                                              , boost::proto::_
+                                              , boost::proto::_, boost::proto::_
+                                              , boost::proto::_, boost::proto::_
+                                              , boost::proto::_, boost::proto::_
                                               >
                                       >
               , boost::proto::terminal< tag::constant_<boost::proto::_> >
