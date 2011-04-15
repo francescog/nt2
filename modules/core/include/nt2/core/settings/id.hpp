@@ -24,7 +24,13 @@ namespace nt2 { namespace options
 // id_<'foo'> tags containers with a 32bits ID, either numerical or by using
 // the multichar string extension.
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { template<int ID> struct id_ {}; }
+namespace nt2
+{
+  template<int ID> struct id_
+  {
+    typedef boost::mpl::string<ID> type;
+  };
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register id_ has a valid options::id_ type
@@ -34,8 +40,16 @@ namespace nt2 { namespace meta
   template<int ID, class Default>
   struct option<id_<ID>, options::id_, Default, void>
   {
-    typedef boost::mpl::string<ID> type;
+    typedef id_<ID> type;
   };
 } }
+
+////////////////////////////////////////////////////////////////////////////////
+// Default to unnamed container
+////////////////////////////////////////////////////////////////////////////////
+namespace nt2
+{
+  typedef id_<0> unnamed_;
+}
 
 #endif
