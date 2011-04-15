@@ -71,6 +71,7 @@ namespace nt2 { namespace meta
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2
 {
+  typedef storage_order_<>    monotonic_order_;
   typedef storage_order_<1,2> column_major_;
   typedef storage_order_<2,1> row_major_;
 }
