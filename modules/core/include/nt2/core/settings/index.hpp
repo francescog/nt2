@@ -40,9 +40,11 @@ namespace nt2
           , BOOST_PP_ENUM(BOOST_PP_DEC(NT2_MAX_DIMENSIONS),M0,~)
           >
   struct  index
-        : BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,NT2_MAX_DIMENSIONS),_c)
-          <std::ptrdiff_t, BOOST_PP_ENUM_PARAMS(NT2_MAX_DIMENSIONS,I)>
-  {};
+  {
+    typedef BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,NT2_MAX_DIMENSIONS),_c)
+            <std::ptrdiff_t, BOOST_PP_ENUM_PARAMS(NT2_MAX_DIMENSIONS,I)>
+            type;
+  };
 }
 
 ////////////////////////////////////////////////////////////////////////////////
