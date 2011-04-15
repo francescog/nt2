@@ -27,14 +27,23 @@ namespace nt2 { namespace options
 ////////////////////////////////////////////////////////////////////////////////
 // Helper macro
 ////////////////////////////////////////////////////////////////////////////////
-#define M0(z,n,t)                                           \
-template< BOOST_PP_ENUM_PARAMS(n, std::ptrdiff_t D) >       \
-struct  of_size_<BOOST_PP_ENUM_PARAMS(n,D)>                 \
-      : BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,n),_c) \
-        <std::ptrdiff_t, BOOST_PP_ENUM_PARAMS(n,D)>         \
-{                                                           \
-  static const std::size_t dimensions = n;                  \
-};                                                          \
+#define M0(z,n,t)                                             \
+template< BOOST_PP_ENUM_PARAMS(n, std::ptrdiff_t D) >         \
+struct  of_size_<BOOST_PP_ENUM_PARAMS(n,D)>                   \
+{                                                             \
+  static const std::size_t dimensions = n;                    \
+  typedef boost::mpl::size_t<n> dimensions_type;              \
+  typedef BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,n),_c) \
+          <std::ptrdiff_t, BOOST_PP_ENUM_PARAMS(n,D)>         \
+          type;                                               \
+};                                                            \
+                                                              \
+template<> struct of_size_<NT2_PP_ENUM_VALUE(n,-1)>           \
+{                                                             \
+  static const std::size_t                dimensions = n;     \
+  typedef boost::mpl::size_t<n>           dimensions_type;    \
+  typedef boost::array<std::ptrdiff_t,n>  type;               \
+};                                                            \
 /**/
 
 #define M1(z,n,t)                                                             \
@@ -53,10 +62,20 @@ namespace nt2
                                         )
           >
   struct  of_size_
-        : BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,NT2_MAX_DIMENSIONS),_c)
-          <std::ptrdiff_t, BOOST_PP_ENUM_PARAMS(NT2_MAX_DIMENSIONS,D)>
   {
     static const std::size_t dimensions = NT2_MAX_DIMENSIONS;
+    typedef boost::mpl::size_t<NT2_MAX_DIMENSIONS> dimensions_type;
+    typedef BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,NT2_MAX_DIMENSIONS),_c)
+            <std::ptrdiff_t, BOOST_PP_ENUM_PARAMS(NT2_MAX_DIMENSIONS,D)>
+            type;
+  };
+
+  template<>
+  struct of_size_<NT2_PP_ENUM_VALUE(NT2_MAX_DIMENSIONS,-1)>
+  {
+    static const std::size_t                    dimensions = NT2_MAX_DIMENSIONS;
+    typedef boost::mpl::size_t<NT2_MAX_DIMENSIONS>           dimensions_type;
+    typedef boost::array<std::ptrdiff_t,NT2_MAX_DIMENSIONS>  type;
   };
 
   //////////////////////////////////////////////////////////////////////////////
@@ -64,9 +83,10 @@ namespace nt2
   //////////////////////////////////////////////////////////////////////////////
   template<>
   struct  of_size_<NT2_PP_ENUM_VALUE(NT2_MAX_DIMENSIONS,-2)>
-        : boost::mpl::vector0_c<std::ptrdiff_t>
   {
-    static const std::size_t dimensions = 0;
+    static const std::size_t                      dimensions = 0;
+    typedef boost::mpl::size_t<0>                 dimensions_type;
+    typedef boost::mpl::vector0_c<std::ptrdiff_t> type;
   };
 
   //////////////////////////////////////////////////////////////////////////////
@@ -76,7 +96,7 @@ namespace nt2
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Register of_size has a valid options::id_ type
+// Register of_size has a valid options::size_ type
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2 { namespace meta
 {
