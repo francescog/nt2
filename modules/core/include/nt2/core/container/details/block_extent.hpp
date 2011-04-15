@@ -43,12 +43,12 @@ namespace nt2 { namespace details
     // Check that Bases and Sizes have correct size
     ////////////////////////////////////////////////////////////////////////////
     NT2_STATIC_ASSERT ( (     boost::mpl::size<Sizes>::value
-                          ==  boost::mpl::size<Bases>::value
+                          <=  boost::mpl::size<Bases>::value
                         )
                       , NT2_STATIC_BASE_AND_SIZE_MISMATCH_IN_BLOCK_DEFINITION
                       , "A data block with mismatched number of dimensions for "
                         "size and base index parameters was being built. Check "
-                        " your table declaration is actually correct."
+                        "your table declaration is actually correct."
                       );
 
     ////////////////////////////////////////////////////////////////////////////
