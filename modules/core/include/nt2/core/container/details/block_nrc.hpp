@@ -12,23 +12,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Internal data related components for blocks
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/memory/buffer.hpp>
 #include <boost/mpl/transform.hpp>
 #include <boost/mpl/next_prior.hpp>
+#include <nt2/sdk/memory/buffer.hpp>
 #include <boost/fusion/include/mpl.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
+#include <nt2/core/settings/storage_kind.hpp>
 #include <boost/fusion/include/as_vector.hpp>
 #include <nt2/core/container/meta/composite.hpp>
-
-////////////////////////////////////////////////////////////////////////////////
-// heap_ and stack_ are short-cut and binder for additional info on allocator
-// TODO: move to settings somehow
-////////////////////////////////////////////////////////////////////////////////
-namespace nt2
-{
-  struct heap_;
-  struct stack_;
-}
 
 namespace nt2 { namespace details
 {
@@ -68,7 +59,7 @@ namespace nt2 { namespace details
   // Special case : 1d block of non-composite types
   //////////////////////////////////////////////////////////////////////////////
   template<class Type,class Allocator>
-  struct block_nrc<Type, heap_(Allocator), boost::mpl::int_<1>,false>
+  struct block_nrc<Type, heap_(Allocator), boost::mpl::size_t<1>,false>
   {
     typedef Type                                                    base;
     typedef boost::fusion::vector< memory::buffer<base,Allocator> > type;
@@ -78,7 +69,7 @@ namespace nt2 { namespace details
   // Special case : 2d block of composite types is a buffer of pointers tuple
   //////////////////////////////////////////////////////////////////////////////
   template<class Type,class Allocator>
-  struct block_nrc<Type, heap_(Allocator), boost::mpl::int_<2>,true>
+  struct block_nrc<Type, heap_(Allocator), boost::mpl::size_t<2>,true>
   {
     typedef block_nrc < Type
                             , heap_(Allocator)
@@ -99,7 +90,7 @@ namespace nt2 { namespace details
   // Special case : 1d block of composite types is a fusion vector of buffers
   //////////////////////////////////////////////////////////////////////////////
   template<class Type,class Allocator>
-  struct block_nrc<Type, heap_(Allocator), boost::mpl::int_<1>,true>
+  struct block_nrc<Type, heap_(Allocator), boost::mpl::size_t<1>,true>
   {
     typedef typename boost::mpl::transform< typename boost::fusion::result_of::
                                             as_vector<Type>::type
