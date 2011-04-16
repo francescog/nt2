@@ -14,8 +14,8 @@
 // Hoisted class for base index related block member functions
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/typeof/typeof.hpp>
-#include <nt2/core/container/details/block_size.hpp>
-#include <nt2/core/container/details/block_base.hpp>
+#include <nt2/core/container/details/block/size.hpp>
+#include <nt2/core/container/details/block/base.hpp>
 
 namespace nt2 { namespace details
 {

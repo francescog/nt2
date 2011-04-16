@@ -19,8 +19,8 @@
 #include <boost/fusion/adapted/mpl.hpp>
 #include <nt2/sdk/functor/meta/call.hpp>
 #include <nt2/sdk/memory/no_padding.hpp>
-#include <boost/fusion/include/value_at.hpp>
 #include <boost/fusion/adapted/array.hpp>
+#include <boost/fusion/include/value_at.hpp>
 
 namespace nt2 { namespace details
 {

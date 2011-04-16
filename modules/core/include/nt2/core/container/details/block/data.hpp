@@ -16,8 +16,8 @@
 #include <nt2/sdk/functor/meta/call.hpp>
 #include <boost/fusion/include/for_each.hpp>
 #include <nt2/core/container/details/forward.hpp>
-#include <nt2/core/container/details/block_nrc.hpp>
-#include <nt2/core/container/details/block_extent.hpp>
+#include <nt2/core/container/details/block/nrc.hpp>
+#include <nt2/core/container/details/block/extent.hpp>
 
 namespace nt2 { namespace details
 {

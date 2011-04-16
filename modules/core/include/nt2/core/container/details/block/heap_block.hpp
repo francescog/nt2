@@ -6,11 +6,11 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_CORE_CONTAINER_DETAILS_HEAP_BLOCK_HPP_INCLUDED
-#define NT2_CORE_CONTAINER_DETAILS_HEAP_BLOCK_HPP_INCLUDED
+#ifndef NT2_CORE_CONTAINER_DETAILS_BLOCK_HEAP_BLOCK_HPP_INCLUDED
+#define NT2_CORE_CONTAINER_DETAILS_BLOCK_HEAP_BLOCK_HPP_INCLUDED
 
-#include <nt2/core/container/details/block_data.hpp>
-#include <nt2/core/container/details/block_access.hpp>
+#include <nt2/core/container/details/block/data.hpp>
+#include <nt2/core/container/details/block/access.hpp>
 
 namespace nt2 { namespace container
 {
