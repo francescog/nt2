@@ -18,19 +18,19 @@ namespace nt2 { namespace container
   ////////////////////////////////////////////////////////////////////////////
   // Here is the domain-specific expression wrapper for table_ expression
   ////////////////////////////////////////////////////////////////////////////
-  template<class Expr, class Dims>
-  struct  expression<Expr,tag::table_,Dims>
+  template<class Expr, class Tag, class Dims>
+  struct  expression
         : boost::proto::extends < Expr
-                                , expression<Expr,tag::table_,Dims>
-                                , container::domain<tag::table_,Dims>
+                                , expression<Expr,Tag,Dims>
+                                , domain<Tag,Dims>
                                 >
   {
     ////////////////////////////////////////////////////////////////////////////
     // Internal proto related types
     ////////////////////////////////////////////////////////////////////////////
     typedef boost::proto::extends < Expr
-                                  , expression<Expr,tag::table_,Dims>
-                                  , container::domain<tag::table_,Dims>
+                                  , expression<Expr,Tag,Dims>
+                                  , domain<Tag,Dims>
                                   >                                     parent;
 
     ////////////////////////////////////////////////////////////////////////////
@@ -39,15 +39,16 @@ namespace nt2 { namespace container
     typedef typename
     details::hierarchy_of_expr<expression>::type nt2_hierarchy_tag;
 
+    BOOST_PROTO_EXTENDS_USING_ASSIGN(expression)
+
     ////////////////////////////////////////////////////////////////////////////
     // Default explicit constructor
     ////////////////////////////////////////////////////////////////////////////
     explicit  expression( Expr const& xpr = Expr() )
-            : parent(xpr), is_silent(false)
+            : parent(xpr)
+            , is_silent(!meta::is_assignment_expression<Expr>::value)
     {
-      // If Expr is an assignment node, set xpr.is_evaluable to false
-      //if(meta::is_assignment_expression<Expr>::value)
-      //  boost::proto::right(*this).silence();
+      silence(xpr,typename meta::is_assignment_expression<Expr>::type());
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -55,20 +56,15 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     ~expression()
     {
-      // If *this is not silent, evaluates it
       if(!is_silent) (*this)();
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    // table expression are read-only Ranges
+    // container expression are read-only Ranges
     ////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////
-    // table expression have a n-ary operator()
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    // table expression have a nullary operator() that evaluates itself
+    // container expression have a nullary operator() that evaluates itself
     ////////////////////////////////////////////////////////////////////////////
     void operator()()
     {
@@ -76,18 +72,15 @@ namespace nt2 { namespace container
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    // table expression have an operator[] that adds specific settings
-    ////////////////////////////////////////////////////////////////////////////
-    template<class Settings>
-    expression& operator[](Settings const& )
-    {
-      // ????
-      return *this;
-    }
-
-    ////////////////////////////////////////////////////////////////////////////
     // External accessor for evaluation trigger
     ////////////////////////////////////////////////////////////////////////////
+    void silence(Expr const& xpr, boost::mpl::true_  const&) const
+    {
+      boost::proto::right(*this).silence();
+    }
+
+    void silence(Expr const&, boost::mpl::false_ const&) const {}
+
     void silence() const { is_silent = true; }
 
     protected:
