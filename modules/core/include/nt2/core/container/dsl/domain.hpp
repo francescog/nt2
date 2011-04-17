@@ -16,7 +16,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2 { namespace tag
 {
-  struct table_{};
+  struct table_ { typedef void nt2_container_tag; };
 } }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -29,20 +29,20 @@ namespace nt2 { namespace tag
 namespace nt2 { namespace container
 {
   template<int Dim>
-  struct  domain<tag::table_, boost::mpl::int_<Dim> >
+  struct  domain<tag::table_, boost::mpl::size_t<Dim> >
         : boost::proto::domain< container::generator< tag::table_
-                                                    , boost::mpl::int_<Dim>
+                                                    , boost::mpl::size_t<Dim>
                                                     >
                               , container::grammar
-                              , domain<tag::table_,boost::mpl::int_<Dim+1> >
+                              , domain<tag::table_,boost::mpl::size_t<Dim+1> >
                               >
   {};
 
   template<>
-  struct  domain<tag::table_, boost::mpl::int_<NT2_MAX_DIMENSIONS> >
+  struct  domain<tag::table_, boost::mpl::size_t<NT2_MAX_DIMENSIONS> >
         : boost::proto::domain< container::generator< tag::table_
                                                     , boost::mpl::
-                                                      int_<NT2_MAX_DIMENSIONS>
+                                                      size_t<NT2_MAX_DIMENSIONS>
                                                     >
                               , container::grammar
                               >

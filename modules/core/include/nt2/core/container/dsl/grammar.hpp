@@ -15,6 +15,7 @@
 #include <nt2/sdk/dsl/from_domain.hpp>
 #include <nt2/sdk/constant/category.hpp>
 #include <nt2/core/container/dsl/forward.hpp>
+#include <nt2/core/container/meta/is_container.hpp>
 
 namespace nt2 { namespace container
 {
@@ -24,13 +25,19 @@ namespace nt2 { namespace container
   struct  grammar
         : boost::proto
         ::or_ <
-              //  Terminals are block, named and unnamed constants
-                boost::proto::terminal< block < boost::proto::_
-                                              , boost::proto::_, boost::proto::_
-                                              , boost::proto::_, boost::proto::_
-                                              , boost::proto::_, boost::proto::_
-                                              >
-                                      >
+              //  Terminals are containers-tagged type and  constants
+//                boost::proto::terminal< block < boost::proto::_
+//                                              , boost::proto::_, boost::proto::_
+//                                              , boost::proto::_, boost::proto::_
+//                                              , boost::proto::_, boost::proto::_
+//                                              >
+//                                      >
+                boost::proto::
+                and_< boost::proto::nullary_expr<boost::proto::_,boost::proto::_>
+                    , boost::proto::if_ < meta::
+                                          is_container<boost::proto::_expr>()
+                                       >
+                   >
               , boost::proto::terminal< tag::constant_<boost::proto::_> >
               , boost::proto::
                 and_< boost::proto::terminal<boost::proto::_>
