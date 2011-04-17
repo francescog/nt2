@@ -24,6 +24,10 @@ namespace nt2 { namespace details
   };
 
   template<>
+  struct  assign_cases::case_< boost::proto::tag::assign >
+        : boost::proto::_ {};
+
+  template<>
   struct  assign_cases::case_< boost::proto::tag::shift_right_assign >
         : boost::proto::_ {};
 
