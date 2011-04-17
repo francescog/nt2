@@ -32,11 +32,7 @@ namespace nt2 { namespace details
     // size_type is the type holding the reuslt of the std like size() function
     ////////////////////////////////////////////////////////////////////////////
     typedef
-    typename meta::call < tag::slice_ ( Sizes const&
-                                      , memory::no_padding const&
-                                      , boost::mpl::size_t<1> const&
-                                      )
-                        >::type                                       size_type;
+    typename boost::fusion::result_of::value_at_c<Sizes const,0>::type  size_type;
 
     ////////////////////////////////////////////////////////////////////////////
     // Return the total number of effective elements in a block
@@ -56,8 +52,7 @@ namespace nt2 { namespace details
     ////////////////////////////////////////////////////////////////////////////
     template<std::size_t N>
     typename boost::enable_if_c < (N<=boost::mpl::size<Sizes>::value)
-                                , typename boost::fusion::result_of
-                                                ::at_c<Sizes const,N-1>::type
+                                , size_type
                                 >::type
     size() const
     {
@@ -66,12 +61,16 @@ namespace nt2 { namespace details
 
     template<std::size_t N>
     typename boost::disable_if_c< (N<=boost::mpl::size<Sizes>::value)
-                                , typename boost::fusion::result_of
-                                            ::value_at_c<Sizes const,0>::type
+                                , size_type
                                 >::type
     size() const
     {
       return 1;
+    }
+
+    void resize(Sizes const& sz)
+    {
+      mSize = sz;
     }
 
     ////////////////////////////////////////////////////////////////////////////

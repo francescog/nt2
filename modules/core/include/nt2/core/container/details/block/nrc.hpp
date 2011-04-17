@@ -17,8 +17,9 @@
 #include <nt2/sdk/memory/buffer.hpp>
 #include <boost/fusion/include/mpl.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
-#include <nt2/core/settings/storage_kind.hpp>
+#include <boost/type_traits/add_pointer.hpp>
 #include <boost/fusion/include/as_vector.hpp>
+#include <nt2/core/settings/storage_kind.hpp>
 #include <nt2/core/container/meta/composite.hpp>
 
 namespace nt2 { namespace details

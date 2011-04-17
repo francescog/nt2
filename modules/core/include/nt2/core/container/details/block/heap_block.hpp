@@ -32,11 +32,8 @@ namespace nt2 { namespace container
     typedef details::block_extent<Bases,Sizes>                extent_parent;
     typedef details::block_data<Type,heap_(Allocator),Extend> data_parent;
     typedef details::block_access<Type, StorageOrder>         access_parent;
-
-    ////////////////////////////////////////////////////////////////////////////
-    // block hierarchy
-    ////////////////////////////////////////////////////////////////////////////
-    //typedef xxx nt2_hierarchy_tag;
+    typedef Bases bases_type;
+    typedef Sizes sizes_type;
 
     ////////////////////////////////////////////////////////////////////////////
     // block is a RandonAccessSequence
@@ -53,12 +50,15 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // Constructors and stuff
     ////////////////////////////////////////////////////////////////////////////
+    block() : extent_parent(Bases(),Sizes()) {}
+
     block(Bases const& bs, Sizes const& sz, Allocator const& a = Allocator())
           : extent_parent(bs,sz)
     {
       init();
       link();
     }
+
 
     ////////////////////////////////////////////////////////////////////////////
     // Data access
@@ -79,6 +79,12 @@ namespace nt2 { namespace container
               at( p
                 , data_parent::template data<Extend::value>()
                 );
+    }
+
+    void resize(Sizes const& sz)
+    {
+      extent_parent::resize(sz);
+      init(); link();
     }
 
     protected:

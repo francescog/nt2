@@ -22,14 +22,18 @@ namespace nt2 { namespace details
   template<class Bases> struct block_base
   {
     block_base(Bases const& bs) : mBase(bs) {}
+    ////////////////////////////////////////////////////////////////////////////
+    // base_type is the type holding the reuslt of the std like lower() function
+    ////////////////////////////////////////////////////////////////////////////
+    typedef
+    typename boost::fusion::result_of::value_at_c<Bases const,0>::type  base_type;
 
     ////////////////////////////////////////////////////////////////////////////
     // Return the starting index on the Nth dimension
     ////////////////////////////////////////////////////////////////////////////
     template<std::size_t N>
     typename boost::enable_if_c < (N<=boost::mpl::size<Bases>::value)
-                                , typename boost::fusion::result_of
-                                                ::at_c<Bases const,N-1>::type
+                                , base_type
                                 >::type
     lower() const
     {
@@ -38,7 +42,7 @@ namespace nt2 { namespace details
 
     template<std::size_t N>
     typename boost::disable_if_c< (N<=boost::mpl::size<Bases>::value)
-                                , int
+                                , base_type
                                 >::type
     lower() const
     {

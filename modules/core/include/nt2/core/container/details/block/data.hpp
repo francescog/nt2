@@ -50,7 +50,7 @@ namespace nt2 { namespace details
     //  - non composite 1D case
     ////////////////////////////////////////////////////////////////////////////
     template<class Bases, class Sz,class Padding>
-    void init ( boost::mpl::int_<1> const&
+    void init ( boost::mpl::size_t<1> const&
               , Bases const& bs   , Sz const& sz
               , Padding const& pdg, boost::mpl::false_ const&
               )
@@ -72,7 +72,7 @@ namespace nt2 { namespace details
     };
 
     template<class Bases, class Size,class Padding>
-    void init ( boost::mpl::int_<1> const&
+    void init ( boost::mpl::size_t<1> const&
               , Bases const& bs   , Size const& sz
               , Padding const& pdg, boost::mpl::true_ const&
               )
@@ -116,7 +116,7 @@ namespace nt2 { namespace details
     // 1D case - do nothing
     ////////////////////////////////////////////////////////////////////////////
     template<class Sz,class Padding,class Composite>
-    void link ( boost::mpl::int_<1> const&
+    void link ( boost::mpl::size_t<1> const&
               , Sz const&, Padding const&, Composite const&
               )
     {}
@@ -146,7 +146,7 @@ namespace nt2 { namespace details
     // Use for_each on a zip_view of both level to put daddy in mummy
     ////////////////////////////////////////////////////////////////////////////
     template<class Sz,class Padding>
-    void link ( boost::mpl::int_<2> const&
+    void link ( boost::mpl::size_t<2> const&
               , Sz const& sz, Padding const& pdg, boost::mpl::true_ const&
               )
     {
@@ -172,18 +172,19 @@ namespace nt2 { namespace details
     ////////////////////////////////////////////////////////////////////////////
     // General case - loop over sub block
     ////////////////////////////////////////////////////////////////////////////
-    template<int N,class Sz, class Padding, class Composite>
-    void link ( boost::mpl::int_<N> const&
+    template<class Index,class Sz, class Padding, class Composite>
+    void link ( Index const&
               , Sz const& sz, Padding const& pdg, Composite const& c
               )
     {
-      std::size_t offset = stride<N-1>(sz,pdg);
-      std::size_t nbrow  = slice<N>(sz,pdg);
+      std::size_t offset = stride<Index::value-1>(sz,pdg);
+      std::size_t nbrow  = slice<Index::value>(sz,pdg);
 
-      data<N>().begin()[0]  = data<N-1>().first();
+      data<Index::value>().begin()[0]  = data<Index::value-1>().first();
       for(std::size_t i=1;i<nbrow;++i)
-        data<N>().begin()[i]  = data<N>().begin()[i-1] + offset;
-      link( boost::mpl::int_<N-1>(), sz, pdg, c );
+        data<Index::value>().begin()[i] = data<Index::value>().begin()[i-1]
+                                        + offset;
+      link( typename boost::mpl::prior<Index>::type(), sz, pdg, c );
     }
 
     ////////////////////////////////////////////////////////////////////////////

@@ -27,10 +27,8 @@ namespace nt2 { namespace details
     ////////////////////////////////////////////////////////////////////////////
     struct type_
     {
-      static typename
-      boost::fusion::result_of::value_at_c<Bases const,0>::type& base_;
-      static typename
-      boost::fusion::result_of::value_at_c<Sizes const,0>::type& size_;
+      static typename block_base<Bases>::base_type& base_;
+      static typename block_size<Sizes>::size_type& size_;
 
       BOOST_TYPEOF_NESTED_TYPEDEF_TPL( nested, base_ + size_ -1 )
   
