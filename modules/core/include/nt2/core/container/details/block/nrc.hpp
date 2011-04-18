@@ -74,7 +74,7 @@ namespace nt2 { namespace details
   {
     typedef block_nrc < Type
                             , heap_(Allocator)
-                            , boost::mpl::int_<1>
+                            , boost::mpl::size_t<1>
                             , true
                             >                             prior_block;
 

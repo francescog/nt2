@@ -102,11 +102,11 @@ namespace nt2 { namespace details
           >
   struct block_access<Type,StorageOrder,true>
   {
-    typedef typename boost::fusion::result_of::as_vector<Type>::type  base_type;
-    typedef typename boost::mpl::transform< base_type
+    typedef typename boost::fusion::result_of::as_vector<Type>::type  comp_type;
+    typedef typename boost::mpl::transform< comp_type
                                           , boost::add_const<boost::mpl::_1>
                                           >::type             const_type;
-    typedef typename boost::mpl::transform< base_type
+    typedef typename boost::mpl::transform< comp_type
                                           , boost::add_reference<boost::mpl::_1>
                                           >::type             reference;
     typedef typename boost::mpl::transform< const_type
