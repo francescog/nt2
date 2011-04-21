@@ -9,7 +9,6 @@
 #ifndef NT2_CORE_CONTAINER_DSL_GENERATOR_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DSL_GENERATOR_HPP_INCLUDED
 
-#include <nt2/sdk/details/type_id.hpp>
 #include <nt2/sdk/error/assert.hpp>
 #include <nt2/sdk/error/static_assert.hpp>
 

@@ -9,44 +9,23 @@
 #ifndef NT2_CORE_CONTAINER_DSL_DOMAIN_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DSL_DOMAIN_HPP_INCLUDED
 
-#include <nt2/extension/parameters.hpp>
+#include <nt2/sdk/error/static_assert.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
-// Define tag for table_ related domain specialization
-////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace tag
-{
-  struct table_ { typedef void nt2_container_tag; };
-} }
-
-////////////////////////////////////////////////////////////////////////////////
-// Tell proto that in the container::domain, all expressions should be
-// wrapped in container::expr<> using container::generator. Moreover, build the
-// relationship between domains with respect to the value of the dimension.
-// Table of dimension N are living in a domain which is upward-compatible with
-// table of dimension N+1, adn thus up to NT2_MAX_DIMENSIONS
+// basic domain for all container to be specialized
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2 { namespace container
 {
-  template<int Dim>
-  struct  domain<tag::table_, boost::mpl::size_t<Dim> >
-        : boost::proto::domain< container::generator< tag::table_
-                                                    , boost::mpl::size_t<Dim>
-                                                    >
-                              , container::grammar
-                              , domain<tag::table_,boost::mpl::size_t<Dim+1> >
-                              >
-  {};
-
-  template<>
-  struct  domain<tag::table_, boost::mpl::size_t<NT2_MAX_DIMENSIONS> >
-        : boost::proto::domain< container::generator< tag::table_
-                                                    , boost::mpl::
-                                                      size_t<NT2_MAX_DIMENSIONS>
-                                                    >
-                              , container::grammar
-                              >
-  {};
+  template<class Tag, class Dimension>
+  struct  domain
+  {
+    NT2_STATIC_ASSERT ( (sizeof(Tag) != 0)
+                      , NT2_STATIC_UNKNOWN_CONTAINER_TYPE
+                      , "Container(s) with an undefined domain tag has been "
+                        "used. Please check for typos or missing include in "
+                        "your custom container definition."
+                      );
+  };
 } }
 
 #endif

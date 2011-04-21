@@ -22,16 +22,11 @@ namespace nt2 { namespace container
   //////////////////////////////////////////////////////////////////////////////
   // Anything goes in the grammar except for low level operators
   //////////////////////////////////////////////////////////////////////////////
+  template<class Tag>
   struct  grammar
         : boost::proto
         ::or_ <
               //  Terminals are containers-tagged type and  constants
-//                boost::proto::terminal< block < boost::proto::_
-//                                              , boost::proto::_, boost::proto::_
-//                                              , boost::proto::_, boost::proto::_
-//                                              , boost::proto::_, boost::proto::_
-//                                              >
-//                                      >
                 boost::proto::
                 and_< boost::proto::nullary_expr<boost::proto::_,boost::proto::_>
                     , boost::proto::if_ < meta::
@@ -51,13 +46,13 @@ namespace nt2 { namespace container
               , boost::proto::
                 and_< boost::proto::
                       nary_expr < boost::proto::_
-                                , boost::proto::vararg< grammar >
+                                , boost::proto::vararg< grammar<Tag> >
                                 >
                     , boost::proto::
                       not_< boost::proto::or_ < boost::proto::
-                                                address_of< grammar >
+                                                address_of< grammar<Tag> >
                                               , boost::proto::
-                                                dereference< grammar >
+                                                dereference< grammar<Tag> >
                                               >
                           >
                     >

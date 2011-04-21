@@ -15,9 +15,10 @@
 #include <nt2/core/settings/index.hpp>
 #include <nt2/core/settings/padding.hpp>
 #include <nt2/core/settings/allocator.hpp>
-#include <nt2/core/settings/storage_order.hpp>
 #include <nt2/core/settings/storage_kind.hpp>
+#include <nt2/core/settings/storage_order.hpp>
 #include <nt2/core/container/details/block.hpp>
+#include <nt2/core/container/details/table/domain.hpp>
 
 namespace nt2 { namespace container
 {
