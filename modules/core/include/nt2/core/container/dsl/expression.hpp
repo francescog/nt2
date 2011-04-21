@@ -9,6 +9,7 @@
 #ifndef NT2_SDK_SIMD_PACK_EXPRESSION_HPP_INCLUDED
 #define NT2_SDK_SIMD_PACK_EXPRESSION_HPP_INCLUDED
 
+#include <nt2/sdk/details/type_id.hpp>
 #include <boost/proto/proto.hpp>
 #include <nt2/sdk/dsl/category.hpp>
 #include <nt2/sdk/dsl/is_assignment_expression.hpp>
@@ -74,6 +75,12 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // External accessor for evaluation trigger
     ////////////////////////////////////////////////////////////////////////////
+    void silence() const { is_silent = true; }
+
+    protected:
+    ////////////////////////////////////////////////////////////////////////////
+    // Trigger for non-evaluation at destruction-time.
+    ////////////////////////////////////////////////////////////////////////////
     void silence(Expr const& xpr, boost::mpl::true_  const&) const
     {
       boost::proto::right(*this).silence();
@@ -81,12 +88,6 @@ namespace nt2 { namespace container
 
     void silence(Expr const&, boost::mpl::false_ const&) const {}
 
-    void silence() const { is_silent = true; }
-
-    protected:
-    ////////////////////////////////////////////////////////////////////////////
-    // Trigger for non-evaluation at destruction-time.
-    ////////////////////////////////////////////////////////////////////////////
     mutable bool is_silent;
   };
 } }
