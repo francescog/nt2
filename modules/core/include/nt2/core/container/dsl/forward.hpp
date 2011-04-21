@@ -19,12 +19,6 @@ namespace nt2 { namespace container
   template<class Tag, class Dimension>                struct domain;
   template<class Tag, class Dimension>                struct generator;
   template<class Expression,class Tag,class Settings> struct expression;
-
-  template< class Type
-          , class Settings = nt2::settings()
-          , class Dummy    = boost::proto::is_proto_expr
-          >
-  struct table;
 } }
 
 #endif

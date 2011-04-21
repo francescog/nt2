@@ -9,13 +9,17 @@
 #ifndef NT2_CORE_CONTAINER_TABLE_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_TABLE_HPP_INCLUDED
 
+#include <nt2/core/container/extent.hpp>
 #include <nt2/core/container/forward.hpp>
 #include <nt2/core/container/details/table/facade.hpp>
 #include <boost/preprocessor/repetition/enum_shifted_binary_params.hpp>
 
 namespace nt2 { namespace container
 {
-  template<class Type, class Settings, class Dummy>
+  template< class Type
+          , class Settings = nt2::settings()
+          , class Dummy    = boost::proto::is_proto_expr
+          >
   struct  table
         : facade<tag::table_,Type,Settings>::type
   {
@@ -28,25 +32,16 @@ namespace nt2 { namespace container
     table() : parent() {}
 
     ////////////////////////////////////////////////////////////////////////////
-    // Constructor from 1...Extend dimensions
+    // Constructor from extent
     ////////////////////////////////////////////////////////////////////////////
-    #define M1(z,n,t) d[n]= BOOST_PP_CAT(d,n); \
-    /**/
-
-    #define M0(z,n,t)                                           \
-    table ( BOOST_PP_ENUM_PARAMS(n,std::size_t d) ) : parent()  \
-    {                                                           \
-      typename data_type::sizes_type d;                         \
-      d.fill(1);                                                \
-      BOOST_PP_REPEAT(n,M1,~)                                   \
-      boost::proto::value(*this).resize(d);                     \
-    }\
-    /**/
-
-    BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M0,~)
-
-    #undef M0
-    #undef M1
+    template<std::size_t N, class T>
+    table( extent<N,T> const& szs ) : parent()
+    {
+      typename data_type::sizes_type d;
+      d.fill(1);
+      std::copy(szs.begin(),szs.end(),d.begin());
+      boost::proto::value(*this).resize( d );
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     // Assignment from non-AST
