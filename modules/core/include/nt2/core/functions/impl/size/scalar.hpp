@@ -9,7 +9,7 @@
 #ifndef NT2_CORE_FUNCTIONS_IMPL_SIZE_SCALAR_HPP_INCLUDED
 #define NT2_CORE_FUNCTIONS_IMPL_SIZE_SCALAR_HPP_INCLUDED
 
-#include <nt2/core/settings/size.hpp>
+#include <nt2/core/functions/of_size.hpp>
 
 /////////////////////////////////////////////////////////////////////////////
 // Implementation when type A0 is fundamental
@@ -24,13 +24,13 @@ namespace nt2 { namespace ext
     template<class Sig> struct result;
     template<class This,class A0>
     struct result<This(A0)>
-    {  // change later to diman<n>
-      typedef of_size_<1,1> type ;
+    {
+      typedef extent<2> type ;
     };
 
     NT2_FUNCTOR_CALL(1)
     {
-      return typename NT2_RETURN_TYPE(1)::type();
+      return of_size(1,1);
     }
   };
 } }
