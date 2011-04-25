@@ -12,6 +12,7 @@
 #include <cstddef>
 #include <boost/mpl/vector_c.hpp>
 #include <nt2/extension/parameters.hpp>
+#include <nt2/sdk/details/preprocessor.hpp>
 #include <nt2/core/settings/meta/option.hpp>
 #include <boost/preprocessor/repetition/enum.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
@@ -27,29 +28,41 @@ namespace nt2 { namespace options
 ////////////////////////////////////////////////////////////////////////////////
 // Helper macros
 ////////////////////////////////////////////////////////////////////////////////
-#define M0(z,n,t) std::size_t BOOST_PP_CAT(I,n) = BOOST_PP_INC(n)
+#define M0(z,n,t) std::size_t BOOST_PP_CAT(I,n) = 0
 
 ////////////////////////////////////////////////////////////////////////////////
-// storage_order<I0,..,In> represents a storage dimension permutation. By
-// default storage_order<> is equivalent to storage_order<1,..,MAX_DIMS>.
-// Storage Order data are stored in a mpl::vector_c of proper size.
+// storage_order<I0,..,In> represents a storage dimension permutation. As this
+// permutation is dependant on the dimension of the underlying container, this
+// struct is in fact a meta-function class that takes the dimension as parameter
+// and return the proper static sequence of index or static assert if improper
+// dimension is used.
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2
 {
   template< BOOST_PP_ENUM(NT2_MAX_DIMENSIONS,M0,~) >
   struct  storage_order_
   {
-    typedef BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,NT2_MAX_DIMENSIONS),_c)
-            <std::size_t, BOOST_PP_ENUM_BINARY_PARAMS ( NT2_MAX_DIMENSIONS
-                                                      , I
-                                                      , - 1 BOOST_PP_INTERCEPT
-                                                      )
-            > type;
+    template<class Dim, class Dummy=void> struct apply;
+
+    #define M1(z,n,t)                                                   \
+    template<class Dummy> struct apply< boost::mpl::size_t<n>, Dummy >  \
+    {                                                                   \
+      typedef BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,n),_c)       \
+              < std::size_t                                             \
+              , BOOST_PP_ENUM_BINARY_PARAMS(n,I,-1 BOOST_PP_INTERCEPT)  \
+              > type;                                                   \
+    };                                                                  \
+    /**/
+
+    BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M1,~)
+
+    #undef M0
+    #undef M1
   };
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Register index_ has a valid options::index_ type
+// Register storage_order_ has a valid options::storage_order_ type
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2 { namespace meta
 {
@@ -71,14 +84,15 @@ namespace nt2 { namespace meta
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2
 {
-  typedef storage_order_<>    monotonic_order_;
-  typedef storage_order_<1,2> column_major_;
-  typedef storage_order_<2,1> row_major_;
-}
+  typedef storage_order_<NT2_PP_IOTA( 1
+                                    , NT2_MAX_DIMENSIONS
+                                    )
+                        > column_major_;
 
-////////////////////////////////////////////////////////////////////////////////
-// Macros clean-up
-////////////////////////////////////////////////////////////////////////////////
-#undef M0
+  typedef storage_order_<NT2_PP_REVERSE_IOTA( 1
+                                            , NT2_MAX_DIMENSIONS
+                                            )
+                        > row_major_;
+}
 
 #endif
