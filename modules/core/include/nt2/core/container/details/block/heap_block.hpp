@@ -9,6 +9,10 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_BLOCK_HEAP_BLOCK_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_BLOCK_HEAP_BLOCK_HPP_INCLUDED
 
+#include <nt2/sdk/meta/assign.hpp>
+#include <nt2/sdk/memory/slice.hpp>
+#include <nt2/sdk/memory/no_padding.hpp>
+#include <nt2/core/container/extent.hpp>
 #include <nt2/core/container/details/block/data.hpp>
 #include <nt2/core/container/details/block/access.hpp>
 
@@ -17,48 +21,92 @@ namespace nt2 { namespace container
   //////////////////////////////////////////////////////////////////////////////
   // Defines a block of memory to be used stored on the CPU heap
   //////////////////////////////////////////////////////////////////////////////
-  template< class Type, class Extend
-          , class Bases, class Sizes, class StorageOrder
-          , class Allocator, class Padding
+  template< class Type
+          , class Dimensions
+          , class StorageOrder
+          , class Allocator
+          , class Padding
           >
-  struct  block<Type,Extend,Bases,Sizes,StorageOrder,heap_(Allocator),Padding>
-        : details::block_extent<Bases,Sizes>
-        , details::block_data<Type,heap_(Allocator),Extend>
+  struct  block < Type, Dimensions  , StorageOrder
+                , heap_(Allocator)  , Padding
+                >
+        : details::block_data<Type,heap_(Allocator),Dimensions>
         , details::block_access<Type, StorageOrder>
   {
     ////////////////////////////////////////////////////////////////////////////
-    // block parent types
+    // heap block stores his size and base index per dimension in a local
+    // Collection
     ////////////////////////////////////////////////////////////////////////////
-    typedef details::block_extent<Bases,Sizes>                extent_parent;
-    typedef details::block_data<Type,heap_(Allocator),Extend> data_parent;
-    typedef details::block_access<Type, StorageOrder>         access_parent;
-    typedef Bases bases_type;
-    typedef Sizes sizes_type;
+    typedef extent<Dimensions::value>                             sizes_type;
+    typedef boost::array<int,Dimensions::value>                   bases_type  ;
+    typedef details::block_access<Type, StorageOrder>             access_type;
+    typedef details::block_data<Type,heap_(Allocator),Dimensions> nrc_type;
 
     ////////////////////////////////////////////////////////////////////////////
-    // block is a RandonAccessSequence
+    // RandonAccessContainer interface
     ////////////////////////////////////////////////////////////////////////////
-    typedef Type       value_type;
-//    typedef typename buffer_type::pointer          iterator;
-//    typedef typename buffer_type::const_pointer    const_iterator;
-    typedef typename access_parent::reference        reference;
-    typedef typename access_parent::const_reference  const_reference;
-    typedef typename extent_parent::size_type        size_type;
-    typedef typename extent_parent::difference_type  difference_type;
-    typedef typename extent_parent::difference_type  index_type;
+    typedef Type                                  value_type;
+//    typedef typename access_type::pointer          iterator;
+//    typedef typename access_type::const_pointer    const_iterator;
+    typedef typename access_type::reference        reference;
+    typedef typename access_type::const_reference  const_reference;
+    typedef typename sizes_type::value_type       size_type;
+    typedef typename bases_type::difference_type  difference_type;
 
     ////////////////////////////////////////////////////////////////////////////
-    // Constructors and stuff
+    // Constructors
     ////////////////////////////////////////////////////////////////////////////
-    block() : extent_parent(Bases(),Sizes()) {}
+    block() : mSizes(), mBases() {}
 
-    block(Bases const& bs, Sizes const& sz, Allocator const& a = Allocator())
-          : extent_parent(bs,sz)
+    template<class Sizes, class Bases> block(Bases const& bs, Sizes const& sz)
     {
+      meta::assign(mSizes.data(), sz);
+      meta::assign(mBases, bs);
       init();
       link();
     }
 
+    ////////////////////////////////////////////////////////////////////////////
+    // Return the total number of effective elements in a block
+    ////////////////////////////////////////////////////////////////////////////
+    inline size_type size()  const
+    {
+      return slice<1>(mSizes.data(),memory::no_padding());
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Return if a block is empty
+    ////////////////////////////////////////////////////////////////////////////
+    bool empty() const { return this->size() == 0; }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Return the number of non-singleton dimension of the block
+    ////////////////////////////////////////////////////////////////////////////
+    std::size_t nDims() const { return mSizes.nDims(); }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Return the number of element on the Nth dimension
+    ////////////////////////////////////////////////////////////////////////////
+    inline size_type size(std::size_t i) const
+    {
+      return (i != 0) ? ((i <= Dimensions::value) ? mSizes(i) : 1) : size();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Return the starting index on the Nth dimension
+    ////////////////////////////////////////////////////////////////////////////
+    inline difference_type lower(std::size_t i) const
+    {
+      return (i <= Dimensions::value) ? mBases[i-1] : 1;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Return the ending index on the Nth dimension
+    ////////////////////////////////////////////////////////////////////////////
+    inline difference_type upper(std::size_t i) const
+    {
+      return (i <= Dimensions::value) ? (size(i) + lower(i) - 1) : 1;
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     // Data access
@@ -66,38 +114,72 @@ namespace nt2 { namespace container
     template<class Position>
     reference operator()(Position const& p)
     {
-      return access_parent::
-              at( p
-                , data_parent::template data<Extend::value>()
-                );
+      return access_type::at( p
+                            , access_type::template data<Dimensions::value>()
+                            );
     }
 
     template<class Position>
     const_reference operator()(Position const& p) const
     {
-      return access_parent::
-              at( p
-                , data_parent::template data<Extend::value>()
-                );
+      return access_type::at( p
+                            , access_type::template data<Dimensions::value>()
+                            );
     }
 
-    void resize(Sizes const& sz)
+    ////////////////////////////////////////////////////////////////////////////
+    // Resize current block
+    ////////////////////////////////////////////////////////////////////////////
+    template<class Sizes> inline void resize(Sizes const& sz)
     {
-      extent_parent::resize(sz);
-      init(); link();
+      meta::assign(mSizes.data(), sz.data());
+      init();
+      link();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Reindex current block
+    ////////////////////////////////////////////////////////////////////////////
+    template<class Bases> inline void reindex(Bases const& bs)
+    {
+      meta::assign(mBases, bs);
+      init();
+      link();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Restructure current block
+    ////////////////////////////////////////////////////////////////////////////
+    template<class Sizes, class Bases> inline
+    void restructure(Bases const& bs, Sizes const& sz)
+    {
+      meta::assign(mSizes.data(), sz.data());
+      meta::assign(mBases, bs);
+      init();
+      link();
     }
 
     protected:
+    ////////////////////////////////////////////////////////////////////////////
+    // Size and bases storage
+    ////////////////////////////////////////////////////////////////////////////
+    sizes_type mSizes;
+    bases_type mBases;
+
     ////////////////////////////////////////////////////////////////////////////
     // Initialize a NRC block
     ////////////////////////////////////////////////////////////////////////////
     void init()
     {
-      boost::fusion::nview<Sizes const,StorageOrder>  sz(extent_parent::mSize);
-      boost::fusion::nview<Bases const,StorageOrder>  bz(extent_parent::mBase);
-      data_parent::init ( Extend(), bz, sz, Padding()
-                        , typename meta::is_composite<Type>::type()
-                        );
+      using boost::fusion::nview;
+      typedef typename sizes_type::data_type data_type;
+
+      nrc_type::init( Dimensions()
+                    , nview<bases_type const,StorageOrder>(mBases)
+                    , nview<data_type const,StorageOrder>(mSizes.data())
+                    , Padding()
+                    , typename meta::is_composite<Type>::type()
+                    );
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -105,11 +187,16 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     void link()
     {
-      boost::fusion::nview<Sizes const,StorageOrder>  sz(extent_parent::mSize);
-      data_parent::link ( Extend(), sz, Padding()
-                        , typename meta::is_composite<Type>::type()
-                        );
+      using boost::fusion::nview;
+      typedef typename sizes_type::data_type data_type;
+
+      nrc_type::link( Dimensions()
+                    , nview<data_type const,StorageOrder>(mSizes.data())
+                    , Padding()
+                    , typename meta::is_composite<Type>::type()
+                    );
     }
+
   };
 } }
 
