@@ -28,14 +28,13 @@ namespace nt2 { namespace options
 ////////////////////////////////////////////////////////////////////////////////
 // Helper macros
 ////////////////////////////////////////////////////////////////////////////////
-#define M0(z,n,t) std::size_t BOOST_PP_CAT(I,n) = 0
+#define M0(z,n,t) std::size_t BOOST_PP_CAT(I,n) = -1
 
 ////////////////////////////////////////////////////////////////////////////////
 // storage_order<I0,..,In> represents a storage dimension permutation. As this
 // permutation is dependant on the dimension of the underlying container, this
 // struct is in fact a meta-function class that takes the dimension as parameter
-// and return the proper static sequence of index or static assert if improper
-// dimension is used.
+// and return the proper static sequence of indexes.
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2
 {
@@ -84,15 +83,8 @@ namespace nt2 { namespace meta
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2
 {
-  typedef storage_order_<NT2_PP_IOTA( 1
-                                    , NT2_MAX_DIMENSIONS
-                                    )
-                        > column_major_;
-
-  typedef storage_order_<NT2_PP_REVERSE_IOTA( 1
-                                            , NT2_MAX_DIMENSIONS
-                                            )
-                        > row_major_;
+  typedef storage_order_<NT2_PP_IOTA(1,NT2_MAX_DIMENSIONS)>         column_major_;
+  typedef storage_order_<NT2_PP_REVERSE_IOTA(1,NT2_MAX_DIMENSIONS)> row_major_;
 }
 
 #endif

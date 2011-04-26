@@ -40,9 +40,9 @@ struct  of_size_<BOOST_PP_ENUM_PARAMS(n,D)>                   \
                                                               \
 template<> struct of_size_<NT2_PP_ENUM_VALUE(n,-1)>           \
 {                                                             \
-  static const std::size_t                dimensions = n;     \
-  typedef boost::mpl::size_t<n>           dimensions_type;    \
-  typedef boost::array<std::ptrdiff_t,n>  type;               \
+  static const std::size_t      dimensions = n;               \
+  typedef boost::mpl::size_t<n> dimensions_type;              \
+  typedef boost::mpl::void_     type;                         \
 };                                                            \
 /**/
 
@@ -73,9 +73,9 @@ namespace nt2
   template<>
   struct of_size_<NT2_PP_ENUM_VALUE(NT2_MAX_DIMENSIONS,-1)>
   {
-    static const std::size_t                    dimensions = NT2_MAX_DIMENSIONS;
-    typedef boost::mpl::size_t<NT2_MAX_DIMENSIONS>           dimensions_type;
-    typedef boost::array<std::ptrdiff_t,NT2_MAX_DIMENSIONS>  type;
+    static const std::size_t                        dimensions = NT2_MAX_DIMENSIONS;
+    typedef boost::mpl::size_t<NT2_MAX_DIMENSIONS>  dimensions_type;
+    typedef boost::mpl::void_                       type;
   };
 
   //////////////////////////////////////////////////////////////////////////////
