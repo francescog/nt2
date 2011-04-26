@@ -10,7 +10,12 @@
 #define NT2_CORE_CONTAINER_EXTENT_HPP_INCLUDED
 
 #include <boost/mpl/sizeof.hpp>
+#include <nt2/sdk/meta/assign.hpp>
+#include <boost/fusion/include/io.hpp>
+#include <boost/fusion/include/as_vector.hpp>
+#include <boost/fusion/adapted/array.hpp>
 #include <nt2/core/container/forward.hpp>
+#include <boost/fusion/include/is_sequence.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
 
 namespace nt2 { namespace container
@@ -27,6 +32,10 @@ namespace nt2 { namespace container
     typedef typename
             facade< tag::extent_,T,boost::mpl::size_t<D> >::data_type data_type;
 
+    BOOST_STATIC_CONSTANT(std::size_t, static_size = D );
+
+    typedef T value_type;
+
     ////////////////////////////////////////////////////////////////////////////
     // Default constructor leads to a [0 1 ... 1] extents
     ////////////////////////////////////////////////////////////////////////////
@@ -36,23 +45,33 @@ namespace nt2 { namespace container
       boost::proto::value(*this)[0] = 0;
     }
 
+    template<std::size_t M, class U>
+    extent( extent<M,U> const& src ) : parent()
+    {
+      boost::proto::value(*this).fill(1);
+      meta::assign(data(),src.data());
+    }
+
+    extent( extent<D,T> const& src ) : parent()
+    {
+      meta::assign(data(),src.data());
+    }
+
     ////////////////////////////////////////////////////////////////////////////
     // Constructor from 1...N Dimensions
     ////////////////////////////////////////////////////////////////////////////
     #define M1(z,n,t) boost::proto::value(*this)[n]= BOOST_PP_CAT(d,n); \
     /**/
 
-    #define M0(z,n,t)                                                   \
-    template<class U>                                                   \
-    extent( BOOST_PP_ENUM_PARAMS(n,U d)                                 \
-          , typename boost::enable_if_c<  (n<=D)                        \
-                                       && boost::mpl::sizeof_<U>::value \
-                                       >::type* = 0                     \
-          ) : parent()                                                  \
-    {                                                                   \
-      boost::proto::value(*this).fill(1);                               \
-      BOOST_PP_REPEAT(n,M1,~)                                           \
-    }                                                                   \
+    #define M0(z,n,t)                                                             \
+    template<class U> inline explicit                                             \
+    extent( BOOST_PP_ENUM_PARAMS(n,U d)                                           \
+          , typename boost::enable_if_c<boost::is_integral<U>::value>::type* = 0  \
+          ) : parent()                                                            \
+    {                                                                             \
+      boost::proto::value(*this).fill(1);                                         \
+      BOOST_PP_REPEAT(n,M1,~)                                                     \
+    }                                                                             \
     /**/
 
     BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M0,~)
@@ -61,8 +80,42 @@ namespace nt2 { namespace container
     #undef M1
 
     ////////////////////////////////////////////////////////////////////////////
+    // Constructor from a fusion sequence of size <= D
+    ////////////////////////////////////////////////////////////////////////////
+    template<class Seq> explicit
+    extent( Seq const& s
+          , typename boost::enable_if_c < (   boost::fusion::
+                                              traits::is_sequence<Seq>::value
+                                          )
+                                      >::type* = 0
+          ) : parent()
+    {
+      boost::proto::value(*this).fill(1);
+      meta::assign(boost::proto::value(*this), s);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Copy constructor
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Copy constructor from a smaller extent
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
     // Assignment from non-AST
     ////////////////////////////////////////////////////////////////////////////
+    extent& operator=(extent const& src )
+    {
+      boost::proto::value(*this) = boost::proto::value(src);
+      return *this;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // raw access to the underlying data array
+    ////////////////////////////////////////////////////////////////////////////
+    data_type&        data()        { return boost::proto::value(*this); }
+    data_type const&  data()  const { return boost::proto::value(*this); }
 
     ////////////////////////////////////////////////////////////////////////////
     // Elementwise access
@@ -95,7 +148,7 @@ namespace nt2 { namespace container
     typedef typename data_type::const_iterator  const_iterator;
 
     iterator begin()  { return boost::proto::value(*this).begin();  }
-        iterator end()    { return boost::proto::value(*this).end();    }
+    iterator end()    { return boost::proto::value(*this).end();    }
 
     const_iterator begin()  const { return boost::proto::value(*this).begin();  }
     const_iterator end()    const { return boost::proto::value(*this).end();    }
@@ -103,38 +156,18 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // Size and Bases related accessor
     ////////////////////////////////////////////////////////////////////////////
-    inline size_type numel()  const { return D; }
+    inline size_type        numel()               const { return D; }
+    inline base_type        lower(std::size_t i)  const { return 1; }
+    inline difference_type  upper(std::size_t i)  const { return (i==1) ? D : 1; }
+    inline size_type        size(std::size_t i)   const { return (i==1) ? D : 1; }
 
-    template<std::size_t N> inline size_type size() const
+    inline std::size_t nDims() const
     {
-      return (N==1) ? D : 1;
+      std::size_t i = D-1;
+      while(data()[--i] == 1);
+      return i ? i+1 : D;
     }
 
-    template<std::size_t N> inline base_type lower() const
-    {
-      return 1;
-    }
-
-    template<std::size_t N> inline difference_type upper() const
-    {
-      return (N==1) ? D : 1;
-    }
-
-    /*
-  // OLD nt2 interface to bring back
-      size_t    length()              const { return mSize.length();   }
-      size_t    height()              const { return mSize.height();   }
-      size_t    width()               const { return mSize.width();    }
-      size_t    depth()               const { return mSize.depth();    }
-      size_t    chan()                const { return mSize.chan();     }
-      size_t    nDims()               const { return mSize.nDims();    }
-
-      ptrdiff_t dimy()                const { return width();          }
-      ptrdiff_t dimx()                const { return height();         }
-      ptrdiff_t dimz()                const { return depth();          }
-      ptrdiff_t dimv()                const { return chan();           }
-
- */
     using parent::operator=;
   };
 } }

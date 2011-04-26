@@ -10,7 +10,6 @@
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_DOMAIN_HPP_INCLUDED
 
 #include <nt2/extension/parameters.hpp>
-#include <nt2/core/container/dsl/domain.hpp>
 #include <nt2/core/container/details/table/domain.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////

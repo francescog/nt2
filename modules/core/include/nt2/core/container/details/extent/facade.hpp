@@ -9,8 +9,9 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_EXTENT_FACADE_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_FACADE_HPP_INCLUDED
 
-#include <nt2/core/container/dsl.hpp>
+#include <nt2/core/container/forward.hpp>
 #include <nt2/core/container/details/extent/domain.hpp>
+#include <nt2/core/container/dsl/expression.hpp>
 
 namespace nt2 { namespace container
 {
