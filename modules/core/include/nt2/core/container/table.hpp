@@ -23,13 +23,22 @@ namespace nt2 { namespace container
   struct  table
         : facade<tag::table_,Type,Settings>::type
   {
-    typedef typename facade<tag::table_,Type,Settings>::type parent;
-    typedef typename facade<tag::table_,Type,Settings>::data_type data_type;
+    ////////////////////////////////////////////////////////////////////////////
+    // Basic sub-types needed elsewhere
+    ////////////////////////////////////////////////////////////////////////////
+    typedef facade<tag::table_,Type,Settings>             facade_type;
+    typedef typename facade_type::type                    parent;
+    typedef typename facade_type::data_type               data_type;
+    typedef typename data_type::sizes_type                sizes_type;
+    typedef typename data_type::bases_type                bases_type;
 
     ////////////////////////////////////////////////////////////////////////////
-    // Default constructor
+    // Default constructor - tries to initialize if Size is static
     ////////////////////////////////////////////////////////////////////////////
-    table() : parent() {}
+    table() : parent()
+    {
+      init( typename facade_type::size_::type() );
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     // Constructor from extent
@@ -37,10 +46,15 @@ namespace nt2 { namespace container
     template<std::size_t N, class T>
     table( extent<N,T> const& szs ) : parent()
     {
-      typename data_type::sizes_type d;
-      d.fill(1);
-      std::copy(szs.begin(),szs.end(),d.begin());
-      boost::proto::value(*this).resize( d );
+      NT2_STATIC_ASSERT ( (boost::is_same < typename facade_type::size_::type
+                                          , boost::mpl::void_
+                                          >::value
+                          )
+                        , NT2_STATIC_TABLE_CANT_BE_DYNAMICALLY_CONSTRUCTED
+                        , "You tried to construct a static table instance using "
+                          "a dynamic dimension set."
+                        );
+      init( szs );
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -51,7 +65,6 @@ namespace nt2 { namespace container
     // Container API
     ////////////////////////////////////////////////////////////////////////////
     typedef typename data_type::size_type       size_type;
-    typedef typename data_type::base_type       base_type;
     typedef typename data_type::difference_type difference_type;
 
     inline size_type size()  const
@@ -66,38 +79,50 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     inline size_type numel()  const { return this->size();    }
 
-    template<std::size_t N> inline size_type size() const
+    inline size_type size(std::size_t i) const
     {
-      return boost::proto::value(*this).template size<N>();
+      return boost::proto::value(*this).size(i);
     }
 
-    template<std::size_t N> inline base_type lower() const
+    ////////////////////////////////////////////////////////////////////////////
+    // Return the starting index on the Nth dimension
+    ////////////////////////////////////////////////////////////////////////////
+    inline difference_type lower(std::size_t i) const
     {
-      return boost::proto::value(*this).template lower<N>();
+      return boost::proto::value(*this).lower(i);
     }
 
-    template<std::size_t N> inline difference_type upper() const
+    ////////////////////////////////////////////////////////////////////////////
+    // Return the ending index on the Nth dimension
+    ////////////////////////////////////////////////////////////////////////////
+    inline difference_type upper(std::size_t i) const
     {
-      return boost::proto::value(*this).template upper<N>();
+      return boost::proto::value(*this).upper(i);
     }
 
+    inline std::size_t nDims() const
+    {
+      return boost::proto::value(*this).nDims();
+    }
 
-/*
-  // OLD nt2 interface to bring back
-      size_t    length()              const { return mSize.length();   }
-      size_t    height()              const { return mSize.height();   }
-      size_t    width()               const { return mSize.width();    }
-      size_t    depth()               const { return mSize.depth();    }
-      size_t    chan()                const { return mSize.chan();     }
-      size_t    nDims()               const { return mSize.nDims();    }
-
-      ptrdiff_t dimy()                const { return width();          }
-      ptrdiff_t dimx()                const { return height();         }
-      ptrdiff_t dimz()                const { return depth();          }
-      ptrdiff_t dimv()                const { return chan();           }
-
- */
     using parent::operator=;
+
+    protected:
+
+    void init( boost::mpl::void_ const& ) {}
+
+    template<class Sizes> void init( Sizes const& szs )
+    {
+      sizes_type s(szs);
+      typename facade_type::index_::type  b;
+      boost::proto::value(*this).restructure(b,s);
+    }
+
+    void init( sizes_type const& szs )
+    {
+      typename facade_type::index_::type  b;
+      boost::proto::value(*this).restructure( b, szs );
+    }
   };
 } }
 

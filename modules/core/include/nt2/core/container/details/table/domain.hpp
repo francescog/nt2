@@ -9,8 +9,11 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_TABLE_DOMAIN_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_TABLE_DOMAIN_HPP_INCLUDED
 
+#include <boost/proto/proto.hpp>
 #include <nt2/extension/parameters.hpp>
 #include <nt2/core/container/dsl/domain.hpp>
+#include <nt2/core/container/dsl/grammar.hpp>
+#include <nt2/core/container/dsl/generator.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Define tag for table_ related domain specialization
@@ -29,7 +32,7 @@ namespace nt2 { namespace tag
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2 { namespace container
 {
-  template<int Dim>
+  template<std::size_t Dim>
   struct  domain<tag::table_, boost::mpl::size_t<Dim> >
         : boost::proto::domain< container::generator< tag::table_
                                                     , boost::mpl::size_t<Dim>
