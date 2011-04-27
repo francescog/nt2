@@ -9,12 +9,8 @@
 #ifndef NT2_CORE_CONTAINER_EXTENT_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_EXTENT_HPP_INCLUDED
 
-#include <boost/mpl/sizeof.hpp>
-#include <nt2/sdk/meta/assign.hpp>
-#include <boost/fusion/include/io.hpp>
-#include <boost/fusion/include/as_vector.hpp>
+#include <boost/array.hpp>
 #include <boost/fusion/adapted/array.hpp>
-#include <nt2/core/container/forward.hpp>
 #include <boost/fusion/include/is_sequence.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
 
@@ -32,29 +28,39 @@ namespace nt2 { namespace container
     typedef typename
             facade< tag::extent_,T,boost::mpl::size_t<D> >::data_type data_type;
 
-    BOOST_STATIC_CONSTANT(std::size_t, static_size = D );
-
-    typedef T value_type;
-
     ////////////////////////////////////////////////////////////////////////////
     // Default constructor leads to a [0 1 ... 1] extents
     ////////////////////////////////////////////////////////////////////////////
     extent() : parent()
     {
-      boost::proto::value(*this).fill(1);
-      boost::proto::value(*this)[0] = 0;
+      data()[0] = 0;
+      for(std::size_t i = 1; i < D; ++i )
+        data()[i] = 1;
     }
 
     template<std::size_t M, class U>
     extent( extent<M,U> const& src ) : parent()
     {
-      boost::proto::value(*this).fill(1);
-      meta::assign(data(),src.data());
+      for(std::size_t i = 0; i < M; ++i )
+        data()[i] = src.data()[i];
+
+      for(std::size_t i = M; i < D; ++i )
+        data()[i] = 1;
+    }
+
+    template<std::size_t M, class U>
+    extent( boost::array<U,M> const& src ) : parent()
+    {
+      for(std::size_t i = 0; i < M; ++i )
+        data()[i] = src[i];
+
+      for(std::size_t i = M; i < D; ++i )
+        data()[i] = 1;
     }
 
     extent( extent<D,T> const& src ) : parent()
     {
-      meta::assign(data(),src.data());
+      data() = src.data();
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -84,22 +90,17 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     template<class Seq> explicit
     extent( Seq const& s
-          , typename boost::enable_if_c < (   boost::fusion::
-                                              traits::is_sequence<Seq>::value
-                                          )
-                                      >::type* = 0
+          , typename boost::enable_if_c < boost::fusion::
+                                          traits::is_sequence<Seq>::value
+                                        >::type* = 0
           ) : parent()
     {
       boost::proto::value(*this).fill(1);
-      meta::assign(boost::proto::value(*this), s);
+      //meta::assign(boost::proto::value(*this), s);
     }
 
     ////////////////////////////////////////////////////////////////////////////
     // Copy constructor
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Copy constructor from a smaller extent
     ////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////
@@ -110,6 +111,8 @@ namespace nt2 { namespace container
       boost::proto::value(*this) = boost::proto::value(src);
       return *this;
     }
+
+    using parent::operator=;
 
     ////////////////////////////////////////////////////////////////////////////
     // raw access to the underlying data array
@@ -167,8 +170,6 @@ namespace nt2 { namespace container
       while(data()[--i] == 1);
       return i ? i+1 : D;
     }
-
-    using parent::operator=;
   };
 } }
 
