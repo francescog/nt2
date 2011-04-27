@@ -23,10 +23,20 @@ namespace nt2 { namespace container
   struct  extent
         : facade< tag::extent_,T,boost::mpl::size_t<D> >::type
   {
+    ////////////////////////////////////////////////////////////////////////////
+    // Facade predefined types
+    ////////////////////////////////////////////////////////////////////////////
     typedef typename
             facade< tag::extent_,T,boost::mpl::size_t<D> >::type      parent;
     typedef typename
             facade< tag::extent_,T,boost::mpl::size_t<D> >::data_type data_type;
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Interface types
+    ////////////////////////////////////////////////////////////////////////////
+    typedef typename data_type::value_type      value_type;
+    typedef typename data_type::reference       reference;
+    typedef typename data_type::const_reference const_reference;
 
     ////////////////////////////////////////////////////////////////////////////
     // Default constructor leads to a [0 1 ... 1] extents
@@ -123,12 +133,12 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // Elementwise access
     ////////////////////////////////////////////////////////////////////////////
-    T& operator()(std::size_t i)
+    reference operator()(std::size_t i)
     {
       return boost::proto::value(*this)[i-1];
     }
 
-    T const& operator()(std::size_t i) const
+    const_reference operator()(std::size_t i) const
     {
       return boost::proto::value(*this)[i-1];
     }
