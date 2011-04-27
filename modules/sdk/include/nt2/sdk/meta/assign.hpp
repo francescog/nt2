@@ -9,32 +9,52 @@
 #ifndef NT2_SDK_META_ASSIGN_HPP_INCLUDED
 #define NT2_SDK_META_ASSIGN_HPP_INCLUDED
 
-#include <boost/fusion/include/at.hpp>
-#include <boost/fusion/include/vector.hpp>
-#include <boost/fusion/include/zip_view.hpp>
-#include <boost/fusion/include/for_each.hpp>
+#include <boost/fusion/include/end.hpp>
+#include <boost/fusion/include/begin.hpp>
+#include <boost/fusion/include/equal_to.hpp>
+#include <boost/fusion/include/next.hpp>
 
 namespace nt2 { namespace details
 {
-  struct fusion_assign
+  template <typename Seq1, typename Seq2>
+  struct sequence_copy
   {
-    template<class T> inline void operator()(T const& e) const
-    {
-      boost::fusion::at_c<0>(e) = boost::fusion::at_c<1>(e);
-    }
+      typedef typename boost::fusion::result_of::end<Seq1>::type end1_type;
+      typedef typename boost::fusion::result_of::end<Seq2>::type end2_type;
+
+      template <typename I1, typename I2>
+      static void
+      call(I1 const&, I2 const&, boost::mpl::true_)
+      {
+      }
+
+      template <typename I1, typename I2>
+      static void
+      call(I1 const& dst, I2 const& src, boost::mpl::false_)
+      {
+          *dst = *src;
+          call(boost::fusion::next(dst), boost::fusion::next(src));
+      }
+
+      template <typename I1, typename I2>
+      static void call(I1 const& dst, I2 const& src)
+      {
+          typename boost::fusion::result_of::equal_to<I1, end1_type>::type eq;
+          return call(dst, src, eq);
+      }
   };
 } }
 
 namespace nt2 { namespace meta
 {
-  template<class Sequence1, class Sequence2>
-  void assign( Sequence1& dst, Sequence2 const& src )
+  template <typename Seq1, typename Seq2>
+  inline void
+  assign(Seq1& dst, Seq2 const& src)
   {
-    typedef boost::fusion::vector<Sequence1&, Sequence2 const&> sequences;
-    boost::fusion::zip_view<sequences> zv(sequences(dst,src));
-    boost::fusion::for_each( zv, details::fusion_assign() );
+    details::sequence_copy<
+        Seq1, Seq2 const>::
+        call(boost::fusion::begin(dst), boost::fusion::begin(src));
   }
-
 } }
 
 #endif
