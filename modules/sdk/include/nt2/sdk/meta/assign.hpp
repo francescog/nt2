@@ -32,15 +32,15 @@ namespace nt2 { namespace details
       static void
       call(I1 const& dst, I2 const& src, boost::mpl::false_)
       {
-          *dst = *src;
-          call(boost::fusion::next(dst), boost::fusion::next(src));
+        *dst = *src;
+        call(boost::fusion::next(dst), boost::fusion::next(src));
       }
 
       template <typename I1, typename I2>
       static void call(I1 const& dst, I2 const& src)
       {
-          typename boost::fusion::result_of::equal_to<I1, end1_type>::type eq;
-          return call(dst, src, eq);
+        typename boost::fusion::result_of::equal_to<I2, end2_type>::type eq;
+        return call(dst, src, eq);
       }
   };
 } }
