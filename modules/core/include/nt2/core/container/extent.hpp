@@ -15,6 +15,7 @@
 #include <boost/fusion/include/mpl.hpp>
 #include <boost/fusion/adapted/array.hpp>
 #include <boost/fusion/include/is_sequence.hpp>
+#include <nt2/core/container/details/access.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
 
 namespace nt2 { namespace container
@@ -137,22 +138,24 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     reference operator()(std::size_t i)
     {
+      NT2_ASSERT_ACCESS(1, i );
       return boost::proto::value(*this)[i-1];
     }
 
     const_reference operator()(std::size_t i) const
     {
+      NT2_ASSERT_ACCESS(1, i );
       return boost::proto::value(*this)[i-1];
     }
 
     ////////////////////////////////////////////////////////////////////////////
     // Container API
     ////////////////////////////////////////////////////////////////////////////
-    typedef typename facade_type::size_type       size_type;
-    typedef typename facade_type::size_type       base_type;
-    typedef typename facade_type::difference_type difference_type;
-    typedef typename data_type::iterator          iterator;
-    typedef typename data_type::const_iterator    const_iterator;
+    typedef typename data_type::size_type       size_type;
+    typedef size_type                           base_type;
+    typedef typename data_type::difference_type difference_type;
+    typedef typename data_type::iterator        iterator;
+    typedef typename data_type::const_iterator  const_iterator;
 
     inline size_type size()  const
     {
@@ -170,6 +173,20 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // Size and Bases related accessor
     ////////////////////////////////////////////////////////////////////////////
+    inline size_type  numel() const { return D; }
+
+    inline size_type  size(std::size_t i) const
+    {
+      return (i<=1) ? D : 1;
+    }
+
+    inline base_type lower(std::size_t i)  const { return 1; }
+
+    inline difference_type  upper(std::size_t i)  const
+    {
+      return (i==1) ? D : 1;
+    }
+
     inline std::size_t nDims() const
     {
       std::size_t i = D-1;
