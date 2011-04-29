@@ -39,7 +39,14 @@ namespace nt2 { namespace details
       template <typename I1, typename I2>
       static void call(I1 const& dst, I2 const& src)
       {
-        typename boost::fusion::result_of::equal_to<I2, end2_type>::type eq;
+        typedef
+        typename boost::fusion::result_of::equal_to<I1, end1_type>::type eq1_t;
+
+        typedef
+        typename boost::fusion::result_of::equal_to<I2, end2_type>::type eq2_t;
+
+        typename boost::mpl::or_<eq1_t,eq2_t>::type eq;
+
         return call(dst, src, eq);
       }
   };
