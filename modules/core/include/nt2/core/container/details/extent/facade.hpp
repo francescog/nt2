@@ -27,10 +27,30 @@ namespace nt2 { namespace container
     typedef expression< typename boost::proto::nullary_expr < tag::extent_
                                                             , data_type
                                                             >::type
-
                       , tag::extent_
                       , boost::mpl::size_t<2>
                       >                                             type;
+
+    ////////////////////////////////////////////////////////////////////////////
+    // Size and Bases related accessor
+    ////////////////////////////////////////////////////////////////////////////
+    typedef typename data_type::size_type       size_type;
+    typedef size_type                           base_type;
+    typedef typename data_type::difference_type difference_type;
+
+    inline size_type  numel() const { return S::value; }
+
+    inline size_type  size(std::size_t i) const
+    {
+      return (i<=1) ? S::value : 1;
+    }
+
+    inline base_type lower(std::size_t i)  const { return 1; }
+
+    inline difference_type  upper(std::size_t i)  const
+    {
+      return (i==1) ? S::value : 1;
+    }
   };
 } }
 

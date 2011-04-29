@@ -149,9 +149,11 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // Container API
     ////////////////////////////////////////////////////////////////////////////
-    typedef typename data_type::size_type       size_type;
-    typedef size_type                           base_type;
-    typedef typename data_type::difference_type difference_type;
+    typedef typename parent::size_type        size_type;
+    typedef typename parent::size_type        base_type;
+    typedef typename parent::difference_type  difference_type;
+    typedef typename data_type::iterator        iterator;
+    typedef typename data_type::const_iterator  const_iterator;
 
     inline size_type size()  const
     {
@@ -159,9 +161,6 @@ namespace nt2 { namespace container
     }
 
     inline bool empty() const { return boost::proto::value(*this).empty(); }
-
-    typedef typename data_type::iterator        iterator;
-    typedef typename data_type::const_iterator  const_iterator;
 
     iterator begin()  { return boost::proto::value(*this).begin();  }
     iterator end()    { return boost::proto::value(*this).end();    }
@@ -172,11 +171,6 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // Size and Bases related accessor
     ////////////////////////////////////////////////////////////////////////////
-    inline size_type        numel()               const { return D; }
-    inline base_type        lower(std::size_t i)  const { return 1; }
-    inline difference_type  upper(std::size_t i)  const { return (i==1) ? D : 1; }
-    inline size_type        size(std::size_t i)   const { return (i==1) ? D : 1; }
-
     inline std::size_t nDims() const
     {
       std::size_t i = D-1;
