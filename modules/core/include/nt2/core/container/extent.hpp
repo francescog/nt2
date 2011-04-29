@@ -10,6 +10,9 @@
 #define NT2_CORE_CONTAINER_EXTENT_HPP_INCLUDED
 
 #include <boost/array.hpp>
+#include <nt2/sdk/meta/assign.hpp>
+#include <boost/fusion/adapted/mpl.hpp>
+#include <boost/fusion/include/mpl.hpp>
 #include <boost/fusion/adapted/array.hpp>
 #include <boost/fusion/include/is_sequence.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
@@ -106,7 +109,7 @@ namespace nt2 { namespace container
           ) : parent()
     {
       boost::proto::value(*this).fill(1);
-      //meta::assign(boost::proto::value(*this), s);
+      meta::assign(boost::proto::value(*this), s);
     }
 
     ////////////////////////////////////////////////////////////////////////////
