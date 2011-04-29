@@ -29,10 +29,9 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // Facade predefined types
     ////////////////////////////////////////////////////////////////////////////
-    typedef typename
-            facade< tag::extent_,T,boost::mpl::size_t<D> >::type      parent;
-    typedef typename
-            facade< tag::extent_,T,boost::mpl::size_t<D> >::data_type data_type;
+    typedef facade< tag::extent_,T,boost::mpl::size_t<D> >  facade_type;
+    typedef typename facade_type::type                      parent;
+    typedef typename facade_type::data_type                 data_type;
 
     ////////////////////////////////////////////////////////////////////////////
     // Interface types
@@ -149,11 +148,11 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // Container API
     ////////////////////////////////////////////////////////////////////////////
-    typedef typename parent::size_type        size_type;
-    typedef typename parent::size_type        base_type;
-    typedef typename parent::difference_type  difference_type;
-    typedef typename data_type::iterator        iterator;
-    typedef typename data_type::const_iterator  const_iterator;
+    typedef typename facade_type::size_type       size_type;
+    typedef typename facade_type::size_type       base_type;
+    typedef typename facade_type::difference_type difference_type;
+    typedef typename data_type::iterator          iterator;
+    typedef typename data_type::const_iterator    const_iterator;
 
     inline size_type size()  const
     {
