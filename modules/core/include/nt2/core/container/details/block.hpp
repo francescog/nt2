@@ -9,6 +9,7 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_BLOCK_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_BLOCK_HPP_INCLUDED
 
+#include <nt2/core/container/details/block/category.hpp>
 #include <nt2/core/container/details/block/heap_block.hpp>
 
 #endif
