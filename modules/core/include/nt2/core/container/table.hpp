@@ -84,6 +84,11 @@ namespace nt2 { namespace container
       return boost::proto::value(*this).size(i);
     }
 
+    inline sizes_type const& sizes() const
+    {
+      return boost::proto::value(*this).sizes();
+    }
+
     ////////////////////////////////////////////////////////////////////////////
     // Return the starting index on the Nth dimension
     ////////////////////////////////////////////////////////////////////////////
@@ -98,11 +103,6 @@ namespace nt2 { namespace container
     inline difference_type upper(std::size_t i) const
     {
       return boost::proto::value(*this).upper(i);
-    }
-
-    inline std::size_t nDims() const
-    {
-      return boost::proto::value(*this).nDims();
     }
 
     using parent::operator=;
