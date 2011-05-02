@@ -31,6 +31,21 @@ namespace nt2 { namespace container
                       , boost::mpl::size_t<2>
                       >                                             type;
   };
+
+  //////////////////////////////////////////////////////////////////////////////
+  // extent facade for 0D size, used for the non-container size
+  //////////////////////////////////////////////////////////////////////////////
+  template<class T> struct facade<tag::extent_,T,boost::mpl::size_t<0> >
+  {
+    // 0D extent is just a placeholder type
+    typedef boost::mpl::void_  data_type;
+    typedef expression< typename boost::proto::nullary_expr < tag::extent_
+                                                            , data_type
+                                                            >::type
+                      , tag::extent_
+                      , boost::mpl::size_t<2>
+                      >                                             type;
+  };
 } }
 
 #endif
