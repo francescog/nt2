@@ -16,7 +16,7 @@ namespace nt2
   //////////////////////////////////////////////////////////////////////////////
   // Return an empty extent
   //////////////////////////////////////////////////////////////////////////////
-  extent<1> of_size() { return extent<1>(); }
+  extent<0> of_size() { return extent<0>(); }
 
   #define M0(z,n,t)                                             \
   template<BOOST_PP_ENUM_PARAMS(n,class D)>                     \
