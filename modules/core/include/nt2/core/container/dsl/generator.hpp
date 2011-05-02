@@ -37,14 +37,15 @@ namespace nt2 { namespace container
     };
 
     template<class Expr>
-    expression<Expr,Tag,Dimension> const operator()(Expr const &xpr) const
+    typename result<generator(Expr)>::type const
+    operator()(Expr const &xpr) const
     {
       /*
       NT2_ASSERT( check_size(xpr,Tag())
                   && "Dynamic size mismatch in container expression"
                 );
       */
-      expression<Expr,Tag,Dimension> const that(xpr);
+      typename result<generator(Expr)>::type const that(xpr);
       return that;
     }
   };
