@@ -9,6 +9,9 @@
 #ifndef NT2_CORE_CONTAINER_FORWARD_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_FORWARD_HPP_INCLUDED
 
+#include <nt2/sdk/dsl/call.hpp>
+#include <boost/proto/proto.hpp>
+
 namespace nt2 { namespace container
 {
   //////////////////////////////////////////////////////////////////////////////
@@ -16,6 +19,15 @@ namespace nt2 { namespace container
   // all the boilerplate involved.
   //////////////////////////////////////////////////////////////////////////////
   template<class Tag, class Type, class Settings> struct facade;
+
+  //////////////////////////////////////////////////////////////////////////////
+  // extent represnet the iteration space of a nD container
+  //////////////////////////////////////////////////////////////////////////////
+  template< std::size_t D
+          , class T     = std::size_t
+          , class Dummy = boost::proto::is_proto_expr
+          >
+  struct  extent;
 } }
 
 #endif
