@@ -25,12 +25,12 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0)>
     {
-      typedef extent<2> type ;
+      typedef extent<0> type ;
     };
 
     NT2_FUNCTOR_CALL(1)
     {
-      return of_size(1,1);
+      return of_size();
     }
   };
 } }

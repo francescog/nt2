@@ -9,6 +9,7 @@
 #ifndef NT2_CORE_FUNCTIONS_IMPL_SIZE_SIZE_HPP_INCLUDED
 #define NT2_CORE_FUNCTIONS_IMPL_SIZE_SIZE_HPP_INCLUDED
 
+#include <nt2/core/functions/impl/size/ast.hpp>
 #include <nt2/core/functions/impl/size/scalar.hpp>
 
 #endif
