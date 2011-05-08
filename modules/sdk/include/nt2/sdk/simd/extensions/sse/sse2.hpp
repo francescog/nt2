@@ -17,7 +17,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Check for SSE2
 ////////////////////////////////////////////////////////////////////////////////
-#if defined(__SSE2__) || (_M_IX86_FP == 2)
+#if defined(__SSE2__) || defined(_MSC_VER)
 
 ////////////////////////////////////////////////////////////////////////////////
 // Report SSE2 discovery
@@ -37,6 +37,7 @@ NT2_WARNING(SSE2 SIMD extension detected)
 #define NT2_SIMD_CARDINALS          (2)(4)(8)(16)
 #define NT2_SIMD_TAG_SEQ            (::nt2::tag::sse_)
 #define NT2_SIMD_DEFAULT_EXTENSION  ::nt2::tag::sse_
+#define NT2_SIMD_DEFAULT_SITE       ::nt2::tag::sse2_
 
 extern "C"
 {

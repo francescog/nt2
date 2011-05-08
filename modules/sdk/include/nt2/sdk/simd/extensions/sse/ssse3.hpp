@@ -17,7 +17,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Check for SSSE3
 ////////////////////////////////////////////////////////////////////////////////
-#if defined(__SSSE3__)
+#if defined(__SSSE3__) || defined(_MSC_VER)
 
 ////////////////////////////////////////////////////////////////////////////////
 // Report SSSE3 discovery
@@ -37,6 +37,7 @@ NT2_WARNING(SSSE3 SIMD extension detected)
 #define NT2_SIMD_CARDINALS          (2)(4)(8)(16)
 #define NT2_SIMD_TAG_SEQ            (::nt2::tag::sse_)
 #define NT2_SIMD_DEFAULT_EXTENSION  ::nt2::tag::sse_
+#define NT2_SIMD_DEFAULT_SITE       ::nt2::tag::ssse3_
 
 extern "C"
 {

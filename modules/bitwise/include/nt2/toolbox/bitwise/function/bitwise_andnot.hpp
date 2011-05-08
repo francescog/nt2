@@ -23,6 +23,7 @@ namespace nt2 { namespace tag
 #include <nt2/toolbox/bitwise/function/scalar/bitwise_andnot.hpp>
 #include NT2_BITWISE_INCLUDE(bitwise_andnot.hpp) 
 
+#include <nt2/toolbox/bitwise/recognition/bitwise_andnot.hpp>
  
 #endif
 

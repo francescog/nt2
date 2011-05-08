@@ -54,7 +54,7 @@ def create_one_unit(tb_name,
         for rank,d in enumerate(dl) :
             origin ="types" if mode == 'scalar' else 'simd_types'
             if d["functor"].get('no_simd_tests',False) : return []
-            types = bg.recover(origin,d["functor"],["real_convert_"])
+            types = bg.recover(origin,d["functor"],["real_"])
             ret_arity = int(d["functor"]["ret_arity"])
             d_unit = d["unit"]
             for typ in types :
@@ -73,7 +73,7 @@ def write_unit(tb_name,fct_name,mode,s,check=False,backup=True) :
     nfp = Nt2_fct_props(tb_name,fct_name,mode)
     p = nfp.get_fct_unit_path(mode)
     print ('p = %s'%p)
-    if backup :
+    if backup and exist(p) :
         print("p=%s" %p)
         i = 1;
         while True :

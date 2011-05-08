@@ -69,10 +69,22 @@ namespace nt2
 
         static inline int_type fdlibm_big_reduction(const A0& t, A0& xr, A0& xc)
         {
+	  ignore_unused(t);
+	  ignore_unused(xr); 
+	  ignore_unused(xc); 
           int_type i;
           //boost::fusion::tie(xr, xc, i) = nt2::rem_pio2(t);
           return i;
         }
+	
+	static inline int_type invalidity_reduction(const A0& t, A0& xr, A0& xc)
+	{
+	  ignore_unused(t);
+	  ignore_unused(xc); 
+	  int_type i = Zero<int_type>();
+	  xr =  Nan<A0>(); 
+	  return i;
+	}
       };
     }
   }

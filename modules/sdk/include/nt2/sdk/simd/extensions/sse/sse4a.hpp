@@ -17,7 +17,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Check for SSE4A
 ////////////////////////////////////////////////////////////////////////////////
-#if defined(__SSE4A__)
+#if defined(__SSE4A__) || defined(_MSC_VER)
 
 ////////////////////////////////////////////////////////////////////////////////
 // Report  SSE4A discovery
@@ -37,6 +37,7 @@ NT2_WARNING(SSE4A SIMD extension detected)
 #define NT2_SIMD_CARDINALS          (2)(4)(8)(16)
 #define NT2_SIMD_TAG_SEQ            (::nt2::tag::sse_)
 #define NT2_SIMD_DEFAULT_EXTENSION  ::nt2::tag::sse_
+#define NT2_SIMD_DEFAULT_SITE       ::nt2::tag::sse4a_
 
 extern "C"
 {
