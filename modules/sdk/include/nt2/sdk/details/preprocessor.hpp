@@ -15,7 +15,7 @@
 
 /*!
  * \file
- * Defines some short-cut for frequently used PP macros
+ * Defines some short-cut for frequently used preprocessor macros
  */
 
 /*!
@@ -37,7 +37,7 @@
 #define NT2_PP_DEBUG(MACRO) BOOST_PP_STRINGIZE( (MACRO) )
 
 //==============================================================================
-// Enumeration macro for index and value. Used internally
+// Enumeration macro for index, reverse index and value. Used internally
 //==============================================================================
 #define NT2_PP_INDEX(z,n,t)             BOOST_PP_ADD(n,t)
 #define NT2_PP_TEXT(z,n,t)              t
@@ -48,16 +48,39 @@ BOOST_PP_ADD( BOOST_PP_SUB( BOOST_PP_TUPLE_ELEM(2,1,t), n ) \
             )                                               \
 /**/
 
+//==============================================================================
+/*!
+ * \ingroup preprocessor
+ * Evaluates as the comma separated enumeration of positive values between
+ * \c A and \c B included.
+ *
+ * \param A Starting value
+ * \param B End value
+ */
+//==============================================================================
+#define NT2_PP_IOTA(A,B)                        \
+BOOST_PP_ENUM ( BOOST_PP_INC(BOOST_PP_SUB(B,A)) \
+              , NT2_PP_INDEX                    \
+              , A                               \
+              )                                 \
+/**/
 
 //==============================================================================
-// Enumerate a .. a+n-1 values
+/*!
+ * \ingroup preprocessor
+ * Evaluates as the comma separated enumeration  of positive values between
+ * \c B to \c A included.
+ *
+ * \param A Starting value
+ * \param B End value
+ */
 //==============================================================================
-#define NT2_PP_IOTA(a,n)          BOOST_PP_ENUM(n,NT2_PP_INDEX,a)
-
-//==============================================================================
-// Enumerate a+n-1 .. a values
-//==============================================================================
-#define NT2_PP_REVERSE_IOTA(a,n)  BOOST_PP_ENUM(n,NT2_PP_REVERSE_INDEX,(a,n))
+#define NT2_PP_REVERSE_IOTA(A,B)                      \
+BOOST_PP_ENUM ( BOOST_PP_INC(BOOST_PP_SUB(B,A))       \
+              , NT2_PP_REVERSE_INDEX                  \
+              , (A,BOOST_PP_INC(BOOST_PP_SUB(B,A)) )  \
+              )                                       \
+/**/
 
 //==============================================================================
 /*!
