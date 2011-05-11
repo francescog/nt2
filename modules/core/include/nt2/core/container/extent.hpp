@@ -13,6 +13,7 @@
 #include <nt2/core/container/details/extent/io.hpp>
 #include <nt2/core/container/details/extent/zero_extent.hpp>
 #include <nt2/core/container/details/extent/implementation.hpp>
+#include <nt2/core/container/details/extent/size.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Bring extent into nt2 namespace

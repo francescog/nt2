@@ -23,8 +23,7 @@ namespace nt2 { namespace container
   //////////////////////////////////////////////////////////////////////////////
   // extent represnet the iteration space of a nD container
   //////////////////////////////////////////////////////////////////////////////
-  template< std::size_t D
-          , class T     = std::size_t
+  template< class Dimensions
           , class Dummy = boost::proto::is_proto_expr
           >
   struct  extent;
