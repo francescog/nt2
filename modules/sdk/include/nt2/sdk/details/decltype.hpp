@@ -12,7 +12,6 @@
 /*!
  * \file
  * Defines a platform agnostic \c decltype macro.
- *
  */
 
 /*!
@@ -32,7 +31,7 @@
 #undef BOOST_NO_DECLTYPE
 #endif
 
-#include <boost/proto/detail/decltype.hpp>
+#include <boost/proto/proto.hpp>
 
 /*!
  * \ingroup meta
