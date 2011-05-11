@@ -9,6 +9,7 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_EXTENT_ZERO_EXTENT_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_ZERO_EXTENT_HPP_INCLUDED
 
+#include <boost/fusion/include/single_view.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
 
 namespace nt2 { namespace container
@@ -16,16 +17,15 @@ namespace nt2 { namespace container
   //////////////////////////////////////////////////////////////////////////////
   // 0D specialization for extent
   //////////////////////////////////////////////////////////////////////////////
-  template<class T, class Dummy>
-  struct  extent< 0, T, Dummy >
-        : facade< tag::extent_,T,boost::mpl::size_t<0> >::type
+  template<class Dummy>
+  struct  extent< _0D, Dummy > : facade<tag::extent_,_0D,void>::type
   {
     ////////////////////////////////////////////////////////////////////////////
     // Facade predefined types
     ////////////////////////////////////////////////////////////////////////////
-    typedef facade< tag::extent_,T,boost::mpl::size_t<0> >  facade_type;
-    typedef typename facade_type::type                      parent;
-    typedef typename facade_type::data_type                 data_type;
+    typedef facade<tag::extent_,_0D,void>           facade_type;
+    typedef typename facade_type::type              parent;
+    typedef boost::fusion::single_view<std::size_t> data_type;
 
     BOOST_STATIC_CONSTANT(std::size_t, static_dimension = 0);
 
@@ -39,7 +39,7 @@ namespace nt2 { namespace container
     // Default constructor leads to a [0 1 ... 1] extents
     ////////////////////////////////////////////////////////////////////////////
     extent() : parent() {}
-    extent( extent<0,T> const& src ) : parent() {}
+    extent( extent const& src ) : parent() {}
 
     ////////////////////////////////////////////////////////////////////////////
     // Assignment from non-AST
@@ -51,7 +51,10 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // raw access to the underlying data array
     ////////////////////////////////////////////////////////////////////////////
-    data_type const&  data()  const { return boost::proto::value(*this); }
+    data_type data()  const
+    {
+      return data_type(1);
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     // Elementwise access

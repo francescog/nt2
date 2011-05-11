@@ -9,19 +9,20 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_EXTENT_FACADE_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_FACADE_HPP_INCLUDED
 
+#include <nt2/core/settings/size.hpp>
 #include <nt2/core/container/forward.hpp>
-#include <nt2/core/container/details/extent/domain.hpp>
 #include <nt2/core/container/dsl/expression.hpp>
+#include <nt2/core/container/details/extent/domain.hpp>
 
 namespace nt2 { namespace container
 {
   //////////////////////////////////////////////////////////////////////////////
   // extent facade
   //////////////////////////////////////////////////////////////////////////////
-  template<class T, class S> struct facade<tag::extent_,T,S>
+  template<class Dimensions,class S> struct facade<tag::extent_,Dimensions, S>
   {
     // Extent are just wrapper around boost::array of proper size and type
-    typedef boost::array<T,S::value>  data_type;
+    typedef boost::array<std::size_t,Dimensions::dimensions>  data_type;
 
     // Here is the proto expressionr eady to be used
     typedef expression< typename boost::proto::nullary_expr < tag::extent_
@@ -35,7 +36,7 @@ namespace nt2 { namespace container
   //////////////////////////////////////////////////////////////////////////////
   // extent facade for 0D size, used for the non-container size
   //////////////////////////////////////////////////////////////////////////////
-  template<class T> struct facade<tag::extent_,T,boost::mpl::size_t<0> >
+  template<class S> struct facade<tag::extent_,_0D, S>
   {
     // 0D extent is just a placeholder type
     typedef boost::mpl::void_  data_type;

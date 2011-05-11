@@ -31,8 +31,10 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // Find out Size informations
     ////////////////////////////////////////////////////////////////////////////
-    typedef typename meta::option<S,options::size_, _4D>::type size_;
-    typedef typename size_::dimensions_type                    dimensions_type;
+    typedef typename meta::option<S,options::size_, _4D>::type  size_;
+    typedef extent<size_>                                       extent_type;
+
+    typedef boost::mpl::size_t<extent_type::static_dimension> dimensions_type;
 
     ////////////////////////////////////////////////////////////////////////////
     // Find out Storage Order informations
@@ -51,13 +53,13 @@ namespace nt2 { namespace container
     meta::option<S,options::storage_kind_ , heap_>::type            kind_;
     typedef typename kind_::type (storage_kind_type)( typename alloc_::type );
 
-    typedef typename meta::option<S,options::index_        , matlab_index_>::type      index_;
+    typedef typename meta::option<S,options::index_ , matlab_index_>::type      index_;
     typedef meta::option<S,options::padding_      , lead_padding_>      padding_;
 //    typedef meta::option<S,options::id_           , unnamed_ >          id_;
 
     // Builds the proper blocks
     typedef block < T
-                  , dimensions_type
+                  , extent_type
                   , order_type
                   , storage_kind_type
                   , typename padding_::type::type

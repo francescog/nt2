@@ -9,15 +9,15 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_EXTENT_IO_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_IO_HPP_INCLUDED
 
+#include <boost/fusion/include/io.hpp>
+#include <boost/fusion/include/as_vector.hpp>
+
 namespace nt2 { namespace container
 {
-  template<std::size_t D,class T> inline
-  std::ostream& operator<<( std::ostream& os, extent<D,T> const& e )
+  template<class D> inline
+  std::ostream& operator<<( std::ostream& os, extent<D> const& e )
   {
-    os << "[ ";
-    for(std::size_t i=1;i<=(D?D:1);++i) os << e(i) << " ";
-    os << "]";
-    return os;
+    return os << "(" << boost::fusion::as_vector(e.data()) << ")";
   }
 } }
 

@@ -20,18 +20,18 @@
 
 namespace nt2 { namespace container
 {
-  template<std::size_t D, class T, class Dummy>
+  template<class Dimensions, class Dummy>
   struct  extent
-        : facade< tag::extent_,T,boost::mpl::size_t<D> >::type
+        : facade<tag::extent_,Dimensions,void>::type
   {
     ////////////////////////////////////////////////////////////////////////////
     // Facade predefined types
     ////////////////////////////////////////////////////////////////////////////
-    typedef facade< tag::extent_,T,boost::mpl::size_t<D> >  facade_type;
-    typedef typename facade_type::type                      parent;
-    typedef typename facade_type::data_type                 data_type;
+    typedef facade<tag::extent_,Dimensions,void>  facade_type;
+    typedef typename facade_type::type            parent;
+    typedef typename facade_type::data_type       data_type;
 
-    BOOST_STATIC_CONSTANT(std::size_t, static_dimension = D);
+    BOOST_STATIC_CONSTANT(std::size_t, static_dimension = Dimensions::dimensions);
 
     ////////////////////////////////////////////////////////////////////////////
     // Interface types
@@ -45,35 +45,27 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     extent() : parent()
     {
-      data()[0] = 0;
-      for(std::size_t i = 1; i < D; ++i )
-        data()[i] = 1;
+      meta::assign(data(), typename Dimensions::type());
     }
 
-    template<std::size_t M, class U>
-    extent( extent<M,U> const& src ) : parent()
+    template<class D>
+    extent( extent<D> const& src ) : parent()
     {
-      for(std::size_t i = 0; i < M; ++i )
+      BOOST_STATIC_CONSTANT(std::size_t, lims = extent<D>::dimensions);
+      for(std::size_t i = 0; i < lims; ++i )
         data()[i] = src.data()[i];
-
-      for(std::size_t i = M; i < D; ++i )
+      for(std::size_t i = lims; i < static_dimension; ++i )
         data()[i] = 1;
     }
 
     template<std::size_t M, class U>
     extent( boost::array<U,M> const& src ) : parent()
     {
-      for(std::size_t i = 0; i < M; ++i )
-        data()[i] = src[i];
-
-      for(std::size_t i = M; i < D; ++i )
-        data()[i] = 1;
+      for(std::size_t i = 0; i < M; ++i )                 data()[i] = src[i];
+      for(std::size_t i = M; i < static_dimension; ++i )  data()[i] = 1;
     }
 
-    extent( extent<D,T> const& src ) : parent()
-    {
-      data() = src.data();
-    }
+    extent( extent const& src ) : parent() { data() = src.data(); }
 
     ////////////////////////////////////////////////////////////////////////////
     // Constructor from 1...N Dimensions
@@ -163,34 +155,32 @@ namespace nt2 { namespace container
 
     inline bool empty() const { return boost::proto::value(*this).empty(); }
 
-    iterator begin()  { return boost::proto::value(*this).begin();  }
-    iterator end()    { return boost::proto::value(*this).end();    }
+    iterator        begin()       { return boost::proto::value(*this).begin();  }
+    const_iterator  begin() const { return boost::proto::value(*this).begin();  }
 
-    const_iterator begin()  const { return boost::proto::value(*this).begin();  }
-    const_iterator end()    const { return boost::proto::value(*this).end();    }
+    iterator        end()         { return boost::proto::value(*this).end();    }
+    const_iterator  end()   const { return boost::proto::value(*this).end();    }
 
     ////////////////////////////////////////////////////////////////////////////
     // Size and Bases related accessor
     ////////////////////////////////////////////////////////////////////////////
-    inline size_type  numel() const { return D; }
-
     inline size_type  size(std::size_t i) const
     {
-      return (i<=1) ? D : 1;
+      return (i<=1) ? static_dimension : 1;
     }
 
     inline base_type lower(std::size_t i)  const { return 1; }
 
     inline difference_type  upper(std::size_t i)  const
     {
-      return (i==1) ? D : 1;
+      return (i==1) ? static_dimension : 1;
     }
 
     inline std::size_t nDims() const
     {
-      std::size_t i = D-1;
+      std::size_t i = static_dimension-1;
       while(data()[--i] == 1);
-      return i ? i+1 : D;
+      return i ? i+1 : static_dimension;
     }
   };
 } }

@@ -11,5 +11,6 @@
 
 #include <nt2/core/container/details/block/category.hpp>
 #include <nt2/core/container/details/block/heap_block.hpp>
+#include <nt2/core/container/details/block/size.hpp>
 
 #endif

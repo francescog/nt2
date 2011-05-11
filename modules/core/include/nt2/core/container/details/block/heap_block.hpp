@@ -30,17 +30,20 @@ namespace nt2 { namespace container
   struct  block < Type, Dimensions  , StorageOrder
                 , heap_(Allocator)  , Padding
                 >
-        : details::block_data<Type,heap_(Allocator),Dimensions>
+        : details::block_data<Type,heap_(Allocator)
+                              ,boost::mpl::size_t<Dimensions::static_dimension>
+                              >
         , details::block_access<Type, StorageOrder>
   {
     ////////////////////////////////////////////////////////////////////////////
     // heap block stores his size and base index per dimension in a local
     // Collection
     ////////////////////////////////////////////////////////////////////////////
-    typedef extent<Dimensions::value>                             sizes_type;
-    typedef boost::array<int,Dimensions::value>                   bases_type  ;
+    typedef Dimensions                                            sizes_type;
+    typedef boost::array<int,Dimensions::static_dimension>        bases_type;
     typedef details::block_access<Type, StorageOrder>             access_type;
-    typedef details::block_data<Type,heap_(Allocator),Dimensions> nrc_type;
+    typedef boost::mpl::size_t<Dimensions::static_dimension> dimensions_type;
+    typedef details::block_data<Type,heap_(Allocator),dimensions_type> nrc_type;
 
     ////////////////////////////////////////////////////////////////////////////
     // Block hierarchy is made of its base type and its settings
@@ -93,7 +96,9 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     inline size_type size(std::size_t i) const
     {
-      return (i != 0) ? ((i <= Dimensions::value) ? mSizes(i) : 1) : size();
+      return  (i != 0) ?
+              ((i <= Dimensions::static_dimension) ? mSizes(i) : 1)
+            : size();
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -101,7 +106,7 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     inline difference_type lower(std::size_t i) const
     {
-      return (i <= Dimensions::value) ? mBases[i-1] : 1;
+      return (i <= Dimensions::static_dimension) ? mBases[i-1] : 1;
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -109,7 +114,7 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     inline difference_type upper(std::size_t i) const
     {
-      return (i <= Dimensions::value) ? (size(i) + lower(i) - 1) : 1;
+      return (i <= Dimensions::static_dimension) ? (size(i) + lower(i) - 1) : 1;
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -119,7 +124,8 @@ namespace nt2 { namespace container
     reference operator()(Position const& p)
     {
       return access_type::at( p
-                            , access_type::template data<Dimensions::value>()
+                            , access_type::template
+                              data<Dimensions::static_dimension>()
                             );
     }
 
@@ -127,7 +133,8 @@ namespace nt2 { namespace container
     const_reference operator()(Position const& p) const
     {
       return access_type::at( p
-                            , access_type::template data<Dimensions::value>()
+                            , access_type::template
+                              data<Dimensions::static_dimension>()
                             );
     }
 
@@ -178,7 +185,7 @@ namespace nt2 { namespace container
       using boost::fusion::nview;
       typedef typename sizes_type::data_type data_type;
 
-      nrc_type::init( Dimensions()
+      nrc_type::init( dimensions_type()
                     , nview<bases_type const,StorageOrder>(mBases)
                     , nview<data_type const,StorageOrder>(mSizes.data())
                     , Padding()
@@ -194,13 +201,12 @@ namespace nt2 { namespace container
       using boost::fusion::nview;
       typedef typename sizes_type::data_type data_type;
 
-      nrc_type::link( Dimensions()
+      nrc_type::link( dimensions_type()
                     , nview<data_type const,StorageOrder>(mSizes.data())
                     , Padding()
                     , typename meta::is_composite<Type>::type()
                     );
     }
-
   };
 } }
 

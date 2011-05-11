@@ -35,24 +35,23 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     table() : parent()
     {
-      init( typename facade_type::size_::type() );
+      init( typename facade_type::size_::type()
+          , typename facade_type::size_::is_static()
+          );
     }
 
     ////////////////////////////////////////////////////////////////////////////
     // Constructor from extent
     ////////////////////////////////////////////////////////////////////////////
-    template<std::size_t N, class T>
-    table( extent<N,T> const& szs ) : parent()
+    template<class D>
+    table( extent<D> const& szs ) : parent()
     {
-      NT2_STATIC_ASSERT ( (boost::is_same < typename facade_type::size_::type
-                                          , boost::mpl::void_
-                                          >::value
-                          )
+      NT2_STATIC_ASSERT ( (!facade_type::size_::is_static::value)
                         , NT2_STATIC_TABLE_CANT_BE_DYNAMICALLY_CONSTRUCTED
                         , "You tried to construct a static table instance using "
                           "a dynamic dimension set."
                         );
-      init( szs );
+      init( szs, boost::mpl::true_() );
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -75,8 +74,6 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // Size and Bases related accessor
     ////////////////////////////////////////////////////////////////////////////
-    inline size_type numel()  const { return this->size();    }
-
     inline size_type size(std::size_t i) const
     {
       return boost::proto::value(*this).size(i);
@@ -107,16 +104,18 @@ namespace nt2 { namespace container
 
     protected:
 
-    void init( boost::mpl::void_ const& ) {}
+    template<class Sizes>
+    void init( Sizes const&, boost::mpl::false_ const& ) {}
 
-    template<class Sizes> void init( Sizes const& szs )
+    template<class Sizes>
+    void init( Sizes const& szs, boost::mpl::true_ const& )
     {
       sizes_type s(szs);
       typename facade_type::index_::type  b;
       boost::proto::value(*this).restructure(b,s);
     }
 
-    void init( sizes_type const& szs )
+    void init( sizes_type const& szs, boost::mpl::true_ const& )
     {
       typename facade_type::index_::type  b;
       boost::proto::value(*this).restructure( b, szs );
