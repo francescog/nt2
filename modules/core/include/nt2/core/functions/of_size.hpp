@@ -16,15 +16,16 @@ namespace nt2
   //////////////////////////////////////////////////////////////////////////////
   // Return an empty extent
   //////////////////////////////////////////////////////////////////////////////
-  extent<0> of_size() { return extent<0>(); }
+  extent<_0D> of_size() { return extent<_0D>(); }
 
-  #define M0(z,n,t)                                             \
-  template<BOOST_PP_ENUM_PARAMS(n,class D)>                     \
-  extent<n> of_size(BOOST_PP_ENUM_BINARY_PARAMS(n,const D, &d)) \
-  {                                                             \
-    extent<n> that(BOOST_PP_ENUM_PARAMS(n,d));                  \
-    return that;                                                \
-  }                                                             \
+  #define M0(z,n,t)                                                             \
+  template<BOOST_PP_ENUM_PARAMS(n,class D)>                                     \
+  extent<BOOST_PP_CAT(BOOST_PP_CAT(_,n),D)>                                     \
+  of_size(BOOST_PP_ENUM_BINARY_PARAMS(n,const D, &d))                           \
+  {                                                                             \
+    extent<BOOST_PP_CAT(BOOST_PP_CAT(_,n),D)> that(BOOST_PP_ENUM_PARAMS(n,d));  \
+    return that;                                                                \
+  }                                                                             \
   /**/
 
   //////////////////////////////////////////////////////////////////////////////
