@@ -30,8 +30,12 @@ namespace nt2 { namespace details
       typedef typename nt2::meta::strip<esize_>::type                   elem_;
 
       typedef typename
-      boost::mpl::if_c<   (elem_::static_dimension <= state_::static_dimension)
-                      ||  !state_::static_dimension
+      boost::mpl::if_c< (   (     elem_::static_dimension
+                              <=  state_::static_dimension
+                            )
+                          ||  !state_::static_dimension
+                        )
+                        && elem_::static_dimension
                       , esize_
                       , State
                       >::type type;
@@ -46,10 +50,12 @@ namespace nt2 { namespace details
 
       return eval ( s
                   , nt2::size(e)
-                  , boost::mpl::bool_ < (   elem_::static_dimension
-                                        <=  State::static_dimension
-                                        )
-                                        || !State::static_dimension
+                  , boost::mpl::bool_ < (   (   elem_::static_dimension
+                                            <=  State::static_dimension
+                                            )
+                                          || !State::static_dimension
+                                          )
+                                        && elem_::static_dimension
                                       >()
                   );
     }
@@ -72,7 +78,7 @@ namespace nt2 { namespace details
     {
       typedef typename boost::fusion::result_of::
               fold< typename nt2::meta::strip<Expr>::type const
-                  , nt2::container::extent<0> const
+                  , container::extent<_0D> const
                   , smallest_non_null
                   >::type                               type;
     };
@@ -81,7 +87,8 @@ namespace nt2 { namespace details
     typename result<select_size(Expr const)>::type
     operator()(Expr const& xpr) const
     {
-      return boost::fusion::fold(xpr,of_size(),smallest_non_null());
+      container::extent<_0D> state;
+      return boost::fusion::fold(xpr,state,smallest_non_null());
     }
   };
 } }

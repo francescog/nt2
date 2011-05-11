@@ -9,29 +9,24 @@
 #ifndef NT2_CORE_FUNCTIONS_IMPL_SIZE_SCALAR_HPP_INCLUDED
 #define NT2_CORE_FUNCTIONS_IMPL_SIZE_SCALAR_HPP_INCLUDED
 
-#include <nt2/core/functions/of_size.hpp>
-
 /////////////////////////////////////////////////////////////////////////////
 // Implementation when type A0 is fundamental
 /////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::size_, tag::cpu_, (A0), (fundamental_<A0>) )
+NT2_REGISTER_DISPATCH ( tag::size_, tag::cpu_, (A0), (unspecified_<A0>) )
 
 namespace nt2 { namespace ext
 {
   template<class Dummy>
-  struct call<tag::size_(tag::fundamental_),tag::cpu_, Dummy> : callable
+  struct call<tag::size_(tag::unspecified_),tag::cpu_, Dummy> : callable
   {
     template<class Sig> struct result;
     template<class This,class A0>
     struct result<This(A0)>
     {
-      typedef extent<0> type ;
+      typedef container::extent<_0D> type ;
     };
 
-    NT2_FUNCTOR_CALL(1)
-    {
-      return of_size();
-    }
+    NT2_FUNCTOR_CALL(1) { return typename NT2_RETURN_TYPE(1)::type(); }
   };
 } }
 
