@@ -17,6 +17,6 @@ ADD_DEPENDENCIES(core.unit core.extent.unit core.table.unit)
 ##****************************************************************************
 ##*     Toolbox crlibm unit tests
 ##****************************************************************************
-nt2_module_use_modules(unit core)
-#ADD_SUBDIRECTORY(extent)
-#ADD_SUBDIRECTORY(table)
+nt2_module_use_modules(unit core sdk)
+ADD_SUBDIRECTORY(extent)
+ADD_SUBDIRECTORY(table)
