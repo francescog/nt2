@@ -14,19 +14,8 @@
 
 namespace nt2 { namespace container
 {
-  //////////////////////////////////////////////////////////////////////////////
-  // Container facade gather informations about a container terminal and builds
-  // all the boilerplate involved.
-  //////////////////////////////////////////////////////////////////////////////
   template<class Tag, class Type, class Settings> struct facade;
-
-  //////////////////////////////////////////////////////////////////////////////
-  // extent represnet the iteration space of a nD container
-  //////////////////////////////////////////////////////////////////////////////
-  template< class Dimensions
-          , class Dummy = boost::proto::is_proto_expr
-          >
-  struct  extent;
+  template<class Dimensions> struct  extent;
 } }
 
 #endif

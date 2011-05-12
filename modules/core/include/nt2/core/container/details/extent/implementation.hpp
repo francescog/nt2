@@ -1,13 +1,18 @@
-/*******************************************************************************
- *         Copyright 2003-2010 LASMEA UMR 6602 CNRS/U.B.P
- *         Copyright 2009-2010 LRI    UMR 8623 CNRS/Univ Paris Sud XI
- *
- *          Distributed under the Boost Software License, Version 1.0.
- *                 See accompanying file LICENSE.txt or copy at
- *                     http://www.boost.org/LICENSE_1_0.txt
- ******************************************************************************/
+//==============================================================================
+//         Copyright 2003 & onward LASMEA UMR 6602 CNRS/Univ. Clermont II
+//         Copyright 2009 & onward LRI    UMR 8623 CNRS/Univ Paris Sud XI
+//
+//          Distributed under the Boost Software License, Version 1.0.
+//                 See accompanying file LICENSE.txt or copy at
+//                     http://www.boost.org/LICENSE_1_0.txt
+//==============================================================================
 #ifndef NT2_CORE_CONTAINER_DETAILS_EXTENT_IMPLEMENTATION_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_IMPLEMENTATION_HPP_INCLUDED
+
+/*!
+ * \file
+ * Implements the extent class
+ */
 
 #include <boost/array.hpp>
 #include <nt2/sdk/meta/assign.hpp>
@@ -18,58 +23,145 @@
 #include <nt2/core/container/details/access.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
 
+//=============================================================================
+/*!
+ * \namespace nt2::container
+ * Namespace holding all NT2 container and container related classes
+ */
+//=============================================================================
 namespace nt2 { namespace container
 {
-  template<class Dimensions, class Dummy>
-  struct  extent
-        : facade<tag::extent_,Dimensions,void>::type
+  //=============================================================================
+  /*!
+   * \ref extent is a container reprenting the dimension set of another container.
+   * It acts as a Collection of integers where the ith value is the number of
+   * element stored by a container along its ith dimensions.
+   *
+   * \par Models:
+   *   \ref Container
+   */
+  //=============================================================================
+  template<class Dimensions>
+  struct  extent : facade<tag::extent_,Dimensions,void>::type
   {
-    ////////////////////////////////////////////////////////////////////////////
-    // Facade predefined types
-    ////////////////////////////////////////////////////////////////////////////
     typedef facade<tag::extent_,Dimensions,void>  facade_type;
     typedef typename facade_type::type            parent;
     typedef typename facade_type::data_type       data_type;
 
-    BOOST_STATIC_CONSTANT(std::size_t, static_dimension = Dimensions::dimensions);
+    //==========================================================================
+    /*!
+     * Static value containing the number of dimension stored by the \ref extent
+     */
+    //==========================================================================
+    static const std::size_t static_dimension = Dimensions::dimensions;
 
-    ////////////////////////////////////////////////////////////////////////////
-    // Interface types
-    ////////////////////////////////////////////////////////////////////////////
+
+    //==========================================================================
+    /*!
+     * \typedef value_type
+     * Type used to represent a value in \ref extent.
+     *
+     * \typedef reference
+     * Type used to represent a reference to a value in \ref extent.
+     *
+     * \typedef const_reference
+     * Type used to represent a reference to a constant value in \ref extent.
+     */
+    //==========================================================================
     typedef typename data_type::value_type      value_type;
     typedef typename data_type::reference       reference;
     typedef typename data_type::const_reference const_reference;
 
-    ////////////////////////////////////////////////////////////////////////////
-    // Default constructor leads to a [0 1 ... 1] extents
-    ////////////////////////////////////////////////////////////////////////////
+    //==========================================================================
+    /*!
+     * \ref extent default constructor build an \ref extent which is :
+     *  - filled with the static size it represents if it has been instanciated
+     *  from an static size descriptor (see \ref of_size_).
+     *  - a representation of an empty \ref extent, ie an \ref extent where
+     *  all dimensions are equal to one, except for the first one which is equal
+     *  to zero.
+     */
+    //==========================================================================
     extent() : parent()
     {
       meta::assign(data(), typename Dimensions::type());
     }
 
-    template<class D>
-    extent( extent<D> const& src ) : parent()
+    //==========================================================================
+    /*!
+     * \ref extent copy constructor
+     * \param src  \ref extent to be copied
+     */
+    //==========================================================================
+    extent( extent const& src ) : parent() { data() = src.data(); }
+
+    //==========================================================================
+    /*!
+     * \ref extent constructor from a different \ref extent type performs the
+     * copy of the smallest common value range and, if needed, fill the remaining
+     * with 1. If one attempts to construct and \ref extent from an \ref extent
+     * with more dimension, a static assert is raised.
+     *
+     * \param src  \ref extent to copy
+     *
+     * \par Semantic:
+     *
+     * \par Example Usage:
+     *
+     */
+    //==========================================================================
+    template<class D> extent( extent<D> const& src ) : parent()
     {
-      BOOST_STATIC_CONSTANT(std::size_t, lims = extent<D>::dimensions);
-      for(std::size_t i = 0; i < lims; ++i )
+      NT2_STATIC_ASSERT
+      (
+        ((extent<D>::static_dimension <= static_dimension))
+      , EXTENT_COPY_SIZE_MISMATCH
+      , "You attempted to construct an extent from an extent of a larger size. "
+        "Check the correctness of your code or use compress function before "
+        "performing this copy."
+      );
+
+      for(std::size_t i = 0; i < extent<D>::static_dimension; ++i )
         data()[i] = src.data()[i];
-      for(std::size_t i = lims; i < static_dimension; ++i )
+
+      for(std::size_t i = extent<D>::static_dimension; i < static_dimension; ++i )
         data()[i] = 1;
     }
 
+    //==========================================================================
+    /*!
+     * \ref extent constructor from a boost::array performs the copy of the
+     * smallest common value range and, if needed, fill the remaining with 1.
+     * If one attempts to construct and \ref extent from a larger boost::array
+     * , a static assert is raised.
+     *
+     * \param src  boost::array to copy
+     *
+     * \par Semantic:
+     *
+     * \par Example Usage:
+     *
+     */
+    //==========================================================================
     template<std::size_t M, class U>
     extent( boost::array<U,M> const& src ) : parent()
     {
+      NT2_STATIC_ASSERT
+      (
+        ((M <= static_dimension))
+      , EXTENT_COPY_SIZE_MISMATCH
+      , "You attempted to construct an extent from an array of a larger size. "
+        "Check the correctness of your code or use compress function before "
+        "performing this copy."
+      );
+
       for(std::size_t i = 0; i < M; ++i )                 data()[i] = src[i];
       for(std::size_t i = M; i < static_dimension; ++i )  data()[i] = 1;
     }
 
-    extent( extent const& src ) : parent() { data() = src.data(); }
-
-    ////////////////////////////////////////////////////////////////////////////
+    //==========================================================================
     // Constructor from 1...N Dimensions
-    ////////////////////////////////////////////////////////////////////////////
+    //==========================================================================
     #define M1(z,n,t) boost::proto::value(*this)[n]= BOOST_PP_CAT(d,n); \
     /**/
 
@@ -89,6 +181,16 @@ namespace nt2 { namespace container
     #undef M0
     #undef M1
 
+    #if defined(DOXYGEN_ONLY)
+    //==========================================================================
+    /*!
+     * banana
+     */
+    //==========================================================================
+    template<class U> inline explicit
+    extent( U const& d0, ..., U const& dn );
+    #endif
+
     ////////////////////////////////////////////////////////////////////////////
     // Constructor from a fusion sequence of size <= D
     ////////////////////////////////////////////////////////////////////////////
@@ -102,10 +204,6 @@ namespace nt2 { namespace container
       boost::proto::value(*this).fill(1);
       meta::assign(boost::proto::value(*this), s);
     }
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Copy constructor
-    ////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////
     // Assignment from non-AST
@@ -180,7 +278,7 @@ namespace nt2 { namespace container
     {
       std::size_t i = static_dimension-1;
       while(data()[--i] == 1);
-      return i ? i+1 : static_dimension;
+      return i<0 ? i+1 : static_dimension;
     }
   };
 } }
