@@ -27,25 +27,25 @@ namespace nt2 { namespace options
 ////////////////////////////////////////////////////////////////////////////////
 // Helper macro
 ////////////////////////////////////////////////////////////////////////////////
-#define M0(z,n,t)                                             \
-template< BOOST_PP_ENUM_PARAMS(n, std::ptrdiff_t D) >         \
-struct  of_size_<BOOST_PP_ENUM_PARAMS(n,D)>                   \
-{                                                             \
-  static const std::size_t dimensions = n;                    \
-  typedef boost::mpl::true_    is_static;                     \
-  typedef BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,n),_c) \
-          <std::ptrdiff_t, BOOST_PP_ENUM_PARAMS(n,D)>         \
-          type;                                               \
-};                                                            \
-                                                              \
-template<> struct of_size_<NT2_PP_ENUM_VALUE(n,-1)>           \
-{                                                             \
-  static const std::size_t      dimensions = n;               \
-  typedef boost::mpl::false_    is_static;                    \
-  typedef BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,n),_c) \
-      <std::ptrdiff_t, 0, BOOST_PP_ENUM_SHIFTED_PARAMS(n,1)>         \
-      type;                                               \
-};                                                            \
+#define M0(z,n,t)                                                 \
+template< BOOST_PP_ENUM_PARAMS(n, std::ptrdiff_t D) >             \
+struct  of_size_<BOOST_PP_ENUM_PARAMS(n,D)>                       \
+{                                                                 \
+  static const std::size_t dimensions = n;                        \
+  typedef boost::mpl::true_    is_static;                         \
+  typedef BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,n),_c)     \
+          <std::ptrdiff_t, BOOST_PP_ENUM_PARAMS(n,D)>             \
+          type;                                                   \
+};                                                                \
+                                                                  \
+template<> struct of_size_<NT2_PP_ENUM_VALUE(n,-1)>               \
+{                                                                 \
+  static const std::size_t      dimensions = n;                   \
+  typedef boost::mpl::false_    is_static;                        \
+  typedef BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,n),_c)     \
+      <std::ptrdiff_t, 0, BOOST_PP_ENUM_SHIFTED(n,NT2_PP_TEXT,1)> \
+      type;                                                       \
+};                                                                \
 /**/
 
 #define M1(z,n,t)                                                             \
@@ -78,7 +78,7 @@ namespace nt2
     static const std::size_t  dimensions = NT2_MAX_DIMENSIONS;
     typedef boost::mpl::false_    is_static;
     typedef BOOST_PP_CAT(BOOST_PP_CAT(boost::mpl::vector,NT2_MAX_DIMENSIONS),_c)
-        <std::ptrdiff_t, 0, BOOST_PP_ENUM_SHIFTED_PARAMS(NT2_MAX_DIMENSIONS,1)>
+        <std::ptrdiff_t,0,BOOST_PP_ENUM_SHIFTED(NT2_MAX_DIMENSIONS,NT2_PP_TEXT,1)>
         type;
   };
 
