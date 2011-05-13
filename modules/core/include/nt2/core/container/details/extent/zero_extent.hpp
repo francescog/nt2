@@ -20,7 +20,7 @@ namespace nt2 { namespace container
   template<> struct  extent<_0D> : facade<tag::extent_,_0D,void>::type
   {
     typedef facade<tag::extent_,_0D,void>           facade_type;
-    typedef typename facade_type::type              parent;
+    typedef facade_type::type                       parent;
     typedef boost::fusion::single_view<std::size_t> data_type;
     typedef std::size_t                             value_type;
     typedef std::size_t                             const_reference;
