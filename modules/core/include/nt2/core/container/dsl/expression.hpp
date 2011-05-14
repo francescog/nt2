@@ -17,7 +17,7 @@
 namespace nt2 { namespace container
 {
   ////////////////////////////////////////////////////////////////////////////
-  // Here is the domain-specific expression wrapper for table_ expression
+  // Here is the domain-specific expression wrapper for container expression
   ////////////////////////////////////////////////////////////////////////////
   template<class Expr, class Tag, class Dims>
   struct  expression
@@ -45,20 +45,7 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // Default explicit constructor
     ////////////////////////////////////////////////////////////////////////////
-    explicit  expression( Expr const& xpr = Expr() )
-            : parent(xpr)
-            , is_silent(!meta::is_assignment_expression<Expr>::value)
-    {
-      silence(xpr,typename meta::is_assignment_expression<Expr>::type());
-    }
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Destructor performs evaluation if required
-    ////////////////////////////////////////////////////////////////////////////
-    ~expression()
-    {
-      if(!is_silent) (*this)();
-    }
+    explicit expression( Expr const& xpr = Expr() ): parent(xpr) {}
 
     ////////////////////////////////////////////////////////////////////////////
     // container expression are read-only Ranges
@@ -71,24 +58,6 @@ namespace nt2 { namespace container
     {
       // current_target::evaluate(*this);
     }
-
-    ////////////////////////////////////////////////////////////////////////////
-    // External accessor for evaluation trigger
-    ////////////////////////////////////////////////////////////////////////////
-    void silence() const { is_silent = true; }
-
-    protected:
-    ////////////////////////////////////////////////////////////////////////////
-    // Trigger for non-evaluation at destruction-time.
-    ////////////////////////////////////////////////////////////////////////////
-    void silence(Expr const& xpr, boost::mpl::true_  const&) const
-    {
-      boost::proto::right(*this).silence();
-    }
-
-    void silence(Expr const&, boost::mpl::false_ const&) const {}
-
-    mutable bool is_silent;
   };
 } }
 

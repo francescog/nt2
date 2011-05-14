@@ -41,7 +41,7 @@ namespace nt2 { namespace container
                                         >
                     >
               //  Nodes are cross-domain node, any non-low level nodes with
-              //  matching type/cardinal
+              //  matching type/cardinal, any non assignment nodes
               , dsl::from_domain< boost::proto::_ >
               , boost::proto::
                 and_< boost::proto::
@@ -53,6 +53,7 @@ namespace nt2 { namespace container
                                                 address_of< grammar<Tag> >
                                               , boost::proto::
                                                 dereference< grammar<Tag> >
+                                              , meta::assignment_operators
                                               >
                           >
                     >
