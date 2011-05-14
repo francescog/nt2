@@ -24,15 +24,13 @@ NT2_TEST_CASE ( default_ctor_0d )
 
   extent<nt2::_0D> x;
 
-  NT2_TEST_EQUAL( x(1) , 1);
-
-  NT2_TEST_EQUAL( x.size() , 1);
-  NT2_TEST_EQUAL( x.size(0) , 1);
   NT2_TEST( !x.empty() );
-
+  NT2_TEST_EQUAL( x.size()  , 1);
+  NT2_TEST_EQUAL( x.size(0) , 1);
   NT2_TEST_EQUAL( x.lower(0), 1);
   NT2_TEST_EQUAL( x.upper(0), 1);
   NT2_TEST_EQUAL( x.nDims() , 0);
+  NT2_TEST_EQUAL( x(1)      , 1);
 }
 
 NT2_TEST_CASE_TPL ( default_ctor, DYN_DIM_LIST )
@@ -42,24 +40,156 @@ NT2_TEST_CASE_TPL ( default_ctor, DYN_DIM_LIST )
   extent<T> x;
   std::size_t dims = T::dimensions;
 
-  NT2_TEST_EQUAL( x(1) , 0);
-  for(std::size_t i= 2; i<=x.upper(1);++i)
-    NT2_TEST_EQUAL( x(i) , 1);
-
-  NT2_TEST_EQUAL( x.size() , dims);
-  NT2_TEST_EQUAL( x.size(0), dims);
   NT2_TEST( !x.empty() );
+  NT2_TEST_EQUAL( x.size()  , dims  );
+  NT2_TEST_EQUAL( x.size(0) , dims  );
+  NT2_TEST_EQUAL( x.nDims() , dims  );
 
-  NT2_TEST_EQUAL( x.size(1) , dims);
+  NT2_TEST_EQUAL( x(1)      , 0     );
+  NT2_TEST_EQUAL( x.size(1) , dims  );
+  NT2_TEST_EQUAL( x.lower(1), 1     );
+  NT2_TEST_EQUAL( x.upper(1), dims  );
+
   for(std::size_t i= 2; i<= dims;++i)
-    NT2_TEST_EQUAL( x.size(i) , 1);
+  {
+    NT2_TEST_EQUAL( x(i)      , 1 );
+    NT2_TEST_EQUAL( x.size(i) , 1 );
+    NT2_TEST_EQUAL( x.lower(i), 1 );
+    NT2_TEST_EQUAL( x.upper(i), 1 );
+  }
+}
 
-  for(std::size_t i= 1; i<= dims;++i)
-    NT2_TEST_EQUAL( x.lower(i) , 1);
+NT2_TEST_CASE_TPL ( value_ctor, DYN_DIM_LIST )
+{
+  using nt2::extent;
 
-  NT2_TEST_EQUAL( x.upper(1) , dims);
+  extent<T> x( NT2_PP_IOTA(1,NT2_MAX_DIMENSIONS));
+  std::size_t dims = T::dimensions;
+
+  NT2_TEST( !x.empty() );
+  NT2_TEST_EQUAL( x.size()  , dims  );
+  NT2_TEST_EQUAL( x.size(0) , dims  );
+  NT2_TEST_EQUAL( x.nDims() , dims  );
+
+  NT2_TEST_EQUAL( x(1)      , 1     );
+  NT2_TEST_EQUAL( x.size(1) , dims  );
+  NT2_TEST_EQUAL( x.lower(1), 1     );
+  NT2_TEST_EQUAL( x.upper(1), dims  );
+
   for(std::size_t i= 2; i<= dims;++i)
-    NT2_TEST_EQUAL( x.upper(i) , 1);
+  {
+    NT2_TEST_EQUAL( x(i)      , i );
+    NT2_TEST_EQUAL( x.size(i) , 1 );
+    NT2_TEST_EQUAL( x.lower(i), 1 );
+    NT2_TEST_EQUAL( x.upper(i), 1 );
+  }
+}
 
-  NT2_TEST_EQUAL( x.nDims() , dims );
+
+NT2_TEST_CASE_TPL ( copy_ctor, DYN_DIM_LIST )
+{
+  using nt2::extent;
+
+ std::size_t dims = T::dimensions;
+
+  // Test copying _0D in a non-0D extent
+  extent<nt2::_0D> z;
+  extent<T> w(z);
+
+  NT2_TEST( !w.empty() );
+  NT2_TEST_EQUAL( w.size()  , dims);
+  NT2_TEST_EQUAL( w.size(0) , dims);
+  NT2_TEST_EQUAL( w.lower(0), 1);
+  NT2_TEST_EQUAL( w.upper(0), 1);
+  NT2_TEST_EQUAL( w.nDims() , dims);
+  NT2_TEST_EQUAL( w(1)      , 1);
+
+  for(std::size_t i= 2; i<= dims;++i)
+  {
+    NT2_TEST_EQUAL( w(i)      , 1 );
+    NT2_TEST_EQUAL( w.size(i) , 1 );
+    NT2_TEST_EQUAL( w.lower(i), 1 );
+    NT2_TEST_EQUAL( w.upper(i), 1 );
+  }
+
+  // Test copying _nD in a nD extent
+  extent<T> y( NT2_PP_IOTA(1,NT2_MAX_DIMENSIONS));
+  extent<T> x(y);
+
+  NT2_TEST( !x.empty() );
+  NT2_TEST_EQUAL( x.size()  , dims  );
+  NT2_TEST_EQUAL( x.size(0) , dims  );
+  NT2_TEST_EQUAL( x.nDims() , dims  );
+
+  NT2_TEST_EQUAL( x(1)      , 1     );
+  NT2_TEST_EQUAL( x.size(1) , dims  );
+  NT2_TEST_EQUAL( x.lower(1), 1     );
+  NT2_TEST_EQUAL( x.upper(1), dims  );
+
+  for(std::size_t i= 2; i<= dims;++i)
+  {
+    NT2_TEST_EQUAL( x(i)      , i );
+    NT2_TEST_EQUAL( x.size(i) , 1 );
+    NT2_TEST_EQUAL( x.lower(i), 1 );
+    NT2_TEST_EQUAL( x.upper(i), 1 );
+  }
+}
+
+
+NT2_TEST_CASE_TPL ( array_ctor, DYN_DIM_LIST )
+{
+  using nt2::extent;
+
+  std::size_t dims = T::dimensions;
+  boost::array<std::size_t,T::dimensions> a;
+  for(std::size_t i= 0; i< dims;++i)
+      a[i] = 1 + i;
+
+  extent<T> x( a );
+
+  NT2_TEST( !x.empty() );
+  NT2_TEST_EQUAL( x.size()  , dims  );
+  NT2_TEST_EQUAL( x.size(0) , dims  );
+  NT2_TEST_EQUAL( x.nDims() , dims  );
+
+  NT2_TEST_EQUAL( x(1)      , 1     );
+  NT2_TEST_EQUAL( x.size(1) , dims  );
+  NT2_TEST_EQUAL( x.lower(1), 1     );
+  NT2_TEST_EQUAL( x.upper(1), dims  );
+
+  for(std::size_t i= 2; i<= dims;++i)
+  {
+    NT2_TEST_EQUAL( x(i)      , i );
+    NT2_TEST_EQUAL( x.size(i) , 1 );
+    NT2_TEST_EQUAL( x.lower(i), 1 );
+    NT2_TEST_EQUAL( x.upper(i), 1 );
+  }
+}
+
+NT2_TEST_CASE_TPL ( smaller_array_ctor, DYN_DIM_LIST )
+{
+  using nt2::extent;
+
+  std::size_t dims = T::dimensions;
+  boost::array<std::size_t,1> a = {{9}};
+
+  extent<T> x( a );
+
+  NT2_TEST( !x.empty() );
+  NT2_TEST_EQUAL( x.size()  , dims  );
+  NT2_TEST_EQUAL( x.size(0) , dims  );
+  NT2_TEST_EQUAL( x.nDims() , dims  );
+
+  NT2_TEST_EQUAL( x(1)      , 9     );
+  NT2_TEST_EQUAL( x.size(1) , dims  );
+  NT2_TEST_EQUAL( x.lower(1), 1     );
+  NT2_TEST_EQUAL( x.upper(1), dims  );
+
+  for(std::size_t i= 2; i<= dims;++i)
+  {
+    NT2_TEST_EQUAL( x(i)      , 1 );
+    NT2_TEST_EQUAL( x.size(i) , 1 );
+    NT2_TEST_EQUAL( x.lower(i), 1 );
+    NT2_TEST_EQUAL( x.upper(i), 1 );
+  }
 }

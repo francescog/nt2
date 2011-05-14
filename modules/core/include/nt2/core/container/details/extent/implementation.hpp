@@ -122,7 +122,7 @@ namespace nt2 { namespace container
       );
 
       for(std::size_t i = 0; i < extent<D>::static_dimension; ++i )
-        data()[i] = src.data()[i];
+        data()[i] = src(i);
 
       for(std::size_t i = extent<D>::static_dimension; i < static_dimension; ++i )
         data()[i] = 1;
@@ -166,9 +166,9 @@ namespace nt2 { namespace container
     /**/
 
     #define M0(z,n,t)                                                             \
-    template<class U> inline explicit                                             \
-    extent( BOOST_PP_ENUM_PARAMS(n,U d)                                           \
-          , typename boost::enable_if_c<boost::is_integral<U>::value>::type* = 0  \
+    template<BOOST_PP_ENUM_PARAMS(n,class U)> inline explicit                     \
+    extent( BOOST_PP_ENUM_BINARY_PARAMS(n,const U, & d)                           \
+          , typename boost::enable_if_c<boost::is_integral<U0>::value>::type* = 0 \
           ) : parent()                                                            \
     {                                                                             \
       boost::proto::value(*this).fill(1);                                         \
@@ -184,11 +184,16 @@ namespace nt2 { namespace container
     #if defined(DOXYGEN_ONLY)
     //==========================================================================
     /*!
-     * banana
+     * \ref extent constructor from a list of integral values initializes its nth
+     * first elements and fill the remaining ones with 1.
+     *
+     * \param values List of integral values to use for initialization
+     *
+     * \par Semantic:
      */
     //==========================================================================
-    template<class U> inline explicit
-    extent( U const& d0, ..., U const& dn );
+    template<class ...U> inline explicit
+    extent( U... const& values );
     #endif
 
     ////////////////////////////////////////////////////////////////////////////
@@ -201,6 +206,15 @@ namespace nt2 { namespace container
                                         >::type* = 0
           ) : parent()
     {
+      NT2_STATIC_ASSERT
+      (
+        ((boost::mpl::size<Seq>::value <= static_dimension))
+      , EXTENT_COPY_SIZE_MISMATCH
+      , "You attempted to construct an extent from an Fusion sequence of a "
+        "larger size. Check the correctness of your code or use compress "
+        "function before performing this copy."
+      );
+
       boost::proto::value(*this).fill(1);
       meta::assign(boost::proto::value(*this), s);
     }
