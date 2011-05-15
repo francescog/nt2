@@ -35,7 +35,7 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     table() : parent()
     {
-      init( typename facade_type::size_::type()
+      init( typename facade_type::extent_type()
           , typename facade_type::size_::is_static()
           );
     }

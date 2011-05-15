@@ -33,12 +33,35 @@ namespace nt2 { namespace container
 {
   //=============================================================================
   /*!
-   * \ref extent is a container reprenting the dimension set of another container.
-   * It acts as a Collection of integers where the ith value is the number of
-   * element stored by a container along its ith dimensions.
+   * \ref extent is a container representing the dimension set of another
+   * container. It acts as a Container of integers where the ith value is the
+   * number of element stored by a container along its ith dimensions.
+   *
+   * \tparam Dimensions Type representing the kind of \ref extent defined.
+   * \ref extent can be defined using:
+   *  - \ref _2D, ..., \ref _4D to define a dynamic \ref extent where values
+   *  can be modified.
+   *  - \ref of_size_ to define a static \ref extent where values are specified
+   *  as compile time integral constants.
+   *
+   * \par Rationale:
+   *
+   * In \matlab, size of a container is itself a \matlab container. Due to the
+   * lack of notion of constructors for matrix in \matlab, no ambiguity arises
+   * from this fact. In \nt2 however, if we want to have both containers being
+   * constructed from a size (or \ref extent) or another Container, we need to
+   * have a dedicated type to represent size of a Container.
+   * \ref extent represents such a type and is designed to fulfill Container
+   * concept requirement and be discriminated in other Container constructors
+   * call.
    *
    * \par Models:
-   *   \ref Container
+   *
+   * \ref Container
+   *
+   * \see
+   *
+   * of_size_
    */
   //=============================================================================
   template<class Dimensions>
@@ -55,21 +78,19 @@ namespace nt2 { namespace container
     //==========================================================================
     static const std::size_t static_dimension = Dimensions::dimensions;
 
-
     //==========================================================================
-    /*!
-     * \typedef value_type
-     * Type used to represent a value in \ref extent.
-     *
-     * \typedef reference
-     * Type used to represent a reference to a value in \ref extent.
-     *
-     * \typedef const_reference
-     * Type used to represent a reference to a constant value in \ref extent.
-     */
+    /*! Type used to represent a value in \ref extent.                        */
     //==========================================================================
     typedef typename data_type::value_type      value_type;
+
+    //==========================================================================
+    /*! Type used to represent a reference to a value in \ref extent.         */
+    //==========================================================================
     typedef typename data_type::reference       reference;
+
+    //==========================================================================
+    /*! Type used to represent a reference to a constant value in \ref extent.*/
+    //==========================================================================
     typedef typename data_type::const_reference const_reference;
 
     //==========================================================================
@@ -80,6 +101,21 @@ namespace nt2 { namespace container
      *  - a representation of an empty \ref extent, ie an \ref extent where
      *  all dimensions are equal to one, except for the first one which is equal
      *  to zero.
+     *
+     *  \usage
+     *
+     *  \code
+     *  #include <nt2/core/container/extent.hpp>
+     *
+     *  int main()
+     *  {
+     *    nt2::container::extent<nt2::_2D> x;
+     *    assert( x(1) == 0 && x(2) == 1 );
+     *
+     *    nt2::container::extent<nt2::of_size_<3,4,5> > y;
+     *    assert( y(1) == 3 && y(2) == 4 && y(2) == 4 );
+     *  }
+     *  \endcode
      */
     //==========================================================================
     extent() : parent()
@@ -196,31 +232,12 @@ namespace nt2 { namespace container
     extent( U... const& values );
     #endif
 
-    ////////////////////////////////////////////////////////////////////////////
-    // Constructor from a fusion sequence of size <= D
-    ////////////////////////////////////////////////////////////////////////////
-    template<class Seq> explicit
-    extent( Seq const& s
-          , typename boost::enable_if_c < boost::fusion::
-                                          traits::is_sequence<Seq>::value
-                                        >::type* = 0
-          ) : parent()
-    {
-      NT2_STATIC_ASSERT
-      (
-        ((boost::mpl::size<Seq>::value <= static_dimension))
-      , EXTENT_COPY_SIZE_MISMATCH
-      , "You attempted to construct an extent from an Fusion sequence of a "
-        "larger size. Check the correctness of your code or use compress "
-        "function before performing this copy."
-      );
-
-      boost::proto::value(*this).fill(1);
-      meta::assign(boost::proto::value(*this), s);
-    }
+    //==========================================================================
+    // Constructor from a expression
+    //==========================================================================
 
     ////////////////////////////////////////////////////////////////////////////
-    // Assignment from non-AST
+    // Assignment operator
     ////////////////////////////////////////////////////////////////////////////
     extent& operator=(extent const& src )
     {
@@ -228,18 +245,29 @@ namespace nt2 { namespace container
       return *this;
     }
 
-    using parent::operator=;
+    //==========================================================================
+    // Assignment from a expression
+    //==========================================================================
 
-    ////////////////////////////////////////////////////////////////////////////
-    // raw access to the underlying data array
-    ////////////////////////////////////////////////////////////////////////////
+    //==========================================================================
+    /*!
+     * Returns a reference to the underlying Fusion Sequence containing the
+     * \ref extent values.
+     */
+    //==========================================================================
     data_type&        data()        { return boost::proto::value(*this); }
     data_type const&  data()  const { return boost::proto::value(*this); }
 
     ////////////////////////////////////////////////////////////////////////////
     // Elementwise access
     ////////////////////////////////////////////////////////////////////////////
-    reference operator()(std::size_t i)
+    template<class Index> inline
+    typename
+    boost::enable_if_c<   (Dimensions::is_static::value)
+                      &&  (boost::is_integral<Index>::value)
+                      , reference
+                      >::type
+    operator()(std::size_t i)
     {
       NT2_ASSERT_ACCESS(1, i );
       return boost::proto::value(*this)[i-1];
@@ -251,43 +279,114 @@ namespace nt2 { namespace container
       return boost::proto::value(*this)[i-1];
     }
 
-    ////////////////////////////////////////////////////////////////////////////
-    // Container API
-    ////////////////////////////////////////////////////////////////////////////
+    //==========================================================================
+    /*!
+     * \typedef size_type
+     * Type used to represents the number of elements in an \ref extent
+     * \typedef base_type
+     * Type used to represents lower indexes of an \ref extent
+     * \typedef difference_type
+     * Type used to represents upper indexes of an \ref extent
+     * \typedef iterator
+     * Type used to an iterator to the \ref extent values
+     * \typedef const_iterator
+     * Type used to a constant iterator to the \ref extent values
+     */
+    //==========================================================================
     typedef typename data_type::size_type       size_type;
     typedef size_type                           base_type;
     typedef typename data_type::difference_type difference_type;
     typedef typename data_type::iterator        iterator;
     typedef typename data_type::const_iterator  const_iterator;
 
-    inline size_type size()  const
-    {
-      return boost::proto::value(*this).size();
-    }
+    //==========================================================================
+    /*! Return the number of dimensions stored in the extent.                */
+    //==========================================================================
+    static inline size_type size() { return static_dimension; }
 
-    inline bool empty() const { return boost::proto::value(*this).empty(); }
+    //==========================================================================
+    /*! Return if an \ref extent is empty.                                   */
+    //==========================================================================
+    static inline bool empty() { return false; }
 
+    //==========================================================================
+    /*!
+     * Return an iterator pointing to the first element stored in current
+     * \ref extent
+     */
+    //==========================================================================
     iterator        begin()       { return boost::proto::value(*this).begin();  }
+
+    //==========================================================================
+    /*!
+     * Return a constant iterator pointing to the first element stored in current
+     * \ref extent
+     */
+    //==========================================================================
     const_iterator  begin() const { return boost::proto::value(*this).begin();  }
 
+    //==========================================================================
+    /*!
+     * Return an iterator pointing after the last element stored in current
+     * \ref extent
+     */
+    //==========================================================================
     iterator        end()         { return boost::proto::value(*this).end();    }
+
+    //==========================================================================
+    /*!
+     * Return a constant iterator pointing after the last element stored in
+     * current \ref extent
+     */
+    //==========================================================================
     const_iterator  end()   const { return boost::proto::value(*this).end();    }
 
-    ////////////////////////////////////////////////////////////////////////////
-    // Size and Bases related accessor
-    ////////////////////////////////////////////////////////////////////////////
+    //==========================================================================
+    /*!
+     * Return the value of the size of current \ref extent along the ith
+     * dimension.
+     *
+     * \param i Dimension to retrieve the size from.
+     * \return The size of the \ref extent along this dimension.
+     */
+    //==========================================================================
     inline size_type  size(std::size_t i) const
     {
       return (i<=1) ? static_dimension : 1;
     }
 
+    //==========================================================================
+    /*!
+     * Return the lowest valid index to access the ith dimension of current \ref
+     * extent.
+     *
+     * \param i Dimension to retrieve the lower index from.
+     * \return The lowest valid index of the \ref extent along this dimension.
+     *
+     * \see Container
+     */
+    //==========================================================================
     inline base_type lower(std::size_t i)  const { return 1; }
 
+    //==========================================================================
+    /*!
+     * Return the highest valid index to access the ith dimension of current \ref
+     * extent.
+     *
+     * \param i Dimension to retrieve the lower index from.
+     * \return The highest valid index of the \ref extent along this dimension.
+     *
+     * \see Container
+     */
+    //==========================================================================
     inline difference_type  upper(std::size_t i)  const
     {
       return (i==1) ? static_dimension : 1;
     }
 
+    //==========================================================================
+    // to be moved to a free function
+    //==========================================================================
     inline std::size_t nDims() const
     {
       std::size_t i = static_dimension-1;
