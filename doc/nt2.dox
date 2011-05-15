@@ -46,6 +46,8 @@ TAB_SIZE               = 2
 
 ALIASES += "metafunction=<a href=\"http://www.boost.org/doc/libs/1_46_1/libs/mpl/doc/refmanual/metafunction.html\">Metafunction</a>"
 ALIASES += "dco=<a href=\"http://www.boost.org/doc/libs/1_46_1/libs/fusion/doc/html/fusion/functional/concepts/def_callable.html\">Defered Callable Object</a>"
+ALIASES += "matlab=<span style=\"font-variant: small-caps;\">Matlab</span>"
+ALIASES += "usage=\par Example Usage:"
 
 OPTIMIZE_OUTPUT_FOR_C  = NO
 OPTIMIZE_OUTPUT_JAVA   = NO
