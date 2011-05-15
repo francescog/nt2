@@ -1,13 +1,18 @@
-/*******************************************************************************
- *         Copyright 2003 & onward LASMEA UMR 6602 CNRS/Univ. Clermont II
- *         Copyright 2009 & onward LRI    UMR 8623 CNRS/Univ Paris Sud XI
- *
- *          Distributed under the Boost Software License, Version 1.0.
- *                 See accompanying file LICENSE.txt or copy at
- *                     http://www.boost.org/LICENSE_1_0.txt
- ******************************************************************************/
+//==============================================================================
+//         Copyright 2003 & onward LASMEA UMR 6602 CNRS/Univ. Clermont II
+//         Copyright 2009 & onward LRI    UMR 8623 CNRS/Univ Paris Sud XI
+//
+//          Distributed under the Boost Software License, Version 1.0.
+//                 See accompanying file LICENSE.txt or copy at
+//                     http://www.boost.org/LICENSE_1_0.txt
+//==============================================================================
 #ifndef NT2_CORE_SETTINGS_SIZE_HPP_INCLUDED
 #define NT2_CORE_SETTINGS_SIZE_HPP_INCLUDED
+
+/*!
+ * \file
+ * Defines size related setting classes.
+ */
 
 #include <cstddef>
 #include <boost/array.hpp>
@@ -16,17 +21,17 @@
 #include <nt2/sdk/details/preprocessor.hpp>
 #include <nt2/core/settings/meta/option.hpp>
 
-////////////////////////////////////////////////////////////////////////////////
+//==============================================================================
 // Defines size options
-////////////////////////////////////////////////////////////////////////////////
+//==============================================================================
 namespace nt2 { namespace options
 {
   struct size_ { typedef void nt2_is_option_type; };
 } }
 
-////////////////////////////////////////////////////////////////////////////////
+//==============================================================================
 // Helper macro
-////////////////////////////////////////////////////////////////////////////////
+//==============================================================================
 #define M0(z,n,t)                                                 \
 template< BOOST_PP_ENUM_PARAMS(n, std::ptrdiff_t D) >             \
 struct  of_size_<BOOST_PP_ENUM_PARAMS(n,D)>                       \
@@ -48,14 +53,17 @@ template<> struct of_size_<NT2_PP_ENUM_VALUE(n,-1)>               \
 };                                                                \
 /**/
 
-#define M1(z,n,t)                                                             \
-typedef of_size_<NT2_PP_ENUM_VALUE(n,-1)> BOOST_PP_CAT(BOOST_PP_CAT(_,n),D);  \
-/**/
-
-////////////////////////////////////////////////////////////////////////////////
-// of_size_<D0,..,Dn> is a mixed CT/RT size value containing up to n
-// dimensions spans in either a CT or RT storage
-////////////////////////////////////////////////////////////////////////////////
+#if defined(DOXYGEN_ONLY)
+namespace nt2
+{
+  //============================================================================
+  /*!
+   * banana
+   */
+  //============================================================================
+  template< std::ptrdiff_t... Dimensions> struct  of_size_ {};
+}
+#endif
 namespace nt2
 {
   template< BOOST_PP_ENUM_BINARY_PARAMS ( NT2_MAX_DIMENSIONS
@@ -96,6 +104,7 @@ namespace nt2
     typedef boost::mpl::false_    is_static;
     typedef boost::mpl::vector1_c<std::ptrdiff_t, 0> type;
   };
+
   //////////////////////////////////////////////////////////////////////////////
   // Total specialization for 0D elements
   //////////////////////////////////////////////////////////////////////////////
@@ -131,9 +140,38 @@ namespace nt2 { namespace meta
   };
 } }
 
-////////////////////////////////////////////////////////////////////////////////
+//==============================================================================
 // Defines some usual short-cut for runtime of_size_
-////////////////////////////////////////////////////////////////////////////////
+//==============================================================================
+#define M1(z,n,t)                                                             \
+typedef of_size_<NT2_PP_ENUM_VALUE(n,-1)> BOOST_PP_CAT(BOOST_PP_CAT(_,n),D);  \
+/**/
+
+#if defined(DOXYGEN_ONLY)
+namespace nt2
+{
+  //============================================================================
+  /*!
+   * \typedef _0D
+   * banana 1
+   * \typedef _1D
+   * banana 2
+   * \typedef _2D
+   * banana 3
+   * \typedef _3D
+   * banana 4
+   * \typedef _4D
+   * banana 5
+   */
+  //============================================================================
+  typedef of_size_<>            _0D;
+  typedef of_size_<-1>          _1D;
+  typedef of_size_<-1,-1>       _2D;
+  typedef of_size_<-1,-1,-1>    _3D;
+  typedef of_size_<-1,-1,-1,-1> _4D;
+}
+#endif
+
 namespace nt2
 {
   BOOST_PP_REPEAT_FROM_TO(0,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M1,~)
