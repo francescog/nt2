@@ -23,16 +23,12 @@
 #include <nt2/core/container/details/access.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
 
-//=============================================================================
-/*!
- * \namespace nt2::container
- * Namespace holding all NT2 container and container related classes
- */
-//=============================================================================
 namespace nt2 { namespace container
 {
   //=============================================================================
   /*!
+   * \ingroup containerhelper
+   *
    * \ref extent is a container representing the dimension set of another
    * container. It acts as a Container of integers where the ith value is the
    * number of element stored by a container along its ith dimensions.
