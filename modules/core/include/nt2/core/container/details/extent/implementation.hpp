@@ -118,35 +118,62 @@ namespace nt2 { namespace container
      *  \endcode
      */
     //==========================================================================
-    extent() : parent()
+    inline extent() : parent()
     {
-      meta::assign(data(), typename Dimensions::type());
+      meta::assign(boost::proto::value(*this), typename Dimensions::type());
     }
 
     //==========================================================================
     /*!
-     * \ref extent copy constructor
+     * \ref extent copy constructor. If the \ref extent being constructed is a
+     * static \ref extent, a static assert is triggered.
+     *
      * \param src  \ref extent to be copied
+     *
+     * \usage
+     *
+     * \code
+     * #include <nt2/core/container/extent.hpp>
+     *
+     * int main()
+     * {
+     *   nt2::container::extent<nt2::_2D> x(3,7);
+     *   nt2::container::extent<nt2::_2D> y(x);
+     *   assert( y(1) == 3 && y(2) == 7 );
+     *  }
+     *  \endcode
      */
     //==========================================================================
-    extent( extent const& src ) : parent() { data() = src.data(); }
+    inline extent( extent const& src ) : parent()
+    {
+      boost::proto::value(*this) = src.data();
+    }
 
     //==========================================================================
     /*!
      * \ref extent constructor from a different \ref extent type performs the
      * copy of the smallest common value range and, if needed, fill the remaining
      * with 1. If one attempts to construct and \ref extent from an \ref extent
-     * with more dimension, a static assert is raised.
+     * with more dimension or if If the \ref extent being constructed is a
+     * static \ref extent, a static assert is triggered.
      *
      * \param src  \ref extent to copy
      *
-     * \par Semantic:
+     * \usage
      *
-     * \par Example Usage:
+     * \code
+     * #include <nt2/core/container/extent.hpp>
      *
+     * int main()
+     * {
+     *   nt2::container::extent<nt2::_2D> x(3,7);
+     *   nt2::container::extent<nt2::_3D> y(x);
+     *   assert( y(1) == 3 && y(2) == 7 && y(3) == 1 );
+     *  }
+     *  \endcode
      */
     //==========================================================================
-    template<class D> extent( extent<D> const& src ) : parent()
+    inline template<class D> extent( extent<D> const& src ) : parent()
     {
       NT2_STATIC_ASSERT
       (
@@ -157,47 +184,44 @@ namespace nt2 { namespace container
         "performing this copy."
       );
 
-      for(std::size_t i = 0; i < extent<D>::static_dimension; ++i )
-        data()[i] = src(i);
-
-      for(std::size_t i = extent<D>::static_dimension; i < static_dimension; ++i )
-        data()[i] = 1;
-    }
-
-    //==========================================================================
-    /*!
-     * \ref extent constructor from a boost::array performs the copy of the
-     * smallest common value range and, if needed, fill the remaining with 1.
-     * If one attempts to construct and \ref extent from a larger boost::array
-     * , a static assert is raised.
-     *
-     * \param src  boost::array to copy
-     *
-     * \par Semantic:
-     *
-     * \par Example Usage:
-     *
-     */
-    //==========================================================================
-    template<std::size_t M, class U>
-    extent( boost::array<U,M> const& src ) : parent()
-    {
       NT2_STATIC_ASSERT
       (
-        ((M <= static_dimension))
-      , EXTENT_COPY_SIZE_MISMATCH
-      , "You attempted to construct an extent from an array of a larger size. "
-        "Check the correctness of your code or use compress function before "
-        "performing this copy."
+        (!Dimensions::is_static::value)
+      , INVALID_STATIC_EXTENT_COPY
+      , "Constructor of static extent from non-static extent is disabled."
       );
 
-      for(std::size_t i = 0; i < M; ++i )                 data()[i] = src[i];
-      for(std::size_t i = M; i < static_dimension; ++i )  data()[i] = 1;
+      for(std::size_t i = 0; i < extent<D>::static_dimension; ++i )
+        boost::proto::value(*this)[i] = src(i);
+
+      for(std::size_t i = extent<D>::static_dimension; i < static_dimension; ++i )
+        boost::proto::value(*this)[i] = 1;
     }
 
+    #if defined(DOXYGEN_ONLY)
     //==========================================================================
-    // Constructor from 1...N Dimensions
+    /*!
+     * \ref extent constructor from a list of integral values initializes its
+     * nth first elements and fill the remaining ones with 1.
+     *
+     * \param values List of integral values to use for initialization
+     *
+     * \usage
+     *
+     * \code
+     * #include <nt2/core/container/extent.hpp>
+     *
+     * int main()
+     * {
+     *   nt2::container::extent<nt2::_3D> x(3,7,5);
+     *   assert( y(1) == 3 && y(2) == 7 && y(3) == 5 );
+     *  }
+     *  \endcode
+     */
     //==========================================================================
+    template<class ...U> inline explicit extent( U... const& values );
+    #endif
+
     #define M1(z,n,t) boost::proto::value(*this)[n]= BOOST_PP_CAT(d,n); \
     /**/
 
@@ -216,21 +240,6 @@ namespace nt2 { namespace container
 
     #undef M0
     #undef M1
-
-    #if defined(DOXYGEN_ONLY)
-    //==========================================================================
-    /*!
-     * \ref extent constructor from a list of integral values initializes its nth
-     * first elements and fill the remaining ones with 1.
-     *
-     * \param values List of integral values to use for initialization
-     *
-     * \par Semantic:
-     */
-    //==========================================================================
-    template<class ...U> inline explicit
-    extent( U... const& values );
-    #endif
 
     //==========================================================================
     // Constructor from a expression
@@ -251,19 +260,25 @@ namespace nt2 { namespace container
 
     //==========================================================================
     /*!
-     * Returns a reference to the underlying Fusion Sequence containing the
+     * Returns a constant reference to the underlying Fusion Sequence containing the
      * \ref extent values.
      */
     //==========================================================================
-    data_type&        data()        { return boost::proto::value(*this); }
     data_type const&  data()  const { return boost::proto::value(*this); }
 
-    ////////////////////////////////////////////////////////////////////////////
-    // Elementwise access
-    ////////////////////////////////////////////////////////////////////////////
+    //==========================================================================
+    /*!
+     * Non-constant elementwise access to \ref extent value. For any index i
+     * which values is greater or equal than \ref lower(1) and lesser or equal
+     * to \ref upper(1), returns a non-constant reference to the ith element of
+     * the \ref extent. This access is disabled for static \ref extent.
+     *
+     * \param i Index of the value to access
+     */
+    //==========================================================================
     template<class Index> inline
     typename
-    boost::enable_if_c<   (Dimensions::is_static::value)
+    boost::enable_if_c<   (!Dimensions::is_static::value)
                       &&  (boost::is_integral<Index>::value)
                       , reference
                       >::type
@@ -273,6 +288,16 @@ namespace nt2 { namespace container
       return boost::proto::value(*this)[i-1];
     }
 
+    //==========================================================================
+    /*!
+     * Constant elementwise access to \ref extent value. For any index i
+     * which values is greater or equal than \ref lower(1) and lesser or equal
+     * to \ref upper(1), returns a constant reference to the ith element of
+     * the \ref extent.
+     *
+     * \param i Index of the value to access
+     */
+    //==========================================================================
     const_reference operator()(std::size_t i) const
     {
       NT2_ASSERT_ACCESS(1, i );
@@ -315,31 +340,31 @@ namespace nt2 { namespace container
      * \ref extent
      */
     //==========================================================================
-    iterator        begin()       { return boost::proto::value(*this).begin();  }
+    inline iterator begin() { return boost::proto::value(*this).begin();  }
 
     //==========================================================================
     /*!
      * Return a constant iterator pointing to the first element stored in current
-     * \ref extent
+     * \ref extent.
      */
     //==========================================================================
-    const_iterator  begin() const { return boost::proto::value(*this).begin();  }
+    inline const_iterator begin() const { return boost::proto::value(*this).begin(); }
 
     //==========================================================================
     /*!
      * Return an iterator pointing after the last element stored in current
-     * \ref extent
+     * \ref extent.
      */
     //==========================================================================
-    iterator        end()         { return boost::proto::value(*this).end();    }
+    inline iterator end() { return boost::proto::value(*this).end(); }
 
     //==========================================================================
     /*!
      * Return a constant iterator pointing after the last element stored in
-     * current \ref extent
+     * current \ref extent.
      */
     //==========================================================================
-    const_iterator  end()   const { return boost::proto::value(*this).end();    }
+    inline const_iterator end() const { return boost::proto::value(*this).end(); }
 
     //==========================================================================
     /*!
@@ -390,7 +415,7 @@ namespace nt2 { namespace container
     inline std::size_t nDims() const
     {
       std::size_t i = static_dimension-1;
-      while(data()[--i] == 1);
+      while(boost::proto::value(*this)[--i] == 1);
       return i<0 ? i+1 : static_dimension;
     }
   };

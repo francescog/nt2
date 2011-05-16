@@ -164,7 +164,7 @@ namespace nt2 { namespace container
     template<class Sizes, class Bases> inline
     void restructure(Bases const& bs, Sizes const& sz)
     {
-      meta::assign(mSizes.data(), sz.data());
+      mSizes = sz;
       meta::assign(mBases, bs);
       init();
       link();
