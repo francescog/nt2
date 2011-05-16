@@ -15,7 +15,9 @@
 namespace nt2 { namespace container
 {
   //============================================================================
-  // 0D specialization for extent
+  // 0D specialization for extent. _0D is used to represent extent of scalar
+  // values. It still models Container and Collection but acts as an ever empty
+  // one. Values returned by various accessors are always 1.
   //============================================================================
   template<> struct  extent<_0D> : facade<tag::extent_,_0D,void>::type
   {
@@ -27,6 +29,9 @@ namespace nt2 { namespace container
     typedef std::size_t                             size_type;
     typedef size_type                               base_type;
     typedef std::ptrdiff_t                          difference_type;
+    typedef void*                                   iterator;
+    typedef void*                                   const_iterator;
+
     static const std::size_t static_dimension = 0;
 
     extent() : parent() {}
@@ -36,7 +41,10 @@ namespace nt2 { namespace container
     data_type       data()                    const { return data_type(1);  }
     const_reference operator()(std::size_t i) const { return 1;             }
 
-
+    iterator        begin()       { return iterator(0);       }
+    const_iterator  begin() const { return const_iterator(0); }
+    iterator        end()         { return iterator(0);       }
+    const_iterator  end()   const { return const_iterator(0); }
 
     inline size_type        size()                const { return 1;     }
     inline bool             empty()               const { return false; }
