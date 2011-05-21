@@ -49,6 +49,7 @@ ALIASES += "dco=<a href=\"http://www.boost.org/doc/libs/1_46_1/libs/fusion/doc/h
 ALIASES += "usage=\par Example Usage:"
 ALIASES += "matlab=<span style=\"font-variant: small-caps;\">Matlab</span>"
 ALIASES += "nt2=<b>NT²</b>"
+ALIASES += "container=<a href=\"http://www.sgi.com/tech/stl/Container.html\">Container</a>"
 
 OPTIMIZE_OUTPUT_FOR_C  = NO
 OPTIMIZE_OUTPUT_JAVA   = NO

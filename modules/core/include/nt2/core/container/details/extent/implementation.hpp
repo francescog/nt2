@@ -29,8 +29,8 @@ namespace nt2 { namespace container
   /*!
    * \ingroup containerhelper
    *
-   * \ref extent is a container representing the dimension set of another
-   * container. It acts as a Container of integers where the ith value is the
+   * \ref extent is a \container representing the dimension set of another
+   * container. It acts as a \container of integers where the ith value is the
    * number of element stored by a container along its ith dimensions.
    *
    * \tparam Dimensions Type representing the kind of \ref extent defined.
@@ -45,21 +45,21 @@ namespace nt2 { namespace container
    * In \matlab, size of a container is itself a \matlab container. Due to the
    * lack of notion of constructors for matrix in \matlab, no ambiguity arises
    * from this fact. In \nt2 however, if we want to have both containers being
-   * constructed from a size (or \ref extent) or another Container, we need to
-   * have a dedicated type to represent size of a Container.
-   * \ref extent represents such a type and is designed to fulfill Container
-   * concept requirement and be discriminated in other Container constructors
+   * constructed from a size (or \ref extent) or another \container, we need to
+   * have a dedicated type to represent size of a \container.
+   * \ref extent represents such a type and is designed to fulfill \container
+   * concept requirement and be discriminated in other \container constructors
    * call.
    *
    * \par Models:
    *
-   * \ref Container
+   * \container
    *
    * \see
    *
    * of_size_
    */
-  //=============================================================================
+  //============================================================================
   template<class Dimensions>
   struct  extent : facade<tag::extent_,Dimensions,void>::type
   {
@@ -75,19 +75,16 @@ namespace nt2 { namespace container
     static const std::size_t static_dimension = Dimensions::dimensions;
 
     //==========================================================================
-    /*! Type used to represent a value in \ref extent.                        */
+    // Container interface
     //==========================================================================
     typedef typename data_type::value_type      value_type;
-
-    //==========================================================================
-    /*! Type used to represent a reference to a value in \ref extent.         */
-    //==========================================================================
     typedef typename data_type::reference       reference;
-
-    //==========================================================================
-    /*! Type used to represent a reference to a constant value in \ref extent.*/
-    //==========================================================================
     typedef typename data_type::const_reference const_reference;
+    typedef typename data_type::size_type       size_type;
+    typedef size_type                           base_type;
+    typedef typename data_type::difference_type difference_type;
+    typedef typename data_type::iterator        iterator;
+    typedef typename data_type::const_iterator  const_iterator;
 
     //==========================================================================
     /*!
@@ -299,26 +296,6 @@ namespace nt2 { namespace container
       NT2_ASSERT_ACCESS(1, i );
       return boost::proto::value(*this)[i-1];
     }
-
-    //==========================================================================
-    /*!
-     * \typedef size_type
-     * Type used to represents the number of elements in an \ref extent
-     * \typedef base_type
-     * Type used to represents lower indexes of an \ref extent
-     * \typedef difference_type
-     * Type used to represents upper indexes of an \ref extent
-     * \typedef iterator
-     * Type used to an iterator to the \ref extent values
-     * \typedef const_iterator
-     * Type used to a constant iterator to the \ref extent values
-     */
-    //==========================================================================
-    typedef typename data_type::size_type       size_type;
-    typedef size_type                           base_type;
-    typedef typename data_type::difference_type difference_type;
-    typedef typename data_type::iterator        iterator;
-    typedef typename data_type::const_iterator  const_iterator;
 
     //==========================================================================
     /*! Return the number of dimensions stored in the extent.                */
