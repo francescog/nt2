@@ -21,7 +21,7 @@ OUTPUT_DIRECTORY       = reference
 CREATE_SUBDIRS         = YES
 OUTPUT_LANGUAGE        = English
 BRIEF_MEMBER_DESC      = NO
-REPEAT_BRIEF           = NO
+REPEAT_BRIEF           = YES
 ABBREVIATE_BRIEF       =
 ALWAYS_DETAILED_SEC    = NO
 INLINE_INHERITED_MEMB  = YES
@@ -50,6 +50,11 @@ ALIASES += "usage=\par Example Usage:"
 ALIASES += "matlab=<span style=\"font-variant: small-caps;\">Matlab</span>"
 ALIASES += "nt2=<b>NT²</b>"
 ALIASES += "container=<a href=\"http://www.sgi.com/tech/stl/Container.html\">Container</a>"
+ALIASES += "metasequence=<a href=\"http://www.boost.org/doc/libs/release/libs/mpl/doc/refmanual/forward-sequence.html\">MPL Sequence</a>"
+ALIASES += "true_=\c boost::mpl::true_"
+ALIASES += "false_=\c boost::mpl::false_"
+ALIASES += "readableiterator=<a href=\"http://www.boost.org/doc/libs/release/libs/iterator/doc/new-iter-concepts.html#readable-iterators-lib-readable-iterators\">ReadableIterator</a>"
+ALIASES += "singlepassrange=<a href=\"http://www.boost.org/doc/libs/release/libs/range/doc/html/range/concepts/single_pass_range.html\">SinglePassRange</a>"
 
 OPTIMIZE_OUTPUT_FOR_C  = NO
 OPTIMIZE_OUTPUT_JAVA   = NO
