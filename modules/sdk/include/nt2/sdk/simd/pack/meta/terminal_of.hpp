@@ -6,27 +6,21 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_OS_REPORT_HPP_INCLUDED
-#define NT2_SDK_CONFIG_OS_REPORT_HPP_INCLUDED
+#ifndef NT2_SDK_SIMD_PACK_META_TERMINAL_OF_HPP_INCLUDED
+#define NT2_SDK_SIMD_PACK_META_TERMINAL_OF_HPP_INCLUDED
 
-////////////////////////////////////////////////////////////////////////////////
-// OS reporting
-// TODO: Documentation: http://nt2.lri.fr/doc/build/html/sdk/config/platform.html
-////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/config/os.hpp>
-#include <nt2/sdk/config/details/reporter.hpp>
+#include <boost/mpl/always.hpp>
+#include <nt2/sdk/dsl/terminal_of.hpp>
 
-namespace nt2 { namespace config
+namespace nt2 { namespace ext
 {
   //////////////////////////////////////////////////////////////////////////////
-  // Status header reporter - Head for the reporter list
+  // For simd domain, we return the proper pack
   //////////////////////////////////////////////////////////////////////////////
-  inline void os()
-  {
-    puts(" Operating System        : " NT2_OS );
-  }
-
-  NT2_REGISTER_STATUS(os);
+  template< class Expression,class Type,class Cardinal>
+  struct  terminal_of_impl< Expression, simd::domain<Type,Cardinal> >
+        : boost::mpl::always< simd::pack<Type,Cardinal::value> >
+  {};
 } }
 
 #endif
