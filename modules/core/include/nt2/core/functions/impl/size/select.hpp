@@ -78,7 +78,7 @@ namespace nt2 { namespace details
     {
       typedef typename boost::fusion::result_of::
               fold< typename nt2::meta::strip<Expr>::type const
-                  , container::extent<_0D> const
+                  , containers::extent<_0D> const
                   , smallest_non_null
                   >::type                               type;
     };
@@ -87,7 +87,7 @@ namespace nt2 { namespace details
     typename result<select_size(Expr const)>::type
     operator()(Expr const& xpr) const
     {
-      container::extent<_0D> state;
+      containers::extent<_0D> state;
       return boost::fusion::fold(xpr,state,smallest_non_null());
     }
   };

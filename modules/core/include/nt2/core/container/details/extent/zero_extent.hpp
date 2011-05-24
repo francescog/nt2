@@ -12,7 +12,7 @@
 #include <boost/fusion/include/single_view.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
 
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   //============================================================================
   // 0D specialization for extent. _0D is used to represent extent of scalar

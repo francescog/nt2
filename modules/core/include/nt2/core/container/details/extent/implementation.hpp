@@ -23,11 +23,11 @@
 #include <nt2/core/container/details/access.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
 
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   //=============================================================================
   /*!
-   * \ingroup containerhelper
+   * \ingroup containershelper
    *
    * \ref extent is a \container representing the dimension set of another
    * container. It acts as a \container of integers where the ith value is the
@@ -166,7 +166,7 @@ namespace nt2 { namespace container
      *  \endcode
      */
     //==========================================================================
-    inline template<class D> extent( extent<D> const& src ) : parent()
+    template<class D> inline extent( extent<D> const& src ) : parent()
     {
       NT2_STATIC_ASSERT
       (

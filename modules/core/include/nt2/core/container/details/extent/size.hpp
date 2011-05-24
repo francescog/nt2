@@ -33,7 +33,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0)>
     {
-      typedef container::extent< of_size_<N,1> > type;
+      typedef containers::extent< of_size_<N,1> > type;
     };
 
     NT2_FUNCTOR_CALL(1) { return typename NT2_RETURN_TYPE(1)::type(); }

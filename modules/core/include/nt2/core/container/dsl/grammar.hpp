@@ -13,11 +13,11 @@
 // Generic grammar for table containers
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/sdk/dsl/from_domain.hpp>
-#include <nt2/include/functions/category.hpp>
+#include <nt2/sdk/constant/category.hpp>
 #include <nt2/core/container/dsl/forward.hpp>
 #include <nt2/core/container/meta/is_container.hpp>
 
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   //////////////////////////////////////////////////////////////////////////////
   // Anything goes in the grammar except for low level operators

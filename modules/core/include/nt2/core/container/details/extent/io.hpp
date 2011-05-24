@@ -17,7 +17,7 @@
 #include <boost/fusion/include/io.hpp>
 #include <boost/fusion/include/as_vector.hpp>
 
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   //============================================================================
   /*!

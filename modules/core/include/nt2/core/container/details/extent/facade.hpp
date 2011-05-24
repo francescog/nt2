@@ -14,7 +14,7 @@
 #include <nt2/core/container/dsl/expression.hpp>
 #include <nt2/core/container/details/extent/domain.hpp>
 
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   //////////////////////////////////////////////////////////////////////////////
   // extent facade
@@ -25,7 +25,7 @@ namespace nt2 { namespace container
     typedef boost::array<std::size_t,Dimensions::dimensions>  data_type;
 
     // Here is the proto expressionr eady to be used
-    typedef expression< typename boost::proto::nullary_expr < tag::extent_
+    typedef container < typename boost::proto::nullary_expr < tag::extent_
                                                             , data_type
                                                             >::type
                       , tag::extent_
@@ -40,7 +40,7 @@ namespace nt2 { namespace container
   {
     // 0D extent is just a placeholder type
     typedef boost::mpl::void_  data_type;
-    typedef expression< typename boost::proto::nullary_expr < tag::extent_
+    typedef container < typename boost::proto::nullary_expr < tag::extent_
                                                             , data_type
                                                             >::type
                       , tag::extent_

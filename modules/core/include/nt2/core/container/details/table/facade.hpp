@@ -21,7 +21,7 @@
 #include <nt2/core/container/details/table/domain.hpp>
 #include <nt2/core/container/dsl/expression.hpp>
 
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   //////////////////////////////////////////////////////////////////////////////
   // table facade
@@ -66,7 +66,7 @@ namespace nt2 { namespace container
                   >                                                 data_type;
 
     // Here is the proto expression ready to be used
-    typedef expression< typename boost::proto::nullary_expr < tag::table_
+    typedef container < typename boost::proto::nullary_expr < tag::table_
                                                             , data_type
                                                             >::type
 

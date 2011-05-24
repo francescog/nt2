@@ -13,7 +13,7 @@
 #include <nt2/core/settings/meta/settings.hpp>
 #include <nt2/core/container/details/forward.hpp>
 
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   template<class Tag>                                 struct grammar;
   template<class Tag, class Dimension>                struct domain;

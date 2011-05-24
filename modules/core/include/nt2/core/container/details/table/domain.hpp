@@ -30,26 +30,27 @@ namespace nt2 { namespace tag
 // Table of dimension N are living in a domain which is upward-compatible with
 // table of dimension N+1, adn thus up to NT2_MAX_DIMENSIONS
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   template<std::size_t Dim>
   struct  domain<tag::table_, boost::mpl::size_t<Dim> >
-        : boost::proto::domain< container::generator< tag::table_
-                                                    , boost::mpl::size_t<Dim>
-                                                    >
-                              , container::grammar<tag::table_>
+        : boost::proto::domain< containers::generator < tag::table_
+                                                      , boost::mpl::size_t<Dim>
+                                                      >
+                              , containers::grammar<tag::table_>
                               , domain<tag::table_,boost::mpl::size_t<Dim+1> >
                               >
   {};
 
   template<>
   struct  domain<tag::table_, boost::mpl::size_t<NT2_MAX_DIMENSIONS> >
-        : boost::proto::domain< container::generator< tag::table_
-                                                    , boost::mpl::
-                                                      size_t<NT2_MAX_DIMENSIONS>
-                                                    >
-                              , container::grammar<tag::table_>
-                              >
+        : boost::proto::
+          domain< containers::generator < tag::table_
+                                        , boost::mpl::
+                                          size_t<NT2_MAX_DIMENSIONS>
+                                        >
+                , containers::grammar<tag::table_>
+                >
   {};
 } }
 

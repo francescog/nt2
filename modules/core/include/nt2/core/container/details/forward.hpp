@@ -13,7 +13,7 @@
 // Forward declaration fo some container details classes and functions
 ////////////////////////////////////////////////////////////////////////////////
 
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   //////////////////////////////////////////////////////////////////////////////
   // block is the main container-like value to be used in NT2 terminals

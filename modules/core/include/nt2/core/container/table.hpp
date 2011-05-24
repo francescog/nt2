@@ -13,7 +13,7 @@
 
 namespace nt2
 {
-  using container::table;
+  using containers::table;
 }
 
 #endif

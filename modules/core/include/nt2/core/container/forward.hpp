@@ -11,18 +11,18 @@
 
 /*!
  * \file
- * Defines forward declarations for container classes
+ * Defines forward declarations for containers classes
  */
 
 /*!
- * \defgroup container NT2 Containers
+ * \defgroup containers NT2 Containers
  * Classes and function related to containers usage
  */
 
 
 /*!
- * \ingroup container
- * \defgroup containerhelper Container helpers
+ * \ingroup containers
+ * \defgroup containershelper Containers helpers
  * Classes and function related to containers usage
  */
 #include <nt2/sdk/dsl/call.hpp>
@@ -30,12 +30,12 @@
 
 //==============================================================================
 /*!
- * \ingroup container
- * \namespace nt2::container
+ * \ingroup containers
+ * \namespace nt2::containers
  * Namespace holding all NT2 container and container related classes
  */
 //==============================================================================
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   template<class Tag, class Type, class Settings> struct facade;
   template<class Dimensions> struct  extent;

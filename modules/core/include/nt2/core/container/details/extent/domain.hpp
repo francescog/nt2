@@ -23,14 +23,14 @@ namespace nt2 { namespace tag
 ////////////////////////////////////////////////////////////////////////////////
 // Extents are table of dimension 2
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   template<>
   struct  domain<tag::extent_, boost::mpl::size_t<2> >
-        : boost::proto::domain< container::generator< tag::extent_
+        : boost::proto::domain< containers::generator< tag::extent_
                                                     , boost::mpl::size_t<2>
                                                     >
-                              , container::grammar<tag::extent_>
+                              , containers::grammar<tag::extent_>
                               , domain<tag::table_,boost::mpl::size_t<2> >
                               >
   {};

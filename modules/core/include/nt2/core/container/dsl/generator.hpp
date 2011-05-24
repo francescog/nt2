@@ -12,7 +12,7 @@
 #include <nt2/sdk/error/assert.hpp>
 #include <nt2/sdk/error/static_assert.hpp>
 
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   //////////////////////////////////////////////////////////////////////////////
   // Container Expression check if their size are compatible before being built

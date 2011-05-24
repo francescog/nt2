@@ -14,15 +14,15 @@
 #include <nt2/core/container/dsl/domain.hpp>
 #include <nt2/sdk/dsl/is_assignment_expression.hpp>
 
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   ////////////////////////////////////////////////////////////////////////////
   // Here is the domain-specific expression wrapper for container expression
   ////////////////////////////////////////////////////////////////////////////
   template<class Expr, class Tag, class Dims>
-  struct  expression
+  struct  container
         : boost::proto::extends < Expr
-                                , expression<Expr,Tag,Dims>
+                                , container<Expr,Tag,Dims>
                                 , domain<Tag,Dims>
                                 >
   {
@@ -30,7 +30,7 @@ namespace nt2 { namespace container
     // Internal proto related types
     ////////////////////////////////////////////////////////////////////////////
     typedef boost::proto::extends < Expr
-                                  , expression<Expr,Tag,Dims>
+                                  , container<Expr,Tag,Dims>
                                   , domain<Tag,Dims>
                                   >                                     parent;
 
@@ -38,14 +38,14 @@ namespace nt2 { namespace container
     // expression hierarchy and semantic of container:::expression
     ////////////////////////////////////////////////////////////////////////////
     typedef typename
-    details::hierarchy_of_expr<expression>::type nt2_hierarchy_tag;
+    details::hierarchy_of_expr<container>::type nt2_hierarchy_tag;
 
-    BOOST_PROTO_EXTENDS_USING_ASSIGN(expression)
+    BOOST_PROTO_EXTENDS_USING_ASSIGN(container)
 
     ////////////////////////////////////////////////////////////////////////////
     // Default explicit constructor
     ////////////////////////////////////////////////////////////////////////////
-    explicit expression( Expr const& xpr = Expr() ): parent(xpr) {}
+    explicit container( Expr const& xpr = Expr() ): parent(xpr) {}
 
     ////////////////////////////////////////////////////////////////////////////
     // container expression are read-only Ranges
