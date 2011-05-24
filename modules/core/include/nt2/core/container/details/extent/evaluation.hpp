@@ -6,19 +6,17 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_CORE_CONTAINER_EXTENT_HPP_INCLUDED
-#define NT2_CORE_CONTAINER_EXTENT_HPP_INCLUDED
+#ifndef NT2_CORE_CONTAINER_DETAILS_EXTENT_EVALUATION_HPP_INCLUDED
+#define NT2_CORE_CONTAINER_DETAILS_EXTENT_EVALUATION_HPP_INCLUDED
 
-#include <nt2/core/container/forward.hpp>
-#include <nt2/core/container/details/extent/io.hpp>
-#include <nt2/core/container/details/extent/size.hpp>
-#include <nt2/core/container/details/extent/evaluation.hpp>
-#include <nt2/core/container/details/extent/zero_extent.hpp>
-#include <nt2/core/container/details/extent/implementation.hpp>
+#include <nt2/sdk/dsl/evaluation.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
-// Bring extent into nt2 namespace
+// Evaluation strategy for extent class
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { using containers::extent; }
+namespace nt2 { namespace ext
+{
+
+} }
 
 #endif
