@@ -54,8 +54,7 @@ namespace nt2 { namespace ext
     template<class This, class Value, class State, class Data>
     struct result<This(Value,State,Data)>
     {
-      typedef typename meta::strip<Value>::type       base;
-      typedef typename meta::value_type_<base>::type  type;
+      typedef typename meta::strip<Value>::type::value_type  type;
     };
 
     template<class Value, class State, class Data> inline
