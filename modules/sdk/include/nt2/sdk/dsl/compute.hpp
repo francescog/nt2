@@ -17,7 +17,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2 { namespace meta
 {
-  template <class Tag, class Target>
+  template <class Tag, class Target = typename default_site<Tag>::type>
   struct compute
       : boost::proto::
         unpack< boost::proto::

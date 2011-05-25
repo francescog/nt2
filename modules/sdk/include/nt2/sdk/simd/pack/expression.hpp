@@ -12,8 +12,33 @@
 #include <nt2/sdk/dsl/category.hpp>
 #include <nt2/sdk/dsl/proto/extends.hpp>
 #include <nt2/sdk/simd/meta/extension_of.hpp>
+#include <nt2/sdk/dsl/terminal_of.hpp>
 
-namespace nt2 { namespace simd
+namespace nt2
+{
+  template<class Expr, class Enable = void>
+  struct evaluate
+  {
+    typedef typename meta::terminal_of<Expr>::type result_type;
+    result_type operator()(Expr const& expr) const
+    {
+      return meta::compile< meta::compute<boost::mpl::_1> >()(expr);
+    }
+  };
+  
+  template<class Expr>
+  struct evaluate<Expr, typename meta::enable_if_type< typename meta::terminal_of<Expr>::type::parent >::type>
+  {
+    typedef typename meta::terminal_of<Expr>::type result_type;
+    result_type operator()(Expr const& expr) const
+    {
+      result_type that;
+      that = expr;
+      return that;
+    }
+  };
+  
+namespace simd
 {
   ////////////////////////////////////////////////////////////////////////////
   // Here is the domain-specific expression wrapper
@@ -50,22 +75,30 @@ namespace nt2 { namespace simd
     // Array interface
     ////////////////////////////////////////////////////////////////////////////
     BOOST_STATIC_CONSTANT(size_type, static_size = Cardinal::value);
-
+    
+    typedef typename meta::terminal_of<expression>::type eval_type;
+    
+    eval_type evaluate() const
+    {
+      return nt2::evaluate<expression>()(*this);
+    }
+    
+    operator eval_type() const
+    {
+      return evaluate();
+    }
+    
     ////////////////////////////////////////////////////////////////////////////
     // Range interface
     ////////////////////////////////////////////////////////////////////////////
     const_iterator  begin()  const
     {
-      data_type that;
-      that.evaluate(*this);
-      return that.begin();
+      return evaluate().begin();
     }
 
     const_iterator  end()    const
     {
-      data_type that;
-      that.evaluate(*this);
-      return that.end();
+      return evaluate().end();
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -73,11 +106,29 @@ namespace nt2 { namespace simd
     ////////////////////////////////////////////////////////////////////////////
     const_reference operator[](int i)     const
     {
-      data_type that;
-      that.evaluate(*this);
-      return that[i];
+      return evaluate()[i];
     }
   };
+  
+  // Do all operators?
+  template<class T, class Expr>
+  struct left_shift_impl
+  {
+    typedef __typeof__(details::make<T>() << details::make<typename meta::terminal_of<Expr>::type>())& result_type;
+    
+    result_type operator()(T& lft, Expr const& expr) const
+    {
+      return lft << expr.evaluate();
+    }
+  };
+  
+  template<class T, class Expr, class Type, class Cardinal>
+  typename left_shift_impl<T, expression<Expr, Type, Cardinal> >::result_type
+  operator<<(T& lft, expression<Expr, Type, Cardinal> const& rgt)
+  {
+    return left_shift_impl<T, expression<Expr, Type, Cardinal> >()(lft, rgt);
+  }
+  
 } }
 
 #endif

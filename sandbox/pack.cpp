@@ -35,6 +35,12 @@ template<class T> void bench(std::size_t sz)
 
 int main()
 {
+  nt2::simd::pack<int> a(1);
+  nt2::simd::pack<int> b = a + a;
+  std::cout << (a+a) << std::endl;
+  std::cout << b << std::endl;
+  std::cout << nt2::sum(a + a) << std::endl;
+  
   for(std::size_t i=2;i<=16384;i*=2)
   {
     std::cout << i << "\t";

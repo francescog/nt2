@@ -11,30 +11,34 @@
 
 #include <boost/proto/traits.hpp>
 #include <nt2/sdk/meta/strip.hpp>
-#include <boost/mpl/placeholders.hpp>
-
-namespace nt2 { namespace ext
-{
-  //////////////////////////////////////////////////////////////////////////////
-  // By default we just return the type itself
-  //////////////////////////////////////////////////////////////////////////////
-  template< class Expr, class Domain >
-  struct terminal_of_impl : boost::mpl::_1
-  {};
-} }
+#include <nt2/sdk/dsl/compute.hpp>
+#include <nt2/sdk/details/decltype.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
-// For a given proto expression type, acts as a meta-function able to build a
-// terminal suitable for its domain
+// If type is a proto expression, return the type obtained when evaluating it.
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace meta
+namespace nt2
 {
-  template< class Expr >
-  struct  terminal_of
-        : ext::terminal_of_impl < Expr
-                                , typename boost::proto::domain_of<Expr>::type
-                                >
-  {};
+  namespace details
+  {
+    template<typename T>
+    T& make();
+  }
+  
+namespace meta
+{
+  template<class T, class Enable = void>
+  struct terminal_of : meta::strip<T>
+  {
+  };
+  
+  template<class T>
+  struct terminal_of<T, typename boost::enable_if< boost::proto::is_expr<T> >::type>
+  {
+    typedef compile< compute<boost::mpl::_1> > compiler;
+    NT2_DECLTYPE(compiler()(details::make<T>()), type);
+  };
+  
 } }
 
 #endif

@@ -30,18 +30,6 @@ namespace nt2 { namespace simd
     return os;
   }
 
-
-  ////////////////////////////////////////////////////////////////////////////
-  // Stream insertion for SIMD expression
-  ////////////////////////////////////////////////////////////////////////////
-  template<class X,class T,class C> inline std::ostream&
-  operator<<(std::ostream& os, expression<X,T,C> const& v )
-  {
-    pack<T,C::value> that(v);
-    os << that;
-    return os;
-  }
-
 } }
 
 #endif

@@ -35,10 +35,11 @@ namespace nt2 { namespace tag
    * used as common, architecture independant implementation.
    */
   //============================================================================
-  struct cpu_.: formal_ {};
+  struct cpu_ : formal_ {};
 #else
   NT2_HIERARCHY_CLASS(formal_, meta::unspecified_<formal_>);
   NT2_HIERARCHY_CLASS(cpu_, formal_);
+  NT2_HIERARCHY_CLASS(eval_, cpu_);
 #endif
 } }
 
