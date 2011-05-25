@@ -22,6 +22,7 @@
 #include <boost/fusion/include/is_sequence.hpp>
 #include <nt2/core/container/details/access.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
+#include <nt2/core/container/details/extent/evaluation.hpp>
 
 namespace nt2 { namespace containers
 {
@@ -235,8 +236,13 @@ namespace nt2 { namespace containers
     #undef M1
 
     //==========================================================================
-    // Constructor from a expression
+    // Constructor from a expression of extent
     //==========================================================================
+    template<class XPR, class D> inline
+    explicit extent( container<XPR, tag::extent_,D> const& src )
+    {
+      nt2::evaluate(boost::proto::value(*this), src);
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     // Assignment operator
@@ -250,6 +256,12 @@ namespace nt2 { namespace containers
     //==========================================================================
     // Assignment from a expression
     //==========================================================================
+    template<class XPR, class D> inline
+    extent& operator=( container<XPR, tag::extent_,D> const& src )
+    {
+      nt2::evaluate(boost::proto::value(*this), src);
+      return *this;
+    }
 
     //==========================================================================
     /*!

@@ -12,7 +12,6 @@
 #include <nt2/core/container/forward.hpp>
 #include <nt2/core/container/details/extent/io.hpp>
 #include <nt2/core/container/details/extent/size.hpp>
-#include <nt2/core/container/details/extent/evaluation.hpp>
 #include <nt2/core/container/details/extent/zero_extent.hpp>
 #include <nt2/core/container/details/extent/implementation.hpp>
 

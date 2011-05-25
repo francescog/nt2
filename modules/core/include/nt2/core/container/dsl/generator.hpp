@@ -33,7 +33,7 @@ namespace nt2 { namespace containers
                           "of containers in your current statement."
       );
     */
-      typedef expression<Expr,Tag,Dimension> type;
+      typedef container<Expr,Tag,Dimension> type;
     };
 
     template<class Expr>
