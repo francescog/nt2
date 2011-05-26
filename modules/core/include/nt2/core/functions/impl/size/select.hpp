@@ -37,7 +37,7 @@ namespace nt2 { namespace details
                         )
                         && elem_::static_dimension
                       , esize_
-                      , State
+                      , state_
                       >::type type;
     };
 
@@ -60,9 +60,9 @@ namespace nt2 { namespace details
                   );
     }
 
-    template<class S,class E> inline E const&
+    template<class S,class E> inline E
     eval(S const& ,E const& e, boost::mpl::true_ const&) const { return e; }
-    template<class S,class E> inline S const&
+    template<class S,class E> inline S
     eval(S const& s,E const&, boost::mpl::false_ const&) const { return s; }
   };
 

@@ -26,7 +26,11 @@ namespace nt2 { namespace ext
       typedef containers::extent<_0D> type ;
     };
 
-    NT2_FUNCTOR_CALL(1) { return typename NT2_RETURN_TYPE(1)::type(); }
+    NT2_FUNCTOR_CALL(1)
+    {
+      typename NT2_RETURN_TYPE(1)::type that;
+      return that;
+    }
   };
 } }
 

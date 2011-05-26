@@ -17,13 +17,13 @@
 /////////////////////////////////////////////////////////////////////////////
 NT2_REGISTER_DISPATCH_TPL ( tag::size_, tag::cpu_
                           , (class A0)(std::size_t N)
-                          , ((array_<fundamental_<A0>,N>))
+                          , ((array_<arithmetic_<A0>,N>))
                           )
 
 namespace nt2 { namespace ext
 {
   template<std::size_t N, class Dummy>
-  struct  call< tag::size_(tag::array_<tag::fundamental_,N>)
+  struct  call< tag::size_(tag::array_<tag::arithmetic_,N>)
               , tag::cpu_, Dummy
               >
         : callable
@@ -36,7 +36,11 @@ namespace nt2 { namespace ext
       typedef containers::extent< of_size_<N,1> > type;
     };
 
-    NT2_FUNCTOR_CALL(1) { return typename NT2_RETURN_TYPE(1)::type(); }
+    NT2_FUNCTOR_CALL(1)
+    {
+      typename NT2_RETURN_TYPE(1)::type that;
+      return that;
+    }
   };
 } }
 
