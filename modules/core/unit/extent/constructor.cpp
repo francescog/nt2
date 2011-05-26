@@ -141,23 +141,24 @@ NT2_TEST_CASE_TPL ( expression_ctor, DYN_DIM_LIST )
 
   std::size_t dims = T::dimensions;
 
-  // Test copying a _nD expression in a nD extent
-  extent<T> y( NT2_PP_IOTA(1,NT2_MAX_DIMENSIONS));
-  extent<T> x( y+10*y );
+  // Test copying a _nD expression in a _nD extent
+  extent<T> y;
+  for(std::size_t i= 1; i<= dims;++i) y(i) = i;
+  extent<T> x( y+10*y+1 );
 
   NT2_TEST( !x.empty() );
   NT2_TEST_EQUAL( x.size()  , dims  );
   NT2_TEST_EQUAL( x.size(0) , dims  );
   NT2_TEST_EQUAL( x.nDims() , dims  );
 
-  NT2_TEST_EQUAL( x(1)      , y(1)+10*y(1));
+  NT2_TEST_EQUAL( x(1)      , y(1)+10*y(1)+1);
   NT2_TEST_EQUAL( x.size(1) , dims  );
   NT2_TEST_EQUAL( x.lower(1), 1     );
   NT2_TEST_EQUAL( x.upper(1), dims  );
 
   for(std::size_t i= 2; i<= dims;++i)
   {
-    NT2_TEST_EQUAL( x(i)      , y(i)+10*y(i));
+    NT2_TEST_EQUAL( x(i)      , y(i)+10*y(i)+1);
     NT2_TEST_EQUAL( x.size(i) , 1 );
     NT2_TEST_EQUAL( x.lower(i), 1 );
     NT2_TEST_EQUAL( x.upper(i), 1 );

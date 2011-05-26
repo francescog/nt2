@@ -15,6 +15,9 @@
 
 namespace nt2 { namespace meta
 {
+  ////////////////////////////////////////////////////////////////////////////////
+  // extent terminals computes like terminals
+  ////////////////////////////////////////////////////////////////////////////////
   template<class Target>
   struct  compute<tag::extent_,Target>
         : boost::proto::
@@ -29,7 +32,7 @@ namespace nt2 { namespace meta
 }}
 
 ////////////////////////////////////////////////////////////////////////////////
-// Register terminal handlers for SIMD expression - emulated case
+// Register terminal handlers for extent terminals - Same size
 ////////////////////////////////////////////////////////////////////////////////
 NT2_REGISTER_DISPATCH_TPL (  tag::extent_,tag::cpu_
                           , (class A0)(class A1)(class A2)(std::size_t N)
