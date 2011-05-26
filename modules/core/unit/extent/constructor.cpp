@@ -14,7 +14,6 @@
 #include <nt2/sdk/unit/tests.hpp>
 #include <nt2/sdk/unit/module.hpp>
 #include <nt2/toolbox/operator.hpp>
-#include <nt2/sdk/simd/pack.hpp>
 #include <nt2/core/container/extent.hpp>
 
 #define M0(z,n,t) (nt2::BOOST_PP_CAT(BOOST_PP_CAT(_,n),D))
@@ -142,9 +141,6 @@ NT2_TEST_CASE_TPL ( expression_ctor, DYN_DIM_LIST )
 
   std::size_t dims = T::dimensions;
 
-  nt2::simd::pack<float,2> xx,yy(4);
-  xx = 3*yy;
-std::cout << xx << "\t" << yy << "\n";
   // Test copying a _nD expression in a nD extent
   extent<T> y( NT2_PP_IOTA(1,NT2_MAX_DIMENSIONS));
   extent<T> x( y+10*y );
