@@ -36,6 +36,10 @@ namespace nt2 { namespace containers
 
     extent() : parent() {}
     extent( extent const& ) : parent() {}
+
+    template<class XPR, class D> inline
+    explicit extent( container<XPR, tag::extent_,D> const& ) {}
+
     extent& operator=( extent const& ) { return *this; }
 
     data_type       data()                    const { return data_type(1);  }

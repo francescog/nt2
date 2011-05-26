@@ -237,11 +237,30 @@ namespace nt2 { namespace containers
 
     //==========================================================================
     // Constructor from a expression of extent
+    /*!
+     * \ref extent constructor from an \ref extent expression evaluates an
+     * expression containing extents into the object being built.
+     *
+     * \param src  \ref extent expression to evaluates
+     *
+     * \usage
+     *
+     * \code
+     * #include <nt2/core/container/extent.hpp>
+     *
+     * int main()
+     * {
+     *   nt2::container::extent<nt2::_2D> x(3,7);
+     *   nt2::container::extent<nt2::_2D> y(1+x*2);
+     *   assert( y(1) == 7 && y(2) == 15 );
+     *  }
+     *  \endcode
+     */
     //==========================================================================
     template<class XPR, class D> inline
     explicit extent( container<XPR, tag::extent_,D> const& src )
     {
-      nt2::evaluate(boost::proto::value(*this), src);
+      nt2::evaluate(*this, src);
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -259,7 +278,7 @@ namespace nt2 { namespace containers
     template<class XPR, class D> inline
     extent& operator=( container<XPR, tag::extent_,D> const& src )
     {
-      nt2::evaluate(boost::proto::value(*this), src);
+      nt2::evaluate(*this, src);
       return *this;
     }
 
@@ -287,7 +306,7 @@ namespace nt2 { namespace containers
                       &&  (boost::is_integral<Index>::value)
                       , reference
                       >::type
-    operator()(std::size_t i)
+    operator()(Index i)
     {
       NT2_ASSERT_ACCESS(1, i );
       return boost::proto::value(*this)[i-1];
