@@ -9,7 +9,7 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_EXTENT_ZERO_EXTENT_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_ZERO_EXTENT_HPP_INCLUDED
 
-#include <boost/fusion/include/single_view.hpp>
+#include <boost/mpl/vector_c.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
 
 namespace nt2 { namespace containers
@@ -23,7 +23,7 @@ namespace nt2 { namespace containers
   {
     typedef facade<tag::extent_,_0D,void>           facade_type;
     typedef facade_type::type                       parent;
-    typedef boost::fusion::single_view<std::size_t> data_type;
+    typedef boost::mpl::vector_c<std::size_t,1,1>   data_type;
     typedef std::size_t                             value_type;
     typedef std::size_t                             const_reference;
     typedef std::size_t                             size_type;
@@ -42,7 +42,7 @@ namespace nt2 { namespace containers
 
     extent& operator=( extent const& ) { return *this; }
 
-    data_type       data()                    const { return data_type(1);  }
+    data_type       data()                    const { return data_type();   }
     const_reference operator()(std::size_t i) const { return 1;             }
 
     iterator        begin()       { return iterator(0);       }
@@ -50,8 +50,8 @@ namespace nt2 { namespace containers
     iterator        end()         { return iterator(0);       }
     const_iterator  end()   const { return const_iterator(0); }
 
-    inline size_type        size()                const { return 1;     }
-    inline bool             empty()               const { return false; }
+    inline size_type        size()                const { return 0;     }
+    inline bool             empty()               const { return true;  }
     inline size_type        size(std::size_t i)   const { return 1;     }
     inline base_type        lower(std::size_t i)  const { return 1;     }
     inline difference_type  upper(std::size_t i)  const { return 1;     }

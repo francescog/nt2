@@ -24,22 +24,7 @@ namespace nt2 { namespace containers
     // Extent are just wrapper around boost::array of proper size and type
     typedef boost::array<std::size_t,Dimensions::dimensions>  data_type;
 
-    // Here is the proto expressionr eady to be used
-    typedef container < typename boost::proto::nullary_expr < tag::extent_
-                                                            , data_type
-                                                            >::type
-                      , tag::extent_
-                      , boost::mpl::size_t<2>
-                      >                                             type;
-  };
-
-  //////////////////////////////////////////////////////////////////////////////
-  // extent facade for 0D size, used for the non-container size
-  //////////////////////////////////////////////////////////////////////////////
-  template<class S> struct facade<tag::extent_,_0D, S>
-  {
-    // 0D extent is just a placeholder type
-    typedef boost::mpl::void_  data_type;
+    // Here is the proto expression ready to be used
     typedef container < typename boost::proto::nullary_expr < tag::extent_
                                                             , data_type
                                                             >::type
