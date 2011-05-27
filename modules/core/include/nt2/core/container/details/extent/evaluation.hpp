@@ -65,7 +65,7 @@ namespace nt2 { namespace ext
       meta::compile< meta::compute<boost::mpl::_1,tag::cpu_> >  callee;
 
       // Who's bigger ?
-      std::size_t r_size = nt2::size(a1)(1);
+      std::size_t r_size = nt2::size(a1)(2);
       std::size_t l_size = a0.size();
 
       NT2_ASSERT((l_size >= r_size) && "Size mismatch in extent evaluation");

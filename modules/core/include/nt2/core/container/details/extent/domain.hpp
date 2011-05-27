@@ -11,6 +11,7 @@
 
 #include <nt2/extension/parameters.hpp>
 #include <nt2/core/container/details/table/domain.hpp>
+#include <nt2/core/container/details/table/generator.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Define tag for extent_ related domain specialization
@@ -27,9 +28,9 @@ namespace nt2 { namespace containers
 {
   template<>
   struct  domain<tag::extent_, boost::mpl::size_t<2> >
-        : boost::proto::domain< containers::generator< tag::extent_
-                                                    , boost::mpl::size_t<2>
-                                                    >
+        : boost::proto::domain< containers::generator < tag::extent_
+                                                      , boost::mpl::size_t<2>
+                                                      >
                               , containers::grammar<tag::extent_>
                               , domain<tag::table_,boost::mpl::size_t<2> >
                               >

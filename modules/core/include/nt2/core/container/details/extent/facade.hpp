@@ -12,6 +12,7 @@
 #include <nt2/core/settings/size.hpp>
 #include <nt2/core/container/forward.hpp>
 #include <nt2/core/container/dsl/expression.hpp>
+#include <nt2/core/container/details/extent/generator.hpp>
 #include <nt2/core/container/details/extent/domain.hpp>
 
 namespace nt2 { namespace containers
