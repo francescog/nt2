@@ -13,7 +13,7 @@
 #include <nt2/core/functions/size.hpp>
 
 /////////////////////////////////////////////////////////////////////////////
-// Implementation when type A0 is an extend value
+// Implementation when type A0 is an extent value
 /////////////////////////////////////////////////////////////////////////////
 NT2_REGISTER_DISPATCH_TPL ( tag::size_, tag::cpu_
                           , (class A0)(std::size_t N)
@@ -33,7 +33,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0)>
     {
-      typedef containers::extent< of_size_<N,1> > type;
+      typedef containers::extent< of_size_<1,(N?N:2)> > type;
     };
 
     NT2_FUNCTOR_CALL(1)
