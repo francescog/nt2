@@ -14,6 +14,7 @@
 #include <nt2/core/container/dsl/domain.hpp>
 #include <nt2/core/container/dsl/grammar.hpp>
 #include <nt2/core/container/dsl/generator.hpp>
+#include <nt2/core/container/details/table/generator.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Define tag for table_ related domain specialization

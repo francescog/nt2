@@ -19,6 +19,7 @@
 #include <nt2/core/settings/storage_order.hpp>
 #include <nt2/core/container/details/block.hpp>
 #include <nt2/core/container/details/table/domain.hpp>
+#include <nt2/core/container/details/table/generator.hpp>
 #include <nt2/core/container/dsl/expression.hpp>
 
 namespace nt2 { namespace containers
