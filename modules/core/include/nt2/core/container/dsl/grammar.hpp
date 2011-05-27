@@ -16,6 +16,7 @@
 #include <nt2/sdk/constant/category.hpp>
 #include <nt2/core/container/dsl/forward.hpp>
 #include <nt2/core/container/meta/is_container.hpp>
+#include <nt2/sdk/dsl/is_assignment_expression.hpp>
 
 namespace nt2 { namespace containers
 {
@@ -42,7 +43,6 @@ namespace nt2 { namespace containers
                     >
               //  Nodes are cross-domain node, any non-low level nodes with
               //  matching type/cardinal, any non assignment nodes
-              , dsl::from_domain< boost::proto::_ >
               , boost::proto::
                 and_< boost::proto::
                       nary_expr < boost::proto::_

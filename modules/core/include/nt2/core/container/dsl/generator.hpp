@@ -18,37 +18,7 @@ namespace nt2 { namespace containers
   // Container Expression check if their size are compatible before being built
   // Depending on tag and types, a static or runtime assertion can be triggered
   //////////////////////////////////////////////////////////////////////////////
-  template<class Tag, class Dimension>
-  struct generator
-  {
-    template<class Sig> struct result;
-    template<class This, class Expr>
-    struct result<This(Expr)>
-    {
-      /*
-      NT2_STATIC_ASSERT ( meta::call<tag::check_size_(Expr,Tag)>::type::value
-                        , NT2_STATIC_SIZE_MISMATCH_IN_CONTAINER_EXPRESSION
-                        , "Container(s) with uncompatible static size have been "
-                          "used in an expression. Checks dimensions and size "
-                          "of containers in your current statement."
-      );
-    */
-      typedef container<Expr,Tag,Dimension> type;
-    };
-
-    template<class Expr>
-    typename result<generator(Expr)>::type const
-    operator()(Expr const &xpr) const
-    {
-      /*
-      NT2_ASSERT( check_size(xpr,Tag())
-                  && "Dynamic size mismatch in container expression"
-                );
-      */
-      typename result<generator(Expr)>::type const that(xpr);
-      return that;
-    }
-  };
+  template<class Tag, class Dimension> struct generator;
 } }
 
 #endif

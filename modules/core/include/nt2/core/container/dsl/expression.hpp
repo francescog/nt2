@@ -12,7 +12,6 @@
 #include <boost/proto/proto.hpp>
 #include <nt2/sdk/dsl/category.hpp>
 #include <nt2/core/container/dsl/domain.hpp>
-#include <nt2/sdk/dsl/is_assignment_expression.hpp>
 
 namespace nt2 { namespace containers
 {
