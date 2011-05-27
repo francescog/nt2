@@ -25,8 +25,8 @@ NT2_TEST_CASE ( default_ctor_0d )
 
   extent<nt2::_0D> x;
 
-  NT2_TEST( !x.empty() );
-  NT2_TEST_EQUAL( x.size()  , 1);
+  NT2_TEST( x.empty() );
+  NT2_TEST_EQUAL( x.size()  , 0);
   NT2_TEST_EQUAL( x.size(0) , 1);
   NT2_TEST_EQUAL( x.lower(0), 1);
   NT2_TEST_EQUAL( x.upper(0), 1);
