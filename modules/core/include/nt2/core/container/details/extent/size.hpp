@@ -33,7 +33,8 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0)>
     {
-      typedef containers::extent< of_size_<1,(N?N:2)> > type;
+      // All extent has at least 2 dimension
+      typedef containers::extent< of_size_<1,(N>=2 ? N : 2)> > type;
     };
 
     NT2_FUNCTOR_CALL(1)

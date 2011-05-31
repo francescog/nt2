@@ -14,11 +14,7 @@
  * Implements the extent class
  */
 
-#include <boost/array.hpp>
 #include <nt2/sdk/meta/assign.hpp>
-#include <boost/fusion/adapted/mpl.hpp>
-#include <boost/fusion/include/mpl.hpp>
-#include <boost/fusion/adapted/array.hpp>
 #include <boost/fusion/include/is_sequence.hpp>
 #include <nt2/core/container/details/access.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
@@ -308,6 +304,7 @@ namespace nt2 { namespace containers
                       >::type
     operator()(Index i)
     {
+      // this should be part of container interface
       NT2_ASSERT_ACCESS(1, i );
       return boost::proto::value(*this)[i-1];
     }
@@ -324,6 +321,7 @@ namespace nt2 { namespace containers
     //==========================================================================
     const_reference operator()(std::size_t i) const
     {
+      // this should be part of container interface
       NT2_ASSERT_ACCESS(1, i );
       return boost::proto::value(*this)[i-1];
     }

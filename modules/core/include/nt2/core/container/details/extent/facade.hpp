@@ -9,10 +9,12 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_EXTENT_FACADE_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_FACADE_HPP_INCLUDED
 
-#include <nt2/core/settings/size.hpp>
-#include <nt2/core/container/forward.hpp>
-#include <nt2/core/container/dsl/expression.hpp>
-#include <nt2/core/container/details/extent/generator.hpp>
+#include <cstddef>
+#include <boost/array.hpp>
+#include <boost/fusion/adapted/mpl.hpp>
+#include <boost/fusion/include/mpl.hpp>
+#include <boost/fusion/adapted/array.hpp>
+#include <nt2/core/container/dsl/container.hpp>
 #include <nt2/core/container/details/extent/domain.hpp>
 
 namespace nt2 { namespace containers
@@ -20,18 +22,16 @@ namespace nt2 { namespace containers
   //////////////////////////////////////////////////////////////////////////////
   // extent facade
   //////////////////////////////////////////////////////////////////////////////
-  template<class Dimensions,class S> struct facade<tag::extent_,Dimensions, S>
+  template<class Dimensions,class S>
+  struct facade<tag::extent_,Dimensions, S>
   {
-    // Extent are just wrapper around boost::array of proper size and type
     typedef boost::array<std::size_t,Dimensions::dimensions>  data_type;
-
-    // Here is the proto expression ready to be used
     typedef container < typename boost::proto::nullary_expr < tag::extent_
                                                             , data_type
                                                             >::type
                       , tag::extent_
                       , boost::mpl::size_t<2>
-                      >                                             type;
+                      >                                       type;
   };
 } }
 

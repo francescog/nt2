@@ -10,29 +10,20 @@
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_DOMAIN_HPP_INCLUDED
 
 #include <nt2/extension/parameters.hpp>
+#include <nt2/core/container/dsl/grammar.hpp>
 #include <nt2/core/container/details/table/domain.hpp>
-#include <nt2/core/container/details/table/generator.hpp>
-
-////////////////////////////////////////////////////////////////////////////////
-// Define tag for extent_ related domain specialization
-////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace tag
-{
-  struct extent_ { typedef void nt2_container_tag; };
-} }
+#include <nt2/core/container/details/extent/generator.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Extents are table of dimension 2
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2 { namespace containers
 {
-  template<>
-  struct  domain<tag::extent_, boost::mpl::size_t<2> >
-        : boost::proto::domain< containers::generator < tag::extent_
-                                                      , boost::mpl::size_t<2>
-                                                      >
+  template<class D>
+  struct  domain<tag::extent_,D>
+        : boost::proto::domain< containers::generator<tag::extent_,D>
                               , containers::grammar<tag::extent_>
-                              , domain<tag::table_,boost::mpl::size_t<2> >
+                              , domain<tag::table_,D>
                               >
   {};
 } }

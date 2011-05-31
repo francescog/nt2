@@ -10,12 +10,12 @@
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_GENERATOR_HPP_INCLUDED
 
 #include <nt2/core/functions/size.hpp>
-#include <nt2/core/container/dsl/generator.hpp>
 
 namespace nt2 { namespace tag
 {
   struct extent_;
 } }
+
 namespace nt2 { namespace containers
 {
   //////////////////////////////////////////////////////////////////////////////
