@@ -20,7 +20,7 @@
 
 /*!
  * \file
- * Defines some short-cut for frequently used preprocessor macros
+ * \brief Defines some short-cut for frequently used PP macros
  */
 
 /*!
