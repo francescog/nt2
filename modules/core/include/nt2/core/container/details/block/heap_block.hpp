@@ -16,7 +16,7 @@
 #include <nt2/core/container/details/block/data.hpp>
 #include <nt2/core/container/details/block/access.hpp>
 
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   //////////////////////////////////////////////////////////////////////////////
   // Defines a block of memory to be used stored on the CPU heap
