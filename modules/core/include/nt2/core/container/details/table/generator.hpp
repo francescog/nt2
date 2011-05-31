@@ -9,8 +9,6 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_TABLE_GENERATOR_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_TABLE_GENERATOR_HPP_INCLUDED
 
-#include <nt2/core/container/dsl/generator.hpp>
-
 namespace nt2 { namespace tag
 {
   struct table_;

@@ -9,20 +9,9 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_TABLE_DOMAIN_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_TABLE_DOMAIN_HPP_INCLUDED
 
-#include <boost/proto/proto.hpp>
 #include <nt2/extension/parameters.hpp>
-#include <nt2/core/container/dsl/domain.hpp>
 #include <nt2/core/container/dsl/grammar.hpp>
-#include <nt2/core/container/dsl/generator.hpp>
 #include <nt2/core/container/details/table/generator.hpp>
-
-////////////////////////////////////////////////////////////////////////////////
-// Define tag for table_ related domain specialization
-////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace tag
-{
-  struct table_ { typedef void nt2_container_tag; };
-} }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Tell proto that in the container::domain, all expressions should be

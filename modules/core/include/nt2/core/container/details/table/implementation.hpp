@@ -14,10 +14,7 @@
 
 namespace nt2 { namespace container
 {
-  template< class Type
-          , class Settings = nt2::settings()
-          , class Dummy    = boost::proto::is_proto_expr
-          >
+  template<class Type, class Settings>
   struct  table
         : facade<tag::table_,Type,Settings>::type
   {
