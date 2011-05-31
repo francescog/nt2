@@ -6,12 +6,17 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_CORE_CONTAINER_DETAILS_FORWARD_HPP_INCLUDED
-#define NT2_CORE_CONTAINER_DETAILS_FORWARD_HPP_INCLUDED
+#ifndef NT2_CORE_CONTAINER_DETAILS_EXTENT_FORWARD_HPP_INCLUDED
+#define NT2_CORE_CONTAINER_DETAILS_EXTENT_FORWARD_HPP_INCLUDED
 
-#include <nt2/core/container/details/facade.hpp>
-#include <nt2/core/container/details/block/forward.hpp>
-#include <nt2/core/container/details/table/forward.hpp>
-#include <nt2/core/container/details/extent/forward.hpp>
+namespace nt2 { namespace containers
+{
+  template<class Dimensions> struct  extent;
+} }
+
+namespace nt2 { namespace tag
+{
+  struct extent_  { typedef void nt2_container_tag; };
+} }
 
 #endif

@@ -9,16 +9,12 @@
 #ifndef NT2_CORE_CONTAINER_DSL_FORWARD_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DSL_FORWARD_HPP_INCLUDED
 
-#include <boost/proto/proto.hpp>
-#include <nt2/core/settings/meta/settings.hpp>
-#include <nt2/core/container/details/forward.hpp>
-
 namespace nt2 { namespace containers
 {
-  template<class Tag>                                 struct grammar;
-  template<class Tag, class Dimension>                struct domain;
-  template<class Tag, class Dimension>                struct generator;
-  template<class Expression,class Tag,class Settings> struct expression;
+  template<class Tag>                                   struct grammar;
+  template<class Tag, class Dimension>                  struct domain;
+  template<class Tag, class Dimension>                  struct generator;
+  template<class Expression,class Tag,class Dimensions> struct container;
 } }
 
 #endif
