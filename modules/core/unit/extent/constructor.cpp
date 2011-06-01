@@ -15,6 +15,7 @@
 #include <nt2/sdk/unit/module.hpp>
 #include <nt2/toolbox/operator.hpp>
 #include <nt2/core/container/extent.hpp>
+#include <nt2/toolbox/constant/constants/dsl/digits.hpp>
 
 #define M0(z,n,t) (nt2::BOOST_PP_CAT(BOOST_PP_CAT(_,n),D))
 #define DYN_DIM_LIST BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M0,~)
@@ -144,7 +145,7 @@ NT2_TEST_CASE_TPL ( expression_ctor, DYN_DIM_LIST )
   // Test copying a _nD expression in a _nD extent
   extent<T> y;
   for(std::size_t i= 1; i<= dims;++i) y(i) = i;
-  extent<T> x( y+10*y+1 );
+  extent<T> x( y+10*y+nt2::one_ );
 
   NT2_TEST( !x.empty() );
   NT2_TEST_EQUAL( x.size()  , dims  );
