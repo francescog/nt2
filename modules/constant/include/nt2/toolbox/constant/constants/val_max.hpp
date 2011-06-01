@@ -21,7 +21,7 @@ namespace nt2
 {
   namespace tag
   {
-    struct val_max_ {};
+    struct val_max_ { typedef double default_type; };
   }
   
   NT2_CONSTANT_IMPLEMENTATION(nt2::tag::val_max_, Valmax)

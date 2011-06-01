@@ -19,13 +19,19 @@
 
 namespace nt2 { namespace tag
 {
-  struct pi_          {};
-  //  struct nan_         {};
-  struct sqrt_2_o_2_  {}; struct sqrt_2_      {};
-  struct gold_        {}; struct c_gold_      {};
-  struct m_half_      {}; struct m_zero_      {};
-  struct half_        {}; struct third_       {}; struct quarter_     {};
-  struct two_to_m10_  {}; struct two_to_nmb_  {}; struct split_factor_{};
+  struct pi_          { typedef double default_type; };
+  struct sqrt_2_o_2_  { typedef double default_type; };
+  struct sqrt_2_      { typedef double default_type; };
+  struct gold_        { typedef double default_type; };
+  struct c_gold_      { typedef double default_type; };
+  struct m_half_      { typedef double default_type; };
+  struct m_zero_      { typedef double default_type; };
+  struct half_        { typedef double default_type; };
+  struct third_       { typedef double default_type; };
+  struct quarter_     { typedef double default_type; };
+  struct two_to_m10_  { typedef double default_type; };
+  struct two_to_nmb_  { typedef double default_type; };
+  struct split_factor_{ typedef double default_type; };
 
   //////////////////////////////////////////////////////////////////////////////
   // Small type to gather real value bit patterns

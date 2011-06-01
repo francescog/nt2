@@ -21,9 +21,12 @@ namespace nt2
 {
   namespace tag
   {
-    struct ldexp_mask_        {}; struct nb_digits_         {};
-    struct nb_mantissa_bits_  {}; struct nb_exponent_bits_  {};
-    struct max_exponent_      {}; struct min_exponent_      {};
+    struct ldexp_mask_        { typedef double default_type; };
+    struct nb_digits_         { typedef double default_type; };
+    struct nb_mantissa_bits_  { typedef double default_type; };
+    struct nb_exponent_bits_  { typedef double default_type; };
+    struct max_exponent_      { typedef double default_type; };
+    struct min_exponent_      { typedef double default_type; };
   }
   
   NT2_CONSTANT_IMPLEMENTATION(nt2::tag::ldexp_mask_       , Ldexpmask      )

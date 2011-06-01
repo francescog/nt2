@@ -19,7 +19,9 @@
 
 namespace nt2 { namespace tag
 {
-  struct inf_   {}; struct m_inf_ {}; struct nan_  {};
+  struct inf_   { typedef double default_type; };
+  struct m_inf_ { typedef double default_type; };
+  struct nan_   { typedef double default_type; };
 } }
 
 namespace nt2

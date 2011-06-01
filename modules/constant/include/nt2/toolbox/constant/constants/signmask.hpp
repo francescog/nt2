@@ -21,7 +21,7 @@ namespace nt2
 {
   namespace tag
   {
-    struct signmask_ {};
+    struct signmask_ { typedef nt2::uint64_t default_type; };
   }
   
   NT2_CONSTANT_IMPLEMENTATION(nt2::tag::signmask_, Signmask)

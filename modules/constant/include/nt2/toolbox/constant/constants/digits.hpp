@@ -22,7 +22,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 namespace nt2 { namespace tag
 {
-  template<nt2::int64_t N> struct digit_ {};
+  template<nt2::int64_t N> struct digit_
+  {
+    typedef typename boost::mpl::if_c < (N >= 0 )
+                                      , nt2::uint64_t
+                                      , nt2::int64_t
+                                      >::type default_type;
+  };
 } }
 
 ////////////////////////////////////////////////////////////////////////////////

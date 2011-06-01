@@ -17,7 +17,7 @@ namespace nt2
 {
   namespace tag
   {
-    struct false_  {};
+    struct false_  { typedef bool default_type; };
   }
   
   NT2_CONSTANT_IMPLEMENTATION(nt2::tag::false_, False)

@@ -16,15 +16,15 @@
 
 namespace nt2 { namespace tag
 {
-  struct eps__            {};
-  struct half_eps__       {};
-  struct _3_x_eps_        {};
-  struct sqrt_eps_        {};
-  struct forth_root_eps_  {};
-  struct third_root_eps_  {};
-  struct mlog_eps_2_      {};
-  struct min_denormal_    {};
-  struct smallest_pos_val_{};
+  struct eps__            { typedef double default_type; };
+  struct half_eps__       { typedef double default_type; };
+  struct _3_x_eps_        { typedef double default_type; };
+  struct sqrt_eps_        { typedef double default_type; };
+  struct forth_root_eps_  { typedef double default_type; };
+  struct third_root_eps_  { typedef double default_type; };
+  struct mlog_eps_2_      { typedef double default_type; };
+  struct min_denormal_    { typedef double default_type; };
+  struct smallest_pos_val_{ typedef double default_type; };
 } }
 
 namespace nt2
