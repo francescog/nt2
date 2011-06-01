@@ -11,6 +11,7 @@
 
 #include <nt2/sdk/dsl/category.hpp>
 #include <nt2/sdk/constant/category.hpp>
+#include <boost/type_traits/is_void.hpp>
 #include <nt2/include/functions/splat.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -57,8 +58,16 @@ namespace nt2 { namespace ext
 
     template<class This, class Value, class State, class Data>
     struct  result<This(Value,State,Data)>
-          : meta::strip<State>::type
-    {};
+    {
+        typedef typename meta::strip<State>::type state_type;
+        typedef meta::strip<Value>                value_type;
+
+        typedef typename boost::mpl::
+                eval_if < boost::is_void<typename state_type::type>
+                        , value_type
+                        , state_type
+                        >::type type;
+    };
 
     template<class Value, class State, class Data> inline
     typename result<call(Value,State,Data)>::type
@@ -81,12 +90,19 @@ namespace nt2 { namespace ext
     template<class This, class Value, class State, class Data>
     struct result<This(Value,State,Data)>
     {
-      typedef typename meta::strip<State>::type::type type;
+      typedef typename meta::strip<State>::type state_type;
+      typedef typename ID::default_type         value_type;
+
+      typedef typename boost::mpl::
+              eval_if < boost::is_void<typename state_type::type>
+                      , boost::mpl::identity<value_type>
+                      , state_type
+                      >::type type;
     };
 
     template<class Value, class State, class Data> inline
     typename result<call(Value,State,Data)>::type
-    operator()( Value& v, State& , Data&) const
+    operator()( Value& , State& , Data&) const
     {
       functor<ID> callee;
       typedef typename result<call(Value,State,Data)>::type type;
