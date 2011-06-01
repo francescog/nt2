@@ -15,9 +15,7 @@
  */
 
 #include <nt2/sdk/error/concepts.hpp>
-#include <nt2/sdk/meta/hierarchy.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <nt2/sdk/meta/is_hierarchized.hpp>
 
 #if defined(DOXYGEN_ONLY)
 namespace nt2
@@ -50,10 +48,7 @@ namespace nt2
 namespace nt2
 {
   template< class T
-          , bool Enable =
-            !boost::is_same < typename meta::hierarchy_of<Hierarchized>::type
-                            , meta::unspecified_<Hierarchized>
-                            >::value
+          , bool Enable = meta::is_hierarchized<T>::value
           >
   struct Hierarchizable
   {
