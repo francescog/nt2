@@ -12,8 +12,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Generic grammar for table containers
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/dsl/from_domain.hpp>
 #include <nt2/sdk/constant/category.hpp>
+#include <nt2/sdk/meta/is_hierarchized.hpp>
 #include <nt2/core/container/dsl/forward.hpp>
 #include <nt2/core/container/meta/is_container.hpp>
 #include <nt2/sdk/dsl/is_assignment_expression.hpp>
@@ -27,22 +27,20 @@ namespace nt2 { namespace containers
   struct  grammar
         : boost::proto
         ::or_ <
-              //  Terminals are containers-tagged type and  constants
+              //  Terminals are containers-tagged type and hierarchized values
                 boost::proto::
                 and_< boost::proto::nullary_expr<boost::proto::_,boost::proto::_>
                     , boost::proto::if_ < meta::
                                           is_container<boost::proto::_expr>()
                                        >
                    >
-              , boost::proto::terminal< tag::constant_<boost::proto::_> >
               , boost::proto::
                 and_< boost::proto::terminal<boost::proto::_>
-                    , boost::proto::if_ < boost::
-                                          is_arithmetic<boost::proto::_value>()
+                    , boost::proto::if_ < meta::
+                                          is_hierarchized<boost::proto::_value>()
                                         >
                     >
-              //  Nodes are cross-domain node, any non-low level nodes with
-              //  matching type/cardinal, any non assignment nodes
+              //  Nodes are any non-low level or non assignment nodes
               , boost::proto::
                 and_< boost::proto::
                       nary_expr < boost::proto::_
