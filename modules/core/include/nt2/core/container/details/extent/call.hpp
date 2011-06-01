@@ -37,7 +37,7 @@ namespace nt2 { namespace meta
 NT2_REGISTER_DISPATCH_TPL (  tag::extent_,tag::cpu_
                           , (class A0)(class A1)(class A2)(std::size_t N)
                           , ((array_<arithmetic_<A0>,N>))
-                            ((target_<array_<arithmetic_<A1>,N> >))
+                            ((target_<unspecified_<A1> >))
                             (integer_<A2>)
                           )
 
@@ -45,7 +45,7 @@ namespace nt2 { namespace ext
 {
   template<class Dummy,std::size_t N>
   struct call<tag::extent_( tag::array_<tag::arithmetic_,N>
-                          , tag::target_< tag::array_<tag::arithmetic_,N> >
+                          , tag::target_< tag::unspecified_ >
                           , tag::integer_
                           ),tag::cpu_,Dummy>
   : callable

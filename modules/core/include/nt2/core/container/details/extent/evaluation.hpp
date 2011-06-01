@@ -19,20 +19,16 @@
 NT2_REGISTER_DISPATCH (  tag::evaluate_,tag::cpu_
                       , (A0)(Sema0)(D0)(A1)(Tag)(D1)(Sema1)
                       , ((expr_ < A0
-                                , domain_ < containers::
-                                            domain< tag::extent_, D0 >
-                                          >
+                                , domain_<containers::domain<tag::extent_,D0> >
                                 , tag::extent_, Sema0
                                 >
                         ))
                         ((expr_ < A1
-                                , domain_ < containers::
-                                            domain< tag::extent_, D1 >
-                                          >
+                                , domain_<containers::domain<tag::extent_,D1> >
                                 , Tag, Sema1
                                 >
                         ))
-                          )
+                      )
 
 namespace nt2 { namespace ext
 {
@@ -68,7 +64,7 @@ namespace nt2 { namespace ext
 
       // Fill the remaining with 1
       for(std::size_t i=D1::value;i<D0::value;++i)
-              boost::proto::value(a0)[i] = 1;
+        boost::proto::value(a0)[i] = 1;
     }
   };
 } }
