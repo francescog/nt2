@@ -9,11 +9,6 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_TABLE_GENERATOR_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_TABLE_GENERATOR_HPP_INCLUDED
 
-namespace nt2 { namespace tag
-{
-  struct table_;
-} }
-
 namespace nt2 { namespace containers
 {
   //////////////////////////////////////////////////////////////////////////////
