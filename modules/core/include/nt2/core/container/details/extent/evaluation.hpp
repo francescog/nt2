@@ -17,21 +17,17 @@
 // Evaluation strategy for extent class
 ////////////////////////////////////////////////////////////////////////////////
 NT2_REGISTER_DISPATCH (  tag::evaluate_,tag::cpu_
-                      , (A0)(Sema0)(A1)(Tag)(Sema1)
+                      , (A0)(Sema0)(D0)(A1)(Tag)(D1)(Sema1)
                       , ((expr_ < A0
                                 , domain_ < containers::
-                                            domain< tag::extent_
-                                                  , boost::mpl::size_t<2>
-                                                  >
+                                            domain< tag::extent_, D0 >
                                           >
                                 , tag::extent_, Sema0
                                 >
                         ))
                         ((expr_ < A1
                                 , domain_ < containers::
-                                            domain< tag::extent_
-                                                  , boost::mpl::size_t<2>
-                                                  >
+                                            domain< tag::extent_, D1 >
                                           >
                                 , Tag, Sema1
                                 >
@@ -40,16 +36,12 @@ NT2_REGISTER_DISPATCH (  tag::evaluate_,tag::cpu_
 
 namespace nt2 { namespace ext
 {
-  template<class Tag, class Sema0, class Sema1, class Dummy>
+  template<class Tag, class Sema0, class D0, class Sema1, class D1, class Dummy>
   struct call < tag::evaluate_
-                ( tag::expr_<containers::domain < tag::extent_
-                                                , boost::mpl::size_t<2>
-                                                >
+                ( tag::expr_<containers::domain < tag::extent_, D0 >
                             , tag::extent_, Sema0
                             >
-                , tag::expr_<containers::domain < tag::extent_
-                                                , boost::mpl::size_t<2>
-                                                >
+                , tag::expr_<containers::domain < tag::extent_, D1 >
                             , Tag, Sema1
                             >
                 )
@@ -64,18 +56,18 @@ namespace nt2 { namespace ext
       meta::as_<typename A0::data_type>                         target;
       meta::compile< meta::compute<boost::mpl::_1,tag::cpu_> >  callee;
 
-      // Who's bigger ?
-      std::size_t r_size = nt2::size(a1)(2);
-      std::size_t l_size = a0.size();
-
-      NT2_ASSERT((l_size >= r_size) && "Size mismatch in extent evaluation");
+      NT2_STATIC_ASSERT
+      ( (D0::value >= D1::value)
+      , NT2_SIZE_MISMATCH_IN_EXTENT_EVALUATION
+      , "Size mismatch in extent evaluation"
+      );
 
       // Fill the common part of the extent
-      for(std::size_t i=0;i<r_size;++i)
+      for(std::size_t i=0;i<D1::value;++i)
         boost::proto::value(a0)[i] = callee(a1,target,i);
 
       // Fill the remaining with 1
-      for(std::size_t i=r_size;i<l_size;++i)
+      for(std::size_t i=D1::value;i<D0::value;++i)
               boost::proto::value(a0)[i] = 1;
     }
   };

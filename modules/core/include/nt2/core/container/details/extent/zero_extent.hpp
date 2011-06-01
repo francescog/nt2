@@ -10,6 +10,7 @@
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_ZERO_EXTENT_HPP_INCLUDED
 
 #include <boost/mpl/vector_c.hpp>
+#include <boost/fusion/include/tag_of.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
 
 namespace nt2 { namespace containers
@@ -31,6 +32,8 @@ namespace nt2 { namespace containers
     typedef std::ptrdiff_t                          difference_type;
     typedef void*                                   iterator;
     typedef void*                                   const_iterator;
+
+    typedef typename boost::fusion::traits::tag_of<data_type>::type fusion_tag;
 
     static const std::size_t static_dimension = 0;
 

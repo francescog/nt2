@@ -23,7 +23,7 @@ namespace nt2 { namespace containers
   struct  domain<tag::extent_,D>
         : boost::proto::domain< containers::generator<tag::extent_,D>
                               , containers::grammar<tag::extent_>
-                              , domain<tag::table_,D>
+                              , domain<tag::table_,boost::mpl::size_t<2> >
                               >
   {};
 } }

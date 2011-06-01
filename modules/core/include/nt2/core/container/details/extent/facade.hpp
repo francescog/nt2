@@ -30,7 +30,7 @@ namespace nt2 { namespace containers
                                                             , data_type
                                                             >::type
                       , tag::extent_
-                      , boost::mpl::size_t<2>
+                      , boost::mpl::size_t<Dimensions::dimensions>
                       >                                       type;
   };
 } }

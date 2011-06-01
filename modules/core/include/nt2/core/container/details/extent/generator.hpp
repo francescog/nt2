@@ -11,11 +11,6 @@
 
 #include <nt2/core/functions/size.hpp>
 
-namespace nt2 { namespace tag
-{
-  struct extent_;
-} }
-
 namespace nt2 { namespace containers
 {
   //////////////////////////////////////////////////////////////////////////////
