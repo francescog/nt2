@@ -10,6 +10,7 @@
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_GENERATOR_HPP_INCLUDED
 
 #include <nt2/core/functions/size.hpp>
+#include <nt2/core/container/details/extent/validate.hpp>
 
 namespace nt2 { namespace containers
 {
@@ -29,15 +30,35 @@ namespace nt2 { namespace containers
 
     struct check : boost::proto::callable
     {
-      typedef bool result_type;
+      template<class Sig> struct result;
 
-      template<class Left, class Right>
-      inline bool operator()(Left const& l, Right const& r) const
+      template<class This, class L, class R>
+      struct result<This(L,R)>
       {
-        const std::size_t ls = nt2::size(l).size();
-        const std::size_t rs = nt2::size(r).size();
-        return (ls == rs) || !ls || !rs;
-      }
+        typedef typename meta::call<tag::size_(L)>::type LHS;
+        typedef typename meta::call<tag::size_(R)>::type RHS;
+        typedef boost::mpl::
+                bool_<  (LHS::static_dimensions == RHS::static_dimensions)
+                      || !LHS::static_dimensions
+                      || !RHS::static_dimensions
+                      >                                     type;
+      };
+
+      template<class This, class A0, class A1, class A2>
+      struct result<This(A0,A1,A2)>
+      {
+        typedef typename meta::call<tag::size_(A0)>::type A0S;
+        typedef typename meta::call<tag::size_(A1)>::type A1S;
+        typedef typename meta::call<tag::size_(A2)>::type A2S;
+        typedef boost::mpl::
+                bool_<(   (A0S::static_dimensions == A1S::static_dimensions)
+                      &&  (A0S::static_dimensions == A2S::static_dimensions)
+                      )
+                      || !A0S::static_dimensions
+                      || !A1S::static_dimensions
+                      || !A2S::static_dimensions
+                      >                                     type;
+      };
     };
 
     struct  check_size
@@ -61,10 +82,12 @@ namespace nt2 { namespace containers
 
     template<class Expr>
     typename result<generator(Expr)>::type const
-    operator()(Expr const &xpr) const
+    operator()(Expr const& xpr) const
     {
-      //std::cout << "check is : " << check_size()(xpr) << "\n";
+      typename boost::result_of<check_size(Expr const &)>::type ccc;
+      std::cout << "check is : " << ccc << "\n";
       typename result<generator(Expr)>::type const that(xpr);
+      std::cout << "check2 is : " << validate(that) << "\n";
       return that;
     }
   };
