@@ -38,6 +38,8 @@ namespace nt2 { namespace containers
 
     BOOST_PROTO_EXTENDS_USING_ASSIGN(container)
 
+    BOOST_STATIC_CONSTANT(std::size_t, static_dimensions = Dims::value );
+
     ////////////////////////////////////////////////////////////////////////////
     // Default explicit constructor
     ////////////////////////////////////////////////////////////////////////////
