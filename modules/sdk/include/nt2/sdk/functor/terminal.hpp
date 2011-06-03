@@ -15,34 +15,20 @@ namespace nt2
   //==============================================================================
   // Special functor for handling terminal in expression AST evaluation
   //==============================================================================
+/*
   template<class Site> struct functor<tag::terminal_,Site>
   {
     template<class Sig> struct result;
 
-    #define M0(z,n,t)                                                             \
-    template<class This, BOOST_PP_ENUM_PARAMS(n,class A) >                        \
-    struct result<This(BOOST_PP_ENUM_PARAMS(n,A))>                                \
-    {                                                                             \
-      typedef typename meta::                                                     \
-      dispatch_call<tag::terminal_(BOOST_PP_ENUM_PARAMS(n,A)),Site>::type callee; \
-      typedef typename                                                            \
-      std::tr1::result_of<callee(BOOST_PP_ENUM_PARAMS(n,A))>::type  type;         \
-    };                                                                            \
-                                                                                  \
-    template<BOOST_PP_ENUM_PARAMS(n,class A)> inline                              \
-    typename meta::                                                               \
-    enable_call<tag::terminal_(BOOST_PP_ENUM_PARAMS(n,A)),Site>::type             \
-    operator()( BOOST_PP_ENUM_BINARY_PARAMS(n,A,& a)  ) const                     \
-    {                                                                             \
-      typename meta::                                                             \
-      dispatch_call<tag::terminal_(BOOST_PP_ENUM_PARAMS(n,A)),Site>::type callee; \
-      return callee( BOOST_PP_ENUM_PARAMS(n,a) );                                 \
-    }                                                                             \
-    /**/
-
-    BOOST_PP_REPEAT_FROM_TO(1,4,M0,~)
-
-    #undef M0
+    template<class This, class Value, class State, class Data>
+    struct result<This(Value, State, Data)>
+    {
+      typedef typename
+      meta::dispatch_call<tag::terminal_(Value,State,Data),Site>::type  callee;
+      typedef typename
+      meta::result_of<callee(Value, State, Data)>::type             type;
+    };
+*/
   };
 }
 
