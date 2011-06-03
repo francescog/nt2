@@ -12,9 +12,6 @@
 #include <boost/typeof/typeof.hpp>
 #include <nt2/sdk/dsl/litteral.hpp>
 #include <nt2/sdk/dsl/validate.hpp>
-#include <boost/fusion/include/any.hpp>
-#include <boost/fusion/include/all.hpp>
-#include <nt2/core/container/details/extent/call.hpp>
 
 namespace nt2 { namespace details { struct valid_extent; } }
 

@@ -268,7 +268,7 @@ namespace nt2 { namespace containers
     {
       NT2_STATIC_ASSERT
       (
-        (sizeof(XPR) == 0)
+        (sizeof(X) == 0)
       , NT2_SIZE_MISMATCH_IN_EXTENT_CONSTRUCTION
       , "Invalid expression of extent is being constructed"
       );
