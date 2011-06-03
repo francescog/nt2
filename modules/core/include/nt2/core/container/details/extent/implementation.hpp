@@ -259,6 +259,21 @@ namespace nt2 { namespace containers
       nt2::evaluate(*this, src);
     }
 
+    //==========================================================================
+    // This overload is there to catch invalid expression of extent_ that fell
+    // into the table domain and prevent their evaluation into a extent_;
+    //==========================================================================
+    template<class X> inline
+    explicit extent( container<X, tag::table_,boost::mpl::size_t<2> > const& )
+    {
+      NT2_STATIC_ASSERT
+      (
+        (sizeof(XPR) == 0)
+      , NT2_SIZE_MISMATCH_IN_EXTENT_CONSTRUCTION
+      , "Invalid expression of extent is being constructed"
+      );
+    }
+
     ////////////////////////////////////////////////////////////////////////////
     // Assignment operator
     ////////////////////////////////////////////////////////////////////////////
