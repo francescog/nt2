@@ -22,7 +22,7 @@
 #include <nt2/core/container/details/table/generator.hpp>
 #include <nt2/core/container/dsl/expression.hpp>
 
-namespace nt2 { namespace containers
+namespace nt2 { namespace ext
 {
   //////////////////////////////////////////////////////////////////////////////
   // table facade

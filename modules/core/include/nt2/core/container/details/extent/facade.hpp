@@ -14,10 +14,12 @@
 #include <boost/fusion/adapted/mpl.hpp>
 #include <boost/fusion/include/mpl.hpp>
 #include <boost/fusion/adapted/array.hpp>
+#include <nt2/core/container/details/extent/semantic.hpp>
 #include <nt2/core/container/dsl/container.hpp>
+#include <nt2/core/container/details/extent/fusion.hpp>
 #include <nt2/core/container/details/extent/domain.hpp>
 
-namespace nt2 { namespace containers
+namespace nt2 { namespace ext
 {
   //////////////////////////////////////////////////////////////////////////////
   // extent facade
@@ -26,12 +28,13 @@ namespace nt2 { namespace containers
   struct facade<tag::extent_,Dimensions, S>
   {
     typedef boost::array<std::size_t,Dimensions::dimensions>  data_type;
-    typedef container < typename boost::proto::nullary_expr < tag::extent_
-                                                            , data_type
-                                                            >::type
-                      , tag::extent_
-                      , boost::mpl::size_t<Dimensions::dimensions>
-                      >                                       type;
+    typedef containers::container
+            < typename boost::proto::nullary_expr < tag::extent_
+                                                  , data_type
+                                                  >::type
+            , tag::extent_
+            , boost::mpl::size_t<Dimensions::dimensions>
+            >                                                 type;
   };
 } }
 

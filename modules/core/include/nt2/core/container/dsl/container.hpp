@@ -14,18 +14,19 @@ namespace nt2 { namespace containers
   ////////////////////////////////////////////////////////////////////////////
   // Here is the domain-specific expression wrapper for container expression
   ////////////////////////////////////////////////////////////////////////////
-  template<class Expr, class Tag, class Dims>
+  template<class AST, class Tag, class Dims>
   struct  container
-        : boost::proto::extends < Expr
-                                , container<Expr,Tag,Dims>
+        : boost::proto::extends < AST
+                                , container<AST,Tag,Dims>
                                 , domain<Tag,Dims>
                                 >
+        , semantic< container<AST,Tag,Dims> >
   {
     ////////////////////////////////////////////////////////////////////////////
     // Internal proto related types
     ////////////////////////////////////////////////////////////////////////////
-    typedef boost::proto::extends < Expr
-                                  , container<Expr,Tag,Dims>
+    typedef boost::proto::extends < AST
+                                  , container<AST,Tag,Dims>
                                   , domain<Tag,Dims>
                                   >                                     parent;
 
@@ -33,17 +34,18 @@ namespace nt2 { namespace containers
     // expression hierarchy and semantic of container:::expression
     ////////////////////////////////////////////////////////////////////////////
     typedef typename
-    details::hierarchy_of_expr<container>::type nt2_hierarchy_tag;
-    typedef Tag                                 nt2_semantic_type;
-
-    BOOST_PROTO_EXTENDS_USING_ASSIGN(container)
+    details::hierarchy_of_expr<container>::type     nt2_hierarchy_tag;
+    typedef semantic< container<AST,Tag,Dims> >     nt2_semantic_type;
+    typedef typename nt2_semantic_type::fusion_tag  fusion_tag;
 
     BOOST_STATIC_CONSTANT(std::size_t, static_dimensions = Dims::value );
 
     ////////////////////////////////////////////////////////////////////////////
     // Default explicit constructor
     ////////////////////////////////////////////////////////////////////////////
-    explicit container( Expr const& xpr = Expr() ): parent(xpr) {}
+    BOOST_PROTO_EXTENDS_USING_ASSIGN(container)
+
+    explicit container( AST const& xpr = AST() ): parent(xpr) {}
   };
 } }
 
