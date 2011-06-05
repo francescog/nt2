@@ -16,12 +16,12 @@ namespace nt2 { namespace container
 {
   template<class Type, class Settings>
   struct  table
-        : facade<tag::table_,Type,Settings>::type
+        : ext::facade<tag::table_,Type,Settings>::type
   {
     ////////////////////////////////////////////////////////////////////////////
     // Basic sub-types needed elsewhere
     ////////////////////////////////////////////////////////////////////////////
-    typedef facade<tag::table_,Type,Settings>             facade_type;
+    typedef ext::facade<tag::table_,Type,Settings>        facade_type;
     typedef typename facade_type::type                    parent;
     typedef typename facade_type::data_type               data_type;
     typedef typename data_type::sizes_type                sizes_type;

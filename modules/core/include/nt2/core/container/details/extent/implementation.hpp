@@ -58,18 +58,11 @@ namespace nt2 { namespace containers
    */
   //============================================================================
   template<class Dimensions>
-  struct  extent : facade<tag::extent_,Dimensions,void>::type
+  struct  extent : ext::facade<tag::extent_,Dimensions,void>::type
   {
-    typedef facade<tag::extent_,Dimensions,void>  facade_type;
-    typedef typename facade_type::type            parent;
-    typedef typename facade_type::data_type       data_type;
-
-    //==========================================================================
-    /*!
-     * Static value containing the number of dimension stored by the \ref extent
-     */
-    //==========================================================================
-    static const std::size_t static_dimension = Dimensions::dimensions;
+    typedef ext::facade<tag::extent_,Dimensions,void> facade_type;
+    typedef typename facade_type::type                parent;
+    typedef typename facade_type::data_type           data_type;
 
     //==========================================================================
     // Container interface
@@ -165,30 +158,32 @@ namespace nt2 { namespace containers
     //==========================================================================
     template<class D> inline extent( extent<D> const& src ) : parent()
     {
+      BOOST_STATIC_CONSTANT(std::size_t, sdims = extent<D>::static_dimensions );
+
       NT2_STATIC_ASSERT
       (
-        ((extent<D>::static_dimension <= static_dimension))
-      , EXTENT_COPY_SIZE_MISMATCH
-      , "You attempted to construct an extent from an extent of a larger size. "
-        "Check the correctness of your code or use compress function before "
-        "performing this copy."
-      );
+        ((sdims <= parent::static_dimensions))
+        , EXTENT_COPY_SIZE_MISMATCH
+        , "You attempted to construct an extent from an extent of a larger size. "
+          "Check the correctness of your code or use compress function before "
+          "performing this copy."
+       );
 
       NT2_STATIC_ASSERT
       (
         (!Dimensions::is_static::value)
-      , INVALID_STATIC_EXTENT_COPY
-      , "Constructor of static extent from non-static extent is disabled."
+        , INVALID_STATIC_EXTENT_COPY
+        , "Constructor of static extent from non-static extent is disabled."
       );
 
-      for(std::size_t i = 0; i < extent<D>::static_dimension; ++i )
-        boost::proto::value(*this)[i] = src(i);
+      for(std::size_t i = 0; i < sdims; ++i )
+      boost::proto::value(*this)[i] = src(i);
 
-      for(std::size_t i = extent<D>::static_dimension; i < static_dimension; ++i )
-        boost::proto::value(*this)[i] = 1;
+      for(std::size_t i = sdims; i < parent::static_dimensions; ++i )
+      boost::proto::value(*this)[i] = 1;
     }
 
-    #if defined(DOXYGEN_ONLY)
+#if defined(DOXYGEN_ONLY)
     //==========================================================================
     /*!
      * \ref extent constructor from a list of integral values initializes its
@@ -210,26 +205,26 @@ namespace nt2 { namespace containers
      */
     //==========================================================================
     template<class ...U> inline explicit extent( U... const& values );
-    #endif
+#endif
 
-    #define M1(z,n,t) boost::proto::value(*this)[n]= BOOST_PP_CAT(d,n); \
-    /**/
+#define M1(z,n,t) boost::proto::value(*this)[n]= BOOST_PP_CAT(d,n); \
+/**/
 
-    #define M0(z,n,t)                                                             \
-    template<BOOST_PP_ENUM_PARAMS(n,class U)> inline explicit                     \
-    extent( BOOST_PP_ENUM_BINARY_PARAMS(n,const U, & d)                           \
-          , typename boost::enable_if_c<boost::is_integral<U0>::value>::type* = 0 \
-          ) : parent()                                                            \
-    {                                                                             \
-      boost::proto::value(*this).fill(1);                                         \
-      BOOST_PP_REPEAT(n,M1,~)                                                     \
-    }                                                                             \
-    /**/
+#define M0(z,n,t)                                                             \
+template<BOOST_PP_ENUM_PARAMS(n,class U)> inline explicit                     \
+extent( BOOST_PP_ENUM_BINARY_PARAMS(n,const U, & d)                           \
+, typename boost::enable_if_c<boost::is_integral<U0>::value>::type* = 0 \
+) : parent()                                                            \
+{                                                                             \
+boost::proto::value(*this).fill(1);                                         \
+BOOST_PP_REPEAT(n,M1,~)                                                     \
+}                                                                             \
+/**/
 
-    BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M0,~)
+      BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M0,~)
 
-    #undef M0
-    #undef M1
+#undef M0
+#undef M1
 
     //==========================================================================
     // Constructor from a expression of extent
@@ -268,10 +263,10 @@ namespace nt2 { namespace containers
     {
       NT2_STATIC_ASSERT
       (
-        (sizeof(X) == 0)
-      , NT2_SIZE_MISMATCH_IN_EXTENT_CONSTRUCTION
-      , "Invalid expression of extent is being constructed"
-      );
+       (sizeof(X) == 0)
+       , NT2_SIZE_MISMATCH_IN_EXTENT_CONSTRUCTION
+       , "Invalid expression of extent is being constructed"
+       );
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -314,9 +309,9 @@ namespace nt2 { namespace containers
     template<class Index> inline
     typename
     boost::enable_if_c<   (!Dimensions::is_static::value)
-                      &&  (boost::is_integral<Index>::value)
-                      , reference
-                      >::type
+    &&  (boost::is_integral<Index>::value)
+    , reference
+    >::type
     operator()(Index i)
     {
       // this should be part of container interface
@@ -344,7 +339,7 @@ namespace nt2 { namespace containers
     //==========================================================================
     /*! Return the number of dimensions stored in the extent.                */
     //==========================================================================
-    static inline size_type size() { return static_dimension; }
+    static inline size_type size() { return parent::static_dimensions; }
 
     //==========================================================================
     /*! Return if an \ref extent is empty.                                   */
@@ -394,7 +389,7 @@ namespace nt2 { namespace containers
     //==========================================================================
     inline size_type  size(std::size_t i) const
     {
-      return (i<=1) ? static_dimension : 1;
+      return (i<=1) ? parent::static_dimensions : 1;
     }
 
     //==========================================================================
@@ -423,7 +418,7 @@ namespace nt2 { namespace containers
     //==========================================================================
     inline difference_type  upper(std::size_t i)  const
     {
-      return (i==1) ? static_dimension : 1;
+      return (i==1) ? parent::static_dimensions : 1;
     }
 
     //==========================================================================
@@ -431,9 +426,9 @@ namespace nt2 { namespace containers
     //==========================================================================
     inline std::size_t nDims() const
     {
-      std::size_t i = static_dimension-1;
+      std::size_t i = parent::static_dimensions-1;
       while(boost::proto::value(*this)[--i] == 1);
-      return i<0 ? i+1 : static_dimension;
+      return i<0 ? i+1 : parent::static_dimensions;
     }
   };
 } }

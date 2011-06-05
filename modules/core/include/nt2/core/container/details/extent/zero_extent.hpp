@@ -20,9 +20,9 @@ namespace nt2 { namespace containers
   // values. It still models Container and Collection but acts as an ever empty
   // one. Values returned by various accessors are always 1.
   //============================================================================
-  template<> struct  extent<_0D> : facade<tag::extent_,_0D,void>::type
+  template<> struct  extent<_0D> : ext::facade<tag::extent_,_0D,void>::type
   {
-    typedef facade<tag::extent_,_0D,void>           facade_type;
+    typedef ext::facade<tag::extent_,_0D,void>      facade_type;
     typedef facade_type::type                       parent;
     typedef boost::mpl::vector_c<std::size_t,1,1>   data_type;
     typedef std::size_t                             value_type;
@@ -32,10 +32,6 @@ namespace nt2 { namespace containers
     typedef std::ptrdiff_t                          difference_type;
     typedef void*                                   iterator;
     typedef void*                                   const_iterator;
-
-    typedef typename boost::fusion::traits::tag_of<data_type>::type fusion_tag;
-
-    static const std::size_t static_dimension = 0;
 
     extent() : parent() {}
     extent( extent const& ) : parent() {}
