@@ -16,7 +16,7 @@
 
 #include <cstddef>
 
-namespace nt2 { namespace meta
+namespace boost { namespace meta
 {
   //============================================================================
   /*!

@@ -20,7 +20,7 @@
 #include <nt2/sdk/error/static_assert.hpp>
 #include <nt2/sdk/meta/is_fundamental.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace meta
 {
   //============================================================================
   /*!

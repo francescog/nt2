@@ -21,7 +21,7 @@
 #include <nt2/sdk/memory/details/category.hpp>
 #include <nt2/sdk/functor/preprocessor/function.hpp>
 
-namespace nt2
+namespace boost
 {
   namespace tag { struct slice_ {}; }
 

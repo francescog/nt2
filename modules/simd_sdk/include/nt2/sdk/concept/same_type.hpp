@@ -16,23 +16,26 @@
 // SameType concept
 // This helpers concept helps checking that two types are the same
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2
+namespace boost
 {
-  template<class T1,class T2, bool EnableIf = boost::is_same<T1,T2>::value>
-  struct SameType
-  {
-    BOOST_CONCEPT_USAGE(SameType) {}
-  };
+  namespace simd
+  { 
+    template<class T1,class T2, bool EnableIf = boost::is_same<T1,T2>::value>
+    struct SameType
+    {
+      BOOST_CONCEPT_USAGE(SameType) {}
+    };
 
-  template<class T1,class T2> struct SameType<T1,T2,false>
-  {
-    void types_are_not_the_same();
-    BOOST_CONCEPT_USAGE(SameType) { types_are_not_the_same(t1,t2); }
+    template<class T1,class T2> struct SameType<T1,T2,false>
+    {
+      void types_are_not_the_same();
+      BOOST_CONCEPT_USAGE(SameType) { types_are_not_the_same(t1,t2); }
 
-    private:
-    T1 t1;
-    T2 t2;
-  };
+      private:
+      T1 t1;
+      T2 t2;
+    };
+  }
 }
 
 #endif

@@ -14,48 +14,51 @@
 #include <nt2/sdk/meta/enable_if_type.hpp>
 #include <boost/function_types/result_type.hpp>
 
-namespace nt2
+namespace boost
 {
-  namespace details
+  namespace simd
   {
-    //////////////////////////////////////////////////////////////////////////
-    // Is result_type defined in a given type ?
-    //////////////////////////////////////////////////////////////////////////
-    BOOST_MPL_HAS_XXX_TRAIT_DEF(result_type)
+    namespace details
+    {
+      //////////////////////////////////////////////////////////////////////////
+      // Is result_type defined in a given type ?
+      //////////////////////////////////////////////////////////////////////////
+      BOOST_MPL_HAS_XXX_TRAIT_DEF(result_type)
 
-    //////////////////////////////////////////////////////////////////////////
-    // Is a inner result struct defined in a given type ?
-    //////////////////////////////////////////////////////////////////////////
-    template<class F, class FArgs, class Enable=void>
-    struct result_defined
-         : boost::mpl::false_ {};
+      //////////////////////////////////////////////////////////////////////////
+      // Is a inner result struct defined in a given type ?
+      //////////////////////////////////////////////////////////////////////////
+      template<class F, class FArgs, class Enable=void>
+      struct result_defined
+		: boost::mpl::false_ {};
 
-    template<class F, class Args>
-    struct result_defined< F
-                         , Args
-                         , typename meta::enable_if_type<
-                                    typename F::template result<Args>::type
-                                                        >::type
-                         >
-         : boost::mpl::true_ {};
-  }
+      template<class F, class Args>
+      struct result_defined< F
+                           , Args
+                           , typename meta::enable_if_type<
+                                      typename F::template result<Args>::type
+                                                          >::type
+                           >
+                : boost::mpl::true_ {};
+    }
 
-  namespace meta
-  {
-    template<class T, class Enable=void>
-    struct is_result_of_supported : public boost::mpl::false_ {};
+    namespace meta
+    {
+      template<class T, class Enable=void>
+      struct is_result_of_supported : public boost::mpl::false_ {};
 
-    template<class T>
-    struct is_result_of_supported<T, typename boost::enable_if_c<
-          boost::mpl::or_< details::has_result_type<
+      template<class T>
+      struct is_result_of_supported<T, typename boost::enable_if_c<
+      		boost::mpl::or_< details::has_result_type<
                           typename boost::function_types::result_type<T>::type
-                                                   >
-                         , details::result_defined<
+                                                         >
+                               , details::result_defined<
                           typename boost::function_types::result_type<T>::type,T
                                                   >
-                         >::value
-            >::type
-        > : boost::mpl::true_ {};
+                               >::value
+              >::type
+          > : boost::mpl::true_ {};
+    }
   }
 }
 #endif

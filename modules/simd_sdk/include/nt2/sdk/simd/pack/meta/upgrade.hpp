@@ -12,8 +12,10 @@
 #include <nt2/sdk/meta/upgrade.hpp>
 #include <nt2/sdk/simd/pack/forward.hpp>
 
-namespace nt2
+namespace boost
 {
+  namespace simd
+  {
     namespace details { namespace simd
     {
         template<typename T, typename U>
@@ -50,6 +52,7 @@ namespace nt2
             >::type type;
         };
     }
+  }
 }
 
 #endif

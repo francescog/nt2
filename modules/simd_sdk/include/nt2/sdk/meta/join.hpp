@@ -15,7 +15,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/sdk/meta/has_key.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class H1,class H2> struct join
   {
@@ -26,6 +26,6 @@ namespace nt2 { namespace meta
                             >
     key(T*);
   };
-} }
+} } }
 
 #endif

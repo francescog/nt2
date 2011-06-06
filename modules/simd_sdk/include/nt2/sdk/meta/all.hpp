@@ -23,7 +23,7 @@
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
 #endif
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //============================================================================
   // Recursive variadics
@@ -81,6 +81,6 @@ namespace nt2 { namespace meta
         : details::all_impl<Pred,BOOST_PP_ENUM_PARAMS(NT2_MAX_META_ARITY, A)>
   {};
   #endif
-} }
+} } }
 
 #endif

@@ -16,71 +16,74 @@
 #include <nt2/sdk/error/concepts.hpp>
 #include <nt2/sdk/concepts/same_type.hpp>
 
-namespace nt2
+namespace boost
 {
-  //////////////////////////////////////////////////////////////////////////////
-  // Allocator concept
-  //////////////////////////////////////////////////////////////////////////////
-  template<class X> struct  Allocator
-        : boost::CopyConstructible<X>
-        , boost::DefaultConstructible<X>
-        , boost::EqualityComparable<X>
+  namespace simd
   {
-    typedef typename X::value_type      value_type;
-    typedef typename X::pointer         pointer;
-    typedef typename X::const_pointer   const_pointer;
-    typedef typename X::reference       reference;
-    typedef typename X::const_reference const_reference;
-    typedef typename X::size_type       size_type;
-
-    typedef typename X::template rebind<value_type>::other other;
-    BOOST_CONCEPT_ASSERT((SameType<X,other>));
-
-    BOOST_CONCEPT_USAGE(Allocator)
+    //////////////////////////////////////////////////////////////////////////////
+    // Allocator concept
+    //////////////////////////////////////////////////////////////////////////////
+    template<class X> struct  Allocator
+      : boost::CopyConstructible<X>
+      , boost::DefaultConstructible<X>
+      , boost::EqualityComparable<X>
     {
-      p   = x.allocate(s);
-      s   = x.max_size();
-      p   = x.address((value_type&)(v));
-      cp  = x.address((value_type const&)(v));
-      x.construct(p,v);
-      x.destroy(p);
-      x.deallocate(p,s);
-    }
+      typedef typename X::value_type      value_type;
+      typedef typename X::pointer         pointer;
+      typedef typename X::const_pointer   const_pointer;
+      typedef typename X::reference       reference;
+      typedef typename X::const_reference const_reference;
+      typedef typename X::size_type       size_type;
 
-    private:
-    X                 x;
-    size_type         s;
-    pointer           p;
-    const_pointer     cp;
-    value_type        v;
-  };
+      typedef typename X::template rebind<value_type>::other other;
+      BOOST_CONCEPT_ASSERT((SameType<X,other>));
 
-  //////////////////////////////////////////////////////////////////////////////
-  // Allocator archetype
-  //////////////////////////////////////////////////////////////////////////////
-  template <class T> class allocator_archetype
-  {
-    public:
-    typedef T           value_type;
-    typedef T*          pointer;
-    typedef T const*    const_pointer;
-    typedef T&          reference;
-    typedef T const&    const_reference;
-    typedef std::size_t size_type;
+      BOOST_CONCEPT_USAGE(Allocator)
+      {
+	p   = x.allocate(s);
+	s   = x.max_size();
+	p   = x.address((value_type&)(v));
+	cp  = x.address((value_type const&)(v));
+	x.construct(p,v);
+	x.destroy(p);
+	x.deallocate(p,s);
+      }
 
-    template<class U> struct rebind { typedef allocator_archetype<U> other; };
+      private:
+      X                 x;
+      size_type         s;
+      pointer           p;
+      const_pointer     cp;
+      value_type        v;
+    };
 
-    pointer   allocate(size_type)           { return 0; }
-    size_type max_size()                    { return 0; }
-    pointer       address(reference)        { return 0; }
-    const_pointer address(const_reference)  { return 0; }
-    void construct(pointer,const_reference) {}
-    void destroy(pointer)                   {}
-    void deallocate(pointer,size_type)      {}
+    //////////////////////////////////////////////////////////////////////////////
+    // Allocator archetype
+    //////////////////////////////////////////////////////////////////////////////
+    template <class T> class allocator_archetype
+    {
+      public:
+	typedef T           value_type;
+	typedef T*          pointer;
+	typedef T const*    const_pointer;
+	typedef T&          reference;
+	typedef T const&    const_reference;
+	typedef std::size_t size_type;
 
-    bool operator==(allocator_archetype const&) { return true; }
-    bool operator!=(allocator_archetype const&) { return false; }
-  };
+	template<class U> struct rebind { typedef allocator_archetype<U> other; };
+
+	pointer   allocate(size_type)           { return 0; }
+	size_type max_size()                    { return 0; }
+	pointer       address(reference)        { return 0; }
+	const_pointer address(const_reference)  { return 0; }
+	void construct(pointer,const_reference) {}
+	void destroy(pointer)                   {}
+	void deallocate(pointer,size_type)      {}
+
+	bool operator==(allocator_archetype const&) { return true; }
+	bool operator!=(allocator_archetype const&) { return false; }
+    };
+  }
 }
 
 #endif

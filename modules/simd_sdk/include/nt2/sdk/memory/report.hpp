@@ -15,7 +15,7 @@
 #include <nt2/sdk/memory/config.hpp>
 #include <nt2/sdk/config/details/reporter.hpp>
 
-namespace nt2 { namespace config
+namespace boost { namespace simd { namespace config
 {
   //////////////////////////////////////////////////////////////////////////////
   // Memory configuration status reporter
@@ -34,6 +34,6 @@ namespace nt2 { namespace config
   }
 
   NT2_REGISTER_STATUS(memories);
-} }
+} } }
 
 #endif

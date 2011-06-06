@@ -12,11 +12,11 @@
 #include <nt2/sdk/option/option_expr_fwd.hpp>
 #include <boost/proto/core.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   struct  option_domain
         : boost::proto::domain<boost::proto::pod_generator<option_expr> >
   {};
-} }
+} } }
 
 #endif

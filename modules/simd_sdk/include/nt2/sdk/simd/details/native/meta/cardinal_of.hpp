@@ -13,7 +13,7 @@
 #include <nt2/sdk/simd/category.hpp>
 #include <nt2/sdk/meta/cardinal_of.hpp>
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   ////////////////////////////////////////////////////////////////////////////
   // Overload for SIMD native types
@@ -21,7 +21,7 @@ namespace nt2 { namespace ext
   template<class T, class H, class X>
   struct  cardinal_of_impl<T , meta::simd_<H,X> >
         : boost::mpl::size_t<T::static_size> {};
-} }
+} } }
 
 #endif
 

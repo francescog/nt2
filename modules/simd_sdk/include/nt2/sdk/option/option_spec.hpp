@@ -12,7 +12,7 @@
 #include <nt2/sdk/option/option_term.hpp>
 #include <boost/proto/core.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   struct option_spec
       : boost::proto::when<
@@ -23,6 +23,6 @@ namespace nt2 { namespace details
         , boost::proto::_value(boost::proto::_right)
       >
   {};
-} }
+} } }
 
 #endif

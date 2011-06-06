@@ -24,7 +24,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Defines the catch-all call for proto expression
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
     template<typename Expr, typename Enable = void>
     struct is_terminal : boost::mpl::false_
@@ -89,7 +89,7 @@ namespace nt2 { namespace details
         return boost::cref(expr);
     }
 
-} }
+} } }
 
 #if !defined(NT2_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/sdk/dsl/preprocessed/call.hpp>
@@ -137,7 +137,7 @@ NT2_FUNCTOR_CALL(n)                                             \
 /**/
 
 BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_PROTO_MAX_ARITY),M4,~)
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Func,class Dummy>
   struct call<Func(tag::ast_),tag::formal_,Dummy> : callable
@@ -145,7 +145,7 @@ namespace nt2 { namespace ext
     template<class Sig> struct result;
     BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_PROTO_MAX_ARITY),M0,~)
   };
-} }
+} } }
 
 #undef M0
 #undef M1

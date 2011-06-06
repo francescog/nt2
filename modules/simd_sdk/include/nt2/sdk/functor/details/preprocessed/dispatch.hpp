@@ -8,7 +8,7 @@
 //==============================================================================
 // Actual dispatching mechanism implementation
 //==============================================================================
-namespace nt2 { namespace meta
+namespace boost { namespace meta
 {
   struct adl_helper {};
   //============================================================================
@@ -21,7 +21,7 @@ namespace nt2 { namespace meta
 // Local macro to generate the dispatch selector
 //==============================================================================
 /**/
-namespace nt2 { namespace meta
+namespace boost { namespace meta
 {
   //==============================================================================
   // dispatch_call finds the proper call overload for evaluating a given

@@ -12,36 +12,42 @@
 #include <nt2/sdk/functor/meta/hierarchy.hpp>
 #include <boost/proto/tags.hpp>
 
-namespace nt2
+namespace boost
 {
-  //============================================================================
-  /*
-   * default_site defines the architecture dependant default evaluation context
-   * for functors.
-   */
-  //============================================================================
-  template< class Tag, class Enable = void > struct default_site
+  namespace simd
   {
-    typedef tag::cpu_ type;
-  };
+    //============================================================================
+    /*
+     * default_site defines the architecture dependant default evaluation context
+     * for functors.
+     */
+    //============================================================================
+    template< class Tag, class Enable = void > struct default_site
+    {
+      typedef tag::cpu_ type;
+    };
 
-  template< class Tag
-          , class EvalContext = typename default_site<Tag>::type
-          >
-  struct functor;
+    template< class Tag
+            , class EvalContext = typename default_site<Tag>::type
+            >
+    struct functor;
+  }
 }
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template< class Signature , class Site, class Dummy = void> struct call;
   template< class Signature , class Site, class Dummy = void> struct validate;
-} }
+} } }
 
-namespace nt2
+namespace boost
 {
-  namespace tag
+  namespace simd
   {
-    typedef boost::proto::tag::terminal terminal_;
+    namespace tag
+    {
+      typedef boost::proto::tag::terminal terminal_;
+    }
   }
 }
 

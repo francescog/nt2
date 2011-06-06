@@ -11,7 +11,7 @@
 
 #include <boost/iterator/iterator_facade.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace details
 {
   template<class Native>
   struct  native_iterator

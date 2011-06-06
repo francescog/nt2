@@ -11,11 +11,11 @@
 
 #include <nt2/sdk/config/types.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   typedef nt2::uint64_t  cycles_t;
   double    now();
-} }
+} } }
 
 #include <nt2/sdk/timing/impl/cycles.hpp>
 

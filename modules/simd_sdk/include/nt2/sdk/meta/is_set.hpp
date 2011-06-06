@@ -15,13 +15,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/mpl/bool.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T, class V = void>
   struct is_set : boost::mpl::false_ {};
 
   template<class T>
   struct is_set<T, typename T::is_set_type> : boost::mpl::true_ {};
-} }
+} } }
 
 #endif

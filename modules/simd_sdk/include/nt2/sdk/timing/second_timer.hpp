@@ -11,7 +11,7 @@
 
 #include <nt2/sdk/timing/tic.hpp>
 
-namespace nt2 { namespace time
+namespace boost { namespace time
 {
   struct second_timer
   {

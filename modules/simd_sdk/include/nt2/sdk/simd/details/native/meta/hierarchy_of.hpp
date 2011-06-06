@@ -11,7 +11,7 @@
 
 #include <nt2/sdk/meta/hierarchy_of.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class Scalar,class Extension>
   struct hierarchy_of< simd::native<Scalar,Extension> >
@@ -20,6 +20,6 @@ namespace nt2 { namespace meta
                         , Extension
                         >                                   type;
   };
-} }
+} } }
 
 #endif

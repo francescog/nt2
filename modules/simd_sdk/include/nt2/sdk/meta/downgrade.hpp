@@ -23,7 +23,7 @@
 #include <nt2/sdk/meta/is_fundamental.hpp>
 #include <boost/mpl/apply.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //////////////////////////////////////////////////////////////////////////////
   // Scalar arithmetic types are downgraded using make_integer unless they're
@@ -51,9 +51,9 @@ namespace nt2 { namespace details
   template<class T, class Sign, class Lambda>
   struct  downgrade<T,1,Sign, Lambda>
         : meta::make_integer<1,Sign, Lambda> {};
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template< class T
           , class S=typename meta::sign_of<typename meta::strip<T>::type>::type
@@ -71,7 +71,7 @@ namespace nt2 { namespace meta
                       );
   };
 
-} }
+} } }
 
 #endif
 

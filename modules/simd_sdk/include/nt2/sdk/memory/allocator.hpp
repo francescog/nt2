@@ -17,7 +17,7 @@
 #include <nt2/sdk/memory/deallocate.hpp>
 #include <nt2/sdk/memory/reallocate.hpp>
 
-namespace nt2 { namespace memory
+namespace boost { namespace simd { namespace memory
 {
   //////////////////////////////////////////////////////////////////////////////
   // Allocate a raw buffer of bytes
@@ -112,6 +112,6 @@ namespace nt2 { namespace memory
   {
     return false;
   }
-} }
+} } }
 
 #endif

@@ -23,15 +23,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Tag hierarchy for Altivec PPC extensions
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace tag
+namespace boost { namespace simd { namespace tag
 {
   NT2_HIERARCHY_CLASS(altivec_, cpu_);
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Altivec PPC extensions overload
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // For a given type and extension, check if it's a SIMD register type
@@ -107,6 +107,6 @@ namespace nt2 { namespace meta
   struct extension_of<__vector __bool short   ,X> { typedef tag::altivec_ type; };
   template<class X>
   struct extension_of<__vector __bool char    ,X> { typedef tag::altivec_ type; };
-} }
+} } }
 
 #endif

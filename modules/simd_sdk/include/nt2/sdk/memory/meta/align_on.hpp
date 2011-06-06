@@ -16,7 +16,7 @@
 #include <nt2/sdk/error/static_assert.hpp>
 #include <nt2/sdk/memory/meta/is_power_of_2.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // Compute an aligned value of an integral constant on a power of 2 boundary.
@@ -44,6 +44,6 @@ namespace nt2 { namespace meta
                                , align_on_c<V::value,N::value>::value
                                >
   {};
-} }
+} } }
 
 #endif

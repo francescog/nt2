@@ -16,7 +16,7 @@
 // compile recursively traverse a nt2 AST to perform a given trasnformation
 // defined by externally extendable PFO
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class Phase>
   struct compile
@@ -28,7 +28,7 @@ namespace nt2 { namespace meta
             otherwise < typename boost::mpl::apply<Phase,Tag>::type >
     {};
   };
-} }
+} } }
 
 namespace boost { namespace proto
 {

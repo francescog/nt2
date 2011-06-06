@@ -12,7 +12,7 @@
 // These tautologies to avoid early compilation in some functors
 // definitions
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template <class T> struct double__   { typedef double   type; };
   template <class T> struct float__    { typedef float    type; };
@@ -24,7 +24,7 @@ namespace nt2 { namespace meta
   template <class T> struct uint32_t_ { typedef uint32_t type; };
   template <class T> struct uint16_t_ { typedef uint16_t type; };
   template <class T> struct uint8_t_  { typedef uint8_t  type; };
-} }
+} } }
 
 
 #endif

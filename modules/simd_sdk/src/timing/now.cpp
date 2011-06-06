@@ -21,7 +21,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <sys/time.h>
 
-namespace nt2 { namespace details
+namespace nt2 { namespace simd { namespace details
 {
   double now()
   {
@@ -29,7 +29,7 @@ namespace nt2 { namespace details
     gettimeofday(&tp,NULL);
     return double(tp.tv_sec) + double(tp.tv_usec)*1e-6;
   }
-} }
+} } }
 
 #elif defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
 ////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +37,7 @@ namespace nt2 { namespace details
 ////////////////////////////////////////////////////////////////////////////////
 #include <windows.h>
 
-namespace nt2 { namespace details
+namespace nt2 { namespace simd { namespace details
 {
   double now()
   {
@@ -47,7 +47,7 @@ namespace nt2 { namespace details
     QueryPerformanceCounter( &t.li );
     return (((t.d*1000000000)/freq.d)/1000000000);
   }
-} }
+} } }
 
 #else
 ////////////////////////////////////////////////////////////////////////////////
@@ -55,8 +55,8 @@ namespace nt2 { namespace details
 ////////////////////////////////////////////////////////////////////////////////
 #include <ctime>
 
-namespace nt2 { namespace details
+namespace nt2 { namespace simd { namespace details
 {
   double now() { return std::clock()/double(CLOCKS_PER_SEC); }
-} }
+} } }
 #endif

@@ -23,7 +23,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // slice implementation for global_padding strategy
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace ext
 {
   template<class Dummy>
   struct  call< tag::slice_ ( tag::fusion_sequence_
@@ -81,7 +81,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // stride Functor implementation - global padding reuse no_padding stride
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace ext
 {
   template<class Dummy>
   struct  call< tag::stride_( tag::fusion_sequence_

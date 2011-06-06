@@ -17,7 +17,7 @@
 #include <nt2/sdk/meta/as_integer.hpp>
 #include <nt2/sdk/meta/hierarchy_of.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class T, class Sign, class Hierarchy>
   struct from_bits
@@ -31,9 +31,9 @@ namespace nt2 { namespace details
       T                                          value;
     } type;
   };
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T, class Sign = unsigned>
   struct  from_bits
@@ -41,7 +41,7 @@ namespace nt2 { namespace meta
                             , Sign
                             , typename hierarchy_of<T>::type
                             > {};
-} }
+} } }
 
 #endif
 

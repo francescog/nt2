@@ -13,7 +13,7 @@
 #include <boost/mpl/size_t.hpp>
 #include <boost/mpl/integral_c.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<std::size_t N> struct next_power_of_2_impl
   {
@@ -25,9 +25,9 @@ namespace nt2 { namespace details
     BOOST_STATIC_CONSTANT(std::size_t, x5    = x4 | (x4 >> 1) );
     BOOST_STATIC_CONSTANT(std::size_t, value = x5 + 1         );
   };
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // Boolean meta-function computing the power of 2 greater or equal to any
@@ -48,7 +48,7 @@ namespace nt2 { namespace meta
         : boost::mpl::integral_c< typename N::value_type
                                 , next_power_of_2_c<N::value>::value
                                 > {};
-} }
+} } }
 
 
 #endif

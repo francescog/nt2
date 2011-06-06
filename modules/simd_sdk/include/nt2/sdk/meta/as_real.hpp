@@ -20,7 +20,7 @@
 #include <nt2/sdk/meta/primitive_of.hpp>
 #include <nt2/sdk/meta/is_fundamental.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //============================================================================
   /*!
@@ -75,6 +75,6 @@ namespace nt2 { namespace meta
     , "A type with a non-fundamental primitive is used in nt2::meta::as_real."
     );
   };
-} }
+} } }
 
 #endif

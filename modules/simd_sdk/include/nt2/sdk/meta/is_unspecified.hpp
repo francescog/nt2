@@ -12,7 +12,7 @@
 #include <nt2/sdk/meta/hierarchy_of.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // Is T an unsepcified type ?
@@ -23,7 +23,7 @@ namespace nt2 { namespace meta
                         , unspecified_<T>
                         >
   {};
-} }
+} } }
 
 #endif
 

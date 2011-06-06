@@ -15,7 +15,7 @@
 #include <nt2/sdk/meta/is_iterator.hpp>
 #include <nt2/include/functions/load.hpp>
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   ////////////////////////////////////////////////////////////////////////////
   // pack, implemented in terms of simd::expr via non-inheritance to preserve

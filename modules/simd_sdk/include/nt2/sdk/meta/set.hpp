@@ -22,7 +22,7 @@
 #include <boost/preprocessor/repetition/repeat_from_to.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // Explicit set listing its elements
@@ -72,6 +72,6 @@ namespace nt2 { namespace meta
     template<class T>
     static typename boost::mpl::apply1<Lambda,T>::type key(T*);
   };
-} }
+} } }
 
 #endif

@@ -14,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/sdk/meta/hierarchy.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag { template<class T> struct padding_ {}; }
 
@@ -26,6 +26,6 @@ namespace nt2
       typedef tag::padding_<T>  type;
     };
   }
-}
+} }
 
 #endif

@@ -9,12 +9,12 @@
 #ifndef NT2_SDK_SIMD_META_AS_SIMD_HPP_INCLUDED
 #define NT2_SDK_SIMD_META_AS_SIMD_HPP_INCLUDED
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T,class Extension>
   struct as_simd
   {
   };
-} }
+} } }
 
 #endif

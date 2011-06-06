@@ -9,7 +9,7 @@
 #ifndef NT2_SDK_SIMD_PACK_DOMAIN_HPP_INCLUDED
 #define NT2_SDK_SIMD_PACK_DOMAIN_HPP_INCLUDED
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   ////////////////////////////////////////////////////////////////////////////
   // Tell proto that in the simd::domain, all expressions should be

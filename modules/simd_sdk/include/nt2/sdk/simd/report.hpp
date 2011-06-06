@@ -15,7 +15,7 @@
 #include <nt2/sdk/simd/extensions.hpp>
 #include <nt2/sdk/config/details/reporter.hpp>
 
-namespace nt2 { namespace config
+namespace boost { namespace simd { namespace config
 {
   //////////////////////////////////////////////////////////////////////////////
   // SIMD configuration status reporter
@@ -36,6 +36,6 @@ namespace nt2 { namespace config
   }
 
   NT2_REGISTER_STATUS(simd);
-} }
+} } }
 
 #endif

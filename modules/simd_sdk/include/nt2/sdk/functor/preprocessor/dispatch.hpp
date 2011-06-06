@@ -40,7 +40,7 @@
  */
 //==============================================================================
 #define NT2_REGISTER_DISPATCH(Tag,Site,Types,Seq)                           \
-namespace nt2 { namespace meta {                                            \
+namespace boost { namespace simd { namespace meta {                         \
 template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE,Types)>   \
 nt2::ext::                                                                  \
 call< NT2_PP_STRIP(Tag)(BOOST_PP_ENUM ( BOOST_PP_SEQ_SIZE(Seq)              \
@@ -51,7 +51,7 @@ dispatching( Tag const&, Site const&                                        \
         , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_ARG,Seq)        \
         , adl_helper = adl_helper()                                         \
         );                                                                  \
-} }                                                                         \
+} } }                                                                       \
 /**/
 
 //==============================================================================
@@ -68,7 +68,7 @@ dispatching( Tag const&, Site const&                                        \
  */
 //==============================================================================
 #define NT2_REGISTER_DISPATCH_TPL(Tag,Site,Types,Seq)                         \
-namespace nt2 { namespace meta {                                              \
+namespace boost { namespace simd { namespace meta {                           \
 template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE_TPL,Types)> \
 nt2::ext::                                                                    \
 call<NT2_PP_STRIP(Tag)(BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_TAG,Seq)),Site>    \
@@ -76,7 +76,7 @@ dispatching( NT2_PP_STRIP(Tag) const&, Site const&                              
         , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_ARG,Seq)          \
         , adl_helper = adl_helper()                                           \
         );                                                                    \
-} }                                                                           \
+} } }                                                                         \
 /**/
 
 //==============================================================================
@@ -95,7 +95,7 @@ dispatching( NT2_PP_STRIP(Tag) const&, Site const&                              
  */
 //==============================================================================
 #define NT2_REGISTER_DISPATCH_IF(Tag,Site,Types,Cond,Ret,Seq)               \
-namespace nt2 { namespace meta {                                            \
+namespace boost { namespace simd { namespace meta {                         \
 template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE,Types)>   \
 typename boost::enable_if < NT2_PP_STRIP(Cond)                              \
                           , nt2::ext::call<NT2_PP_STRIP(Ret),Site>          \
@@ -104,7 +104,7 @@ dispatching( Tag const&, Site const&                                        \
         , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_ARG,Seq)        \
         , adl_helper = adl_helper()                                         \
         );                                                                  \
-} }                                                                         \
+} } }                                                                       \
 /**/
 
 //==============================================================================
@@ -124,7 +124,7 @@ dispatching( Tag const&, Site const&                                        \
  */
 //==============================================================================
 #define NT2_REGISTER_DISPATCH_IF_TPL(Tag,Site,Types,Cond,Ret,Seq)             \
-namespace nt2 { namespace meta {                                              \
+namespace boost { namespace simd { namespace meta {                           \
 template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE_TPL,Types)> \
 typename boost::enable_if < NT2_PP_STRIP(Cond)                                \
                           , nt2::ext::call<NT2_PP_STRIP(Ret),Site>            \
@@ -133,7 +133,7 @@ dispatching ( Tag const&, Site const&                                         \
             , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_ARG,Seq)      \
             , adl_helper = adl_helper()                                       \
             );                                                                \
-} }                                                                           \
+} } }                                                                         \
 /**/
 
 #endif

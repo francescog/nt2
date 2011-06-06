@@ -15,13 +15,16 @@
 #include <ctime>
 #include <boost/cstdint.hpp>
 
-namespace nt2
+namespace boost
 {
-  namespace details
+  namespace simd
   {
-    inline double now()
+    namespace details
     {
-      return std::clock()/double(CLOCKS_PER_SEC);
+      inline double now()
+      {
+	return std::clock()/double(CLOCKS_PER_SEC);
+      }
     }
   }
 }

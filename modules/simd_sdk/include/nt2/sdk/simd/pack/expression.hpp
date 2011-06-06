@@ -13,7 +13,7 @@
 #include <nt2/sdk/dsl/proto/extends.hpp>
 #include <nt2/sdk/simd/meta/extension_of.hpp>
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   ////////////////////////////////////////////////////////////////////////////
   // Here is the domain-specific expression wrapper

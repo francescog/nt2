@@ -12,7 +12,7 @@
 #include <boost/proto/proto.hpp>
 #include <nt2/sdk/simd/meta/native_cardinal.hpp>
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   template< class Type, class Cardinal> struct domain;
   template< class Type, class Cardinal> struct data;

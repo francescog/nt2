@@ -14,7 +14,7 @@
  * \brief Defines the nt2::meta::na_ type
  */
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //============================================================================
   /*!
@@ -23,6 +23,6 @@ namespace nt2 { namespace meta
    */
   //============================================================================
   struct na_ { typedef na_ type; };
-} }
+} } }
 
 #endif

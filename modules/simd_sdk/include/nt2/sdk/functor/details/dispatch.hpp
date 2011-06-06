@@ -51,7 +51,7 @@ dispatching ( Tag const&, meta::unknown_<Site> const&, BOOST_PP_ENUM(n,M0,~)    
 //==============================================================================
 // Actual dispatching mechanism implementation
 //==============================================================================
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   struct adl_helper {};
 
@@ -61,7 +61,7 @@ namespace nt2 { namespace meta
   //============================================================================
   BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_ARITY),NT2_DEFAULT_UNKNOWN_DISPATCH,~)
 
-} }
+} } }
 
 #undef M0
 #undef M1
@@ -91,7 +91,7 @@ struct dispatch_call<Tag(BOOST_PP_ENUM_PARAMS(n,A)), Site>              \
 };                                                                      \
 /**/
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //==============================================================================
   // dispatch_call finds the proper call overload for evaluating a given
@@ -100,7 +100,7 @@ namespace nt2 { namespace meta
   template<class Sig, class Site> struct dispatch_call; 
   BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_ARITY),NT2_DISPATCH_CALL,~)
 
-} }
+} } }
 
 #undef M0
 #undef NT2_DISPATCH_TYPES_TPL

@@ -13,7 +13,7 @@
 #include <cmath>
 #include <math.h>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace details {
     
@@ -69,7 +69,7 @@ namespace nt2
       return nt2_ulpdist(type(a0), type(a1), typename details::classif<T>::type()); 
     }
   }
-}
+} }
 #endif
 
 // /////////////////////////////////////////////////////////////////////////////

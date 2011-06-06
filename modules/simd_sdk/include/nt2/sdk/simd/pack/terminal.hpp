@@ -16,7 +16,7 @@
 // Terminal functor handling for pack based expressions
 // Two flavors are presented : the native and boost::array one
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace functors
+namespace boost { namespace simd { namespace functors
 {
   //////////////////////////////////////////////////////////////////////////////
   // We dispatch on T type for load
@@ -175,6 +175,6 @@ namespace nt2 { namespace functors
     }
   };
 
-} }
+} } }
 
 #endif

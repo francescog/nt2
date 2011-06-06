@@ -23,7 +23,7 @@
 #include <nt2/sdk/meta/is_fundamental.hpp>
 #include <boost/mpl/apply.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //////////////////////////////////////////////////////////////////////////////
   // Integral types are upgraded using make_integer
@@ -50,9 +50,9 @@ namespace nt2 { namespace details
   {
     typedef typename boost::mpl::apply1<Lambda, double>::type type;
   };
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // For any type, return the integer type of size equals to sizeof(T)*2
@@ -72,7 +72,7 @@ namespace nt2 { namespace meta
                       );
   };
 
-} }
+} } }
 
 #endif
 

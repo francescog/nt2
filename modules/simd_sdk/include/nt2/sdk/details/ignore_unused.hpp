@@ -14,21 +14,24 @@
  * \brief Defined and implements the \ref nt2::ignore_unused utility function
  */
 
-namespace nt2
+namespace boost
 {
-  //============================================================================
-  /*!
-   * \ingroup sdk
-   * In some SFINAE-based code, some functions parameters may be declared
-   * but not used in a given implementation. Calling this function on such
-   * parameters prevent compilers to generate spurious warnings.
-   *
-   * \par Example Usage:
-   *
-   * \include ignore_unused.cpp
-   */
-  //============================================================================
-  template<class T> void ignore_unused( T const& )  {}
+  namespace simd
+  {
+    //============================================================================
+    /*!
+     * \ingroup sdk
+     * In some SFINAE-based code, some functions parameters may be declared
+     * but not used in a given implementation. Calling this function on such
+     * parameters prevent compilers to generate spurious warnings.
+     *
+     * \par Example Usage:
+     *
+     * \include ignore_unused.cpp
+     */
+    //============================================================================
+    template<class T> void ignore_unused( T const& )  {}
+  }
 }
 
 #endif

@@ -18,7 +18,7 @@
 #include <nt2/sdk/error/static_assert.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //============================================================================
   // Perform a bitwise cast via memcpy - This is the safe bet
@@ -75,40 +75,42 @@ namespace nt2 { namespace details
   template<typename To, typename From>
   struct  bitwise_cast<To, From, typename boost::is_convertible<From, To>::type>
         : convert_cast {};
-} }
+} } }
 
-namespace nt2
+namespace boost
 {
-  //============================================================================
-  /*!
-   * \ingroup sdk
-   * bitwise_cast performs a bitwise conversion of a value of type \c From to a
-   * value of type \c To by using the appropriate strategy depending on the
-   * relation between \c To and \c From.
-   *
-   * \tparam To Type to convert to
-   *
-   * \param from Value to convert
-   *
-   * \return A value of type \c To which bits pattern is identical to \c from.
-   *
-   * \par Example Usage:
-   *
-   * \include bitwise_cast.cpp
-   *
-   * The expected out put is :
-   *
-   * \c bf800000
-   */
-  //============================================================================
-  template<typename To, typename From> To bitwise_cast(From const& from)
+  namespace simd
   {
-    NT2_STATIC_ASSERT( sizeof(From) >= sizeof(To)
-                     , NT2_TARGET_IS_LARGER_SIZE_THAN_SOURCE_IN_BITWISE_CAST
-                     , "Target is of a larger size than source in nt2::bitwise_cast"
-                     );
-    return details::bitwise_cast<To, From>::template call<To>(from);
-  }
+    //============================================================================
+    /*!
+     * \ingroup sdk
+     * bitwise_cast performs a bitwise conversion of a value of type \c From to a
+     * value of type \c To by using the appropriate strategy depending on the
+     * relation between \c To and \c From.
+     *
+     * \tparam To Type to convert to
+     *
+     * \param from Value to convert
+     *
+     * \return A value of type \c To which bits pattern is identical to \c from.
+     *
+     * \par Example Usage:
+     *
+     * \include bitwise_cast.cpp
+     *
+     * The expected out put is :
+     *
+     * \c bf800000
+     */
+    //============================================================================
+    template<typename To, typename From> To bitwise_cast(From const& from)
+    {
+      NT2_STATIC_ASSERT( sizeof(From) >= sizeof(To)
+                       , NT2_TARGET_IS_LARGER_SIZE_THAN_SOURCE_IN_BITWISE_CAST
+                       , "Target is of a larger size than source in nt2::bitwise_cast"
+                       );
+      return details::bitwise_cast<To, From>::template call<To>(from);
+    }
 }
 
 #endif

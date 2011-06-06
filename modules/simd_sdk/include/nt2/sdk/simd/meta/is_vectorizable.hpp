@@ -14,7 +14,7 @@
 #include <nt2/sdk/simd/extensions.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T,class Extension>
   struct is_vectorizable
@@ -23,6 +23,6 @@ namespace nt2 { namespace meta
                                           >::value
                           >
   {};
-} }
+} } }
 
 #endif

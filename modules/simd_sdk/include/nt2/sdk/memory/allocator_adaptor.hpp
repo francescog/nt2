@@ -14,7 +14,7 @@
 #include <nt2/sdk/memory/config.hpp>
 #include <nt2/sdk/memory/allocator.hpp>
 
-namespace nt2 { namespace memory
+namespace boost { namespace simd { namespace memory
 {
   //////////////////////////////////////////////////////////////////////////////
   // Adapt an allocator to be algined
@@ -117,6 +117,6 @@ namespace nt2 { namespace memory
   {
     return a.base() != b.base();
   }
-} }
+} } }
 
 #endif

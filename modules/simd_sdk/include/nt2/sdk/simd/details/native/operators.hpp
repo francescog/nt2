@@ -21,7 +21,7 @@ OP(native<T1,X> const& a0, native<T2,X> const& a1)                    \
 }                                                                     \
 /**/
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   NT2_MAKE_NATIVE_OP( boost::proto::tag::bitwise_and     , operator&  )
   NT2_MAKE_NATIVE_OP( boost::proto::tag::bitwise_or      , operator|  )

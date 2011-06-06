@@ -17,7 +17,7 @@
 // types expose a nt2_semantic_type that can be retrieved here.
 // Such information are used into expression hierarchy.
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class Expr, class Enable = void>
   struct semantic_of
@@ -33,6 +33,6 @@ namespace nt2 { namespace meta
   {
     typedef typename Expr::nt2_semantic_type type;
   };
-} }
+} } }
 
 #endif

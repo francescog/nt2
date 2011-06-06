@@ -23,7 +23,7 @@
 #pragma warning(disable: 4996) // std::copy may be unsafe
 #endif
 
-namespace nt2 { namespace memory
+namespace boost { namespace simd { namespace memory
 {
   template<class Type,class Allocator = nt2::memory::allocator<Type> >
   class buffer
@@ -170,7 +170,7 @@ namespace nt2 { namespace memory
   {
     a.swap(b);
   }
-} }
+} } }
 
 #ifdef BOOST_MSVC
 #pragma warning(pop)

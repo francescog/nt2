@@ -12,13 +12,13 @@
 #include <boost/mpl/placeholders.hpp>
 #include <nt2/sdk/meta/primitive_of.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class Type,class Extension>
   struct primitive_of< simd::native<Type,Extension> >
   {
     typedef Type type;
   };
-} }
+} } }
 
 #endif

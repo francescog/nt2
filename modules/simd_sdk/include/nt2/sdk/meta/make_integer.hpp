@@ -19,7 +19,7 @@
 #include <boost/mpl/apply.hpp>
 #include <nt2/sdk/meta/na.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template< std::size_t Size
           , class Sign      = unsigned
@@ -68,6 +68,6 @@ namespace nt2 { namespace meta
   {
     typedef boost::int64_t type;
   };
-} }
+} } }
 
 #endif

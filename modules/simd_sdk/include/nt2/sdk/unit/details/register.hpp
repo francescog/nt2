@@ -11,7 +11,7 @@
 
 #include <cstdio>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //////////////////////////////////////////////////////////////////////////////
   // RAII class for registering a test function
@@ -66,6 +66,6 @@ namespace nt2 { namespace details
   // Base registration point
   //////////////////////////////////////////////////////////////////////////////
   test const dummy   = {0,0,0};
-} }
+} } }
 
 #endif

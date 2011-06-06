@@ -11,7 +11,7 @@
 #include <nt2/sdk/timing/tic.hpp>
 #include <nt2/sdk/timing/ctic.hpp>
 
-namespace nt2 { namespace details
+namespace nt2 { namespace simd { namespace details
 {
   void cycle_based_timer::Print(const cycles_t& val)
   {
@@ -22,4 +22,4 @@ namespace nt2 { namespace details
   {
     std::cout << "Elapsed time is " << val << " s.\n";
   }
-} }
+} } }

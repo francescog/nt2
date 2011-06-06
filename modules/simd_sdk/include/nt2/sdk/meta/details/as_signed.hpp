@@ -19,9 +19,9 @@
 #include <boost/type_traits/is_integral.hpp>
 #include <boost/type_traits/make_signed.hpp>
 
-namespace nt2 { namespace meta { template<class T> struct as_signed; } }
+namespace boost { namespace simd { namespace meta { template<class T> struct as_signed; } } }
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class T, class Enable = void>
   struct  as_signed_impl
@@ -45,6 +45,6 @@ namespace nt2 { namespace details
                               , boost::make_signed<T>
                               , boost::mpl::identity<T>
                               > {};
-} }
+} } }
 
 #endif

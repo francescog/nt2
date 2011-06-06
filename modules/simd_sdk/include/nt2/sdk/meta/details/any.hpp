@@ -29,7 +29,7 @@
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
 #endif
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //============================================================================
   // Recursive variadic version
@@ -104,6 +104,6 @@ namespace nt2 { namespace details
 
   #endif
 
-} }
+} } }
 
 #endif

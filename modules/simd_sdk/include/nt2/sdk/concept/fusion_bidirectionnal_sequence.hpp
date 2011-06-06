@@ -19,22 +19,25 @@
 #include <nt2/sdk/details/ignore_unused.hpp>
 #include <nt2/sdk/concepts/fusion_forward_sequence.hpp>
 
-namespace nt2
+namespace boost
 {
-  template<class S>
-  struct  FusionBidirectionalSequence
-        : FusionForwardSequence<S>
+  namespace simd
   {
-    typedef typename boost::fusion::result_of::back<S>::type back_type;
-    BOOST_CONCEPT_USAGE(FusionBidirectionalSequence)
+    template<class S>
+    struct  FusionBidirectionalSequence
+          : FusionForwardSequence<S>
     {
-      back_type b = back(s);
-      ignore_unused(b);
-    }
+      typedef typename boost::fusion::result_of::back<S>::type back_type;
+      BOOST_CONCEPT_USAGE(FusionBidirectionalSequence)
+      {
+	back_type b = back(s);
+	ignore_unused(b);
+      }
 
-    private:
-    S s;
-  };
+      private:
+      S s;
+    };
+  }
 }
 
 #endif

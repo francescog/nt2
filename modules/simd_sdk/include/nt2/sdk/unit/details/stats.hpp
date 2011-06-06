@@ -12,7 +12,7 @@
 #include <cstdio>
 #include <boost/current_function.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //////////////////////////////////////////////////////////////////////////////
   // Init-on-first-call value for error count
@@ -43,6 +43,6 @@ namespace nt2 { namespace details
     printf(" * %s in function `%s (%d)\n`",m,fn,ln);
     ++error_count();
   }
-} }
+} } }
 
 #endif

@@ -13,7 +13,7 @@
 #include <nt2/sdk/memory/align_on.hpp>
 #include <boost/iterator/iterator_adaptor.hpp>
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   ////////////////////////////////////////////////////////////////////////////////
   // simd::iterator reference a pack of N elements of type T

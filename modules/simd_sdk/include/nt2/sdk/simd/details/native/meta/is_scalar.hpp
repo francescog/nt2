@@ -11,10 +11,10 @@
 
 #include <nt2/sdk/meta/is_scalar.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class T,class X>
   struct is_scalar< meta::simd_<T,X> >  : boost::mpl::false_ {};
-} }
+} } }
 
 #endif

@@ -14,7 +14,7 @@
 #include <boost/iterator/iterator_traits.hpp>
 #include <nt2/sdk/simd/meta/native_cardinal.hpp>
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   namespace result
   {
@@ -71,7 +71,7 @@ namespace nt2 { namespace simd
   }
 } }
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   template<std::size_t N, class ContiguousRange>
   typename meta::

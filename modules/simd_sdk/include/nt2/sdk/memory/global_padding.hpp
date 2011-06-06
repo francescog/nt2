@@ -18,7 +18,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Various pre-made padding strategies
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace memory
+namespace boost { namespace simd {  namespace memory
 {
   //////////////////////////////////////////////////////////////////////////////
   // Global padding: data has a padding after them
@@ -28,7 +28,7 @@ namespace nt2 { namespace memory
     typedef meta::padding_<global_padding>                  nt2_hierarchy_tag;
     //typedef boost::mpl::pair<tag::padding_,global_padding>  nt2_settings_type;
   };
-} }
+} } }
 
 #include <nt2/sdk/memory/details/global_padding.hpp>
 

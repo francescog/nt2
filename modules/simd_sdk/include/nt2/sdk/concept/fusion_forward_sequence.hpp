@@ -22,32 +22,35 @@
 #include <nt2/sdk/details/ignore_unused.hpp>
 #include <boost/fusion/sequence/intrinsic/empty.hpp>
 
-namespace nt2
+namespace boost
 {
-  template<class S> struct FusionForwardSequence
+  namespace simd
   {
-    typedef typename boost::fusion::result_of::begin<S>::type begin_type;
-    typedef typename boost::fusion::result_of::end<S>::type   end_type;
-    typedef typename boost::fusion::result_of::size<S>::type  size_type;
-    typedef typename boost::fusion::result_of::empty<S>::type empty_type;
-    typedef typename boost::fusion::result_of::front<S>::type front_type;
-
-    BOOST_CONCEPT_USAGE(FusionForwardSequence)
+    template<class S> struct FusionForwardSequence
     {
-      begin_type  b   = boost::fusion::begin(s);
-      end_type    e   = boost::fusion::end(s);
-      front_type  f   = boost::fusion::front(s);
-                  sz  = boost::fusion::size(s);
-                  y   = boost::fusion::empty(s);
+      typedef typename boost::fusion::result_of::begin<S>::type begin_type;
+      typedef typename boost::fusion::result_of::end<S>::type   end_type;
+      typedef typename boost::fusion::result_of::size<S>::type  size_type;
+      typedef typename boost::fusion::result_of::empty<S>::type empty_type;
+      typedef typename boost::fusion::result_of::front<S>::type front_type;
 
-      ignore_unused(f);
-    }
+      BOOST_CONCEPT_USAGE(FusionForwardSequence)
+      {
+	begin_type  b   = boost::fusion::begin(s);
+	end_type    e   = boost::fusion::end(s);
+	front_type  f   = boost::fusion::front(s);
+	sz  = boost::fusion::size(s);
+	y   = boost::fusion::empty(s);
 
-    private:
-    S s;
-    size_type   sz;
-    empty_type  y;
-  };
+	ignore_unused(f);
+      }
+
+      private:
+      S s;
+      size_type   sz;
+      empty_type  y;
+    };
+  }
 }
 
 #endif

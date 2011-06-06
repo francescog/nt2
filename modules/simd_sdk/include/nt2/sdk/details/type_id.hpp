@@ -35,7 +35,7 @@
 #include <iostream>
 #include <nt2/sdk/details/ignore_unused.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //============================================================================
   // demangle a type name retrieved through typeid()
@@ -72,106 +72,109 @@ namespace nt2 { namespace details
     return os;
   }
   
-} }
+} } }
 
-namespace nt2
+namespace boost
 {
-  //////////////////////////////////////////////////////////////////////////////
-  /*!
-   * \ingroup metadebug
-   * Returns a string containing the demangled typename of a given type
-   *
-   * \param expr Expression which type is to be stringized
-   * \return \c T type name as a readable \c std::string
-   *
-   * \par Example Usage:
-   *
-   * \include type_id.cpp
-   *
-   * This examples outpus:
-   *
-   * \code
-   * char [21]
-   * float
-   * std::vector<long*, std::allocator<long*> >
-   * \endcode
-   */
-  //////////////////////////////////////////////////////////////////////////////
-  template<typename T> inline std::string type_id(const T& expr = *((T*)0))
+  namespace simd
   {
-    nt2::ignore_unused(expr);
-    return details::demangle(typeid(T).name());
-  }
-  
-  //////////////////////////////////////////////////////////////////////////////
-  /*!
-   * \ingroup metadebug
-   * Display the demangled typename of a given type on the standard output.
-   *
-   * \param expr Expression which type is to be displayed
-   *
-   * \par Example Usage:
-   *
-   * \include display_type.cpp
-   *
-   * This examples outpus:
-   *
-   * \code
-   * char [21]
-   * float
-   * std::vector<
-   *              long*
-   *              ,std::allocator<
-   *                              long*
-   *                              >
-   *            >
-   * \endcode
-   */
-  //////////////////////////////////////////////////////////////////////////////
-  template<typename T> inline void display_type(const T& expr = *((T*)0))
-  {
-    std::string s = type_id<T>(expr);
-    
-    size_t depth = 0;
-    bool prevspace = true;
-    for(std::string::const_iterator it = s.begin(); it != s.end(); ++it)
+    //////////////////////////////////////////////////////////////////////////////
+    /*!
+     * \ingroup metadebug
+     * Returns a string containing the demangled typename of a given type
+     *
+     * \param expr Expression which type is to be stringized
+     * \return \c T type name as a readable \c std::string
+     *
+     * \par Example Usage:
+     *
+     * \include type_id.cpp
+     *
+     * This examples outpus:
+     *
+     * \code
+     * char [21]
+     * float
+     * std::vector<long*, std::allocator<long*> >
+     * \endcode
+     */
+    //////////////////////////////////////////////////////////////////////////////
+    template<typename T> inline std::string type_id(const T& expr = *((T*)0))
     {
-      switch(*it)
-      {
-        case '<':
-          depth++;
-          std::cout << *it;
-          std::cout << '\n';
-          details::indent(std::cout, depth);
-          prevspace = true;
-          break;
-          
-        case '>':
-          depth--;
-          std::cout << '\n';
-          details::indent(std::cout, depth);
-          std::cout << *it;
-          prevspace = false;
-          break;
-          
-        case ',':
-          std::cout << '\n';
-          details::indent(std::cout, depth);
-          std::cout << *it;
-          prevspace = true;
-          break;
-          
-        case ' ':
-          if(!prevspace)
-            std::cout << *it;
-          break;
-          
-        default:
-          std::cout << *it;
-          prevspace = false;
-      }
+      nt2::ignore_unused(expr);
+      return details::demangle(typeid(T).name());
     }
-    std::cout << std::endl;
+
+    //////////////////////////////////////////////////////////////////////////////
+    /*!
+     * \ingroup metadebug
+     * Display the demangled typename of a given type on the standard output.
+     *
+     * \param expr Expression which type is to be displayed
+     *
+     * \par Example Usage:
+     *
+     * \include display_type.cpp
+     *
+     * This examples outpus:
+     *
+     * \code
+     * char [21]
+     * float
+     * std::vector<
+     *              long*
+     *              ,std::allocator<
+     *                              long*
+     *                              >
+     *            >
+     * \endcode
+     */
+    //////////////////////////////////////////////////////////////////////////////
+    template<typename T> inline void display_type(const T& expr = *((T*)0))
+    {
+      std::string s = type_id<T>(expr);
+
+      size_t depth = 0;
+      bool prevspace = true;
+      for(std::string::const_iterator it = s.begin(); it != s.end(); ++it)
+      {
+	switch(*it)
+	{
+	  case '<':
+	    depth++;
+	    std::cout << *it;
+	    std::cout << '\n';
+	    details::indent(std::cout, depth);
+	    prevspace = true;
+	    break;
+
+	  case '>':
+	    depth--;
+	    std::cout << '\n';
+	    details::indent(std::cout, depth);
+	    std::cout << *it;
+	    prevspace = false;
+	    break;
+
+	  case ',':
+	    std::cout << '\n';
+	    details::indent(std::cout, depth);
+	    std::cout << *it;
+	    prevspace = true;
+	    break;
+
+	  case ' ':
+	    if(!prevspace)
+	      std::cout << *it;
+	    break;
+
+	  default:
+	    std::cout << *it;
+	    prevspace = false;
+	}
+      }
+      std::cout << std::endl;
+    }
   }
 }
 

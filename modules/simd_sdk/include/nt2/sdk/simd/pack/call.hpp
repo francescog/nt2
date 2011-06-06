@@ -21,7 +21,7 @@ NT2_REGISTER_DISPATCH(tag::terminal_,tag::cpu_
                       (integer_<A2>)
                      )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy,class X,class Y>
   struct call<tag::terminal_( tag::simd_<tag::arithmetic_,X>
@@ -45,7 +45,7 @@ namespace nt2 { namespace ext
       return v.value();
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register terminal handlers for SIMD expression - emulated case
@@ -57,7 +57,7 @@ NT2_REGISTER_DISPATCH_TPL (  tag::terminal_,tag::cpu_
                             (integer_<A2>)
                           )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy,std::size_t N>
   struct call<tag::terminal_( tag::array_<tag::arithmetic_,N>
@@ -82,6 +82,6 @@ namespace nt2 { namespace ext
       return v[pos];
     }
   };
-} }
+} } }
 
 #endif

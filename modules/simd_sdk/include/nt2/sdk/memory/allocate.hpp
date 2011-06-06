@@ -14,7 +14,7 @@
 #include <nt2/sdk/memory/parameters.hpp>
 #include <nt2/sdk/memory/align_on.hpp>
 
-namespace nt2 { namespace memory
+namespace boost { namespace simd { namespace memory
 {
   //////////////////////////////////////////////////////////////////////////////
   // Allocate a raw buffer of bytes
@@ -50,6 +50,6 @@ namespace nt2 { namespace memory
     reinterpret_cast<void**>(result)[-1] = base;
     return reinterpret_cast<byte*>(result);
   }
-} }
+} } }
 
 #endif

@@ -24,7 +24,7 @@
 #include <boost/preprocessor/repetition/repeat_from_to.hpp>
 #endif
 
-namespace nt2  { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //============================================================================
   /*!
@@ -96,6 +96,6 @@ namespace nt2  { namespace meta
     template<class This,class A0>
     struct result<This(A0)> : result<This(A0,A0)> {};
   };
-} }
+} } }
 
 #endif

@@ -28,7 +28,7 @@ NT2_REGISTER_DISPATCH ( tag::store_
                         (integer_<A2>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class T, class C, class Sema, class Dummy>
   struct  call< tag::store_ ( tag::expr_< simd::domain<T,C>
@@ -53,6 +53,6 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 #endif

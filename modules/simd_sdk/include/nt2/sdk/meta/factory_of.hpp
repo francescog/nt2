@@ -17,7 +17,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // A type factory is a MPL metafunction able to reconstruct it
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class Hierarchized>
   struct factory_of
@@ -32,6 +32,6 @@ namespace nt2 { namespace meta
                       );
     typedef boost::mpl::_ type;
   };
-} }
+} } }
 
 #endif

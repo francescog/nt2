@@ -16,7 +16,7 @@
 #include <nt2/sdk/meta/hierarchy_of.hpp>
 #include <nt2/sdk/error/static_assert.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //============================================================================
   /*!
@@ -60,6 +60,6 @@ namespace nt2 { namespace meta
                       );
     typedef Hierarchizable type;
   };
-} }
+} } }
 
 #endif

@@ -20,17 +20,20 @@
 // This is used throughout nt2 to allow cross-domain acceptance in various
 // grammars and transforms
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2
+namespace boost
 {
-  namespace tag { struct from_domain_ {}; }
-  NT2_FUNCTION_IMPLEMENTATION(tag::from_domain_ , from_domain  , 1 )
+  namespace simd
+  {
+    namespace tag { struct from_domain_ {}; }
+    NT2_FUNCTION_IMPLEMENTATION(tag::from_domain_ , from_domain  , 1 )
+  }
 }
 
 NT2_REGISTER_DISPATCH ( tag::from_domain_ , tag::cpu_, (A0)(Dom)(Tag)(Sema)
                       , ((expr_<A0,Dom,Tag,Sema>))
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Domain,class Tag,class Semantic,class Dummy>
   struct call < tag::from_domain_(tag::expr_<Domain,Tag,Semantic>)
@@ -53,15 +56,15 @@ namespace nt2 { namespace ext
               make_expr<tag::from_domain_>( boost::cref(a0) );
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // from_domain also exists as proto grammar to be used in other EDSL gammars
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace dsl
+namespace boost { namespace simd { namespace dsl
 {
   template<class Expr>
   struct from_domain : boost::proto::unary_expr<tag::from_domain_,Expr> {};
-} }
+} } }
 
 #endif

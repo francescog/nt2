@@ -22,7 +22,7 @@ NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
                       , (A0)(A1)      , (integer_<A0>)(integer_<A1>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::align_on_( tag::integer_, tag::integer_), tag::cpu_, Dummy>
@@ -37,7 +37,7 @@ namespace nt2 { namespace ext
       return (a0+a1-1) & ~(a1-1);
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Align integer on mpl integer
@@ -46,7 +46,7 @@ NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
                       , (A0)(A1), (integer_<A0>)(mpl_integral_< integer_<A1> >)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::align_on_( tag::integer_, tag::mpl_integral_<tag::integer_>)
@@ -64,14 +64,14 @@ namespace nt2 { namespace ext
       return (a0+A1::value-1) & ~(A1::value-1);
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Align integer on default alignment
 ////////////////////////////////////////////////////////////////////////////////
 NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_, (A0), (integer_<A0>) )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::align_on_( tag::integer_), tag::cpu_, Dummy >
@@ -86,7 +86,7 @@ namespace nt2 { namespace ext
       return nt2::memory::align_on<NT2_CONFIG_ALIGNMENT>(a0);
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Align mpl integer on mpl integer
@@ -96,7 +96,7 @@ NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
                       , (mpl_integral_< integer_<A0> >)(mpl_integral_< integer_<A1> >)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::align_on_( tag::mpl_integral_<tag::integer_>
@@ -121,7 +121,7 @@ namespace nt2 { namespace ext
       return typename NT2_RETURN_TYPE(2)::type();
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Align mpl integer on default alignment
@@ -130,7 +130,7 @@ NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
                       , (A0), (mpl_integral_< integer_<A0> >)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::align_on_(tag::mpl_integral_<tag::integer_>)
@@ -152,7 +152,7 @@ namespace nt2 { namespace ext
       return typename NT2_RETURN_TYPE(1)::type();
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Align iterator on integer
@@ -161,7 +161,7 @@ NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
                       , (A0)(A1)      , (iterator_<fundamental_<A0> >)(integer_<A1>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::align_on_( tag::iterator_<tag::fundamental_>
@@ -182,7 +182,7 @@ namespace nt2 { namespace ext
       return reinterpret_cast<type>(nt2::memory::align_on(ptr,a1));
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Align iterator on mpl integer
@@ -192,7 +192,7 @@ NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
                       , (iterator_<fundamental_<A0> >)(mpl_integral_< integer_<A1> >)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::align_on_( tag::iterator_<tag::fundamental_>
@@ -213,14 +213,14 @@ namespace nt2 { namespace ext
       return reinterpret_cast<type>(nt2::memory::align_on(ptr,a1));
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Align iterator on default alignment
 ////////////////////////////////////////////////////////////////////////////////
 NT2_REGISTER_DISPATCH(tag::align_on_,tag::cpu_,(A0),(iterator_<fundamental_<A0> >))
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::align_on_(tag::iterator_<tag::fundamental_>), tag::cpu_, Dummy >
@@ -235,6 +235,6 @@ namespace nt2 { namespace ext
       return nt2::memory::align_on<NT2_CONFIG_ALIGNMENT>(a0);
     }
   };
-} }
+} } }
 
 #endif

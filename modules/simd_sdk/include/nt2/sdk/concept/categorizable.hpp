@@ -18,27 +18,30 @@
 // Categorizable concept: defines types with a NT2 category tag
 // Documentation: http://nt2.lri.fr/sdk/concept/categorizable.hpp
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2
+namespace boost
 {
-  template< class T
-          , bool Enable = boost::is_same< typename
-                                          meta::category_of<T>::type::tag
-                                        , tag::unknown
-                                        >::value
-          >
-  struct Categorizable
+  namespace simd
   {
-    BOOST_CONCEPT_USAGE(Categorizable) {}
-  };
+    template< class T
+            , bool Enable = boost::is_same< typename
+                                            meta::category_of<T>::type::tag
+                                          , tag::unknown
+                                          >::value
+            >
+    struct Categorizable
+    {
+      BOOST_CONCEPT_USAGE(Categorizable) {}
+    };
 
-  template<class T> struct Categorizable<T,false>
-  {
-    void type_has_unknown_category();
-    BOOST_CONCEPT_USAGE(Categorizable) { type_has_unknown_category(t); }
+    template<class T> struct Categorizable<T,false>
+    {
+      void type_has_unknown_category();
+      BOOST_CONCEPT_USAGE(Categorizable) { type_has_unknown_category(t); }
 
-    private:
-    T t;
-  };
+      private:
+      T t;
+    };
+  }
 }
 
 #endif

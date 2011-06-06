@@ -12,40 +12,43 @@
 #include <stack>
 #include <nt2/sdk/error/assert.hpp>
 
-namespace nt2
+namespace boost
 {
-  namespace details
+  namespace simd
   {
-    //////////////////////////////////////////////////////////////////////////////
-    // counter<R,T> is an implementation detail that gather and store cycles or
-    // seconds measures between tic and toc calls.
-    //////////////////////////////////////////////////////////////////////////////
-    template<class R,class T> class counter
+    namespace details
     {
-      public :
-      typedef T timer_type;
-      typedef R type;
-
-      void  tic() const { times().push(time()); }
-
-      type toc( bool display ) const
+      //////////////////////////////////////////////////////////////////////////////
+      // counter<R,T> is an implementation detail that gather and store cycles or
+      // seconds measures between tic and toc calls.
+      //////////////////////////////////////////////////////////////////////////////
+      template<class R,class T> class counter
       {
-        NT2_ASSERT(!empty() && "Unbalanced timing calls");
-        type t = time()-times().top();
-        times().pop();
-        if(display) timer_type::Print(t);
-        return t;
-      }
+	public :
+	  typedef T timer_type;
+	  typedef R type;
 
-      bool  empty() const { return times().empty();   }
-      type  time()  const { return timer_type::Time();  }
+	  void  tic() const { times().push(time()); }
 
-      std::stack<type>& times() const
-      {
-        static std::stack<type> local;
-        return local;
-      }
-    };
+	  type toc( bool display ) const
+	  {
+	    NT2_ASSERT(!empty() && "Unbalanced timing calls");
+	    type t = time()-times().top();
+	    times().pop();
+	    if(display) timer_type::Print(t);
+	    return t;
+	  }
+
+	  bool  empty() const { return times().empty();   }
+	  type  time()  const { return timer_type::Time();  }
+
+	  std::stack<type>& times() const
+	  {
+	    static std::stack<type> local;
+	    return local;
+	  }
+      };
+    }
   }
 }
 

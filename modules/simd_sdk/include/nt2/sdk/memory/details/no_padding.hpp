@@ -24,7 +24,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // slice implementation for no_padding strategy
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::slice_ ( tag::fusion_sequence_
@@ -93,12 +93,12 @@ namespace nt2 { namespace ext
              * boost::fusion::at_c<A2::value-1>(a0);
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // stride Functor implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::stride_( tag::fusion_sequence_
@@ -124,6 +124,6 @@ namespace nt2 { namespace ext
       return boost::fusion::at_c<A2::value-1>(a0);
     }
   };
-} }
+} } }
 
 #endif

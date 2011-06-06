@@ -46,8 +46,8 @@
 #include <boost/preprocessor/seq/size.hpp>
 #endif
 
-namespace nt2
-{
+namespace boost { namespace simd
+{ 
   //============================================================================
   /*!
    * \ingroup functors
@@ -164,6 +164,6 @@ namespace nt2
 
     #endif
     };
-}
+} }
 
 #endif

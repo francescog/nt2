@@ -24,7 +24,7 @@ NT2_REGISTER_DISPATCH(tag::evaluate_, tag::cpu_,
                       ((expr_<A1, domain_< simd::domain<T,C> >,Tag, Sema>))
                      );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class X,class T, class C, class Tag, class Sema, class Dummy>
   struct call < tag::evaluate_
@@ -44,7 +44,7 @@ namespace nt2 { namespace ext
       a0 = callee(a1,target);
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Non-native pack
@@ -56,7 +56,7 @@ NT2_REGISTER_DISPATCH_TPL (  tag::evaluate_,tag::cpu_
                             ((expr_<A1, domain_< simd::domain<T,C> >,Tag, Sema>))
                           )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<std::size_t N,class T, class C, class Tag, class Sema, class Dummy>
   struct call < tag::evaluate_
@@ -78,6 +78,6 @@ namespace nt2 { namespace ext
           a0[i] = callee(a1,target,i);
     }
   };
-} }
+} } }
 
 #endif

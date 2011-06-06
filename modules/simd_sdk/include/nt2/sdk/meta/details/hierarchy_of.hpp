@@ -15,7 +15,7 @@
 #include <boost/type_traits/is_integral.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //============================================================================
   // implementation details for hierarchy_of on integers
@@ -85,6 +85,6 @@ namespace nt2 { namespace details
   struct hierarchy_of_ints<T,64,true>  { typedef meta::int64_<T>   type; };
   template<class T>
   struct hierarchy_of_ints<T,64,false> { typedef meta::uint64_<T>  type; };
-} }
+} } }
 
 #endif

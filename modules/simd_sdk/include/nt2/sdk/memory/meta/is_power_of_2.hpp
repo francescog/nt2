@@ -12,7 +12,7 @@
 #include <cstddef>
 #include <boost/mpl/bool.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // Boolean meta-function checking if a Integral Constant is a power of 2
@@ -27,6 +27,6 @@ namespace nt2 { namespace meta
   //////////////////////////////////////////////////////////////////////////////
   template<class N>
   struct is_power_of_2 : is_power_of_2_c<N::value> {};
-} }
+} } }
 
 #endif

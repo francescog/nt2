@@ -11,7 +11,7 @@
 
 #include <nt2/sdk/simd/native.hpp>
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   //////////////////////////////////////////////////////////////////////////////
   // Stream insertion for swar types

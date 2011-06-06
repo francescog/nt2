@@ -12,7 +12,7 @@
 #include <nt2/sdk/simd/category.hpp>
 #include <nt2/sdk/meta/scalar_of.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   ////////////////////////////////////////////////////////////////////////////
   // Overload for SIMD native types
@@ -24,7 +24,7 @@ namespace nt2 { namespace details
   {
     typedef typename T::value_type type;
   };
-} }
+} } }
 
 #endif
 

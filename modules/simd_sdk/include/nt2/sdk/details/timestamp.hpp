@@ -16,25 +16,28 @@
 
 #include <string>
 
-namespace nt2
+namespace boost
 {
-  //==============================================================================
-  /*!
-   * \ingroup sdk
-   * timestamp returns a string containing current system time in a readable
-   * format.
-   *
-   * \return Current system time as a \c std::string
-   *
-   * \par Example Usage:
-   *
-   * \include timestamp.cpp
-   *
-   * This code will output a locale dependant string featuring current date and
-   * time information.
-   */
-  //==============================================================================
-  std::string timestamp();
+  namespace simd
+  {
+    //==============================================================================
+    /*!
+     * \ingroup sdk
+     * timestamp returns a string containing current system time in a readable
+     * format.
+     *
+     * \return Current system time as a \c std::string
+     *
+     * \par Example Usage:
+     *
+     * \include timestamp.cpp
+     *
+     * This code will output a locale dependant string featuring current date and
+     * time information.
+     */
+    //==============================================================================
+    std::string timestamp();
+  }
 }
 
 #endif

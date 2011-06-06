@@ -12,7 +12,7 @@
 #include <nt2/sdk/meta/hierarchy_of.hpp>
 #include <boost/type_traits/is_base_of.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // Is T a fundamental type ?
@@ -23,7 +23,7 @@ namespace nt2 { namespace meta
                             , typename meta::hierarchy_of<T>::type
                             >
   {};
-} }
+} } }
 
 #endif
 

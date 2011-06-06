@@ -19,22 +19,25 @@
 #include <nt2/sdk/details/ignore_unused.hpp>
 #include <nt2/sdk/concepts/fusion_bidirectionnal_sequence.hpp>
 
-namespace nt2
+namespace boost
 {
-  template<class S>
-  struct  FusionRandomAccessSequence
-        : FusionBidirectionnalSequence<S>
+  namespace simd
   {
-    typedef typename boost::fusion::result_of::at_c<S,0>::type at_type;
-    BOOST_CONCEPT_USAGE(FusionRandomAccessSequence)
+    template<class S>
+    struct  FusionRandomAccessSequence
+          : FusionBidirectionnalSequence<S>
     {
-      at_type a = boost::fusion::at_c<0>(s);
-      ignore_unused(a);
-    }
+      typedef typename boost::fusion::result_of::at_c<S,0>::type at_type;
+      BOOST_CONCEPT_USAGE(FusionRandomAccessSequence)
+      {
+	at_type a = boost::fusion::at_c<0>(s);
+	ignore_unused(a);
+      }
 
-    private:
-    S s;
-  };
+      private:
+      S s;
+    };
+  }
 }
 
 #endif

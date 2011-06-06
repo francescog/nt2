@@ -12,7 +12,7 @@
 #include <nt2/sdk/timing/ctic.hpp>
 #include <nt2/sdk/timing/impl/cycles.hpp>
 
-namespace nt2 { namespace time
+namespace boost { namespace simd { namespace time
 {
   struct cycle_timer
   {
@@ -22,6 +22,6 @@ namespace nt2 { namespace time
     nt2::details::cycles_t& elapsed;
     bool display;
   };
-} }
+} } }
 
 #endif

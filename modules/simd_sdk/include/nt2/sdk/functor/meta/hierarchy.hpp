@@ -16,7 +16,7 @@
 
 #include <nt2/sdk/meta/hierarchy.hpp>
 
-namespace nt2 { namespace tag
+namespace boost { namespace simd { namespace tag
 {
 #if defined(DOXYGEN_ONLY)
   //============================================================================
@@ -42,6 +42,6 @@ namespace nt2 { namespace tag
   NT2_HIERARCHY_CLASS(formal_, meta::unspecified_<formal_>);
   NT2_HIERARCHY_CLASS(cpu_, formal_);
 #endif
-} }
+} } }
 
 #endif

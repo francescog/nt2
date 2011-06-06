@@ -13,7 +13,7 @@
 #include <nt2/sdk/meta/strip.hpp>
 #include <boost/mpl/placeholders.hpp>
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //////////////////////////////////////////////////////////////////////////////
   // By default we just return the type itself
@@ -21,13 +21,13 @@ namespace nt2 { namespace ext
   template< class Expr, class Domain >
   struct terminal_of_impl : boost::mpl::_1
   {};
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // For a given proto expression type, acts as a meta-function able to build a
 // terminal suitable for its domain
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template< class Expr >
   struct  terminal_of
@@ -35,6 +35,6 @@ namespace nt2 { namespace meta
                                 , typename boost::proto::domain_of<Expr>::type
                                 >
   {};
-} }
+} } }
 
 #endif

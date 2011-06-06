@@ -19,7 +19,7 @@
 #include <nt2/sdk/meta/primitive_of.hpp>
 
 #if defined(DOXYGEN_ONLY)
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //============================================================================
   /*!
@@ -30,12 +30,12 @@ namespace nt2 { namespace meta
    */
   //============================================================================
   template<class T> struct target_ {};
-} }
+} } }
 #endif
 
 NT2_REGISTER_HIERARCHY(target_)
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //============================================================================
   /*!
@@ -69,6 +69,6 @@ namespace nt2 { namespace meta
 
   template<class T>
   struct factory_of< as_<T> > { typedef as_<boost::mpl::_1> type; };
-} }
+} } }
 
 #endif

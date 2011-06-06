@@ -9,9 +9,9 @@
 #ifndef NT2_SDK_OPTION_OPTION_HPP_INCLUDED
 #define NT2_SDK_OPTION_OPTION_HPP_INCLUDED
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template <typename Tag> struct option { typedef Tag type; };
-} }
+} } }
 
 #endif

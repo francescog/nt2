@@ -13,7 +13,7 @@
 #include <nt2/sdk/dsl/compile.hpp>
 #include <nt2/sdk/functor/forward.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
 
 namespace tag
@@ -37,7 +37,7 @@ namespace meta
   struct recognition_<tag::terminal_>
         : boost::proto::_
   {};
-} }
+} } }
 
 namespace boost { namespace proto
 {

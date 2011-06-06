@@ -19,24 +19,27 @@
 #include <boost/fusion/include/has_key.hpp>
 #include <nt2/sdk/details/ignore_unused.hpp>
 
-namespace nt2
+namespace boost
 {
-  template<class S> struct FusionAssociativeSequence
+  namespace simd
   {
-    typedef typename boost::fusion::result_of::has_key<S,void>::type  has_type;
-    typedef typename boost::fusion::result_of::at_key<S,void>::type   at_type;
-
-    BOOST_CONCEPT_USAGE(FusionAssociativeSequence)
+    template<class S> struct FusionAssociativeSequence
     {
-              h = boost::fusion::has_key<void>(s);
-      at_type a = boost::fusion::at_key<void>(s);
-      ignore_unused(a);
-    }
+      typedef typename boost::fusion::result_of::has_key<S,void>::type  has_type;
+      typedef typename boost::fusion::result_of::at_key<S,void>::type   at_type;
 
-    private:
-    S s;
-    has_type h;
-  };
+      BOOST_CONCEPT_USAGE(FusionAssociativeSequence)
+      {
+	h = boost::fusion::has_key<void>(s);
+	at_type a = boost::fusion::at_key<void>(s);
+	ignore_unused(a);
+      }
+
+      private:
+      S s;
+      has_type h;
+    };
+  }
 }
 
 #endif

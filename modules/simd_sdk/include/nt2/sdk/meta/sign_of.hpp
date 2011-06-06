@@ -21,12 +21,12 @@
 #include <nt2/sdk/meta/is_fundamental.hpp>
 #include <boost/type_traits/is_base_of.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T> struct sign_of;
-} }
+} } }
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class T, class Enable = void> struct  sign_of
   {
@@ -40,9 +40,9 @@ namespace nt2 { namespace details
   {
     typedef signed type;
   };
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T>
   struct  sign_of : details::sign_of < typename meta::strip<T>::type >
@@ -52,5 +52,5 @@ namespace nt2 { namespace meta
                       , "A type with a non-fundamental primitive is used in nt2::meta::sign_of."
                       );
   };
-} }
+} } }
 #endif

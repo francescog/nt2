@@ -14,7 +14,7 @@
 #include <boost/mpl/sizeof.hpp>
 #include <boost/mpl/comparison.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class T1,class T2, class Tr, class Op>
   struct  size_check
@@ -25,9 +25,9 @@ namespace nt2 { namespace details
                               sizeof_<typename boost::mpl::apply<Tr,T2>::type>
                             >
   {};
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
     template<class T1,class T2,class Transform = boost::mpl::_>
     struct  has_same_size
@@ -95,5 +95,5 @@ namespace nt2 { namespace meta
                                 >
     {};
 
-} }
+} } }
 #endif

@@ -13,28 +13,31 @@
 #include <iostream>
 #include <nt2/sdk/details/timestamp.hpp>
 
-namespace nt2
+namespace boost
 {
-  const char* exception::what() const throw()
+  namespace simd
   {
-    std::ostringstream msg;
-    msg << *this;
-    return msg.str().c_str();
-  }
+    const char* exception::what() const throw()
+    {
+      std::ostringstream msg;
+      msg << *this;
+      return msg.str().c_str();
+    }
 
-  std::ostream& operator<<( std::ostream& os, exception const& e )
-  {
-    os
-    << "****************************** NT2 ERROR *******************************\n"
-    << "Raised: " << timestamp()                                      << "\n"
-    << "File  : " << *boost::get_error_info<boost::throw_file>(e)     << "\n"
-    << "Line  : " << *boost::get_error_info<boost::throw_line>(e)     << "\n"
-    << "In    : " << *boost::get_error_info<boost::throw_function>(e) << "\n"
-    << "************************************************************************\n";
-    e.display(os);
-    os
-    << "************************************************************************\n";
-    return os;
+    std::ostream& operator<<( std::ostream& os, exception const& e )
+    {
+      os
+	<< "****************************** NT2 ERROR *******************************\n"
+	<< "Raised: " << timestamp()                                      << "\n"
+	<< "File  : " << *boost::get_error_info<boost::throw_file>(e)     << "\n"
+	<< "Line  : " << *boost::get_error_info<boost::throw_line>(e)     << "\n"
+	<< "In    : " << *boost::get_error_info<boost::throw_function>(e) << "\n"
+	<< "************************************************************************\n";
+      e.display(os);
+      os
+	<< "************************************************************************\n";
+      return os;
+    }
   }
 }
 

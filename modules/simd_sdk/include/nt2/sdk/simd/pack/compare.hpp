@@ -9,7 +9,7 @@
 #ifndef NT2_SDK_SIMD_PACK_COMPARE_HPP_INCLUDED
 #define NT2_SDK_SIMD_PACK_COMPARE_HPP_INCLUDED
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   #define NT2_SIMD_COMPARE(Op)                                                \
   template<class X,class Y, class T, class C>                                 \

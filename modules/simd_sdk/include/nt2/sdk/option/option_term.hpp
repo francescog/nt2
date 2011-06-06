@@ -12,11 +12,11 @@
 #include <nt2/sdk/option/option.hpp>
 #include <boost/proto/core.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   struct option_term
       : boost::proto::terminal< option< boost::proto::_ > >
   {};
-} }
+} } }
 
 #endif

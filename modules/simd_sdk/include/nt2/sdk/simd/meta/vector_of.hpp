@@ -16,7 +16,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Forward declaration for native
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   template<class Scalar,class Extension> struct native;
 } }
@@ -40,7 +40,7 @@ struct vector_of< T ,Card                                               \
 };                                                                      \
 /**/
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // vector_of<T,N> computes the proper type for pack of N elements of types T
@@ -56,6 +56,6 @@ namespace nt2 { namespace meta
   BOOST_PP_SEQ_FOR_EACH(NT2_LOCAL,~,NT2_SIMD_TAG_SEQ)
 #endif
 
-} }
+} } }
 
 #endif

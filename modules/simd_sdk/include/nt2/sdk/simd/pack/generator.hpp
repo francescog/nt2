@@ -9,7 +9,7 @@
 #ifndef NT2_SDK_SIMD_PACK_GENERATOR_HPP_INCLUDED
 #define NT2_SDK_SIMD_PACK_GENERATOR_HPP_INCLUDED
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   //////////////////////////////////////////////////////////////////////////////
   // SIMD Expression use a template parameters so proto generator is extended

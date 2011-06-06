@@ -10,33 +10,36 @@
 #define NT2_SDK_FUNCTOR_TERMINAL_HPP_INCLUDED
 #include <nt2/include/functor.hpp>
 
-namespace nt2
+namespace boost
 {
-  //==============================================================================
-  // Special functor for handling terminal in expression AST evaluation
-  //==============================================================================
-  template<class Site> struct functor<tag::terminal_,Site>
+  namespace simd
   {
-    template<class Sig> struct result;
-
-    template<class This, class Value, class State, class Data>
-    struct result<This(Value, State, Data)>
+    //==============================================================================
+    // Special functor for handling terminal in expression AST evaluation
+    //==============================================================================
+    template<class Site> struct functor<tag::terminal_,Site>
     {
-      typedef typename
-      meta::dispatch_call<tag::terminal_(Value,State,Data),Site>::type  callee;
-      typedef typename
-      meta::result_of<callee(Value, State, Data)>::type             type;
+      template<class Sig> struct result;
+
+      template<class This, class Value, class State, class Data>
+      struct result<This(Value, State, Data)>
+      {
+	typedef typename
+	  meta::dispatch_call<tag::terminal_(Value,State,Data),Site>::type  callee;
+	typedef typename
+	  meta::result_of<callee(Value, State, Data)>::type             type;
+      };
+
+      template<class Value, class State, class Data> inline
+      typename meta::enable_call<tag::terminal_(Value,State,Data),Site>::type
+      operator()( Value& v, State& s, Data& d ) const
+      {
+	typename
+	  meta::dispatch_call<tag::terminal_(Value,State,Data),Site>::type callee;
+	return callee(v,s,d);
+      }
     };
-
-    template<class Value, class State, class Data> inline
-    typename meta::enable_call<tag::terminal_(Value,State,Data),Site>::type
-    operator()( Value& v, State& s, Data& d ) const
-    {
-      typename
-      meta::dispatch_call<tag::terminal_(Value,State,Data),Site>::type callee;
-      return callee(v,s,d);
-    }
-  };
+  }
 }
 
 #endif

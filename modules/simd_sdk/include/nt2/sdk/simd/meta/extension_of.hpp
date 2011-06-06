@@ -11,11 +11,11 @@
 
 #include <nt2/sdk/meta/na.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T,class Dummy=void, class Dummy1 = void>
   struct extension_of : na_ {};
-} }
+} } }
 
 
 #endif

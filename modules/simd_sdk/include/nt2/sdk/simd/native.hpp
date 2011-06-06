@@ -18,7 +18,7 @@
 #include <nt2/sdk/simd/meta/is_vectorizable.hpp>
 #include <nt2/sdk/simd/details/native/iterator.hpp>
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   //////////////////////////////////////////////////////////////////////////////
   /// Platform independant native SIMD type
@@ -228,7 +228,7 @@ namespace nt2 { namespace simd
 
 #if 0
 #include <nt2/include/constants/digits.hpp>
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   template<class T, class X>
   inline native<T, X>& native<T, X>::operator++() { *this += One< native<T, X> >();  return *this; }

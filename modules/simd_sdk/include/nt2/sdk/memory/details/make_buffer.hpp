@@ -22,7 +22,7 @@
 #include <boost/fusion/include/vector.hpp>
 #include <boost/type_traits/add_pointer.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //////////////////////////////////////////////////////////////////////////////
   // Build a buffer class from a block specs.
@@ -116,9 +116,9 @@ namespace nt2 { namespace details
     ////////////////////////////////////////////////////////////////////////////
     typedef memory::buffer<value_type,base_type,size_type,allocator_type>  type;
   };
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template< class Type
           , std::size_t Dimensions, class Bases, class Sizes, class Padding
@@ -158,5 +158,5 @@ namespace nt2 { namespace meta
 
     typedef boost::fusion::vector<buffer_type> type;
   };
-} }
+} } }
 #endif

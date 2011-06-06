@@ -50,22 +50,25 @@
 #include <iosfwd>
 #include <nt2/sdk/error/error.hpp>
 
-namespace nt2 { namespace details { NT2_ERROR_INFO(assert_info, char const*); } }
+namespace boost { namespace simd { namespace details { NT2_ERROR_INFO(assert_info, char const*); } } }
 
-namespace nt2
+namespace boost
 {
-  //============================================================================
-  /*!
-   * \ingroup error
-   * assert_exception is the exception thrown when a runtime assertion fails and
-   * NT2_ASSERTS_AS_EXCEPTIONS is defined.
-   */
-  //============================================================================
-  struct assert_exception : virtual nt2::exception
+  namespace simd
   {
-    virtual ~assert_exception() throw() {}
-    virtual void display(std::ostream& os) const throw();
-  };
+    //============================================================================
+    /*!
+     * \ingroup error
+     * assert_exception is the exception thrown when a runtime assertion fails and
+     * NT2_ASSERTS_AS_EXCEPTIONS is defined.
+     */
+    //============================================================================
+    struct assert_exception : virtual nt2::exception
+    {
+      virtual ~assert_exception() throw() {}
+      virtual void display(std::ostream& os) const throw();
+    };
+  }
 }
 
 #ifndef BOOST_ENABLE_ASSERT_HANDLER
@@ -119,24 +122,27 @@ namespace nt2
 
 namespace boost
 {
-  void inline
-  assertion_failed(char const* expr,char const* fn,char const* f,int l)
+  namespace simd
   {
-    #if defined(NT2_ASSERTS_AS_EXCEPTIONS) && !defined(NT2_DISABLE_ERROR)
-    ::boost::exception_detail
-    ::throw_exception_(   ::nt2::assert_exception()
-                      <<  ::nt2::details::assert_info(expr)
-                        , fn,f,l
-                      );
-    #elif defined(NT2_DEBUG)
-    fprintf(stderr,"%s:%d: %s: Assertion %s failed.\n",f,l,fn,expr);
-    ::nt2::trap();
-    #else
-    nt2::ignore_unused(expr);
-    nt2::ignore_unused(fn);
-    nt2::ignore_unused(f);
-    nt2::ignore_unused(l);
-    #endif
+    void inline
+      assertion_failed(char const* expr,char const* fn,char const* f,int l)
+      {
+#if defined(NT2_ASSERTS_AS_EXCEPTIONS) && !defined(NT2_DISABLE_ERROR)
+	::boost::exception_detail
+	  ::throw_exception_(   ::nt2::assert_exception()
+	      <<  ::nt2::details::assert_info(expr)
+	      , fn,f,l
+	      );
+#elif defined(NT2_DEBUG)
+	fprintf(stderr,"%s:%d: %s: Assertion %s failed.\n",f,l,fn,expr);
+	::nt2::trap();
+#else
+	nt2::ignore_unused(expr);
+	nt2::ignore_unused(fn);
+	nt2::ignore_unused(f);
+	nt2::ignore_unused(l);
+#endif
+      }
   }
 }
 

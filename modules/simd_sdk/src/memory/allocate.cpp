@@ -10,7 +10,7 @@
 #include <nt2/sdk/error/error.hpp>
 #include <nt2/sdk/memory/forward.hpp>
 
-namespace nt2 { namespace memory
+namespace nt2 { namespace simd { namespace memory
 {
   byte* allocate( std::size_t nbytes )
   {
@@ -57,4 +57,4 @@ namespace nt2 { namespace memory
 
     return reinterpret_cast<byte*>(result);
   }
-} }
+} } }

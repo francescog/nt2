@@ -11,10 +11,10 @@
 
 #include <boost/mpl/bool.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T,class Extension>
   struct is_simd_specific : boost::mpl::false_ {};
-} }
+} } }
 
 #endif

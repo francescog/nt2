@@ -25,7 +25,7 @@ NT2_REGISTER_HIERARCHY(iterator_)
 ////////////////////////////////////////////////////////////////////////////////
 // Specialize hierarchy for all iterator types
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class T>
   struct  hierarchy_of< T
@@ -42,6 +42,6 @@ namespace nt2 { namespace details
   {
     typedef meta::iterator_< meta::hierarchy_of<void>::type > type;
   };
-} }
+} } }
 
 #endif

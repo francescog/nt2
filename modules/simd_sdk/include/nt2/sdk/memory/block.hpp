@@ -22,7 +22,7 @@
 #include <nt2/sdk/memory/details/make_buffer.hpp>
 #include <boost/preprocessor/iteration/iterate.hpp>
 
-namespace nt2 { namespace memory
+namespace boost { namespace simd { namespace memory
 {
   //////////////////////////////////////////////////////////////////////////////
   // block is a multidimensionnal buffer using NRC model and bearing all the
@@ -37,7 +37,7 @@ namespace nt2 { namespace memory
           , class Allocator
           >
   class block;
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Macro generating a chain of []
@@ -82,7 +82,7 @@ access( Position const& p, Sz const& ) const                      \
 ////////////////////////////////////////////////////////////////////////////////
 #define DIM  BOOST_PP_ITERATION()
 
-namespace nt2 { namespace memory
+namespace boost { namespace simd { namespace memory
 {
   template< class Type
     , class Bases, class Sizes, class Storage, class Padding
@@ -464,7 +464,7 @@ namespace nt2 { namespace memory
     Bases      base_;
     Sizes      size_;
   };
-} }
+} } }
 
 #undef DIM
 

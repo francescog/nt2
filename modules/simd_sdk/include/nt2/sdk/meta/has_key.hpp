@@ -15,7 +15,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/typeof/typeof.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class S,class K> struct has_key
   {
@@ -24,6 +24,6 @@ namespace nt2 { namespace meta
     typedef typename nested::type type;
     BOOST_STATIC_CONSTANT( bool, value = type::value );
   };
-} }
+} } }
 
 #endif

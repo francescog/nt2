@@ -22,7 +22,7 @@ NT2_REGISTER_DISPATCH ( tag::is_aligned_, tag::cpu_
                       , (A0)(A1)      , (integer_<A0>)(integer_<A1>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_aligned_( tag::integer_, tag::integer_), tag::cpu_, Dummy>
@@ -31,7 +31,7 @@ namespace nt2 { namespace ext
     typedef bool result_type;
     NT2_FUNCTOR_CALL(2) { return !(a0 & (a1-1) ); }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Check alignment of integer on mpl integer
@@ -40,7 +40,7 @@ NT2_REGISTER_DISPATCH ( tag::is_aligned_, tag::cpu_
                       , (A0)(A1), (integer_<A0>)(mpl_integral_< integer_<A1> >)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_aligned_( tag::integer_
@@ -57,14 +57,14 @@ namespace nt2 { namespace ext
       return !(a0 & (A1::value-1) );
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Check alignment of integer on default alignment
 ////////////////////////////////////////////////////////////////////////////////
 NT2_REGISTER_DISPATCH ( tag::is_aligned_, tag::cpu_, (A0), (integer_<A0>) )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_aligned_( tag::integer_), tag::cpu_, Dummy >
@@ -77,7 +77,7 @@ namespace nt2 { namespace ext
       return nt2::memory::is_aligned<NT2_CONFIG_ALIGNMENT>(a0);
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Check alignment of mpl integer on mpl integer
@@ -87,7 +87,7 @@ NT2_REGISTER_DISPATCH ( tag::is_aligned_, tag::cpu_
                       , (mpl_integral_< integer_<A0> >)(mpl_integral_< integer_<A1> >)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_aligned_( tag::mpl_integral_<tag::integer_>
@@ -106,7 +106,7 @@ namespace nt2 { namespace ext
       return meta::is_aligned<A0,A1>::value;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Check alignment of mpl integer on default alignment
@@ -115,7 +115,7 @@ NT2_REGISTER_DISPATCH ( tag::is_aligned_, tag::cpu_
                       , (A0), (mpl_integral_< integer_<A0> >)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_aligned_(tag::mpl_integral_<tag::integer_>)
@@ -130,7 +130,7 @@ namespace nt2 { namespace ext
       return nt2::memory::is_aligned<NT2_CONFIG_ALIGNMENT>(a0);
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Check alignment of iterator on integer
@@ -139,7 +139,7 @@ NT2_REGISTER_DISPATCH ( tag::is_aligned_, tag::cpu_
                       , (A0)(A1)      , (iterator_<unspecified_<A0> >)(integer_<A1>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_aligned_( tag::iterator_<tag::unspecified_>
@@ -156,7 +156,7 @@ namespace nt2 { namespace ext
       return nt2::memory::is_aligned( reinterpret_cast<std::size_t>(a0), a1 );
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Check alignment of iterator on mpl integer
@@ -166,7 +166,7 @@ NT2_REGISTER_DISPATCH ( tag::is_aligned_, tag::cpu_
                       , (iterator_<unspecified_<A0> >)(mpl_integral_< integer_<A1> >)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_aligned_( tag::iterator_<tag::unspecified_>
@@ -183,14 +183,14 @@ namespace nt2 { namespace ext
       return nt2::memory::is_aligned( reinterpret_cast<std::size_t>(a0), a1 );
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Check alignment of iterator on default alignment
 ////////////////////////////////////////////////////////////////////////////////
 NT2_REGISTER_DISPATCH(tag::is_aligned_,tag::cpu_,(A0),(iterator_<unspecified_<A0> >))
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_aligned_(tag::iterator_<tag::unspecified_>)
@@ -205,6 +205,6 @@ namespace nt2 { namespace ext
       return nt2::memory::is_aligned<NT2_CONFIG_ALIGNMENT>(a0);
     }
   };
-} }
+} } }
 
 #endif

@@ -20,7 +20,7 @@
 #include <nt2/sdk/memory/no_padding.hpp>
 #include <nt2/sdk/functor/preprocessor/call.hpp>
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::slice_ ( tag::fusion_sequence_
@@ -80,12 +80,12 @@ namespace nt2 { namespace ext
       return slice<A2::value>(a0,memory::no_padding());
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // stride Functor implementation - Do nothing except on inner dimension
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace ext
 {
   template<class Dummy>
   struct  call< tag::stride_( tag::fusion_sequence_

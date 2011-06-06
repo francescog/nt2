@@ -77,7 +77,7 @@
   }                                                                         \
 /**/
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   NT2_MAKE_TEST_NAN_FUNC(test_eq  , ==, !=  )
   NT2_MAKE_TEST_FUNC(test_neq , !=, ==  )
@@ -85,6 +85,6 @@ namespace nt2 { namespace details
   NT2_MAKE_TEST_FUNC(test_gt  , > , <=  )
   NT2_MAKE_TEST_FUNC(test_le  , <= , >  )
   NT2_MAKE_TEST_FUNC(test_ge  , >= , <  )
-} }
+} } }
 
 #endif

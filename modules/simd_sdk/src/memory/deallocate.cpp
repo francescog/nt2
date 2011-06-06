@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include <nt2/sdk/memory/forward.hpp>
 
-namespace nt2 { namespace memory
+namespace nt2 { namespace simd { namespace memory
 {
   void deallocate( byte* ptr, std::size_t )
   {
@@ -30,4 +30,4 @@ namespace nt2 { namespace memory
     if(ptr) ::free( reinterpret_cast<void**>(ptr)[- 1] );
     #endif
   }
-} }
+} } }

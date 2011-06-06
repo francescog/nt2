@@ -14,7 +14,7 @@
  * \brief Defines the nt2::meta::enable_if_type \metafunction
  */
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //============================================================================
   /*!
@@ -29,6 +29,6 @@ namespace nt2 { namespace meta
    */
   //============================================================================
   template<class T, class R=void>  struct enable_if_type { typedef R type; };
-} }
+} } }
 
 #endif

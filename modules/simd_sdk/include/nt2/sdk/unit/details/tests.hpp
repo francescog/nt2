@@ -17,7 +17,7 @@
 #include <nt2/sdk/functor/meta/call.hpp>
 #include <iostream>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class T, class U, class V>					
   inline bool test_ulp_eq( char const* x1
@@ -102,6 +102,6 @@ namespace nt2 { namespace details
       }									
   }
 
-} }
+} } }
 #endif
 

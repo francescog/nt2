@@ -13,7 +13,7 @@
 #include <nt2/sdk/option/option_expr.hpp>
 #include <nt2/sdk/error/static_assert.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   struct options_
   {
@@ -27,15 +27,15 @@ namespace nt2 { namespace details
       return opts;
     }
   };
-} }
+} } }
 
-namespace nt2
+namespace boost { namespace simd
 {
   //////////////////////////////////////////////////////////////////////////////
   // options entry-point
   //////////////////////////////////////////////////////////////////////////////
     details::options_ const options = {};
-}
+} }
 
 #define NT2_REGISTER_PARAMETERS(NAME)                               \
 struct NAME ## _ {};                                                \

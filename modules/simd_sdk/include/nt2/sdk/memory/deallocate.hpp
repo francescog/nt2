@@ -14,7 +14,7 @@
 #include <nt2/sdk/memory/config.hpp>
 #include <nt2/sdk/memory/align_on.hpp>
 
-namespace nt2 { namespace memory
+namespace boost { namespace simd { namespace memory
 {
   //////////////////////////////////////////////////////////////////////////////
   // Deallocate a raw buffer of bytes
@@ -40,7 +40,7 @@ namespace nt2 { namespace memory
     void* base = reinterpret_cast<void**>(ptr)[- 1];
     a.deallocate(reinterpret_cast<typename Allocator::pointer>(base),nelems);
   }
-} }
+} } }
 
 
 

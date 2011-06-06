@@ -15,7 +15,7 @@
 #include <nt2/sdk/dsl/is_comparison_expression.hpp>
 #include <nt2/sdk/constant/category.hpp>
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   template<class T, class N> struct grammar;
 

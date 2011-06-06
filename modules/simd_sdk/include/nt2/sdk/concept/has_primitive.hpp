@@ -19,53 +19,59 @@
 #include <nt2/sdk/meta/is_fundamental.hpp>
 
 #if defined(DOXYGEN_ONLY)
-namespace nt2
+namespace boost
 {
-  //============================================================================
-  /*!
-   * \ingroup concepts
-   * A model of HasPrimitive is a type from which a Fundamental type, i.e. a
-   * type which Hierarchy is \ref nt2::tag::fundamental_, can be extracted.
-   *
-   * \par Notations:
-   *
-   *  - \c T Model of \ref HasPrimitive.
-   *
-   *  \par Expressions Requirements:
-   *
-   *  - \c primitive_of<T>::type verifies
-   *  \c nt2::meta::is_fundamental<Primitive>::value \c == \c true
-   *
-   *  \par Models:
-   *
-   *  - all fundamental types (\c int,\c float, ...)
-   *  - \ref nt2::simd::native
-   *  - all models of \readableiterator
-   *  - all models of \singlepassrange
-   */
-  //============================================================================
-  template<class T> struct HasPrimitive {};
+  namespace simd
+  {
+    //============================================================================
+    /*!
+     * \ingroup concepts
+     * A model of HasPrimitive is a type from which a Fundamental type, i.e. a
+     * type which Hierarchy is \ref nt2::tag::fundamental_, can be extracted.
+     *
+     * \par Notations:
+     *
+     *  - \c T Model of \ref HasPrimitive.
+     *
+     *  \par Expressions Requirements:
+     *
+     *  - \c primitive_of<T>::type verifies
+     *  \c nt2::meta::is_fundamental<Primitive>::value \c == \c true
+     *
+     *  \par Models:
+     *
+     *  - all fundamental types (\c int,\c float, ...)
+     *  - \ref nt2::simd::native
+     *  - all models of \readableiterator
+     *  - all models of \singlepassrange
+     */
+    //============================================================================
+    template<class T> struct HasPrimitive {};
+  }
 }
 #else
-namespace nt2
+namespace boost
 {
-  template< class T
-          , bool Enable =
-            meta::is_fundamental<typename meta::primitive_of<T>::type>::value
-          >
-  struct HasPrimitive
-  {
-    BOOST_CONCEPT_USAGE(HasPrimitive) {}
-  };
+  namespace simd
+  { 
+    template< class T
+            , bool Enable =
+              meta::is_fundamental<typename meta::primitive_of<T>::type>::value
+            >
+    struct HasPrimitive
+    {
+      BOOST_CONCEPT_USAGE(HasPrimitive) {}
+    };
 
-  template<class T> struct HasPrimitive<T,false>
-  {
-    void type_has_unknown_category();
-    BOOST_CONCEPT_USAGE(HasPrimitive) { type_has_unknown_category(t); }
+    template<class T> struct HasPrimitive<T,false>
+    {
+      void type_has_unknown_category();
+      BOOST_CONCEPT_USAGE(HasPrimitive) { type_has_unknown_category(t); }
 
-    private:
-    T t;
-  };
+      private:
+      T t;
+    };
+  }
 }
 
 #endif

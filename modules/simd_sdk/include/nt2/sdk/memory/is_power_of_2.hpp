@@ -17,14 +17,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Check if a value is a power of 2
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2
+namespace boost { namespace simd 
 {
   namespace tag { struct is_power_of_2_ {}; }
   namespace memory
   {
     NT2_FUNCTION_IMPLEMENTATION(tag::is_power_of_2_, is_power_of_2, 1);
   }
-}
+} }
 
 #include <nt2/sdk/memory/details/is_power_of_2.hpp>
 

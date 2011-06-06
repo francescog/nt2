@@ -9,7 +9,7 @@
 #ifndef NT2_SDK_META_DETAILS_HIERARCHY_HPP_INCLUDED
 #define NT2_SDK_META_DETAILS_HIERARCHY_HPP_INCLUDED
 
-namespace nt2 { namespace tag
+namespace boost { namespace simd { namespace tag
 {
   //============================================================================
   // Tag for unknown types
@@ -79,6 +79,6 @@ namespace nt2 { namespace tag
   //============================================================================
   struct uint8_       {}; struct uint16_      {};
   struct uint32_      {}; struct uint64_      {};
-} }
+} } }
 
 #endif

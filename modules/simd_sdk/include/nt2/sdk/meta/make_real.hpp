@@ -17,7 +17,7 @@
 #include <boost/mpl/apply.hpp>
 #include <nt2/sdk/meta/na.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<std::size_t Size, class Transform = na_>
   struct  make_real;
@@ -32,6 +32,6 @@ namespace nt2 { namespace meta
   template<class Transform>
   struct  make_real<sizeof(float),Transform>
         : boost::mpl::apply<Transform,float> {};
-} }
+} } }
 
 #endif

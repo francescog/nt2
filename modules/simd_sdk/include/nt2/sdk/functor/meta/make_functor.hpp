@@ -14,7 +14,7 @@
  * \brief Implements a delayed \ref nt2::functor type instanciation system
  */
 
-namespace nt2
+namespace boost { namespace simd
 {
   //============================================================================
   /*!
@@ -52,6 +52,6 @@ namespace nt2
   {
     typedef functor<Tag> type;
   };
-}
+} }
 
 #endif

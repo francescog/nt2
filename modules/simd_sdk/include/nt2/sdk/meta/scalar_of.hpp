@@ -12,12 +12,12 @@
 #include <nt2/sdk/meta/strip.hpp>
 #include <nt2/sdk/meta/hierarchy_of.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class T, class Hierarchy> struct scalar_of_impl { typedef T type; };
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T>
   struct  scalar_of
@@ -27,6 +27,6 @@ namespace nt2 { namespace meta
                                                         >::type
                                   >
           {};
-} }
+} } }
 
 #endif

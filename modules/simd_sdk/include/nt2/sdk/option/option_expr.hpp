@@ -18,7 +18,7 @@
 #include <boost/proto/core.hpp>
 #include <nt2/sdk/error/static_assert.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class Expr> struct option_expr
   {
@@ -93,6 +93,6 @@ namespace nt2 { namespace details
       return def;
     }
   };
-} }
+} } }
 
 #endif

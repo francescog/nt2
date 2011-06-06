@@ -15,7 +15,7 @@
 #include <nt2/sdk/timing/now.hpp>
 #include <nt2/sdk/timing/timer.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   struct cycle_based_timer
   {
@@ -24,9 +24,9 @@ namespace nt2 { namespace details
   };
 
   counter<cycles_t,cycle_based_timer>  const cycle_timer = {};
-} }
+} } }
 
-namespace nt2 { namespace time
+namespace boost { namespace simd { namespace time
 {
   inline void ctic() { details::cycle_timer.tic(); }
 
@@ -34,13 +34,16 @@ namespace nt2 { namespace time
   {
     return details::cycle_timer.toc(display);
   }
-} }
+} } }
 
-namespace nt2
+namespace boost
 {
-  // Convenience namespace injection from time:: into nt2::
-  using time::ctic;
-  using time::ctoc;
+  namespace simd
+  {
+    // Convenience namespace injection from time:: into nt2::
+    using time::ctic;
+    using time::ctoc;
+  }
 }
 
 #endif

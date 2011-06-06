@@ -27,7 +27,7 @@ NT2_REGISTER_DISPATCH ( tag::splat_
                         ))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class T, class C, class Sema, class Dummy>
   struct  call< tag::splat_ ( tag::fundamental_
@@ -54,6 +54,6 @@ namespace nt2 { namespace ext
      return that;
    }
   };
-} }
+} } }
 
 #endif

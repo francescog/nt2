@@ -27,7 +27,7 @@
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #endif
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //==============================================================================
   // This helper structure is here to make MSVC compile our code
@@ -36,9 +36,9 @@ namespace nt2 { namespace details
   {
     typedef typename T::callable_type type;
   };
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //==============================================================================
   /*!
@@ -124,6 +124,6 @@ namespace nt2 { namespace meta
 #endif
 
   #endif
-} }
+} } }
 
 #endif

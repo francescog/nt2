@@ -11,7 +11,7 @@
 
 #include <nt2/sdk/meta/scalar_of.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T>
   struct  is_real_convertible
@@ -19,6 +19,6 @@ namespace nt2 { namespace meta
                               <=  sizeof(typename meta::scalar_of<T>::type)
                               )
                             > {};
-} }
+} } }
 
 #endif

@@ -24,7 +24,7 @@
 #include <boost/preprocessor/repetition/repeat_from_to.hpp>
 #endif
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //============================================================================
   /*!
@@ -88,7 +88,7 @@ struct call<Tag(BOOST_PP_ENUM_PARAMS(n,A)),Site> \
 #endif
 
 #endif
-} }
+} } }
 
 #endif
 

@@ -16,7 +16,7 @@
 #include <nt2/sdk/error/static_assert.hpp>
 #include <nt2/sdk/memory/meta/is_power_of_2.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // Boolean meta-function checking if a integral constant is aligned on a given
@@ -40,6 +40,6 @@ namespace nt2 { namespace meta
   template<class V, class N = boost::mpl::size_t<NT2_CONFIG_ALIGNMENT> >
   struct is_aligned : is_aligned_c<V::value,N::value> {};
 
-} }
+} } }
 
 #endif

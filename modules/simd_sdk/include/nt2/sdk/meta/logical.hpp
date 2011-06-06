@@ -16,20 +16,23 @@
 //////////////////////////////////////////////////////////////////////////////
 #include <nt2/sdk/meta/is_scalar.hpp>
 
-namespace nt2
+namespace boost
 {
-  namespace details
+  namespace simd
   {
-    template<class T,class C> struct logical_impl  { typedef T type; };
-    template<class T >        struct logical_impl < T,boost::mpl::true_ > { typedef bool type; }; 
-  }
-  namespace meta
-  {
-    template<class T>
-    struct  logical
-      : details::logical_impl < typename strip<T>::type
-                              , typename meta::is_scalar<T>::type
-                              > {};
+    namespace details
+    {
+      template<class T,class C> struct logical_impl  { typedef T type; };
+      template<class T >        struct logical_impl < T,boost::mpl::true_ > { typedef bool type; }; 
+    }
+    namespace meta
+    {
+      template<class T>
+      struct  logical
+      	: details::logical_impl < typename strip<T>::type
+                                , typename meta::is_scalar<T>::type
+                                > {};
+    }
   }
 }
 

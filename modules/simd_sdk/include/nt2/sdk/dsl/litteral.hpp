@@ -44,7 +44,7 @@ NT2_REGISTER_DISPATCH_TPL (  tag::terminal_,tag::cpu_
                             (integer_<A2>)
                           )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct call<tag::terminal_( tag::arithmetic_
@@ -142,6 +142,6 @@ namespace nt2 { namespace ext
       return callee( meta::as_<type>() );
     }
   };
-} }
+} } }
 
 #endif

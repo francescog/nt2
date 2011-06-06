@@ -11,7 +11,7 @@
 
 #include <nt2/sdk/error/details/exception.hpp>
 
-namespace nt2 { namespace time
+namespace boost { namespace simd { namespace time
 {
   struct unbalanced_timing : virtual nt2::exception
   {
@@ -20,6 +20,6 @@ namespace nt2 { namespace time
       os  << "Unbalanced timer use\n";
     }
   };
-} }
+} } }
 
 #endif

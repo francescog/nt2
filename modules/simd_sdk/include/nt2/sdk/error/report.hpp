@@ -15,7 +15,7 @@
 #include <nt2/sdk/config.hpp>
 #include <nt2/sdk/error/debug.hpp>
 
-namespace nt2 { namespace config
+namespace boost { namespace simd { namespace config
 {
   static void errors()
   {
@@ -44,6 +44,6 @@ namespace nt2 { namespace config
   }
 
   NT2_REGISTER_STATUS(errors);
-} }
+} } }
 
 #endif

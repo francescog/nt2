@@ -21,8 +21,8 @@
 #include <nt2/sdk/memory/details/category.hpp>
 #include <nt2/sdk/functor/preprocessor/function.hpp>
 
-namespace nt2
-{
+namespace boost { namespace simd
+{ 
   namespace tag { struct stride_ {}; }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -43,7 +43,7 @@ namespace nt2
     functor<tag::stride_> callee;
     return callee(s,p,boost::mpl::size_t<N>() );
   }
-}
+} }
 
 ////////////////////////////////////////////////////////////////////////////////
 // slice dispatch on basic padding strategy

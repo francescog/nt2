@@ -12,7 +12,7 @@
 #include <nt2/sdk/meta/primitive_of.hpp>
 #include <nt2/sdk/simd/pack/forward.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template< class Type
           , std::size_t Cardinal
@@ -21,7 +21,7 @@ namespace nt2 { namespace meta
   {
     typedef Type type;
   };
-} }
+} } }
 
 #endif
 

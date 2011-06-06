@@ -20,9 +20,9 @@
 #include <boost/type_traits/is_integral.hpp>
 #include <boost/type_traits/make_unsigned.hpp>
 
-namespace nt2 { namespace meta { template<class T> struct as_unsigned; } }
+namespace boost { namespace simd { namespace meta { template<class T> struct as_unsigned; } } }
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class T, class Enable = void>
   struct  as_unsigned_impl
@@ -46,6 +46,6 @@ namespace nt2 { namespace details
                               , boost::make_unsigned<T>
                               , boost::mpl::identity<T>
                               > {};
-} }
+} } }
 
 #endif

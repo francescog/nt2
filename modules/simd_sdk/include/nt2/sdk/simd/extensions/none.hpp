@@ -36,16 +36,16 @@ NT2_WARNING(No SIMD extensions detected)
 #include <boost/mpl/times.hpp>
 #include <boost/mpl/sizeof.hpp>
 
-namespace nt2 { namespace tag
+namespace boost { namespace simd { namespace tag
 {
   template<class N> struct none_ : cpu_
   {
     typedef cpu_ parent;
     typedef none_ type;
   };
-} }
+} } }
 
-namespace nt2 { namespace detail
+namespace boost { namespace simd { namespace detail
 {
   //============================================================================
   // Work around for xlC
@@ -54,9 +54,9 @@ namespace nt2 { namespace detail
   {
     typedef boost::array<T, N::value> type;
   };
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class N, class T>
   struct as_simd<T, tag::none_<N> >
@@ -78,7 +78,7 @@ namespace nt2 { namespace meta
   {
     typedef tag::none_<boost::mpl::times<N, boost::mpl::sizeof_<T> > > type;
   };
-} }
+} } }
 
 #endif
 

@@ -17,15 +17,18 @@
 #include <sys/time.h>
 #include <boost/cstdint.hpp>
 
-namespace nt2
+namespace boost
 {
-  namespace details
+  namespace simd
   {
-    inline double now()
+    namespace details
     {
-      struct timeval tp;
-      gettimeofday(&tp,NULL);
-      return double(tp.tv_sec) + double(tp.tv_usec)*1e-6;
+      inline double now()
+      {
+	struct timeval tp;
+	gettimeofday(&tp,NULL);
+	return double(tp.tv_sec) + double(tp.tv_usec)*1e-6;
+      }
     }
   }
 }

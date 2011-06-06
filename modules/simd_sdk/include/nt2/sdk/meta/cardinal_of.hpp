@@ -17,7 +17,7 @@
 #include <boost/mpl/size_t.hpp>
 #include <nt2/sdk/meta/hierarchy_of.hpp>
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //============================================================================
   /*!
@@ -40,9 +40,9 @@ namespace nt2 { namespace ext
   //============================================================================
   template<class Type,class Hierarchy>
   struct cardinal_of_impl : boost::mpl::size_t<1> {};
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //============================================================================
   /*!
@@ -68,6 +68,6 @@ namespace nt2 { namespace meta
         : ext::cardinal_of_impl < typename meta::strip<T>::type
                                 , typename hierarchy_of<T>::type
                                 > {};
-} }
+} } }
 
 #endif

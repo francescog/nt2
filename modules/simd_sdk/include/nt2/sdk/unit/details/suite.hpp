@@ -15,7 +15,7 @@
 #include <nt2/sdk/unit/details/stats.hpp>
 #include <nt2/sdk/unit/details/register.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //////////////////////////////////////////////////////////////////////////////
   // RAII class for reporting error at end of modules
@@ -63,6 +63,6 @@ namespace nt2 { namespace details
 
   suite const main_suite  = { &dummy };
 
-} }
+} } }
 
 #endif

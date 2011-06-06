@@ -30,11 +30,11 @@
 
 //==============================================================================
 /*!
- * \namespace nt2::meta
+ * \namespace boost::meta
  * Namespace containing all NT2 meta-functions and meta-function classes
  */
 //==============================================================================
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //============================================================================
   /*!
@@ -99,6 +99,6 @@ namespace nt2 { namespace meta
         : behave_as< boost::is_integral<boost::mpl::_>
                     , typename strip<T>::type
                     > {};
-} }
+} } }
 
 #endif

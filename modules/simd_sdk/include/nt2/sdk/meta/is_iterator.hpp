@@ -14,7 +14,7 @@
 #include <boost/type_traits/remove_pointer.hpp>
 #include <nt2/sdk/meta/enable_if_type.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T, class Enable=void>
   struct  is_iterator : boost::mpl::false_  {};
@@ -49,6 +49,6 @@ namespace nt2 { namespace meta
                                       >::type
                       >
         : boost::mpl::true_ {};
-} }
+} } }
 
 #endif

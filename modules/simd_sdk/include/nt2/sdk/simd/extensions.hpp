@@ -24,13 +24,16 @@
 #include <nt2/sdk/simd/extensions/none.hpp>
 
 #include <nt2/sdk/functor/forward.hpp>
-namespace nt2
+namespace boost
 {
-  template<class Tag>
-  struct default_site<Tag>
+  namespace simd
   {
-    typedef NT2_SIMD_DEFAULT_SITE type;
-  };
+    template<class Tag>
+    struct default_site<Tag>
+    {
+      typedef NT2_SIMD_DEFAULT_SITE type;
+    };
+  }
 }
 
 #endif

@@ -19,10 +19,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Forward declare the unknown_ tag and the error_with helper
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace tag { struct unknown_;    } }
-namespace nt2 { namespace tag { struct error_with;  } }
+namespace boost { namespace simd { namespace tag { struct unknown_;    } } }
+namespace boost { namespace simd {  namespace tag { struct error_with;  } } }
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //////////////////////////////////////////////////////////////////////////////
   // Flag call instanciation as callable
@@ -45,6 +45,6 @@ namespace nt2 { namespace ext
                         "correct type in your function call."
                       );
   };
-} }
+} }}
 
 #endif

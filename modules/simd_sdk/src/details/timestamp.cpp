@@ -15,17 +15,20 @@
 #pragma warning(disable: 4996)
 #endif
 
-namespace nt2
+namespace boost
 {
-  std::string timestamp()
+  namespace simd
   {
-    time_t rawtime;
-    char buffer[64];
+    std::string timestamp()
+    {
+      time_t rawtime;
+      char buffer[64];
 
-    time(&rawtime);
-    strftime(buffer,64,"%c",localtime(&rawtime));
+      time(&rawtime);
+      strftime(buffer,64,"%c",localtime(&rawtime));
 
-    return std::string(buffer);
+      return std::string(buffer);
+    }
   }
 }
 

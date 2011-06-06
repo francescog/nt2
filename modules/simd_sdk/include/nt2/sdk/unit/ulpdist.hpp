@@ -10,7 +10,7 @@
 // #define NT2_SDK_UNIT_DETAILS_ULPDIST_HPP_INCLUDED
 // #include <nt2/include/constants/eps_related.hpp>
 
-// namespace nt2
+// namespace boost
 // {
 //   namespace details {
     

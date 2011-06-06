@@ -16,7 +16,7 @@
 #include <nt2/include/functions/splat.hpp>
 #include <nt2/sdk/simd/pack/evaluation.hpp>
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   ////////////////////////////////////////////////////////////////////////////
   // data is a tag-dispatched SIMD entity that selects between a native

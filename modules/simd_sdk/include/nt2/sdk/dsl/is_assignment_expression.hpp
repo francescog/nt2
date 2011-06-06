@@ -16,7 +16,7 @@
 #include <boost/proto/tags.hpp>
 #include <boost/proto/matches.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   struct assign_cases
   {
@@ -62,9 +62,9 @@ namespace nt2 { namespace details
   template<>
   struct  assign_cases::case_< boost::proto::tag::bitwise_xor_assign >
         : boost::proto::_ {};
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   struct  assignment_operators
         : boost::proto::switch_< details::assign_cases>
@@ -76,6 +76,6 @@ namespace nt2 { namespace meta
                                 , assignment_operators
                                 >
   {};
-} }
+} } }
 
 #endif

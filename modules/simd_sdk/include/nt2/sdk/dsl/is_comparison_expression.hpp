@@ -16,7 +16,7 @@
 #include <boost/proto/tags.hpp>
 #include <boost/proto/matches.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   struct compare_cases
   {
@@ -46,9 +46,9 @@ namespace nt2 { namespace details
   template<>
   struct  compare_cases::case_< boost::proto::tag::greater_equal >
         : boost::proto::_ {};
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   struct  comparison_operators
         : boost::proto::switch_< details::compare_cases>
@@ -60,6 +60,6 @@ namespace nt2 { namespace meta
                                 , comparison_operators
                                 >
   {};
-} }
+} } }
 
 #endif

@@ -15,7 +15,7 @@
 #include <nt2/sdk/timing/timer.hpp>
 #include <nt2/sdk/timing/now.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   struct second_based_timer
   {
@@ -24,9 +24,9 @@ namespace nt2 { namespace details
   };
 
   counter<double,second_based_timer> const sec_timer = {};
-} }
+} } }
 
-namespace nt2 { namespace time
+namespace boost { namespace simd { namespace time
 {
   inline void tic() { details::sec_timer.tic(); }
 
@@ -34,13 +34,16 @@ namespace nt2 { namespace time
   {
     return details::sec_timer.toc(display);
   }
-} }
+} } }
 
-namespace nt2
+namespace boost
 {
-  // Convenience namespace injection from time:: into nt2::
-  using time::tic;
-  using time::toc;
+  namespace simd
+  { 
+    // Convenience namespace injection from time:: into nt2::
+    using time::tic;
+    using time::toc;
+  }
 }
 
 #endif

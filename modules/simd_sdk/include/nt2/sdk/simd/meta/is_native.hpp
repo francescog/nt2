@@ -12,12 +12,12 @@
 #include <boost/mpl/bool.hpp>
 #include <nt2/sdk/simd/native.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T> struct is_native : boost::mpl::false_ {};
 
   template<class T, class X>
   struct is_native<nt2::simd::native<T,X> >: boost::mpl::true_ {};
-} }
+} } }
 
 #endif

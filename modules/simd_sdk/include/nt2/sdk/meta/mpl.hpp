@@ -21,7 +21,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Some MPL introspection helpers
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class T, class Enable = void>
   struct  has_mpl_tag
@@ -42,14 +42,14 @@ namespace nt2 { namespace details
   struct  is_mpl_integral<T,true>
         : boost::is_same<typename T::tag,boost::mpl::integral_c_tag>
   {};
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Specialize hierarchy for mpl integral types
 ////////////////////////////////////////////////////////////////////////////////
 NT2_REGISTER_HIERARCHY_PARENT(mpl_integral_, typename hierarchy_of<T>::type)
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class T>
   struct  hierarchy_of<T
@@ -61,6 +61,6 @@ namespace nt2 { namespace details
     typedef meta::mpl_integral_<typename
                                 meta::hierarchy_of<value_type>::type> type;
   };
-} }
+} } }
 
 #endif

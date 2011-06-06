@@ -16,7 +16,7 @@
 #include <nt2/sdk/simd/meta/is_native.hpp>
 #include <nt2/sdk/details/bitwise_cast.hpp>
 
-namespace nt2 { namespace simd
+namespace boost { namespace simd
 {
   template<class T,class U> inline
   typename boost::enable_if_c <     meta::is_native<T>::value

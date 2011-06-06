@@ -18,7 +18,7 @@
 #include <boost/preprocessor/repetition/repeat_from_to.hpp>
 #endif
 
-namespace nt2  { namespace meta
+namespace boost  { namespace simd { namespace meta
 {
   struct floating
   {
@@ -72,6 +72,6 @@ namespace nt2  { namespace meta
 #endif
     
   };
-} }
+} } }
 
 #endif

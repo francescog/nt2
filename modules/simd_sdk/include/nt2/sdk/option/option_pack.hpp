@@ -14,7 +14,7 @@
 #include <boost/proto/core.hpp>
 #include <boost/proto/transform.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   struct option_pack
       : boost::proto::or_<
@@ -40,6 +40,6 @@ namespace nt2 { namespace details
           >
       >
   {};
-} }
+} } }
 
 #endif

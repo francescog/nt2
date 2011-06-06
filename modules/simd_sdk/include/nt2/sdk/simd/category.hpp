@@ -18,29 +18,32 @@
 ////////////////////////////////////////////////////////////////////////////////
 // SIMD types tag
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2
+namespace boost
 {
-  namespace tag { template<class T,class X> struct simd_ {}; }
-
-  //////////////////////////////////////////////////////////////////////////////
-  // simd types hierarchy
-  //////////////////////////////////////////////////////////////////////////////
-  namespace meta
+  namespace simd
   {
-    template<class T,class X> struct simd_ : simd_<typename T::parent,X>
-    {
-      typedef simd_<typename T::parent,X>     parent;
-      typedef tag::simd_<typename T::type,X>  type;
-    };
+    namespace tag { template<class T,class X> struct simd_ {}; }
 
-    template<class T,class X>
-    struct simd_< unspecified_<T>,X > : unspecified_<T>
+    //////////////////////////////////////////////////////////////////////////////
+    // simd types hierarchy
+    //////////////////////////////////////////////////////////////////////////////
+    namespace meta
     {
-      typedef unspecified_<T>   parent;
-      typedef tag::simd_<tag::unspecified_,X> type;
-    };
+      template<class T,class X> struct simd_ : simd_<typename T::parent,X>
+      {
+	typedef simd_<typename T::parent,X>     parent;
+	typedef tag::simd_<typename T::type,X>  type;
+      };
 
-    template<class T,class X> struct simd_< unknown_<T>,X > : unknown_<T> {};
+      template<class T,class X>
+      struct simd_< unspecified_<T>,X > : unspecified_<T>
+      {
+	typedef unspecified_<T>   parent;
+	typedef tag::simd_<tag::unspecified_,X> type;
+      };
+
+      template<class T,class X> struct simd_< unknown_<T>,X > : unknown_<T> {};
+    }
   }
 }
 

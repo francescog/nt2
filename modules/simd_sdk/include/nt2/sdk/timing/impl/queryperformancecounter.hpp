@@ -25,17 +25,20 @@
 #include <windows.h>
 #include <boost/cstdint.hpp>
 
-namespace nt2
+namespace boost
 {
-  namespace details
+  namespace simd
   {
-    inline double now()
+    namespace details
     {
-      union pli { LARGE_INTEGER li; double d; };
-      pli freq,t;
-      QueryPerformanceFrequency( &freq.li );
-      QueryPerformanceCounter( &t.li );
-      return (((t.d*1000000000)/freq.d)/1000000000);
+      inline double now()
+      {
+	union pli { LARGE_INTEGER li; double d; };
+	pli freq,t;
+	QueryPerformanceFrequency( &freq.li );
+	QueryPerformanceCounter( &t.li );
+	return (((t.d*1000000000)/freq.d)/1000000000);
+      }
     }
   }
 }

@@ -15,7 +15,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // compute evaluates a nt2 AST by passing its elements through a raw functor
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template <class Tag, class Target>
   struct compute
@@ -40,7 +40,7 @@ namespace nt2 { namespace meta
                           )
               >
   {};
-} }
+} } }
 
 namespace boost { namespace proto
 {

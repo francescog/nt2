@@ -12,9 +12,11 @@
 #include <nt2/sdk/meta/downgrade.hpp>
 #include <nt2/sdk/simd/pack/forward.hpp>
 
-namespace nt2
+namespace boost
 {
-    namespace details { namespace simd
+  namespace simd
+  {
+    namespace details {
     {
         template<typename T, typename U>
         struct downgrade;
@@ -35,7 +37,7 @@ namespace nt2
         {
             typedef nt2::simd::pack<DownType, Cardinal*2> type;
         };
-    } }
+    }
     
     namespace meta
     {
@@ -50,6 +52,7 @@ namespace nt2
             >::type type;
         };
     }
+  }
 }
 
 #endif

@@ -14,7 +14,7 @@
 #include <nt2/sdk/memory/config.hpp>
 #include <nt2/sdk/memory/align_on.hpp>
 
-namespace nt2 { namespace memory
+namespace boost { namespace simd { namespace memory
 {
   //////////////////////////////////////////////////////////////////////////////
   // Reallocate a raw buffer of bytes to a new size

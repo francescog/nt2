@@ -18,16 +18,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Tag hierarchy for XOP extensions
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace tag
+namespace boost { namespace simd { namespace tag
 {
   NT2_HIERARCHY_CLASS(xop_, sse4a_);
     NT2_HIERARCHY_CLASS(fma4_, xop_);
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // XOP extensions overload
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // For a given type and extension, check if it's a SIMD register type
@@ -61,6 +61,6 @@ namespace nt2 { namespace meta
   template<class X> struct extension_of<__m256 ,X>  { typedef tag::xop_ type; };
   template<class X> struct extension_of<__m256d,X>  { typedef tag::xop_ type; };
   template<class X> struct extension_of<__m256i,X>  { typedef tag::xop_ type; };
-} }
+} } }
 
 #endif

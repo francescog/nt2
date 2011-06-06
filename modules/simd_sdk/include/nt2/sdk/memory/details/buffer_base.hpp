@@ -15,7 +15,7 @@
 #include <algorithm>
 #include <boost/swap.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<class Allocator>
   struct buffer_data : private Allocator
@@ -115,6 +115,6 @@ namespace nt2 { namespace details
 
     pointer origin_, begin_, end_;
   };
-} }
+} } }
 
 #endif

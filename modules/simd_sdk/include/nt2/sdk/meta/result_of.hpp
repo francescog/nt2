@@ -24,34 +24,37 @@
 #include <boost/preprocessor/repetition/repeat.hpp>
 #endif
 
-namespace nt2
+namespace boost
 {
-  namespace meta
+  namespace simd
   {
-    template<class Sig, class Enable = void>
-    struct result_of;
-    
-    BOOST_MPL_HAS_XXX_TRAIT_DEF(result_type);
-    
-    template<class T>
-    struct is_function
-      : boost::is_function<typename boost::remove_pointer<typename meta::strip<T>::type>::type>
+    namespace meta
     {
-    };
+      template<class Sig, class Enable = void>
+      struct result_of;
+    
+      BOOST_MPL_HAS_XXX_TRAIT_DEF(result_type);
+    
+      template<class T>
+      struct is_function
+        : boost::is_function<typename boost::remove_pointer<typename meta::strip<T>::type>::type>
+      {
+      };
+    }
   }
 }
     
 #if (defined(BOOST_HAS_VARIADIC_TMPL) && !defined(__WAVE__)) || defined(DOXYGEN_ONLY)
 #include <functional>
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class Sig, class Enable>
   struct result_of : std::result_of<Sig>
   {
   };
-} }
+} } }
 #else
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
 #if !defined(NT2_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/sdk/meta/preprocessed/result_of.hpp>
@@ -87,8 +90,7 @@ namespace nt2 { namespace meta
 #endif
 #endif
     
-  }
-}
+} } }
 #endif
 
 #endif

@@ -14,7 +14,7 @@
 #include <nt2/sdk/dsl/terminal_of.hpp>
 #include <nt2/sdk/simd/pack/domain.hpp>
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //////////////////////////////////////////////////////////////////////////////
   // For simd domain, we return the proper pack
@@ -23,6 +23,6 @@ namespace nt2 { namespace ext
   struct  terminal_of_impl< Expression, simd::domain<Type,Cardinal> >
         : boost::mpl::always< simd::pack<Type,Cardinal::value> >
   {};
-} }
+} } }
 
 #endif

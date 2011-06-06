@@ -42,7 +42,7 @@ template<class T> struct Name : NT2_PP_STRIP(Parent)::type  \
 }                                                           \
 /**/
 
-namespace nt2 { namespace meta
+namespace boost { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // Types hierarchy defines a partially order lattice of type familly

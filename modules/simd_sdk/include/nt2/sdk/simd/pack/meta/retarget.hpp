@@ -13,7 +13,7 @@
 #include <boost/proto/proto.hpp>
 #include <nt2/sdk/dsl/terminal_of.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   struct retarget : boost::proto::callable
   {
@@ -34,6 +34,6 @@ namespace nt2 { namespace meta
       return typename result<retarget(Expr&)>::type();
     }
   };
-} }
+} } }
 
 #endif

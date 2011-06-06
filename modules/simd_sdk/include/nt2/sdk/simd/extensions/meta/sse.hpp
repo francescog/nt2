@@ -19,7 +19,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Tag hierarchy for SSE extensions
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace tag
+namespace boost { namespace simd { namespace tag
 {
   NT2_HIERARCHY_CLASS(sse_, cpu_);
   NT2_HIERARCHY_CLASS(sse2_, sse_);
@@ -28,12 +28,12 @@ namespace nt2 { namespace tag
   NT2_HIERARCHY_CLASS(sse4a_, ssse3_);
   NT2_HIERARCHY_CLASS(sse4_1_, ssse3_);
   NT2_HIERARCHY_CLASS(sse4_2_, sse4_1_);
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // SSE extensions overload
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // For a given type and extension, check if it's a SIMD register type
@@ -67,12 +67,12 @@ namespace nt2 { namespace meta
   template<class X> struct extension_of<__m128 ,X>  { typedef tag::sse_ type; };
   template<class X> struct extension_of<__m128d,X>  { typedef tag::sse_ type; };
   template<class X> struct extension_of<__m128i,X>  { typedef tag::sse_ type; };
-}}
+} }}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Conversion between vector types
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
     #if defined BOOST_MSVC || defined BOOST_INTEL
         #define NT2_SSE_CONVERT union_cast
@@ -88,6 +88,6 @@ namespace nt2 { namespace details
     template<> struct bitwise_cast<__m128i, __m128d> : NT2_SSE_CONVERT {};
 
     #undef NT2_SSE_CONVERT
-}}
+} } }
 
 #endif

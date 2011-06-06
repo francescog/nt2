@@ -12,13 +12,16 @@
 
 #if !defined(NT2_DISABLE_ERROR)
 
-namespace nt2
+namespace boost
 {
-  void assert_exception::display(std::ostream& os) const throw()
+  namespace simd
   {
-    os  << "Assertion: "
-        << *boost::get_error_info<nt2::details::assert_info>(*this)
-        << " failed.\n";
+    void assert_exception::display(std::ostream& os) const throw()
+    {
+      os  << "Assertion: "
+	  << *boost::get_error_info<nt2::details::assert_info>(*this)
+	  << " failed.\n";
+    }
   }
 }
 

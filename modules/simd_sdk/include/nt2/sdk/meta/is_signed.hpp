@@ -18,7 +18,7 @@
 #include <nt2/sdk/meta/primitive_of.hpp>
 #include <boost/type_traits/is_base_of.hpp>
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   template<class T>
   struct  is_signed
@@ -30,6 +30,6 @@ namespace nt2 { namespace meta
 
   template<class T> struct is_unsigned : boost::mpl::not_< is_signed<T> >
   {};
-} }
+} } }
 
 #endif

@@ -12,7 +12,7 @@
 #include <nt2/sdk/dsl/semantic_of.hpp>
 #include <nt2/sdk/meta/hierarchy_of.hpp>
 
-namespace nt2 { namespace tag
+namespace boost { namespace simd { namespace tag
 {
   //////////////////////////////////////////////////////////////////////////////
   // Expression category tag
@@ -23,9 +23,9 @@ namespace nt2 { namespace tag
   // Degenerate Expression category tag
   //////////////////////////////////////////////////////////////////////////////
   struct ast_ {};
-} }
+} } }
 
-namespace nt2 { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //////////////////////////////////////////////////////////////////////////////
   // Proto domain hierarchy is itself. parent domain is computed from
@@ -82,9 +82,9 @@ namespace nt2 { namespace meta
     typedef unspecified_<T>   parent;
     typedef tag::expr_< typename unspecified_<Domain>::type, Tag, Semantic> type;
   };
-} }
+} } }
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //////////////////////////////////////////////////////////////////////////////
   // Proto domain hierarchy specialization
@@ -107,6 +107,6 @@ namespace nt2 { namespace details
                         , typename meta::semantic_of<T>::type
                         > type;
   };
-} }
+} } }
 
 #endif
