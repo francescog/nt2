@@ -27,6 +27,7 @@ namespace nt2 { namespace containers
     typedef boost::mpl::vector_c<std::size_t,1,1>   data_type;
     typedef std::size_t                             value_type;
     typedef std::size_t                             const_reference;
+    typedef std::size_t                             reference;
     typedef std::size_t                             size_type;
     typedef size_type                               base_type;
     typedef std::ptrdiff_t                          difference_type;

@@ -1,11 +1,11 @@
-/*******************************************************************************
- *         Copyright 2003-2010 LASMEA UMR 6602 CNRS/U.B.P
- *         Copyright 2009-2010 LRI    UMR 8623 CNRS/Univ Paris Sud XI
- *
- *          Distributed under the Boost Software License, Version 1.0.
- *                 See accompanying file LICENSE.txt or copy at
- *                     http://www.boost.org/LICENSE_1_0.txt
- ******************************************************************************/
+//==============================================================================
+//         Copyright 2003 & onward LASMEA UMR 6602 CNRS/Univ. Clermont II
+//         Copyright 2009 & onward LRI    UMR 8623 CNRS/Univ Paris Sud XI
+//
+//          Distributed under the Boost Software License, Version 1.0.
+//                 See accompanying file LICENSE.txt or copy at
+//                     http://www.boost.org/LICENSE_1_0.txt
+//==============================================================================
 #ifndef NT2_CORE_CONTAINER_DETAILS_EXTENT_FACADE_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_FACADE_HPP_INCLUDED
 
@@ -14,16 +14,15 @@
 #include <boost/fusion/adapted/mpl.hpp>
 #include <boost/fusion/include/mpl.hpp>
 #include <boost/fusion/adapted/array.hpp>
-#include <nt2/core/container/details/extent/semantic.hpp>
-#include <nt2/core/container/dsl/container.hpp>
+#include <nt2/core/container/details/extent/container.hpp>
 #include <nt2/core/container/details/extent/fusion.hpp>
 #include <nt2/core/container/details/extent/domain.hpp>
 
 namespace nt2 { namespace ext
 {
-  //////////////////////////////////////////////////////////////////////////////
-  // extent facade
-  //////////////////////////////////////////////////////////////////////////////
+  //============================================================================
+  // extent facade - extent builds terminals out of boost::array of proper size
+  //============================================================================
   template<class Dimensions,class S>
   struct facade<tag::extent_,Dimensions, S>
   {

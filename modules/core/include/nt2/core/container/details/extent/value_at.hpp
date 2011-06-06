@@ -52,7 +52,7 @@ namespace nt2 { namespace ext
       meta::as_<void>                                           target;
       meta::compile< meta::compute<boost::mpl::_1,tag::cpu_> >  callee;
 
-      int32_t idx = boost::fusion::at_c<0>(a1) - 1 ;
+      int32_t idx = boost::fusion::at_c<0>(a1) - 1;
       return callee(a0,target,idx);
     }
   };
