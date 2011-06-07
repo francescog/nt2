@@ -13,15 +13,19 @@
 //////////////////////////////////////////////////////////////////////////////
 #include <nt2/sdk/unit/tests.hpp>
 #include <nt2/sdk/unit/module.hpp>
+#include <nt2/toolbox/operator.hpp>
 #include <nt2/core/container/extent.hpp>
 
 #include <boost/fusion/include/at.hpp>
 #include <boost/fusion/include/end.hpp>
 #include <boost/fusion/include/size.hpp>
-#include <boost/fusion/include/prior.hpp>
+#include <boost/fusion/include/back.hpp>
+#include <boost/fusion/include/front.hpp>
 #include <boost/fusion/include/begin.hpp>
 #include <boost/fusion/include/deref.hpp>
 #include <boost/fusion/include/empty.hpp>
+
+#include <nt2/sdk/concept/fusion_random_access_sequence.hpp>
 
 #define M0(z,n,t) (nt2::BOOST_PP_CAT(BOOST_PP_CAT(_,n),D))
 #define DYN_DIM_LIST BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M0,~)
@@ -31,6 +35,14 @@ NT2_TEST_CASE ( fusion_random_access_sequence_0d )
   using nt2::extent;
   extent<nt2::_0D> x;
 
+  //============================================================================
+  // Static sanity check over concept conformance
+  //============================================================================
+  BOOST_CONCEPT_ASSERT((nt2::FusionRandomAccessSequence< extent<nt2::_0D> >));
+
+  //============================================================================
+  // Actual runtime validation
+  //============================================================================
   NT2_TEST( boost::fusion::empty(x) );
   NT2_TEST_EQUAL( int(boost::fusion::size(x)), 0 );
   NT2_TEST_EQUAL( boost::fusion::at_c<0>(x)  , 1 );
@@ -53,6 +65,14 @@ NT2_TEST_CASE_TPL ( fusion_random_access_sequence, DYN_DIM_LIST )
   extent<T> x;
   std::size_t dims = T::dimensions;
 
+  //============================================================================
+  // Static sanity check over concept conformance
+  //============================================================================
+  BOOST_CONCEPT_ASSERT((nt2::FusionRandomAccessSequence< extent<T> >));
+
+  //============================================================================
+  // Actual runtime validation
+  //============================================================================
   NT2_TEST( !boost::fusion::empty(x)  );
   NT2_TEST_EQUAL( int(boost::fusion::size(x))   , dims );
 

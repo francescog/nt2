@@ -14,6 +14,8 @@
  * \brief Implemets the container behavior for extent and extent expressions
  */
 
+#include <boost/fusion/include/single_view.hpp>
+
 namespace nt2 { namespace containers
 {
   //============================================================================
@@ -57,11 +59,8 @@ namespace nt2 { namespace containers
 
     const_reference operator()(std::size_t i) const
     {
-      boost::array<int,1> idx = { i };
-      return nt2::value_at( *this, idx );
+      return nt2::value_at( *this, boost::fusion::single_view<int>(i) );
     }
-
-
   };
 } }
 

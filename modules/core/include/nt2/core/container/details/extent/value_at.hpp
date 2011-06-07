@@ -10,11 +10,11 @@
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_VALUE_AT_SCALAR_HPP_INCLUDED
 
 #include <nt2/sdk/dsl/compute.hpp>
-#include <boost/fusion/include/at.hpp>
+#include <boost/fusion/include/front.hpp>
 #include <nt2/core/functions/value_at.hpp>
 
 /////////////////////////////////////////////////////////////////////////////
-// Implementation when type A0 is an extent expression
+// Implementation when type A0 is an extent expression and A1 a sequence
 /////////////////////////////////////////////////////////////////////////////
 NT2_REGISTER_DISPATCH ( tag::value_at_, tag::cpu_
                       , (A0)(D0)(Sema0)(Tag0)(A1)
@@ -52,7 +52,7 @@ namespace nt2 { namespace ext
       meta::as_<void>                                           target;
       meta::compile< meta::compute<boost::mpl::_1,tag::cpu_> >  callee;
 
-      int32_t idx = boost::fusion::at_c<0>(a1) - 1;
+      int32_t idx = boost::fusion::front(a1) - 1;
       return callee(a0,target,idx);
     }
   };
