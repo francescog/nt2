@@ -21,8 +21,8 @@ NT2_WARNING(No SIMD extensions detected)
 #define NT2_SIMD_BITS       64
 #define NT2_SIMD_STRING     "none"
 #define NT2_SIMD_CARDINALS (1)(2)(4)(8)
-#define NT2_SIMD_DEFAULT_EXTENSION ::nt2::tag::none_<boost::mpl::size_t<8> >
-#define NT2_SIMD_DEFAULT_SITE ::nt2::tag::cpu_
+#define NT2_SIMD_DEFAULT_EXTENSION ::boost::simd::tag::none_<boost::mpl::size_t<8> >
+#define NT2_SIMD_DEFAULT_SITE ::boost::simd::tag::cpu_
 
 #if !defined(NT2_SIMD_TYPES)
 #include <nt2/sdk/simd/extensions/sse/types.hpp>

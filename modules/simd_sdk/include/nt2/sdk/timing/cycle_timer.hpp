@@ -16,10 +16,10 @@ namespace boost { namespace simd { namespace time
 {
   struct cycle_timer
   {
-     cycle_timer(nt2::details::cycles_t& e, bool d = true) : elapsed(e), display(d) { ctic(); }
+     cycle_timer(boost::simd::details::cycles_t& e, bool d = true) : elapsed(e), display(d) { ctic(); }
     ~cycle_timer() { elapsed = ctoc(display); }
 
-    nt2::details::cycles_t& elapsed;
+    boost::simd::details::cycles_t& elapsed;
     bool display;
   };
 } } }

@@ -23,7 +23,7 @@ namespace boost
     inline void throw_exception( std::exception const & e )
     {
       #if defined(NT2_CUSTOM_ERROR)
-      nt2::ext::throw_exception(e);
+      boost::simd::ext::throw_exception(e);
       #endif
     }
   }

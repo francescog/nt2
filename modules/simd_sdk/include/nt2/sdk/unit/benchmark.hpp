@@ -37,7 +37,7 @@
 #endif
 
 #if !defined(NT2_TEST_RANDOM_SEED)
-#define NT2_TEST_RANDOM_SEED (nt2::details::read_cycles())
+#define NT2_TEST_RANDOM_SEED (boost::simd::details::read_cycles())
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -76,7 +76,7 @@ NT2_TEST_CASE( benchmark )
 #define NT2_TIMING(TAG,SEQ)                         \
 NT2_TEST_CASE( BOOST_PP_CAT(timing,__LINE__) )      \
 {                                                   \
-  typedef nt2::functor<TAG> callee_t;          \
+  typedef boost::simd::functor<TAG> callee_t;       \
   callee_t callee;                                  \
   timing_test                                       \
   <BOOST_PP_SEQ_FOR_EACH(NT2_TYPE,~,SEQ)            \

@@ -34,10 +34,10 @@ namespace boost { namespace simd { namespace details
     volatile T tt(t);							
     volatile U uu(u);							
     volatile V vv(v);
-    typedef typename nt2::meta::upgrade<T>::type TT;
-    typedef typename nt2::meta::upgrade<U>::type UU;
+    typedef typename boost::simd::meta::upgrade<T>::type TT;
+    typedef typename boost::simd::meta::upgrade<U>::type UU;
     typedef typename boost::common_type<TT, UU>::type R;
-    if( nt2::details::ulpdist(tt, uu ) <= (R)vv)
+    if( boost::simd::details::ulpdist(tt, uu ) <= (R)vv)
       {									
 	std::cout << " * Test `"					
 		  << "details::ulpdist(" << x1 << ", " <<  x2 << ") <= " << x3	
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace details
 		  << "` **failed** in function "			
 		  << fn << " (" << line << ")"				
 		  << "details::ulpdist(" << TT(tt) << ", " <<  UU(uu) << ") == "		
-		  <<  nt2::details::ulpdist(tt, uu )				
+		  <<  boost::simd::details::ulpdist(tt, uu )				
 		  << std::endl;						
 	++error_count();
 	return false; 
@@ -75,10 +75,10 @@ namespace boost { namespace simd { namespace details
     volatile T tt(t);							
     volatile U uu(u);							
     volatile V vv(v);
-    typedef typename nt2::meta::upgrade<T>::type TT;
-    typedef typename nt2::meta::upgrade<U>::type UU;
-    bool r =   nt2::details::ulpdist(boost::fusion::at_c<0>(u), boost::fusion::at_c<0>(t)) <= v;
-    r &= nt2::details::ulpdist(boost::fusion::at_c<1>(u), boost::fusion::at_c<1>(t)) <= v; 
+    typedef typename boost::simd::meta::upgrade<T>::type TT;
+    typedef typename boost::simd::meta::upgrade<U>::type UU;
+    bool r =   boost::simd::details::ulpdist(boost::fusion::at_c<0>(u), boost::fusion::at_c<0>(t)) <= v;
+    r &= boost::simd::details::ulpdist(boost::fusion::at_c<1>(u), boost::fusion::at_c<1>(t)) <= v; 
     if(r)					
       {									
 	std::cout << " * Test `"					
@@ -95,7 +95,7 @@ namespace boost { namespace simd { namespace details
 // 		  << "` **failed** in function "			
 // 		  << fn << " (" << line << ")"				
 // 		  << "details::ulpdist(" << TT(t) << ", " <<  UU(u) << ") == "		
-// 		  <<  nt2::details::ulpdist(tt, uu )				
+// 		  <<  boost::simd::details::ulpdist(tt, uu )				
 // 		  << std::endl;						
 	++error_count();
 	return false; 

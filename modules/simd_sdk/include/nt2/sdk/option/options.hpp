@@ -39,8 +39,8 @@ namespace boost { namespace simd
 
 #define NT2_REGISTER_PARAMETERS(NAME)                               \
 struct NAME ## _ {};                                                \
-nt2::details::option_expr<                                          \
-    boost::proto::terminal<nt2::details::option<NAME ## _> >::type  \
+boost::simd::details::option_expr<                                  \
+    boost::proto::terminal<boost::simd::details::option<NAME ## _> >::type  \
 > const NAME = {};                                                  \
 /**/
 

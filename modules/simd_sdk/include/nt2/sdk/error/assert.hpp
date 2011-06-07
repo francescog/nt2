@@ -63,7 +63,7 @@ namespace boost
      * NT2_ASSERTS_AS_EXCEPTIONS is defined.
      */
     //============================================================================
-    struct assert_exception : virtual nt2::exception
+    struct assert_exception : virtual boost::simd::exception
     {
       virtual ~assert_exception() throw() {}
       virtual void display(std::ostream& os) const throw();

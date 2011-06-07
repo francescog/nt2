@@ -31,7 +31,7 @@ namespace boost { namespace simd
   template<int N, class Seq,class Padding> inline
   typename boost::
   lazy_enable_if_c< (boost::fusion::result_of::size<Seq>::value >= N)
-                  , nt2::meta
+                  , boost::simd::meta
                     ::enable_call < tag::stride_( Seq const&
                                                 , Padding const&
                                                 , boost::mpl::size_t<N> const&

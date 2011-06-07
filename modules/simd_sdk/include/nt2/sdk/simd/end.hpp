@@ -40,7 +40,7 @@ namespace boost { namespace simd
       typename result<end(Range,Cardinal)>::type
       operator()(Range const& rng, Cardinal const&) const
       {
-        using nt2::memory::align_on;
+        using boost::simd::memory::align_on;
         typedef typename Range::const_iterator                it_type;
         typedef typename boost::iterator_value<it_type>::type type;
 

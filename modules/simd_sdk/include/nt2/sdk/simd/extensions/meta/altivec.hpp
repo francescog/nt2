@@ -38,7 +38,8 @@ namespace boost { namespace simd { namespace meta
   //////////////////////////////////////////////////////////////////////////////
   template<class T>
   struct  is_simd_specific<T,tag::altivec_>
-        : nt2::meta::has_key < nt2::meta::set < __vector float
+        : boost::simd::meta::has_key < 
+		       boost::simd::meta::set < __vector float
                                               , __vector unsigned int
                                               , __vector unsigned short
                                               , __vector unsigned char
@@ -49,8 +50,8 @@ namespace boost { namespace simd { namespace meta
                                               , __vector __bool short
                                               , __vector __bool char
                                               >
-                              , T
-                              >
+                                     , T
+                                     >
   {};
 
   //////////////////////////////////////////////////////////////////////////////

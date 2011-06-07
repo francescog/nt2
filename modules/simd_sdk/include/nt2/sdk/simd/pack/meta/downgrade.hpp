@@ -24,18 +24,18 @@ namespace boost
         template< class Type
                 , std::size_t Cardinal
                 >
-        struct downgrade< nt2::simd::pack<Type, Cardinal>, Type >
+        struct downgrade< boost::simd::pack<Type, Cardinal>, Type >
         {
-            typedef nt2::simd::pack<Type, Cardinal> type;
+            typedef boost::simd::pack<Type, Cardinal> type;
         };
         
         template< class Type
                 , std::size_t Cardinal
                 , class DownType
                 >
-        struct downgrade< nt2::simd::pack<Type, Cardinal>, DownType >
+        struct downgrade< boost::simd::pack<Type, Cardinal>, DownType >
         {
-            typedef nt2::simd::pack<DownType, Cardinal*2> type;
+            typedef boost::simd::pack<DownType, Cardinal*2> type;
         };
     }
     
@@ -46,7 +46,7 @@ namespace boost
                 >
         struct downgrade< simd::pack<Type, Cardinal> >
         {
-            typedef typename nt2::details::simd::downgrade<
+            typedef typename boost::simd::details::downgrade<
                 simd::pack<Type, Cardinal>
               , typename downgrade<Type>::type
             >::type type;

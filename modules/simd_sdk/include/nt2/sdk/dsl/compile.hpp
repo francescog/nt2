@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace meta
 namespace boost { namespace proto
 {
   template<class Phase>
-  struct  is_callable<nt2::meta::compile<Phase> >
+  struct  is_callable<boost::simd::meta::compile<Phase> >
         : boost::mpl::true_  {};
 } }
 

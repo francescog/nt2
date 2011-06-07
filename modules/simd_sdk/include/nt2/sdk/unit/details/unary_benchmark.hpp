@@ -25,20 +25,20 @@ void timing_test( Func callee, size_t size
                 , MN0 min0, MX0 max0
                 , const char* name = NULL )
 {
-  typedef T0                                      r_in0;
-  typedef typename nt2::meta::scalar_of<T0>::type t_in0;
+  typedef T0                                              r_in0;
+  typedef typename boost::simd::meta::scalar_of<T0>::type t_in0;
 
   // output value
-  typedef typename nt2::meta::result_of<Func(r_in0)>::type  out_t;
+  typedef typename boost::simd::meta::result_of<Func(r_in0)>::type  out_t;
   static out_t out;
 
   // Input samples
-  static std::vector<t_in0, nt2::memory::allocator<t_in0> >  in0(size);
+  static std::vector<t_in0, boost::simd::memory::allocator<t_in0> >  in0(size);
 
   // Filling samples randomly
   for(size_t i=0; i<size; ++i) in0[i] = roll<t_in0>(min0,max0);
 
-  std::cout << name << "(" << nt2::type_id<r_in0>().c_str() << ")"
+  std::cout << name << "(" << boost::simd::type_id<r_in0>().c_str() << ")"
             << " in "
             << "[" << min0 << ", "<< max0<<"[ = "
             << std::flush;
@@ -48,16 +48,16 @@ void timing_test( Func callee, size_t size
 
   do
   {
-    nt2::tic();
+    boost::simd::tic();
     {
-      nt2::ctic();
-      for(size_t i=0; i<size/nt2::meta::cardinal_of<r_in0>::value; i++)
+      boost::simd::ctic();
+      for(size_t i=0; i<size/boost::simd::meta::cardinal_of<r_in0>::value; i++)
       {
-        out = callee(nt2::load<r_in0>(&in0[0],i));
+        out = callee(boost::simd::load<r_in0>(&in0[0],i));
       }
-      c = nt2::ctoc(false) / double(size);
+      c = boost::simd::ctoc(false) / double(size);
     }
-    t += nt2::toc(false);
+    t += boost::simd::toc(false);
     timings.push_back(c);
   } while(t < NT2_TEST_DURATION);
 

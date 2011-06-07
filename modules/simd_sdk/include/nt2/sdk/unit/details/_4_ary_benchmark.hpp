@@ -34,24 +34,25 @@ void timing_test( Func callee, size_t size
 		, MN3 min3, MX3 max3   
                 , const char* name = NULL )
 {
-  typedef T0                                      r_in0;
-  typedef T1                                      r_in1;
-  typedef T2                                      r_in2;
-  typedef T3                                      r_in3;
-  typedef typename nt2::meta::scalar_of<T0>::type t_in0;
-  typedef typename nt2::meta::scalar_of<T1>::type t_in1;
-  typedef typename nt2::meta::scalar_of<T2>::type t_in2;
-  typedef typename nt2::meta::scalar_of<T3>::type t_in3;
+  typedef T0                                              r_in0;
+  typedef T1                                              r_in1;
+  typedef T2                                              r_in2;
+  typedef T3                                              r_in3;
+  typedef typename boost::simd::meta::scalar_of<T0>::type t_in0;
+  typedef typename boost::simd::meta::scalar_of<T1>::type t_in1;
+  typedef typename boost::simd::meta::scalar_of<T2>::type t_in2;
+  typedef typename boost::simd::meta::scalar_of<T3>::type t_in3;
 
   // output value
-  typedef typename nt2::meta::result_of<Func(r_in0,r_in1,r_in2,r_in3)>::type out_t;
+  typedef typename boost::simd::meta::result_of<
+                               Func(r_in0,r_in1,r_in2,r_in3)>::type out_t;
   static out_t                                                        out;
 
   // Input samples
-  static std::vector<t_in0, nt2::memory::allocator<t_in0> >  in0(size);
-  static std::vector<t_in1, nt2::memory::allocator<t_in1> >  in1(size);
-  static std::vector<t_in2, nt2::memory::allocator<t_in2> >  in2(size);
-  static std::vector<t_in3, nt2::memory::allocator<t_in3> >  in3(size);
+  static std::vector<t_in0, boost::simd::memory::allocator<t_in0> >  in0(size);
+  static std::vector<t_in1, boost::simd::memory::allocator<t_in1> >  in1(size);
+  static std::vector<t_in2, boost::simd::memory::allocator<t_in2> >  in2(size);
+  static std::vector<t_in3, boost::simd::memory::allocator<t_in3> >  in3(size);
 
   // Filling samples randomly
   for(size_t i=0; i<size; ++i)
@@ -63,39 +64,39 @@ void timing_test( Func callee, size_t size
   }
 
   std::cout << name << "("
-                    << nt2::type_id<r_in0>().c_str()
-            << ", " << nt2::type_id<r_in1>().c_str()
-            << ", " << nt2::type_id<r_in2>().c_str()
-            << ", " << nt2::type_id<r_in3>().c_str()  
+                    << boost::simd::type_id<r_in0>().c_str()
+            << ", " << boost::simd::type_id<r_in1>().c_str()
+            << ", " << boost::simd::type_id<r_in2>().c_str()
+            << ", " << boost::simd::type_id<r_in3>().c_str()  
             << ") " << std::flush;
 
   std::vector<double> timings;
   double c(0.),t(0.);
 
-  static const size_t c0 = nt2::meta::cardinal_of<r_in0>::value;
-  static const size_t c1 = nt2::meta::cardinal_of<r_in1>::value;
-  static const size_t c2 = nt2::meta::cardinal_of<r_in2>::value;
-  static const size_t c3 = nt2::meta::cardinal_of<r_in3>::value;
+  static const size_t c0 = boost::simd::meta::cardinal_of<r_in0>::value;
+  static const size_t c1 = boost::simd::meta::cardinal_of<r_in1>::value;
+  static const size_t c2 = boost::simd::meta::cardinal_of<r_in2>::value;
+  static const size_t c3 = boost::simd::meta::cardinal_of<r_in3>::value;
   static const size_t nb1 = (c0 < c1) ? c1 : c0; 
   static const size_t nb2 = (c2 < nb1) ? nb1 : c2;
   static const size_t nb = (c3 < nb2) ? nb2 : c3; 
 
   do
   {
-    nt2::tic();
+    boost::simd::tic();
     {
-      nt2::ctic();
+      boost::simd::ctic();
       for(size_t i=0; i<size/nb; i++)
       {
-        out = callee( nt2::load<r_in0>(&in0[0],i)
-                    , nt2::load<r_in1>(&in1[0],i)
-                    , nt2::load<r_in2>(&in2[0],i)
-                    , nt2::load<r_in3>(&in3[0],i)
+        out = callee( boost::simd::load<r_in0>(&in0[0],i)
+                    , boost::simd::load<r_in1>(&in1[0],i)
+                    , boost::simd::load<r_in2>(&in2[0],i)
+                    , boost::simd::load<r_in3>(&in3[0],i)
                     );
       }
-      c = nt2::ctoc(false) / double(size);
+      c = boost::simd::ctoc(false) / double(size);
     }
-    t += nt2::toc(false);
+    t += boost::simd::toc(false);
     timings.push_back(c);
   } while(t < NT2_TEST_DURATION);
 

@@ -19,9 +19,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 template<class T> inline std::string function_name()
 {
-  std::string that(nt2::type_id<T>().c_str());
-  boost::replace_all(that,"nt2::functors::","");
-  boost::replace_all(that,"nt2::simd::","");
+  std::string that(boost::simd::type_id<T>().c_str());
+  boost::replace_all(that,"boost::simd::functors::","");
+  boost::replace_all(that,"boost::simd::","");
   boost::replace_all(that,", void","");
   boost::replace_all(that,"boost::proto::tag::","");
   boost::replace_all(that,"()","");
@@ -34,7 +34,7 @@ template<class T> inline std::string function_name()
 template<class T,class X, class Y> inline T roll(X mn, Y mx)
 {
   double r = ((double)rand()/RAND_MAX)*(mx-mn) + mn;
-  T that  = nt2::splat<T>(r);
+  T that  = boost::simd::splat<T>(r);
   return that;
 }
 

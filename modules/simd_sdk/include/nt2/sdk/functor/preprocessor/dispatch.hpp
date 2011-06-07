@@ -24,8 +24,8 @@
 
 #define NT2_DISPATCH_TYPE_TPL(z,n,t) NT2_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t))
 #define NT2_DISPATCH_TYPE(z,n,t) class NT2_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t))
-#define NT2_DISPATCH_ARG(z,n,t) nt2::meta::NT2_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t)) const&
-#define NT2_DISPATCH_TAG(z,n,t) typename nt2::meta::NT2_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t))::type
+#define NT2_DISPATCH_ARG(z,n,t) boost::simd::meta::NT2_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t)) const&
+#define NT2_DISPATCH_TAG(z,n,t) typename boost::simd::meta::NT2_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t))::type
 
 //==============================================================================
 /*!
@@ -42,7 +42,7 @@
 #define NT2_REGISTER_DISPATCH(Tag,Site,Types,Seq)                           \
 namespace boost { namespace simd { namespace meta {                         \
 template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE,Types)>   \
-nt2::ext::                                                                  \
+boost::simd::ext::                                                          \
 call< NT2_PP_STRIP(Tag)(BOOST_PP_ENUM ( BOOST_PP_SEQ_SIZE(Seq)              \
                                       , NT2_DISPATCH_TAG,Seq))              \
     , Site                                                                  \
@@ -70,7 +70,7 @@ dispatching( Tag const&, Site const&                                        \
 #define NT2_REGISTER_DISPATCH_TPL(Tag,Site,Types,Seq)                         \
 namespace boost { namespace simd { namespace meta {                           \
 template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE_TPL,Types)> \
-nt2::ext::                                                                    \
+boos::simd::ext::                                                             \
 call<NT2_PP_STRIP(Tag)(BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_TAG,Seq)),Site>    \
 dispatching( NT2_PP_STRIP(Tag) const&, Site const&                                          \
         , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_ARG,Seq)          \
@@ -98,7 +98,7 @@ dispatching( NT2_PP_STRIP(Tag) const&, Site const&                              
 namespace boost { namespace simd { namespace meta {                         \
 template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE,Types)>   \
 typename boost::enable_if < NT2_PP_STRIP(Cond)                              \
-                          , nt2::ext::call<NT2_PP_STRIP(Ret),Site>          \
+                          , boost::simd::ext::call<NT2_PP_STRIP(Ret),Site>  \
                           >::type                                           \
 dispatching( Tag const&, Site const&                                        \
         , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_ARG,Seq)        \
@@ -127,7 +127,7 @@ dispatching( Tag const&, Site const&                                        \
 namespace boost { namespace simd { namespace meta {                           \
 template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE_TPL,Types)> \
 typename boost::enable_if < NT2_PP_STRIP(Cond)                                \
-                          , nt2::ext::call<NT2_PP_STRIP(Ret),Site>            \
+                          , boost::simd::ext::call<NT2_PP_STRIP(Ret),Site>    \
                           >::type                                             \
 dispatching ( Tag const&, Site const&                                         \
             , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_ARG,Seq)      \

@@ -16,7 +16,7 @@ namespace boost
 {
   namespace simd
   {
-    namespace details { namespace simd
+    namespace details 
     {
         template<typename T, typename U>
         struct upgrade;
@@ -24,20 +24,20 @@ namespace boost
         template< class Type
                 , std::size_t Cardinal
                 >
-        struct upgrade< nt2::simd::pack<Type, Cardinal>, Type >
+        struct upgrade< boost::simd::pack<Type, Cardinal>, Type >
         {
-            typedef nt2::simd::pack<Type, Cardinal> type;
+            typedef boost::simd::pack<Type, Cardinal> type;
         };
         
         template< class Type
                 , std::size_t Cardinal
                 , class UpType
                 >
-        struct upgrade< nt2::simd::pack<Type, Cardinal>, UpType >
+        struct upgrade< boost::simd::pack<Type, Cardinal>, UpType >
         {
-            typedef nt2::simd::pack<UpType, Cardinal/2> type;
+            typedef boost::simd::pack<UpType, Cardinal/2> type;
         };
-    } }
+    }
     
     namespace meta
     {
@@ -46,7 +46,7 @@ namespace boost
                 >
         struct upgrade< simd::pack<Type, Cardinal> >
         {
-            typedef typename nt2::details::simd::upgrade<
+            typedef typename boost::simd::detailsl::upgrade<
                 simd::pack<Type, Cardinal>
               , typename upgrade<Type>::type
             >::type type;

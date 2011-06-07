@@ -19,19 +19,21 @@
 #define NT2_MEMORY_OVERLOAD_NEW_DELETE(A)                           \
 void* operator new(std::size_t s)                                   \
 {                                                                   \
-  return nt2::memory::allocate(s);                                  \
+  return boost::simd::memory::allocate(s);                          \
 }                                                                   \
 void* operator new[](std::size_t s)                                 \
 {                                                                   \
-  return nt2::memory::allocate(s);                                  \
+  return boost::simd::memory::allocate(s);                          \
 }                                                                   \
 void operator delete(void *p)                                       \
 {                                                                   \
-  nt2::memory::deallocate(reinterpret_cast<nt2::memory::byte*>(p)); \
+  boost::simd::memory::deallocate(                                  \
+      	          reinterpret_cast<boost::simd::memory::byte*>(p)); \
 }                                                                   \
 void operator delete[](void *p)                                     \
 {                                                                   \
-  nt2::memory::deallocate(reinterpret_cast<nt2::memory::byte*>(p)); \
+  boost::simd::memory::deallocate(                                  \
+                  reinterpret_cast<boost::simd::memory::byte*>(p)); \
 }                                                                   \
 /**/
 

@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace meta
 namespace boost { namespace proto
 {
   template<class Tag, class Target>
-  struct  is_callable<nt2::meta::compute<Tag, Target> >
+  struct  is_callable<boost::simd::meta::compute<Tag, Target> >
         : boost::mpl::true_  {};
 } }
 

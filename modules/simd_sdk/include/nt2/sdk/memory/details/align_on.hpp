@@ -83,7 +83,7 @@ namespace boost { namespace simd { namespace ext
 
     NT2_FUNCTOR_CALL(1)
     {
-      return nt2::memory::align_on<NT2_CONFIG_ALIGNMENT>(a0);
+      return boost::simd::memory::align_on<NT2_CONFIG_ALIGNMENT>(a0);
     }
   };
 } } }
@@ -179,7 +179,7 @@ namespace boost { namespace simd { namespace ext
     {
       typedef typename NT2_RETURN_TYPE(2)::type type;
       std::size_t ptr = reinterpret_cast<std::size_t>(a0);
-      return reinterpret_cast<type>(nt2::memory::align_on(ptr,a1));
+      return reinterpret_cast<type>(boost::simd::memory::align_on(ptr,a1));
     }
   };
 } } }
@@ -210,7 +210,7 @@ namespace boost { namespace simd { namespace ext
     {
       typedef typename NT2_RETURN_TYPE(2)::type type;
       std::size_t ptr = reinterpret_cast<std::size_t>(a0);
-      return reinterpret_cast<type>(nt2::memory::align_on(ptr,a1));
+      return reinterpret_cast<type>(boost::simd::memory::align_on(ptr,a1));
     }
   };
 } } }
@@ -232,7 +232,7 @@ namespace boost { namespace simd { namespace ext
 
     NT2_FUNCTOR_CALL(1)
     {
-      return nt2::memory::align_on<NT2_CONFIG_ALIGNMENT>(a0);
+      return boost::simd::memory::align_on<NT2_CONFIG_ALIGNMENT>(a0);
     }
   };
 } } }

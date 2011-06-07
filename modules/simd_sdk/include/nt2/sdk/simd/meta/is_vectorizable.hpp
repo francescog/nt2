@@ -19,7 +19,7 @@ namespace boost { namespace simd { namespace meta
   template<class T,class Extension>
   struct is_vectorizable
        : boost::mpl::bool_<!boost::is_same< typename as_simd<T,Extension>::type
-                                          , nt2::meta::na_
+                                          , boost::simd::meta::na_
                                           >::value
                           >
   {};

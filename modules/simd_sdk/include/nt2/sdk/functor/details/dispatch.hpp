@@ -40,12 +40,12 @@
 #define M0(z,n,t) meta::unknown_<BOOST_PP_CAT(A,n)> const&
 #define M1(z,n,t) BOOST_PP_CAT(A,n)
 
-#define NT2_DEFAULT_UNKNOWN_DISPATCH(z,n,t)                                     \
-template<class Tag, class Site, BOOST_PP_ENUM_PARAMS(n,class A)>                \
-nt2::ext::call<Tag(tag::unknown_),Site,tag::error_with(BOOST_PP_ENUM(n,M1,~))>  \
-dispatching ( Tag const&, meta::unknown_<Site> const&, BOOST_PP_ENUM(n,M0,~)    \
-            , adl_helper = adl_helper()                                         \
-            );                                                                  \
+#define NT2_DEFAULT_UNKNOWN_DISPATCH(z,n,t)                                            \
+template<class Tag, class Site, BOOST_PP_ENUM_PARAMS(n,class A)>                       \
+boost::simd::ext::call<Tag(tag::unknown_),Site,tag::error_with(BOOST_PP_ENUM(n,M1,~))> \
+dispatching ( Tag const&, meta::unknown_<Site> const&, BOOST_PP_ENUM(n,M0,~)           \
+            , adl_helper = adl_helper()                                                \
+            );                                                                         \
 /**/
 
 //==============================================================================

@@ -21,18 +21,18 @@
 ////////////////////////////////////////////////////////////////////////////////
 #define NT2_FUNCTION_INTERFACE(TAG,NAME,N)                                      \
 template<BOOST_PP_ENUM_PARAMS(N,class A)> inline                                \
-typename nt2::meta::enable_call<TAG (                                           \
+typename boost::simd::meta::enable_call<TAG (                                   \
                     BOOST_PP_ENUM_BINARY_PARAMS(N,A, const& BOOST_PP_INTERCEPT) \
-                                    )>::type                                    \
+                                            )>::type                            \
 NAME ( BOOST_PP_ENUM_BINARY_PARAMS(N,A, const& a) )                             \
 /**/
 
 ////////////////////////////////////////////////////////////////////////////////
 // Generate a function body from TAG and Number of parameters
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_FUNCTION_BODY(TAG,N)                  \
-typename nt2::make_functor<TAG, A0>::type callee; \
-return callee(BOOST_PP_ENUM_PARAMS(N,a));         \
+#define NT2_FUNCTION_BODY(TAG,N)                          \
+typename boost::simd::make_functor<TAG, A0>::type callee; \
+return callee(BOOST_PP_ENUM_PARAMS(N,a));                 \
 /**/
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -45,16 +45,16 @@ NT2_FUNCTION_INTERFACE(TAG,NAME,N) { NT2_FUNCTION_BODY(TAG,N); }  \
 ////////////////////////////////////////////////////////////////////////////////
 // Generate a complete function implementation for self modifying operator
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_FUNCTION_IMPLEMENTATION_SELF_1(NAME,TAG)  \
-template<class A0> inline                             \
-typename nt2::meta::enable_call<TAG(A0&)>::type       \
-NAME( A0& a0 )  { NT2_FUNCTION_BODY(TAG,1) }          \
+#define NT2_FUNCTION_IMPLEMENTATION_SELF_1(NAME,TAG)     \
+template<class A0> inline                                \
+typename boost::simd::meta::enable_call<TAG(A0&)>::type  \
+NAME( A0& a0 )  { NT2_FUNCTION_BODY(TAG,1) }             \
 /**/
 
-#define NT2_FUNCTION_IMPLEMENTATION_SELF_2(NAME,TAG)        \
-template<class A0,class A1> inline                          \
-typename nt2::meta::enable_call<TAG(A0&,A1 const&)>::type   \
-NAME( A0& a0, A1 const& a1 )  { NT2_FUNCTION_BODY(TAG,2) }  \
+#define NT2_FUNCTION_IMPLEMENTATION_SELF_2(NAME,TAG)               \
+template<class A0,class A1> inline                                 \
+typename boost::simd::meta::enable_call<TAG(A0&,A1 const&)>::type  \
+NAME( A0& a0, A1 const& a1 )  { NT2_FUNCTION_BODY(TAG,2) }         \
 /**/
 
 #define NT2_FUNCTION_IMPLEMENTATION_SELF(TAG,NAME,N)        \
@@ -64,14 +64,14 @@ BOOST_PP_CAT(NT2_FUNCTION_IMPLEMENTATION_SELF_,N)(NAME,TAG) \
 ////////////////////////////////////////////////////////////////////////////////
 // Generate a method for self-operator overload
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_FUNCTION_METHOD_SELF(NAME,TAG,SELF)             \
-template<class A0> inline                                   \
-typename nt2::meta::enable_call<TAG(SELF&,A0 const&)>::type \
-NAME( A0 const& a0 )                                        \
-{                                                           \
-  typename nt2::make_functor<TAG, A0>::type callee;         \
-  return callee(*this,a0);                                  \
-}                                                           \
+#define NT2_FUNCTION_METHOD_SELF(NAME,TAG,SELF)                    \
+template<class A0> inline                                          \
+typename boost:simd::meta::enable_call<TAG(SELF&,A0 const&)>::type \
+NAME( A0 const& a0 )                                               \
+{                                                                  \
+  typename boost::simd::make_functor<TAG, A0>::type callee;        \
+  return callee(*this,a0);                                         \
+}                                                                  \
 /**/
 
 #endif

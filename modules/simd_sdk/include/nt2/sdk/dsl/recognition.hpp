@@ -42,7 +42,7 @@ namespace meta
 namespace boost { namespace proto
 {
   template<class Tag>
-  struct  is_callable<nt2::meta::recognition_<Tag> >
+  struct  is_callable<boost::simd::meta::recognition_<Tag> >
         : boost::mpl::true_  {};
 } }
 

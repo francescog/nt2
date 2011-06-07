@@ -13,7 +13,7 @@
 
 namespace boost { namespace simd { namespace time
 {
-  struct unbalanced_timing : virtual nt2::exception
+  struct unbalanced_timing : virtual boost::simd::exception
   {
     virtual void display(std::ostream& os) const throw()
     {

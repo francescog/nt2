@@ -25,7 +25,7 @@
 
 namespace boost { namespace simd { namespace memory
 {
-  template<class Type,class Allocator = nt2::memory::allocator<Type> >
+  template<class Type,class Allocator = boost::simd::memory::allocator<Type> >
   class buffer
       : private
         details::buffer_data< typename Allocator::template rebind<Type>::other >

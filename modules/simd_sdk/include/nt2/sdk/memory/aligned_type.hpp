@@ -20,7 +20,7 @@
 #elif (defined(__GNUC__)) || (defined(__xlC__))
 #define NT2_ALIGN_ON(x)  __attribute__(( __aligned__((x)) ))
 #elif !(defined(__WAVE__))
-#error nt2::aligned - No Supported alignment attribute
+#error boost::simd::aligned - No Supported alignment attribute
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

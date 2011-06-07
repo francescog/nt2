@@ -36,35 +36,35 @@
 /**/
 
 #define NT2_CREATE_BUF(NAME, TYPE, SIZE, MIN, MAX)	\
-  nt2::memory::buffer<TYPE,        \
-          nt2::memory::allocator<TYPE> >    \
+  boost::simd::memory::buffer<TYPE,        \
+          boost::simd::memory::allocator<TYPE> >    \
   NAME(0, SIZE);            \
   for(int k = 0; k < SIZE; ++k){        \
-    NAME[k] = nt2::details::random(MIN, MAX);      \
+    NAME[k] = boost::simd::details::random(MIN, MAX);      \
   }                \
 /**/
 #define NT2_CREATE_BUFFER(NAME, TYPE, SIZE, MIN, MAX)	\
-  nt2::memory::buffer<TYPE,        \
-          nt2::memory::allocator<TYPE> >    \
+  boost::simd::memory::buffer<TYPE,        \
+          boost::simd::memory::allocator<TYPE> >    \
   tab_##NAME(0, SIZE);            \
   for(int k = 0; k < SIZE; ++k){        \
-    tab_##NAME[k] = nt2::details::random(MIN, MAX);      \
+    tab_##NAME[k] = boost::simd::details::random(MIN, MAX);      \
   }                \
 /**/
 #define NT2_CREATE_SCALAR_BUFFER(NAME, TYPE, SIZE, MIN, MAX)  \
-  nt2::memory::buffer<TYPE,          \
-          nt2::memory::allocator<TYPE> >    \
+  boost::simd::memory::buffer<TYPE,          \
+          boost::simd::memory::allocator<TYPE> >    \
   tab_##NAME(0, SIZE);            \
   for(int k = 0; k < SIZE; ++k){        \
-    tab_##NAME[k] = nt2::details::random(MIN, MAX);      \
+    tab_##NAME[k] = boost::simd::details::random(MIN, MAX);      \
   }                \
 /**/
 #define NT2_CREATE_SIMD_BUFFER(NAME, TYPE, SIZE, MIN, MAX)  \
-  nt2::memory::buffer<TYPE,          \
-          nt2::memory::allocator<TYPE> >    \
+  boost::simd::memory::buffer<TYPE,          \
+          boost::simd::memory::allocator<TYPE> >    \
   tab_##NAME(0, SIZE);            \
   for(int k = 0; k < SIZE; ++k){        \
-    tab_##NAME[k] = nt2::details::random(MIN, MAX);      \
+    tab_##NAME[k] = boost::simd::details::random(MIN, MAX);      \
   }                \
 /**/
 

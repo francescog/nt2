@@ -26,8 +26,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 int main(int,char const**)
 {
-  nt2::details::main_suite.process();
-  return nt2::details::error_count() ? -1: 0;
+  boost::simd::details::main_suite.process();
+  return boost::simd::details::error_count() ? -1: 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -35,10 +35,10 @@ int main(int,char const**)
 ////////////////////////////////////////////////////////////////////////////////
 #define NT2_TEST_CASE(FUNC)                                                   \
 void BOOST_PP_CAT(test,FUNC)();                                               \
-nt2::details::test const                                                      \
+boost::simd::details::test const                                              \
 BOOST_PP_CAT(FUNC,test) = { BOOST_PP_CAT(test,FUNC)                           \
                           , BOOST_PP_STRINGIZE(BOOST_PP_CAT(FUNC,_test))      \
-                          , nt2::details                                      \
+                          , boost::simd::details                              \
                                ::main_suite.link(&BOOST_PP_CAT(FUNC,test)) }; \
 void BOOST_PP_CAT(test,FUNC)()                                                \
 /**/
@@ -47,17 +47,17 @@ void BOOST_PP_CAT(test,FUNC)()                                                \
 // Generate a test case using template type list
 ////////////////////////////////////////////////////////////////////////////////
 #define NT2_PP_TPL_CASES(r,name,type)                                   \
-printf("With T =[%s]\n",nt2::type_id<NT2_PP_STRIP(type)>().c_str());  \
+printf("With T =[%s]\n",boost::simd::type_id<NT2_PP_STRIP(type)>().c_str());  \
 BOOST_PP_CAT(tpl_test,name)<NT2_PP_STRIP(type)>();                      \
 /**/
 
 #define NT2_TEST_CASE_TPL(Name, Types)                                        \
 template<class T> void BOOST_PP_CAT(tpl_test,Name)();                         \
 void BOOST_PP_CAT(test,Name)();                                               \
-nt2::details::test const                                                      \
+boost::simd::details::test const                                              \
 BOOST_PP_CAT(Name,test) = { BOOST_PP_CAT(test,Name)                           \
                           , BOOST_PP_STRINGIZE(BOOST_PP_CAT(Name,_test))      \
-                          , nt2::details                                      \
+                          , boost::simd::details                              \
                                ::main_suite.link(&BOOST_PP_CAT(Name,test)) }; \
 void BOOST_PP_CAT(test,Name)()                                                \
 {                                                                             \

@@ -17,7 +17,7 @@ namespace boost { namespace simd { namespace meta
   template<class T> struct is_native : boost::mpl::false_ {};
 
   template<class T, class X>
-  struct is_native<nt2::simd::native<T,X> >: boost::mpl::true_ {};
+  struct is_native<boost::simd::native<T,X> >: boost::mpl::true_ {};
 } } }
 
 #endif

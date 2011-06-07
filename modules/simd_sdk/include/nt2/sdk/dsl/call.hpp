@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace details
     {
         template<typename Expr, typename Enable = void>
         struct as_child
-          : nt2::meta::strip<Expr>
+          : boost::simd::meta::strip<Expr>
         {
         };
 
@@ -98,7 +98,7 @@ namespace boost { namespace simd { namespace details
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/call.hpp")
 #endif
 
-#define M1(z,n,t) nt2::details::as_child(BOOST_PP_CAT(a,n))
+#define M1(z,n,t) boost::simd::details::as_child(BOOST_PP_CAT(a,n))
 #define M2(z,n,t) (BOOST_PP_CAT(A,n))
 #define M3(z,n,t) (unspecified_<BOOST_PP_CAT(A,n)>)
 
@@ -122,7 +122,7 @@ struct result<This(BOOST_PP_ENUM_PARAMS(n,A))>                  \
   make_expr < Func                                              \
             , BOOST_PP_ENUM_BINARY_PARAMS                       \
               ( n                                               \
-              , typename nt2::details::result_of                \
+              , typename boost::simd::details::result_o         \
                 ::as_child< typename meta::strip< A             \
               ,                                 >::type const&  \
                           >::type BOOST_PP_INTERCEPT            \

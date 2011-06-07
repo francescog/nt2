@@ -13,10 +13,10 @@
 
 #define NT2_MAKE_NATIVE_OP(TAG,OP)                                    \
 template<class T1, class T2,class X> inline                           \
-typename nt2::meta::enable_call<TAG(native<T1,X>,native<T2,X>)>::type \
+typename boost::simd::meta::enable_call<TAG(native<T1,X>,native<T2,X>)>::type \
 OP(native<T1,X> const& a0, native<T2,X> const& a1)                    \
 {                                                                     \
-  nt2::functor<TAG> callee;                                           \
+  boost::simd::functor<TAG> callee;                                   \
   return callee(a0,a1);                                               \
 }                                                                     \
 /**/

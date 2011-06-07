@@ -78,7 +78,7 @@ namespace boost { namespace simd { namespace memory
 
     void deallocate (pointer p, size_type s) const
     {
-      nt2::memory::deallocate(reinterpret_cast<byte*>(p),s*sizeof(value_type));
+      boost::simd::memory::deallocate(reinterpret_cast<byte*>(p),s*sizeof(value_type));
     }
 
     ////////////////////////////////////////////////////////////////////////////

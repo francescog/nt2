@@ -50,9 +50,9 @@ NT2_WARNING(AltiVec SIMD extension detected)
 #define NT2_SIMD_BYTES              16
 #define NT2_SIMD_BITS               128
 #define NT2_SIMD_CARDINALS          (4)(8)(16)
-#define NT2_SIMD_TAG_SEQ            (::nt2::tag::altivec_)
-#define NT2_SIMD_DEFAULT_EXTENSION  ::nt2::tag::altivec_
-#define NT2_SIMD_DEFAULT_SITE       ::nt2::tag::altivec_
+#define NT2_SIMD_TAG_SEQ            (::boost::simd::tag::altivec_)
+#define NT2_SIMD_DEFAULT_EXTENSION  ::boost::simd::tag::altivec_
+#define NT2_SIMD_DEFAULT_SITE       ::boost::simd::tag::altivec_
 
 #include <nt2/sdk/simd/extensions/meta/altivec.hpp>
 

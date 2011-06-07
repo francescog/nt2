@@ -20,9 +20,9 @@ namespace boost { namespace fusion {
   {
     template<class Scalar, class Extension>
 #if defined(BOOST_NO_PARTIAL_SPECIALIZATION_IMPLICIT_DEFAULT_ARGS)
-    struct tag_of<nt2::simd::native<Scalar,Extension>, void >
+    struct tag_of<boost::simd::native<Scalar,Extension>, void >
 #else
-    struct tag_of<nt2::simd::native<Scalar, Extension> >
+    struct tag_of<boost::simd::native<Scalar, Extension> >
 #endif
     { typedef boost_array_tag type; };
   }

@@ -74,7 +74,7 @@ namespace boost { namespace simd { namespace ext
 
     NT2_FUNCTOR_CALL(1)
     {
-      return nt2::memory::is_aligned<NT2_CONFIG_ALIGNMENT>(a0);
+      return boost::simd::memory::is_aligned<NT2_CONFIG_ALIGNMENT>(a0);
     }
   };
 } } }
@@ -127,7 +127,7 @@ namespace boost { namespace simd { namespace ext
 
     NT2_FUNCTOR_CALL(1)
     {
-      return nt2::memory::is_aligned<NT2_CONFIG_ALIGNMENT>(a0);
+      return boost::simd::memory::is_aligned<NT2_CONFIG_ALIGNMENT>(a0);
     }
   };
 } } }
@@ -153,7 +153,7 @@ namespace boost { namespace simd { namespace ext
 
     NT2_FUNCTOR_CALL(2)
     {
-      return nt2::memory::is_aligned( reinterpret_cast<std::size_t>(a0), a1 );
+      return boost::simd::memory::is_aligned( reinterpret_cast<std::size_t>(a0), a1 );
     }
   };
 } } }
@@ -180,7 +180,7 @@ namespace boost { namespace simd { namespace ext
 
     NT2_FUNCTOR_CALL(2)
     {
-      return nt2::memory::is_aligned( reinterpret_cast<std::size_t>(a0), a1 );
+      return boost::simd::memory::is_aligned( reinterpret_cast<std::size_t>(a0), a1 );
     }
   };
 } } }
@@ -202,7 +202,7 @@ namespace boost { namespace simd { namespace ext
 
     NT2_FUNCTOR_CALL(1)
     {
-      return nt2::memory::is_aligned<NT2_CONFIG_ALIGNMENT>(a0);
+      return boost::simd::memory::is_aligned<NT2_CONFIG_ALIGNMENT>(a0);
     }
   };
 } } }
