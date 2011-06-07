@@ -19,11 +19,13 @@ include(nt2.compiler.options)
 ################################################################################
 # Global Options
 ################################################################################
-set(CPACK_PACKAGE_NAME "NT²")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Numerical Template Toolbox")
+set(CPACK_PACKAGE_NAME "NT2")
 set(CPACK_PACKAGE_VENDOR "Metascale")
+set(CPACK_PACKAGE_CONTACT "Metascale <contact@metascale.org>")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Numerical Template Toolbox")
 
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.rst")
+set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.rst")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
 
 set(CPACK_PACKAGE_VERSION_MAJOR "3")
@@ -34,21 +36,18 @@ set(NT2_VERSION_NUMBER "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_M
 set(NT2_VERSION ${NT2_VERSION_NUMBER})
 
 set(CPACK_PACKAGE_FILE_NAME "nt2-${NT2_VERSION}")
-
 set(CPACK_PACKAGE_INSTALL_DIRECTORY nt2)
-if(WIN32 AND NOT UNIX)
-  # There is a bug in NSI that does not handle full unix paths properly. Make
-  # sure there is at least one set of four (4) backlasshes.
-  set(CPACK_PACKAGE_ICON "${PROJECT_SOURCE_DIR}/doc/source\\\\nt2.png")
-  set(CPACK_NSIS_DISPLAY_NAME "NT2 - Numerical Template Toolbox")
-  set(CPACK_NSIS_HELP_LINK "http:\\\\\\\\nt2.metascale.org")
-  set(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\\\\\nt2.metascale.org")
-  set(CPACK_NSIS_CONTACT "contact@metascale.org")
-  set(CPACK_NSIS_MODIFY_PATH ON)
-else()
-  set(CPACK_STRIP_FILES 1)
-  set(CPACK_SOURCE_STRIP_FILES 1)
-endif()
+
+# NSIS-specific
+set(CPACK_PACKAGE_ICON "${PROJECT_SOURCE_DIR}/doc/source\\\\nt2.png")
+set(CPACK_NSIS_DISPLAY_NAME "NT2 - Numerical Template Toolbox")
+set(CPACK_NSIS_HELP_LINK "http:\\\\\\\\nt2.metascale.org")
+set(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\\\\\nt2.metascale.org")
+set(CPACK_NSIS_CONTACT "contact@metascale.org")
+
+set(CPACK_STRIP_FILES 1)
+set(CPACK_SOURCE_STRIP_FILES 1)
+set(CPACK_COMPONENTS_ALL_IN_ONE_PACKAGE 1)
 
 include(CPack)
 
@@ -73,6 +72,9 @@ ADD_CUSTOM_TARGET( examples
 ADD_CUSTOM_TARGET( unit
                    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/unit
                  )
+ADD_CUSTOM_TARGET( cover
+                   WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/cover
+                 )
 
 ################################################################################
 # Module inclusion
@@ -83,6 +85,7 @@ macro(nt2_load_module module)
   add_dependencies(bench ${module}.bench)
   add_dependencies(examples ${module}.examples)
   add_dependencies(unit ${module}.unit)
+  add_dependencies(cover ${module}.cover)
 endmacro()
 
 set(NT2_SOURCE_ROOT ${PROJECT_SOURCE_DIR})
