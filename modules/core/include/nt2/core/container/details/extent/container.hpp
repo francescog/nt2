@@ -39,7 +39,14 @@ namespace nt2 { namespace containers
     //==========================================================================
     typedef typename
     details::hierarchy_of_expr<container>::type     nt2_hierarchy_tag;
-    typedef tag::extent_                            fusion_tag;
+
+    BOOST_STATIC_CONSTANT(std::size_t, static_dimensions = Dims::value );
+
+    //==========================================================================
+    // Proto required interface
+    //==========================================================================
+    explicit container( AST const& xpr = AST() ): parent(xpr) {}
+    BOOST_PROTO_EXTENDS_USING_ASSIGN(container)
 
     //==========================================================================
     // Sequence conformance
@@ -48,16 +55,13 @@ namespace nt2 { namespace containers
     typedef std::size_t                             const_reference;
     typedef std::size_t                             reference;
 
-    BOOST_STATIC_CONSTANT(std::size_t, static_dimensions = Dims::value );
+    const_reference operator()(std::size_t i) const
+    {
+      boost::array<int,1> idx = { i };
+      return nt2::value_at( *this, idx );
+    }
 
-    ////////////////////////////////////////////////////////////////////////////
-    // Default explicit constructor
-    ////////////////////////////////////////////////////////////////////////////
-    BOOST_PROTO_EXTENDS_USING_ASSIGN(container)
 
-    const_reference operator()(std::size_t i) const { return 777; }
-
-    explicit container( AST const& xpr = AST() ): parent(xpr) {}
   };
 } }
 

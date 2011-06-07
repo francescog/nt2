@@ -63,6 +63,7 @@ namespace nt2 { namespace containers
     typedef ext::facade<tag::extent_,Dimensions,void> facade_type;
     typedef typename facade_type::type                parent;
     typedef typename facade_type::data_type           data_type;
+    typedef tag::extent_                              fusion_tag;
 
     //==========================================================================
     // Container interface
@@ -295,6 +296,7 @@ BOOST_PP_REPEAT(n,M1,~)                                                     \
      */
     //==========================================================================
     data_type const&  data()  const { return boost::proto::value(*this); }
+    data_type&        data()        { return boost::proto::value(*this); }
 
     //==========================================================================
     /*!

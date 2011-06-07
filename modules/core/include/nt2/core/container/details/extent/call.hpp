@@ -65,6 +65,29 @@ namespace nt2 { namespace ext
       return v[pos];
     }
   };
+
+  template<class Dummy>
+  struct call<tag::extent_( tag::array_<tag::arithmetic_,0>
+                          , tag::target_< tag::unspecified_ >
+                          , tag::integer_
+                          ),tag::cpu_,Dummy>
+  : callable
+  {
+    template<class Sig> struct result;
+
+    template<class This, class Value, class State, class Data>
+    struct result<This(Value,State,Data)>
+    {
+      typedef typename meta::strip<Value>::type::value_type  type;
+    };
+
+    template<class Value, class State, class Data> inline
+    typename result<call(Value,State,Data)>::type
+    operator()( Value& v, State& , Data& pos) const
+    {
+      return 1;
+    }
+  };
 } }
 
 #endif
