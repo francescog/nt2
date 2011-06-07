@@ -17,13 +17,13 @@
 #include <boost/fusion/include/at.hpp>
 #include <nt2/sdk/error/concepts.hpp>
 #include <nt2/sdk/details/ignore_unused.hpp>
-#include <nt2/sdk/concepts/fusion_bidirectionnal_sequence.hpp>
+#include <nt2/sdk/concept/fusion_bidirectionnal_sequence.hpp>
 
 namespace nt2
 {
   template<class S>
   struct  FusionRandomAccessSequence
-        : FusionBidirectionnalSequence<S>
+        : FusionBidirectionalSequence<S>
   {
     typedef typename boost::fusion::result_of::at_c<S,0>::type at_type;
     BOOST_CONCEPT_USAGE(FusionRandomAccessSequence)

@@ -17,7 +17,7 @@
 #include <nt2/sdk/error/concepts.hpp>
 #include <boost/fusion/include/back.hpp>
 #include <nt2/sdk/details/ignore_unused.hpp>
-#include <nt2/sdk/concepts/fusion_forward_sequence.hpp>
+#include <nt2/sdk/concept/fusion_forward_sequence.hpp>
 
 namespace nt2
 {
@@ -28,7 +28,7 @@ namespace nt2
     typedef typename boost::fusion::result_of::back<S>::type back_type;
     BOOST_CONCEPT_USAGE(FusionBidirectionalSequence)
     {
-      back_type b = back(s);
+      back_type b = boost::fusion::back(s);
       ignore_unused(b);
     }
 
