@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_PACK_STORE_HPP_INCLUDED
-#define NT2_SDK_SIMD_PACK_STORE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_PACK_STORE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_PACK_STORE_HPP_INCLUDED
 
 #include <nt2/sdk/meta/strip.hpp>
 #include <nt2/include/functions/store.hpp>
@@ -15,7 +15,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Splat over terminal of simd domain using the pack::fill method
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::store_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::store_
                       , tag::cpu_
                       , (A0)(A1)(A2)(T)(C)(Sema)
                       , (( expr_< A0
@@ -47,7 +47,7 @@ namespace boost { namespace simd { namespace ext
     template<class This, class A0,class A1,class A2>
     struct result<This(A0,A1,A2)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(3)
+    BOOST_SIMD_FUNCTOR_CALL(3)
     {
       A0 that = store(boost::proto::value(a0).value(),a1,a2);
       return that;

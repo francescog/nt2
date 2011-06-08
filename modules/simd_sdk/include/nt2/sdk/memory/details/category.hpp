@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_DETAILS_CATEGORY_HPP_INCLUDED
-#define NT2_SDK_MEMORY_DETAILS_CATEGORY_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_DETAILS_CATEGORY_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_DETAILS_CATEGORY_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Various memory hierarchy stuff
@@ -20,7 +20,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Some hierarchies
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_HIERARCHY(iterator_)
+BOOST_SIMD_REGISTER_HIERARCHY(iterator_)
 
 ////////////////////////////////////////////////////////////////////////////////
 // Specialize hierarchy for all iterator types

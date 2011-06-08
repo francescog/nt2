@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_DSL_FROM_DOMAIN_HPP_INCLUDED
-#define NT2_SDK_DSL_FROM_DOMAIN_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_DSL_FROM_DOMAIN_HPP_INCLUDED
+#define BOOST_SIMD_SDK_DSL_FROM_DOMAIN_HPP_INCLUDED
 
 #include <boost/proto/proto.hpp>
 #include <nt2/sdk/dsl/category.hpp>
@@ -25,13 +25,13 @@ namespace boost
   namespace simd
   {
     namespace tag { struct from_domain_ {}; }
-    NT2_FUNCTION_IMPLEMENTATION(tag::from_domain_ , from_domain  , 1 )
+    BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::from_domain_ , from_domain  , 1 )
   }
 }
 
-NT2_REGISTER_DISPATCH ( tag::from_domain_ , tag::cpu_, (A0)(Dom)(Tag)(Sema)
-                      , ((expr_<A0,Dom,Tag,Sema>))
-                      )
+BOOST_SIMD_REGISTER_DISPATCH ( tag::from_domain_ , tag::cpu_, (A0)(Dom)(Tag)(Sema)
+                             , ((expr_<A0,Dom,Tag,Sema>))
+                             )
 
 namespace boost { namespace simd { namespace ext
 {
@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
                       >
     {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       return  boost::proto::
               make_expr<tag::from_domain_>( boost::cref(a0) );

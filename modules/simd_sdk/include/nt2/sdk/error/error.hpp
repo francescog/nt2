@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_ERROR_ERROR_HPP_INCLUDED
-#define NT2_SDK_ERROR_ERROR_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_ERROR_ERROR_HPP_INCLUDED
+#define BOOST_SIMD_SDK_ERROR_ERROR_HPP_INCLUDED
 
 /*!
  * \file
@@ -37,11 +37,11 @@
  * defined manually and is triggered automatically if \c BOOST_NO_EXCEPTIONS is
  * defined or if exceptions are disabled by the compiler options.
  *
- * \see NT2_DISABLE_ASSERTS
- * \see NT2_ASSERTS_AS_EXCEPTIONS
+ * \see BOOST_SIMD_DISABLE_ASSERTS
+ * \see BOOST_SIMD_ASSERTS_AS_EXCEPTIONS
  */
 //==============================================================================
-#define NT2_DISABLE_ERROR
+#define BOOST_SIMD_DISABLE_ERROR
 
 //==============================================================================
 /*!
@@ -51,7 +51,7 @@
  * \param EXCEPTION Exception to throw.
  */
 //==============================================================================
-#define NT2_THROW(EXCEPTION)
+#define BOOST_SIMD_THROW(EXCEPTION)
 
 #endif
 
@@ -60,22 +60,22 @@
 //==============================================================================
 #include <boost/config.hpp>
 #if defined(BOOST_NO_EXCEPTIONS)
-#define NT2_DISABLE_ERROR
+#define BOOST_SIMD_DISABLE_ERROR
 #endif
 
 //==============================================================================
 // Enabled errors
 //==============================================================================
-#if !defined(NT2_DISABLE_ERROR)
+#if !defined(BOOST_SIMD_DISABLE_ERROR)
 #include <nt2/sdk/error/details/exception.hpp>
-#define NT2_THROW(EXP) BOOST_THROW_EXCEPTION( (EXP) ) \
+#define BOOST_SIMD_THROW(EXP) BOOST_THROW_EXCEPTION( (EXP) ) \
 /**/
 
 //==============================================================================
 // Disabled errors
 //==============================================================================
 #else
-#define NT2_THROW(EXP)
+#define BOOST_SIMD_THROW(EXP)
 #endif
 
 #endif

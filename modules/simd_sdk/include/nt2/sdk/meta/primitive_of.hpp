@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_META_PRIMITIVE_OF_HPP_INCLUDED
-#define NT2_SDK_META_PRIMITIVE_OF_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_META_PRIMITIVE_OF_HPP_INCLUDED
+#define BOOST_SIMD_SDK_META_PRIMITIVE_OF_HPP_INCLUDED
 /*!
  * \file
  * \brief Defines the nt2::meta::primitive_of \metafunction
@@ -50,12 +50,12 @@ namespace boost { namespace simd { namespace meta
   template<class Hierarchizable>
   struct primitive_of
   {
-    NT2_STATIC_ASSERT ( ( !boost::is_same < typename
+    BOOST_SIMD_STATIC_ASSERT ( ( !boost::is_same < typename
                                             hierarchy_of<Hierarchizable>::type
                                           , unspecified_<Hierarchizable>
                                           >::value
                         )
-                      , NT2_PRIMITIVE_OF_CALLED_ON_NON_HIERARCHIZABLE_TYPE
+                      , BOOST_SIMD_PRIMITIVE_OF_CALLED_ON_NON_HIERARCHIZABLE_TYPE
                       , "The primitive of a non-Hierarchizable type is undefined."
                       );
     typedef Hierarchizable type;

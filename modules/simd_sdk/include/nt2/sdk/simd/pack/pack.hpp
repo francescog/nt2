@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_PACK_PACK_HPP_INCLUDED
-#define NT2_SDK_SIMD_PACK_PACK_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_PACK_PACK_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_PACK_PACK_HPP_INCLUDED
 
 #include <boost/proto/core.hpp>
 #include <nt2/sdk/dsl/call.hpp>
@@ -35,7 +35,7 @@ namespace boost { namespace simd
     ////////////////////////////////////////////////////////////////////////////
     // Pack must be sized with a power of 2
     ////////////////////////////////////////////////////////////////////////////
-    NT2_STATIC_ASSERT ( (meta::is_power_of_2_c<Cardinal>::value)
+    BOOST_STATIC_ASSERT ( (meta::is_power_of_2_c<Cardinal>::value)
                       , INVALID_SIMD_PACK_CARDINAL
                       , "SIMD pack instanciated with non-power of 2 Cardinal."
                       );
@@ -197,7 +197,7 @@ namespace boost { namespace simd
       return *this;
     }
 
-    #define NT2_MAKE_ASSIGN_OP(OP)                                      \
+    #define BOOST_SIMD_MAKE_ASSIGN_OP(OP)                                      \
     template<class X> pack& operator BOOST_PP_CAT(OP,=)(X const& xpr )  \
     {                                                                   \
       boost::proto::value(*this).evaluate(*this OP xpr);                \
@@ -205,18 +205,18 @@ namespace boost { namespace simd
     }                                                                   \
     /**/
 
-    NT2_MAKE_ASSIGN_OP(+)
-    NT2_MAKE_ASSIGN_OP(-)
-    NT2_MAKE_ASSIGN_OP(*)
-    NT2_MAKE_ASSIGN_OP(/)
-    NT2_MAKE_ASSIGN_OP(%)
-    NT2_MAKE_ASSIGN_OP(^)
-    NT2_MAKE_ASSIGN_OP(&)
-    NT2_MAKE_ASSIGN_OP(|)
-    NT2_MAKE_ASSIGN_OP(>>)
-    NT2_MAKE_ASSIGN_OP(<<)
+    BOOST_SIMD_MAKE_ASSIGN_OP(+)
+    BOOST_SIMD_MAKE_ASSIGN_OP(-)
+    BOOST_SIMD_MAKE_ASSIGN_OP(*)
+    BOOST_SIMD_MAKE_ASSIGN_OP(/)
+    BOOST_SIMD_MAKE_ASSIGN_OP(%)
+    BOOST_SIMD_MAKE_ASSIGN_OP(^)
+    BOOST_SIMD_MAKE_ASSIGN_OP(&)
+    BOOST_SIMD_MAKE_ASSIGN_OP(|)
+    BOOST_SIMD_MAKE_ASSIGN_OP(>>)
+    BOOST_SIMD_MAKE_ASSIGN_OP(<<)
 
-    #undef NT2_MAKE_ASSIGN_OP
+    #undef BOOST_SIMD_MAKE_ASSIGN_OP
   };
 } }
 

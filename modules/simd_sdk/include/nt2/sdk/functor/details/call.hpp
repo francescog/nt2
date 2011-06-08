@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_FUNCTOR_DETAILS_CALL_HPP_INCLUDED
-#define NT2_SDK_FUNCTOR_DETAILS_CALL_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_FUNCTOR_DETAILS_CALL_HPP_INCLUDED
+#define BOOST_SIMD_SDK_FUNCTOR_DETAILS_CALL_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // User-overloadable call meta-function
@@ -36,8 +36,8 @@ namespace boost { namespace simd { namespace ext
   struct call<Function(tag::unknown_),Site,Dummy>
   {
     typedef int result_type;
-    NT2_STATIC_ASSERT ( (boost::is_same<Function,void>::value)
-                      , NT2_UNSUPPORTED_FUNCTION_CALL
+    BOOST_SIMD_STATIC_ASSERT ( (boost::is_same<Function,void>::value)
+                      , BOOST_SIMD_UNSUPPORTED_FUNCTION_CALL
                       , "If you get an error here, you tried to call a nt2 "
                         "function on values which types is not supported by nt2 "
                         "or which is not implemented on the given type. "

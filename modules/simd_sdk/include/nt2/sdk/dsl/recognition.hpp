@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_DSL_RECOGNITION_HPP_INCLUDED
-#define NT2_SDK_DSL_RECOGNITION_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_DSL_RECOGNITION_HPP_INCLUDED
+#define BOOST_SIMD_SDK_DSL_RECOGNITION_HPP_INCLUDED
 
 #include <boost/proto/proto.hpp>
 #include <nt2/sdk/dsl/compile.hpp>
@@ -18,7 +18,7 @@ namespace boost { namespace simd
 
 namespace tag
 {
-  NT2_HIERARCHY_CLASS(recognition_, formal_);
+  BOOST_SIMD_HIERARCHY_CLASS(recognition_, formal_);
 }
   
 namespace meta

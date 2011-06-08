@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_META_MPL_HPP_INCLUDED
-#define NT2_SDK_META_MPL_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_META_MPL_HPP_INCLUDED
+#define BOOST_SIMD_SDK_META_MPL_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Various memory hierarchy stuff
@@ -47,7 +47,7 @@ namespace boost { namespace simd { namespace details
 ////////////////////////////////////////////////////////////////////////////////
 // Specialize hierarchy for mpl integral types
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_HIERARCHY_PARENT(mpl_integral_, typename hierarchy_of<T>::type)
+BOOST_SIMD_REGISTER_HIERARCHY_PARENT(mpl_integral_, typename hierarchy_of<T>::type)
 
 namespace boost { namespace simd { namespace details
 {

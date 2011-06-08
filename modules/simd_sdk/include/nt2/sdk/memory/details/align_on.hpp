@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_DETAILS_ALIGN_ON_HPP_INCLUDED
-#define NT2_SDK_MEMORY_DETAILS_ALIGN_ON_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_DETAILS_ALIGN_ON_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_DETAILS_ALIGN_ON_HPP_INCLUDED
 
 #include <nt2/sdk/meta/mpl.hpp>
 #include <nt2/sdk/memory/parameters.hpp>
@@ -18,9 +18,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Align integer on integer
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
-                      , (A0)(A1)      , (integer_<A0>)(integer_<A1>)
-                      )
+BOOST_SIMD_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
+                             , (A0)(A1)      , (integer_<A0>)(integer_<A1>)
+                             )
 
 namespace boost { namespace simd { namespace ext
 {
@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
     template<class This,class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       return (a0+a1-1) & ~(a1-1);
     }
@@ -42,9 +42,9 @@ namespace boost { namespace simd { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Align integer on mpl integer
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
-                      , (A0)(A1), (integer_<A0>)(mpl_integral_< integer_<A1> >)
-                      )
+BOOST_SIMD_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
+                             , (A0)(A1), (integer_<A0>)(mpl_integral_< integer_<A1> >)
+                             )
 
 namespace boost { namespace simd { namespace ext
 {
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace ext
     template<class This,class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       ignore_unused(a1);
       return (a0+A1::value-1) & ~(A1::value-1);
@@ -69,7 +69,7 @@ namespace boost { namespace simd { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Align integer on default alignment
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_, (A0), (integer_<A0>) )
+BOOST_SIMD_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_, (A0), (integer_<A0>) )
 
 namespace boost { namespace simd { namespace ext
 {
@@ -81,9 +81,9 @@ namespace boost { namespace simd { namespace ext
     template<class This,class A0>
     struct result<This(A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
-      return boost::simd::memory::align_on<NT2_CONFIG_ALIGNMENT>(a0);
+      return boost::simd::memory::align_on<BOOST_SIMD_CONFIG_ALIGNMENT>(a0);
     }
   };
 } } }
@@ -91,10 +91,10 @@ namespace boost { namespace simd { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Align mpl integer on mpl integer
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
-                      , (A0)(A1)
-                      , (mpl_integral_< integer_<A0> >)(mpl_integral_< integer_<A1> >)
-                      )
+BOOST_SIMD_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
+                             , (A0)(A1)
+                             , (mpl_integral_< integer_<A0> >)(mpl_integral_< integer_<A1> >)
+                             )
 
 namespace boost { namespace simd { namespace ext
 {
@@ -114,11 +114,11 @@ namespace boost { namespace simd { namespace ext
                           >
     {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       ignore_unused(a0);
       ignore_unused(a1);
-      return typename NT2_RETURN_TYPE(2)::type();
+      return typename BOOST_SIMD_RETURN_TYPE(2)::type();
     }
   };
 } } }
@@ -126,9 +126,9 @@ namespace boost { namespace simd { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Align mpl integer on default alignment
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
-                      , (A0), (mpl_integral_< integer_<A0> >)
-                      )
+BOOST_SIMD_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
+                             , (A0), (mpl_integral_< integer_<A0> >)
+                             )
 
 namespace boost { namespace simd { namespace ext
 {
@@ -142,14 +142,14 @@ namespace boost { namespace simd { namespace ext
     template<class This,class A0>
     struct  result<This(A0)>
           : meta::align_on< typename meta::strip<A0>::type
-                          , boost::mpl::int_<NT2_CONFIG_ALIGNMENT>
+                          , boost::mpl::int_<BOOST_SIMD_CONFIG_ALIGNMENT>
                           >
     {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
-      return typename NT2_RETURN_TYPE(1)::type();
+      return typename BOOST_SIMD_RETURN_TYPE(1)::type();
     }
   };
 } } }
@@ -157,9 +157,9 @@ namespace boost { namespace simd { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Align iterator on integer
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
-                      , (A0)(A1)      , (iterator_<fundamental_<A0> >)(integer_<A1>)
-                      )
+BOOST_SIMD_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
+                             , (A0)(A1)      , (iterator_<fundamental_<A0> >)(integer_<A1>)
+                             )
 
 namespace boost { namespace simd { namespace ext
 {
@@ -175,9 +175,9 @@ namespace boost { namespace simd { namespace ext
     template<class This,class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
-      typedef typename NT2_RETURN_TYPE(2)::type type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(2)::type type;
       std::size_t ptr = reinterpret_cast<std::size_t>(a0);
       return reinterpret_cast<type>(boost::simd::memory::align_on(ptr,a1));
     }
@@ -187,11 +187,11 @@ namespace boost { namespace simd { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Align iterator on mpl integer
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
-                      , (A0)(A1)
-                      , (iterator_<fundamental_<A0> >)(mpl_integral_< integer_<A1> >)
-                      )
-
+BOOST_SIMD_REGISTER_DISPATCH ( tag::align_on_, tag::cpu_
+                             , (A0)(A1)
+                             , (iterator_<fundamental_<A0> >)(mpl_integral_< integer_<A1> >)
+                             )
+ 
 namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
@@ -206,9 +206,9 @@ namespace boost { namespace simd { namespace ext
     template<class This,class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
-      typedef typename NT2_RETURN_TYPE(2)::type type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(2)::type type;
       std::size_t ptr = reinterpret_cast<std::size_t>(a0);
       return reinterpret_cast<type>(boost::simd::memory::align_on(ptr,a1));
     }
@@ -218,7 +218,7 @@ namespace boost { namespace simd { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Align iterator on default alignment
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH(tag::align_on_,tag::cpu_,(A0),(iterator_<fundamental_<A0> >))
+BOOST_SIMD_REGISTER_DISPATCH(tag::align_on_,tag::cpu_,(A0),(iterator_<fundamental_<A0> >))
 
 namespace boost { namespace simd { namespace ext
 {
@@ -230,9 +230,9 @@ namespace boost { namespace simd { namespace ext
     template<class This,class A0>
     struct result<This(A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
-      return boost::simd::memory::align_on<NT2_CONFIG_ALIGNMENT>(a0);
+      return boost::simd::memory::align_on<BOOST_SIMD_CONFIG_ALIGNMENT>(a0);
     }
   };
 } } }

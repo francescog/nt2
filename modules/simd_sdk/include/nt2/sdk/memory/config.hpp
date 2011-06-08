@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_CONFIG_HPP_INCLUDED
-#define NT2_SDK_MEMORY_CONFIG_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_CONFIG_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_CONFIG_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Memory config header
@@ -23,7 +23,7 @@
  && (defined _POSIX_ADVISORY_INFO) && (_POSIX_ADVISORY_INFO > 0)
   #include <cstdlib>
   #include <cstring>
-  #define NT2_CONFIG_SUPPORT_POSIX_MEMALIGN
+  #define BOOST_SIMD_CONFIG_SUPPORT_POSIX_MEMALIGN
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

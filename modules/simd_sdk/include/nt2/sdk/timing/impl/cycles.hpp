@@ -6,14 +6,14 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_TIMING_IMPL_CYCLES_HPP_INCLUDED
-#define NT2_SDK_TIMING_IMPL_CYCLES_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_TIMING_IMPL_CYCLES_HPP_INCLUDED
+#define BOOST_SIMD_SDK_TIMING_IMPL_CYCLES_HPP_INCLUDED
 
 #include <nt2/sdk/config/arch.hpp>
 #include <nt2/sdk/config/types.hpp>
 
 #if    (defined(__GNUC__)     || defined(__ICC)        )      \
-    && defined(NT2_ARCH_X86)
+    && defined(BOOST_SIMD_ARCH_X86)
 namespace boost
 {
   namespace simd
@@ -56,9 +56,9 @@ namespace boost
     }
   }
 }
-#elif  (defined(__GNUC__)      && defined(NT2_ARCH_POWERPC))  \
+#elif  (defined(__GNUC__)      && defined(BOOST_SIMD_ARCH_POWERPC))  \
     || (defined(__MWERKS__)    && defined(macintosh)       )  \
-    || (defined(__IBM_GCC_ASM) && defined(NT2_ARCH_POWERPC))
+    || (defined(__IBM_GCC_ASM) && defined(BOOST_SIMD_ARCH_POWERPC))
 namespace boost
 {
   namespace simd

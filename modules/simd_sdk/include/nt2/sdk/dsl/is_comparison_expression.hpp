@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_CORE_CONTAINER_META_IS_COMPARISON_EXPRESSION_HPP_INCLUDED
-#define NT2_CORE_CONTAINER_META_IS_COMPARISON_EXPRESSION_HPP_INCLUDED
+#ifndef BOOST_SIMD_CORE_CONTAINER_META_IS_COMPARISON_EXPRESSION_HPP_INCLUDED
+#define BOOST_SIMD_CORE_CONTAINER_META_IS_COMPARISON_EXPRESSION_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Check if a given proto expression has a tag of a comaprison operator

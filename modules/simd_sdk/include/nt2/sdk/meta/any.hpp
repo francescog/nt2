@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_META_ANY_HPP_INCLUDED
-#define NT2_SDK_META_ANY_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_META_ANY_HPP_INCLUDED
+#define BOOST_SIMD_SDK_META_ANY_HPP_INCLUDED
 
 /*!
  * \file
@@ -74,13 +74,13 @@ namespace boost { namespace simd { namespace meta
   // Recursive macro
   //============================================================================
   template< class Pred
-          , BOOST_PP_ENUM_BINARY_PARAMS ( NT2_MAX_META_ARITY
+          , BOOST_PP_ENUM_BINARY_PARAMS ( BOOST_SIMD_MAX_META_ARITY
                                         , class A
                                         , = na_ BOOST_PP_INTERCEPT
                                         )
           >
   struct  any
-        : details::any_impl<Pred,BOOST_PP_ENUM_PARAMS(NT2_MAX_META_ARITY, A)>
+        : details::any_impl<Pred,BOOST_PP_ENUM_PARAMS(BOOST_SIMD_MAX_META_ARITY, A)>
   {};
   #endif
 } } }

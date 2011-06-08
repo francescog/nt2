@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_REPORT_HPP_INCLUDED
-#define NT2_SDK_MEMORY_REPORT_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_REPORT_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_REPORT_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Memory config header
@@ -22,8 +22,8 @@ namespace boost { namespace simd { namespace config
   //////////////////////////////////////////////////////////////////////////////
   inline void memories()
   {
-    printf(" Memory alignment        : %d\n", NT2_CONFIG_ALIGNMENT );
-    #if defined(NT2_CONFIG_SUPPORT_POSIX_MEMALIGN)
+    printf(" Memory alignment        : %d\n", BOOST_SIMD_CONFIG_ALIGNMENT );
+    #if defined(BOOST_SIMD_CONFIG_SUPPORT_POSIX_MEMALIGN)
       puts(" Memory allocation       : posix_memalign");
     #elif defined(_MSC_VER)
       puts(" Memory allocation       : _aligned_malloc");
@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace config
     puts("");
   }
 
-  NT2_REGISTER_STATUS(memories);
+  BOOST_SIMD_REGISTER_STATUS(memories);
 } } }
 
 #endif

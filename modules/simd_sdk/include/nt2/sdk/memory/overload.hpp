@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_OVERLOAD_HPP_INCLUDED
-#define NT2_SDK_MEMORY_OVERLOAD_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_OVERLOAD_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_OVERLOAD_HPP_INCLUDED
 
 #include <cstddef>
 #include <nt2/sdk/memory/allocate.hpp>
@@ -16,7 +16,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Macro for operator new/new[] overload with aligned allocation
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_MEMORY_OVERLOAD_NEW_DELETE(A)                           \
+#define BOOST_SIMD_MEMORY_OVERLOAD_NEW_DELETE(A)                    \
 void* operator new(std::size_t s)                                   \
 {                                                                   \
   return boost::simd::memory::allocate(s);                          \

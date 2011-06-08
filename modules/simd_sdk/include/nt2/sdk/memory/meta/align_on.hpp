@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_META_ALIGN_ON_HPP_INCLUDED
-#define NT2_SDK_MEMORY_META_ALIGN_ON_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_META_ALIGN_ON_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_META_ALIGN_ON_HPP_INCLUDED
 
 #include <cstddef>
 #include <boost/mpl/size_t.hpp>
@@ -22,13 +22,13 @@ namespace boost { namespace simd { namespace meta
   // Compute an aligned value of an integral constant on a power of 2 boundary.
   // Documentation: align_on_c.rst
   //////////////////////////////////////////////////////////////////////////////
-  template<std::size_t V, std::size_t N = NT2_CONFIG_ALIGNMENT>
+  template<std::size_t V, std::size_t N = BOOST_SIMD_CONFIG_ALIGNMENT>
   struct align_on_c
        : boost::mpl::integral_c< std::size_t
                                , (V+N-1) & ~(N-1)
                                >
   {
-    NT2_STATIC_ASSERT ( (meta::is_power_of_2_c<N>::value)
+    BOOST_SIMD_STATIC_ASSERT ( (meta::is_power_of_2_c<N>::value)
                       , INVALID_ALIGNMENT_VALUE
                       , "Alignment done on a non-power of two boundary."
                       );
@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace meta
   // Compute an aligned value of an Integral Constant on a power of 2 boundary.
   // Documentation: align_on.rst
   //////////////////////////////////////////////////////////////////////////////
-  template<class V, class N = boost::mpl::size_t<NT2_CONFIG_ALIGNMENT> >
+  template<class V, class N = boost::mpl::size_t<BOOST_SIMD_CONFIG_ALIGNMENT> >
   struct align_on
        : boost::mpl::integral_c< typename V::value_type
                                , align_on_c<V::value,N::value>::value

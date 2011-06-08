@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_DSL_CALL_HPP_INCLUDED
-#define NT2_SDK_DSL_CALL_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_DSL_CALL_HPP_INCLUDED
+#define BOOST_SIMD_SDK_DSL_CALL_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // This file generate basic EDSL expression wrapper over any nt2 function
@@ -91,10 +91,10 @@ namespace boost { namespace simd { namespace details
 
 } } }
 
-#if !defined(NT2_DONT_USE_PREPROCESSED_FILES)
+#if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/sdk/dsl/preprocessed/call.hpp>
 #else
-#if defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/call.hpp")
 #endif
 
@@ -103,7 +103,7 @@ namespace boost { namespace simd { namespace details
 #define M3(z,n,t) (unspecified_<BOOST_PP_CAT(A,n)>)
 
 #define M4(z,n,t)                                                             \
-NT2_REGISTER_DISPATCH_IF( Func, tag::formal_                                  \
+BOOST_SIMD_REGISTER_DISPATCH_IF( Func, tag::formal_                           \
                         , (Func)BOOST_PP_REPEAT(n,M2,~)                       \
                         , (any< boost::proto::is_expr<boost::mpl::_>          \
                               , BOOST_PP_ENUM_PARAMS(n,A)                     \
@@ -129,7 +129,7 @@ struct result<This(BOOST_PP_ENUM_PARAMS(n,A))>                  \
               )                                                 \
             >::type type;                                       \
 };                                                              \
-NT2_FUNCTOR_CALL(n)                                             \
+BOOST_SIMD_FUNCTOR_CALL(n)                                      \
 {                                                               \
   return boost::proto::                                         \
   make_expr<Func>( BOOST_PP_ENUM(n,M1,~) );                     \
@@ -153,7 +153,7 @@ namespace boost { namespace simd { namespace ext
 #undef M3
 #undef M4
 
-#if defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(output: null)
 #endif
 #endif

@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_UNIT_TESTS_BASIC_HPP_INCLUDED
-#define NT2_SDK_UNIT_TESTS_BASIC_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_UNIT_TESTS_BASIC_HPP_INCLUDED
+#define BOOST_SIMD_SDK_UNIT_TESTS_BASIC_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Basic tests
@@ -17,7 +17,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Evaluates an expression and checks if it evaluates to true or not
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_TEST(X)                                                         \
+#define BOOST_SIMD_TEST(X)                                                  \
 ( ::boost::simd::details::test_count()++                                    \
 , (X) ? ::boost::simd::details::pass(#X)                                    \
       : ::boost::simd::details::fail(#X, __LINE__, BOOST_CURRENT_FUNCTION)  \
@@ -27,7 +27,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Emit a strong error message
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_TEST_ERROR(X)                                           \
+#define BOOST_SIMD_TEST_ERROR(X)                                    \
 ::boost::simd::details::error(X, __LINE__, BOOST_CURRENT_FUNCTION)  \
 /**/
 

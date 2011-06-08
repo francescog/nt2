@@ -6,8 +6,8 @@
 ///                 See accompanying file LICENSE.txt or copy at
 ///                     http://www.boost.org/LICENSE_1_0.txt
 //////////////////////////////////////////////////////////////////////////////
-#ifndef NT2_SDK_OPTION_OPTION_EXPR_HPP_INCLUDED
-#define NT2_SDK_OPTION_OPTION_EXPR_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_OPTION_OPTION_EXPR_HPP_INCLUDED
+#define BOOST_SIMD_SDK_OPTION_OPTION_EXPR_HPP_INCLUDED
 
 #include <nt2/sdk/option/option_expr_fwd.hpp>
 #include <nt2/sdk/option/option_domain.hpp>
@@ -52,12 +52,12 @@ namespace boost { namespace simd { namespace details
     typename result<option_expr const(Option const)>::type
     operator()(Option const &opt) const
     {
-      NT2_STATIC_ASSERT ( (boost::proto::matches<Option const,option_term>::value)
+      BOOST_SIMD_STATIC_ASSERT ( (boost::proto::matches<Option const,option_term>::value)
                         , UNKNOWN_NAMED_OPTIONS
                         , "Trying to retrieve unknown named option."
                         );
 
-      NT2_STATIC_ASSERT ( (has_option<Option const>::value)
+      BOOST_SIMD_STATIC_ASSERT ( (has_option<Option const>::value)
                         , NO_SUCH_OPTION_IN_CURRENT_OPTIONS_PACK
                         , "Named option is not used in this options pack."
                         );
@@ -69,7 +69,7 @@ namespace boost { namespace simd { namespace details
       typename result<option_expr const(Option const, Default const)>::type
       operator()(Option const &opt, Default const &def) const
       {
-      NT2_STATIC_ASSERT ( (boost::proto::matches<Option const,option_term>::value)
+      BOOST_SIMD_STATIC_ASSERT ( (boost::proto::matches<Option const,option_term>::value)
                         , UNKNOWN_NAMED_OPTIONS
                         , "Trying to retrieve unknown named option."
                         );

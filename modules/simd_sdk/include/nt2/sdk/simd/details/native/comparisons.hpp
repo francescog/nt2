@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_DETAILS_NATIVE_COMPARISONS_HPP_INCLUDED
-#define NT2_SDK_SIMD_DETAILS_NATIVE_COMPARISONS_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_COMPARISONS_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_COMPARISONS_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Setup SIMD extension specific boolean operations
@@ -15,7 +15,7 @@
 #include <nt2/sdk/simd/category.hpp>
 #include <nt2/toolbox/operator/specific/compare_tags.hpp>
 
-#define NT2_MAKE_NATIVE_OP(TAG,OP)                                  \
+#define BOOST_SIMD_MAKE_NATIVE_OP(TAG,OP)                                  \
 template<class T,class X> inline                                    \
 typename boost::simd::meta::enable_call<TAG(native<T,X>,native<T,X>)>::type \
 OP(native<T,X> const& a0, native<T,X> const& a1)                    \
@@ -27,14 +27,14 @@ OP(native<T,X> const& a0, native<T,X> const& a1)                    \
 
 namespace boost { namespace simd
 {
-  NT2_MAKE_NATIVE_OP( tag::compare_equal_        , operator== )
-  NT2_MAKE_NATIVE_OP( tag::compare_not_equal_    , operator!= )
-  NT2_MAKE_NATIVE_OP( tag::compare_less_         , operator<  )
-  NT2_MAKE_NATIVE_OP( tag::compare_greater_      , operator>  )
-  NT2_MAKE_NATIVE_OP( tag::compare_less_equal_   , operator<= )
-  NT2_MAKE_NATIVE_OP( tag::compare_greater_equal_, operator>= )
+  BOOST_SIMD_MAKE_NATIVE_OP( tag::compare_equal_        , operator== )
+  BOOST_SIMD_MAKE_NATIVE_OP( tag::compare_not_equal_    , operator!= )
+  BOOST_SIMD_MAKE_NATIVE_OP( tag::compare_less_         , operator<  )
+  BOOST_SIMD_MAKE_NATIVE_OP( tag::compare_greater_      , operator>  )
+  BOOST_SIMD_MAKE_NATIVE_OP( tag::compare_less_equal_   , operator<= )
+  BOOST_SIMD_MAKE_NATIVE_OP( tag::compare_greater_equal_, operator>= )
 } }
 
-#undef NT2_MAKE_NATIVE_OP
+#undef BOOST_SIMD_MAKE_NATIVE_OP
 
 #endif

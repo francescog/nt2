@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_FUNCTOR_PREPROCESSOR_CALL_HPP_INCLUDED
-#define NT2_SDK_FUNCTOR_PREPROCESSOR_CALL_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_FUNCTOR_PREPROCESSOR_CALL_HPP_INCLUDED
+#define BOOST_SIMD_SDK_FUNCTOR_PREPROCESSOR_CALL_HPP_INCLUDED
 
 /*!
  * \file
@@ -28,11 +28,11 @@
  * \usage
  *
  * \code
- * typedef typename NT2_RETURN_TYPE(3)::type type;
+ * typedef typename BOOST_SIMD_RETURN_TYPE(3)::type type;
  * \endcode
  */
 //==============================================================================
-#define NT2_RETURN_TYPE(N)                                                         \
+#define BOOST_SIMD_RETURN_TYPE(N)                                                  \
 meta::result_of<call(BOOST_PP_ENUM_BINARY_PARAMS(N,A, const& BOOST_PP_INTERCEPT))> \
 
 //==============================================================================
@@ -45,17 +45,17 @@ meta::result_of<call(BOOST_PP_ENUM_BINARY_PARAMS(N,A, const& BOOST_PP_INTERCEPT)
  * \usage
  *
  * \code
- * NT2_FUNCTOR_CALL(3)
+ * BOOST_SIMD_FUNCTOR_CALL(3)
  * {
- *   typedef typename NT2_RETURN_TYPE(3)::type type;
+ *   typedef typename BOOST_SIMD_RETURN_TYPE(3)::type type;
  *   return type(a0) + a1/a2;
  * }
  * \endcode
  */
 //==============================================================================
-#define NT2_FUNCTOR_CALL(N)                                     \
+#define BOOST_SIMD_FUNCTOR_CALL(N)                              \
 template<BOOST_PP_ENUM_PARAMS(N,class A)> inline                \
-typename NT2_RETURN_TYPE(N)::type                               \
+typename BOOST_SIMD_RETURN_TYPE(N)::type                        \
 operator()( BOOST_PP_ENUM_BINARY_PARAMS(N,A, const& a) ) const  \
 /**/
 

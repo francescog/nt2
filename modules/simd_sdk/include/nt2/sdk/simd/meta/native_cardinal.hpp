@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_META_NATIVE_CARDINAL_HPP_INCLUDED
-#define NT2_SDK_SIMD_META_NATIVE_CARDINAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_META_NATIVE_CARDINAL_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_META_NATIVE_CARDINAL_HPP_INCLUDED
 
 #include <boost/mpl/size_t.hpp>
 #include <nt2/sdk/simd/extensions.hpp>
@@ -16,7 +16,7 @@ namespace boost { namespace simd { namespace meta
 {
   template<class T>
   struct  native_cardinal
-        : boost::mpl::size_t< NT2_SIMD_BYTES / sizeof(T) > {};
+        : boost::mpl::size_t< BOOST_SIMD_BYTES / sizeof(T) > {};
 } } }
 
 #endif

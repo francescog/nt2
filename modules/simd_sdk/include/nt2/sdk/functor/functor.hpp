@@ -6,12 +6,12 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_FUNCTOR_FUNCTOR_HPP_INCLUDED
-#define NT2_SDK_FUNCTOR_FUNCTOR_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_FUNCTOR_FUNCTOR_HPP_INCLUDED
+#define BOOST_SIMD_SDK_FUNCTOR_FUNCTOR_HPP_INCLUDED
 
 /*!
  * \file
- * \brief Implements NT2 main functor handler
+ * \brief Implements BOOST_SIMD main functor handler
  */
 
 /*!
@@ -33,7 +33,7 @@
 #include <nt2/sdk/functor/preprocessor/dispatch.hpp>
 #include <nt2/sdk/meta/result_of.hpp>
 
-#if !defined(BOOST_HAS_VARIADIC_TMPL) || !defined(NT2_DONT_USE_PREPROCESSED_FILES) || (defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES))
+#if !defined(BOOST_HAS_VARIADIC_TMPL) || !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES) || (defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES))
 #include <nt2/extension/parameters.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
@@ -52,7 +52,7 @@ namespace boost { namespace simd
   /*!
    * \ingroup functors
    * \ref functor is a generic, concept-dispatched polymorphic function object.
-   * Every function in NT2 are defined in term of implementing a call strategy
+   * Every function in BOOST_SIMD are defined in term of implementing a call strategy
    * for \ref functor. The main rationale is to centralize and homogenize the way
    * functions with multiple possible implementation with respect to types,
    * architectures and compilation phases are handled.
@@ -100,10 +100,10 @@ namespace boost { namespace simd
     }
     #else
 
-#if !defined(NT2_DONT_USE_PREPROCESSED_FILES)
+#if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/sdk/functor/preprocessed/functor.hpp>
 #else
-#if defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/functor.hpp")
 #endif
 
@@ -148,7 +148,7 @@ namespace boost { namespace simd
     )                                                                         \
     /**/
 
-    BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_ARITY),M0,~)    
+    BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_SIMD_MAX_ARITY),M0,~)    
     #undef M0
     #undef bits
     #undef n_size
@@ -157,7 +157,7 @@ namespace boost { namespace simd
     #undef param
     #undef call_operator
     
-#if defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(output: null)
 #endif
 #endif

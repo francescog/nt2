@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_UNIT_DETAILS_UNARY_BENCHMARK_HPP_INCLUDED
-#define NT2_SDK_UNIT_DETAILS_UNARY_BENCHMARK_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_UNIT_DETAILS_UNARY_BENCHMARK_HPP_INCLUDED
+#define BOOST_SIMD_SDK_UNIT_DETAILS_UNARY_BENCHMARK_HPP_INCLUDED
 
 #include <vector>
 #include <iostream>
@@ -59,7 +59,7 @@ void timing_test( Func callee, size_t size
     }
     t += boost::simd::toc(false);
     timings.push_back(c);
-  } while(t < NT2_TEST_DURATION);
+  } while(t < BOOST_SIMD_TEST_DURATION);
 
   std::sort(timings.begin(),timings.end());
   std::cout << timings[timings.size()/2] << " cycles/value" << std::endl;

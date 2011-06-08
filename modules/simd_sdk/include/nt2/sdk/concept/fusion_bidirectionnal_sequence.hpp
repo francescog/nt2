@@ -6,8 +6,8 @@
 ///                 See accompanying file LICENSE.txt or copy at
 ///                     http://www.boost.org/LICENSE_1_0.txt
 //////////////////////////////////////////////////////////////////////////////
-#ifndef NT2_SDK_CONCEPT_FUSION_BIDIRECTIONNAL_SEQUENCE_HPP_INCLUDED
-#define NT2_SDK_CONCEPT_FUSION_BIDIRECTIONNAL_SEQUENCE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONCEPT_FUSION_BIDIRECTIONNAL_SEQUENCE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONCEPT_FUSION_BIDIRECTIONNAL_SEQUENCE_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Boost.Fusion Forward Sequence concept

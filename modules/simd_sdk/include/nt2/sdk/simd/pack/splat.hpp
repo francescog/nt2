@@ -6,15 +6,15 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_PACK_SPLAT_HPP_INCLUDED
-#define NT2_SDK_SIMD_PACK_SPLAT_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_PACK_SPLAT_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_PACK_SPLAT_HPP_INCLUDED
 
 #include <nt2/include/functions/splat.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Splat over terminal of simd domain using the pack::fill method
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::splat_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_
                       , tag::cpu_
                       , (A0)(A1)(T)(C)(Sema)
                       , (fundamental_<A0>)
@@ -47,9 +47,9 @@ namespace boost { namespace simd { namespace ext
    template<class This,class A0, class Target>
    struct result<This(A0,Target)> : meta::strip<Target>::type {};
 
-   NT2_FUNCTOR_CALL(2)
+   BOOST_SIMD_FUNCTOR_CALL(2)
    {
-     typename NT2_RETURN_TYPE(2)::type that;
+     typename BOOST_SIMD_RETURN_TYPE(2)::type that;
      that.fill(a0);
      return that;
    }

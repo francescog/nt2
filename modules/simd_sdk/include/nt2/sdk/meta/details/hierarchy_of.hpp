@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_META_DETAILS_HIERARCHY_OF_HPP_INCLUDED
-#define NT2_SDK_META_DETAILS_HIERARCHY_OF_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_META_DETAILS_HIERARCHY_OF_HPP_INCLUDED
+#define BOOST_SIMD_SDK_META_DETAILS_HIERARCHY_OF_HPP_INCLUDED
 
 #include <boost/utility/enable_if.hpp>
 #include <nt2/sdk/meta/enable_if_type.hpp>

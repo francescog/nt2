@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_DETAILS_MAKE_BUFFER_HPP_INCLUDED
-#define NT2_SDK_MEMORY_DETAILS_MAKE_BUFFER_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_DETAILS_MAKE_BUFFER_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_DETAILS_MAKE_BUFFER_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Build a buffer type suitable for NRC like array

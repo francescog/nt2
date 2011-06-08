@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_DETAILS_GLOBAL_PADDING_HPP_INCLUDED
-#define NT2_SDK_MEMORY_DETAILS_GLOBAL_PADDING_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_DETAILS_GLOBAL_PADDING_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_DETAILS_GLOBAL_PADDING_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Implementation of the no_padding strategy for memory allocation
@@ -60,7 +60,7 @@ namespace boost { namespace ext
     // Implementation when size<A0> == A2
     ////////////////////////////////////////////////////////////////////////////
     template<class A0, class A1, class A2> inline
-    typename boost::lazy_enable_if_c< (A2::value==1), NT2_RETURN_TYPE(3)>::type
+    typename boost::lazy_enable_if_c< (A2::value==1), BOOST_SIMD_RETURN_TYPE(3)>::type
     operator()( A0 const& a0, A1 const&, A2 const& ) const
     {
       return memory::align_on( slice<1>(a0,memory::no_padding()) );
@@ -70,7 +70,7 @@ namespace boost { namespace ext
     // Implementation when size<A0> != A2
     ////////////////////////////////////////////////////////////////////////////
     template<class A0, class A1, class A2> inline
-    typename boost::lazy_enable_if_c< (A2::value!=1), NT2_RETURN_TYPE(3)>::type
+    typename boost::lazy_enable_if_c< (A2::value!=1), BOOST_SIMD_RETURN_TYPE(3)>::type
     operator()( A0 const& a0, A1 const&, A2 const& ) const
     {
       return slice<A2::value>(a0,memory::no_padding());

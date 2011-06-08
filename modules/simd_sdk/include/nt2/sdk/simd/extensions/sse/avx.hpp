@@ -6,13 +6,13 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_EXTENSIONS_SSE_AVX_HPP_INCLUDED
-#define NT2_SDK_SIMD_EXTENSIONS_SSE_AVX_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_SSE_AVX_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_EXTENSIONS_SSE_AVX_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // No SIMD extensions have been found yet
 ////////////////////////////////////////////////////////////////////////////////
-#if !defined(NT2_SIMD_DETECTED) && defined(NT2_HAS_AVX_SUPPORT)
+#if !defined(BOOST_SIMD_DETECTED) && defined(BOOST_SIMD_HAS_AVX_SUPPORT)
 
 ////////////////////////////////////////////////////////////////////////////////
 // Check for AVX
@@ -22,22 +22,22 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Report AVX discovery
 ////////////////////////////////////////////////////////////////////////////////
-NT2_WARNING(AVX SIMD extension detected)
+BOOST_SIMD_WARNING(AVX SIMD extension detected)
 
 ////////////////////////////////////////////////////////////////////////////////
 // AVX extensions flags
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_SIMD_DETECTED
-#define NT2_SIMD_AVX
-#define NT2_SIMD_SSE_FAMILY
-#define NT2_SIMD_STRING             "AVX"
-#define NT2_SIMD_STRING_LIST        "SSE2 SSE3 SSSE3 SSE4_1 SSE4_2 AVX"
-#define NT2_SIMD_BYTES              32
-#define NT2_SIMD_BITS               256
-#define NT2_SIMD_CARDINALS          (2)(4)(8)(16)(32)
-#define NT2_SIMD_TAG_SEQ            (::boost::simd::tag::avx_)(::boost::simd::tag::sse_)
-#define NT2_SIMD_DEFAULT_EXTENSION  ::boost::simd::tag::avx_
-#define NT2_SIMD_DEFAULT_SITE       ::boost::simd::tag::avx_
+#define BOOST_SIMD_DETECTED
+#define BOOST_SIMD_AVX
+#define BOOST_SIMD_SSE_FAMILY
+#define BOOST_SIMD_STRING             "AVX"
+#define BOOST_SIMD_STRING_LIST        "SSE2 SSE3 SSSE3 SSE4_1 SSE4_2 AVX"
+#define BOOST_SIMD_BYTES              32
+#define BOOST_SIMD_BITS               256
+#define BOOST_SIMD_CARDINALS          (2)(4)(8)(16)(32)
+#define BOOST_SIMD_TAG_SEQ            (::boost::simd::tag::avx_)(::boost::simd::tag::sse_)
+#define BOOST_SIMD_DEFAULT_EXTENSION  ::boost::simd::tag::avx_
+#define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::tag::avx_
 
 extern "C"
 {

@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_DSL_EVALUATION_HPP_INCLUDED
-#define NT2_SDK_DSL_EVALUATION_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_DSL_EVALUATION_HPP_INCLUDED
+#define BOOST_SIMD_SDK_DSL_EVALUATION_HPP_INCLUDED
 
 #include <nt2/sdk/functor/functor.hpp>
 
@@ -15,7 +15,7 @@ namespace boost { namespace simd
 {
   namespace tag { struct evaluate_ {}; }
 
-  NT2_FUNCTION_IMPLEMENTATION_SELF(tag::evaluate_, evaluate, 2)
+  BOOST_SIMD_FUNCTION_IMPLEMENTATION_SELF(tag::evaluate_, evaluate, 2)
 } }
 
 /*

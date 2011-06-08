@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_BUFFER_HPP_INCLUDED
-#define NT2_SDK_MEMORY_BUFFER_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_BUFFER_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_BUFFER_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Data buffer with NRC like interface
@@ -120,14 +120,14 @@ namespace boost { namespace simd { namespace memory
     typename parent_data::reference
     operator[](typename parent_data::difference_type const& i)
     {
-      NT2_ASSERT( (i >= lower()) && (i <= upper()) );
+      BOOST_SIMD_ASSERT( (i >= lower()) && (i <= upper()) );
       return parent_data::begin_[i];
     }
 
     typename parent_data::const_reference
     operator[](typename parent_data::difference_type const& i) const
     {
-      NT2_ASSERT( (i >= lower()) && (i <= upper()) );
+      BOOST_SIMD_ASSERT( (i >= lower()) && (i <= upper()) );
       return parent_data::begin_[i];
     }
 

@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_FUNCTOR_PREPROCESSOR_DISPATCH_HPP_INCLUDED
-#define NT2_SDK_FUNCTOR_PREPROCESSOR_DISPATCH_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_FUNCTOR_PREPROCESSOR_DISPATCH_HPP_INCLUDED
+#define BOOST_SIMD_SDK_FUNCTOR_PREPROCESSOR_DISPATCH_HPP_INCLUDED
 
 /*!
  * \file
@@ -22,10 +22,10 @@
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/repeat_from_to.hpp>
 
-#define NT2_DISPATCH_TYPE_TPL(z,n,t) NT2_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t))
-#define NT2_DISPATCH_TYPE(z,n,t) class NT2_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t))
-#define NT2_DISPATCH_ARG(z,n,t) boost::simd::meta::NT2_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t)) const&
-#define NT2_DISPATCH_TAG(z,n,t) typename boost::simd::meta::NT2_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t))::type
+#define BOOST_SIMD_DISPATCH_TYPE_TPL(z,n,t) BOOST_SIMD_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t))
+#define BOOST_SIMD_DISPATCH_TYPE(z,n,t) class BOOST_SIMD_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t))
+#define BOOST_SIMD_DISPATCH_ARG(z,n,t) boost::simd::meta::BOOST_SIMD_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t)) const&
+#define BOOST_SIMD_DISPATCH_TAG(z,n,t) typename boost::simd::meta::BOOST_SIMD_PP_STRIP(BOOST_PP_SEQ_ELEM(n,t))::type
 
 //==============================================================================
 /*!
@@ -39,16 +39,16 @@
  * \param Seq Sequence of hierarchy defining the overload
  */
 //==============================================================================
-#define NT2_REGISTER_DISPATCH(Tag,Site,Types,Seq)                           \
+#define BOOST_SIMD_REGISTER_DISPATCH(Tag,Site,Types,Seq)                    \
 namespace boost { namespace simd { namespace meta {                         \
-template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE,Types)>   \
+template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),BOOST_SIMD_DISPATCH_TYPE,Types)>   \
 boost::simd::ext::                                                          \
-call< NT2_PP_STRIP(Tag)(BOOST_PP_ENUM ( BOOST_PP_SEQ_SIZE(Seq)              \
-                                      , NT2_DISPATCH_TAG,Seq))              \
+call< BOOST_SIMD_PP_STRIP(Tag)(BOOST_PP_ENUM ( BOOST_PP_SEQ_SIZE(Seq)       \
+                                      , BOOST_SIMD_DISPATCH_TAG,Seq))       \
     , Site                                                                  \
     >                                                                       \
 dispatching( Tag const&, Site const&                                        \
-        , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_ARG,Seq)        \
+        , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),BOOST_SIMD_DISPATCH_ARG,Seq) \
         , adl_helper = adl_helper()                                         \
         );                                                                  \
 } } }                                                                       \
@@ -67,13 +67,13 @@ dispatching( Tag const&, Site const&                                        \
  * \param Seq Sequence of hierarchy defining the overload
  */
 //==============================================================================
-#define NT2_REGISTER_DISPATCH_TPL(Tag,Site,Types,Seq)                         \
+#define BOOST_SIMD_REGISTER_DISPATCH_TPL(Tag,Site,Types,Seq)                  \
 namespace boost { namespace simd { namespace meta {                           \
-template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE_TPL,Types)> \
+template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),BOOST_SIMD_DISPATCH_TYPE_TPL,Types)> \
 boos::simd::ext::                                                             \
-call<NT2_PP_STRIP(Tag)(BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_TAG,Seq)),Site>    \
-dispatching( NT2_PP_STRIP(Tag) const&, Site const&                                          \
-        , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_ARG,Seq)          \
+call<BOOST_SIMD_PP_STRIP(Tag)(BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),BOOST_SIMD_DISPATCH_TAG,Seq)),Site>    \
+dispatching( BOOST_SIMD_PP_STRIP(Tag) const&, Site const&                     \
+        , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),BOOST_SIMD_DISPATCH_ARG,Seq)   \
         , adl_helper = adl_helper()                                           \
         );                                                                    \
 } } }                                                                         \
@@ -94,14 +94,14 @@ dispatching( NT2_PP_STRIP(Tag) const&, Site const&                              
  * \param Seq Sequence of hierarchy defining the overload
  */
 //==============================================================================
-#define NT2_REGISTER_DISPATCH_IF(Tag,Site,Types,Cond,Ret,Seq)               \
+#define BOOST_SIMD_REGISTER_DISPATCH_IF(Tag,Site,Types,Cond,Ret,Seq)        \
 namespace boost { namespace simd { namespace meta {                         \
-template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE,Types)>   \
-typename boost::enable_if < NT2_PP_STRIP(Cond)                              \
-                          , boost::simd::ext::call<NT2_PP_STRIP(Ret),Site>  \
+template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),BOOST_SIMD_DISPATCH_TYPE,Types)>   \
+typename boost::enable_if < BOOST_SIMD_PP_STRIP(Cond)                       \
+                          , boost::simd::ext::call<BOOST_SIMD_PP_STRIP(Ret),Site>  \
                           >::type                                           \
 dispatching( Tag const&, Site const&                                        \
-        , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_ARG,Seq)        \
+        , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),BOOST_SIMD_DISPATCH_ARG,Seq) \
         , adl_helper = adl_helper()                                         \
         );                                                                  \
 } } }                                                                       \
@@ -123,14 +123,14 @@ dispatching( Tag const&, Site const&                                        \
  * \param Seq Sequence of hierarchy defining the overload
  */
 //==============================================================================
-#define NT2_REGISTER_DISPATCH_IF_TPL(Tag,Site,Types,Cond,Ret,Seq)             \
+#define BOOST_SIMD_REGISTER_DISPATCH_IF_TPL(Tag,Site,Types,Cond,Ret,Seq)      \
 namespace boost { namespace simd { namespace meta {                           \
-template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE_TPL,Types)> \
-typename boost::enable_if < NT2_PP_STRIP(Cond)                                \
-                          , boost::simd::ext::call<NT2_PP_STRIP(Ret),Site>    \
+template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),BOOST_SIMD_DISPATCH_TYPE_TPL,Types)> \
+typename boost::enable_if < BOOST_SIMD_PP_STRIP(Cond)                         \
+                          , boost::simd::ext::call<BOOST_SIMD_PP_STRIP(Ret),Site>    \
                           >::type                                             \
 dispatching ( Tag const&, Site const&                                         \
-            , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_ARG,Seq)      \
+            , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),BOOST_SIMD_DISPATCH_ARG,Seq)      \
             , adl_helper = adl_helper()                                       \
             );                                                                \
 } } }                                                                         \

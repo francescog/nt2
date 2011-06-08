@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_SLICE_HPP_INCLUDED
-#define NT2_SDK_MEMORY_SLICE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_SLICE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_SLICE_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Compute the number of slice between inner adn the Nth outer dimension
@@ -64,10 +64,10 @@ namespace boost
 ////////////////////////////////////////////////////////////////////////////////
 // slice dispatch on basic padding strategy
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::slice_, tag::cpu_
-                      , (A0)(A1)(A2)
-                      , (fusion_sequence_<A0>)
-                        (padding_<A1>)
-                        (mpl_integral_< integer_<A2> >)
-                      )
+BOOST_SIMD_REGISTER_DISPATCH ( tag::slice_, tag::cpu_
+                             , (A0)(A1)(A2)
+                             , (fusion_sequence_<A0>)
+                               (padding_<A1>)
+                               (mpl_integral_< integer_<A2> >)
+                             )
 #endif

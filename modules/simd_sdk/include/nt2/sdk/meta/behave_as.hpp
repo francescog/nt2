@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_META_BEHAVE_AS_HPP_INCLUDED
-#define NT2_SDK_META_BEHAVE_AS_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_META_BEHAVE_AS_HPP_INCLUDED
+#define BOOST_SIMD_SDK_META_BEHAVE_AS_HPP_INCLUDED
 
 /*!
  * \file
@@ -47,7 +47,7 @@ namespace boost { namespace meta
    *                >::type     r;
    * \endcode
    *
-   * For any other types, the \c NT2_BEHAVIOR_OF_NON_FUNDAMENTAL_PRIMITIVE_IS_UNDEFINED
+   * For any other types, the \c BOOST_SIMD_BEHAVIOR_OF_NON_FUNDAMENTAL_PRIMITIVE_IS_UNDEFINED
    * static assertion is raised.
    *
    * \usage
@@ -64,14 +64,14 @@ namespace boost { namespace meta
                                         >::type
                 >::type
   {
-    NT2_STATIC_ASSERT
+    BOOST_SIMD_STATIC_ASSERT
     ( (is_fundamental < typename meta::
                         primitive_of< typename  meta::
                                                 strip<Hierarchizable>::type
                                     >::type
                       >::value
       )
-    , NT2_BEHAVIOR_OF_NON_FUNDAMENTAL_PRIMITIVE_IS_UNDEFINED
+    , BOOST_SIMD_BEHAVIOR_OF_NON_FUNDAMENTAL_PRIMITIVE_IS_UNDEFINED
     , "A type with a non-fundamental primitive is used in nt2::meta::behave_as."
     );
   };

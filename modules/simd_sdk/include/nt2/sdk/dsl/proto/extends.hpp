@@ -6,20 +6,20 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_DSL_PROTO_EXTENDS_HPP
-#define NT2_SDK_DSL_PROTO_EXTENDS_HPP
+#ifndef BOOST_SIMD_SDK_DSL_PROTO_EXTENDS_HPP
+#define BOOST_SIMD_SDK_DSL_PROTO_EXTENDS_HPP
 
 #include <nt2/sdk/details/preprocessor.hpp>
 ////////////////////////////////////////////////////////////////////////////////
 // BOOST_PROTO_BASIC_EXTENDS working with template Domain
 ////////////////////////////////////////////////////////////////////////////////
 #define BOOST_PROTO_BASIC_EXTENDS_TPL(Expr, Derived, Domain)                  \
-BOOST_PROTO_BASIC_EXTENDS_( NT2_PP_STRIP(Expr)                                \
-                          , NT2_PP_STRIP(Derived)                             \
-                          , NT2_PP_STRIP(Domain)                              \
+BOOST_PROTO_BASIC_EXTENDS_( BOOST_SIMD_PP_STRIP(Expr)                                \
+                          , BOOST_SIMD_PP_STRIP(Derived)                             \
+                          , BOOST_SIMD_PP_STRIP(Domain)                              \
                           )                                                   \
 typedef void                                            proto_is_aggregate_;  \
-typedef typename NT2_PP_STRIP(Domain)::proto_generator  proto_generator;      \
+typedef typename BOOST_SIMD_PP_STRIP(Domain)::proto_generator  proto_generator;      \
 /**/
 
 #endif

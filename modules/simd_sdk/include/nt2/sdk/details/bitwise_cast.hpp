@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_DETAILS_BITWISE_CAST_HPP_INCLUDED
-#define NT2_SDK_DETAILS_BITWISE_CAST_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_DETAILS_BITWISE_CAST_HPP_INCLUDED
+#define BOOST_SIMD_SDK_DETAILS_BITWISE_CAST_HPP_INCLUDED
 
 /*!
  * \file
@@ -105,7 +105,7 @@ namespace boost
     //============================================================================
     template<typename To, typename From> To bitwise_cast(From const& from)
     {
-      NT2_STATIC_ASSERT( sizeof(From) >= sizeof(To)
+      BOOST_SIMD_STATIC_ASSERT( sizeof(From) >= sizeof(To)
                        , NT2_TARGET_IS_LARGER_SIZE_THAN_SOURCE_IN_BITWISE_CAST
                        , "Target is of a larger size than source in nt2::bitwise_cast"
                        );

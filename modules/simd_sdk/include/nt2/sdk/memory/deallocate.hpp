@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_DEALLOCATE_HPP_INCLUDED
-#define NT2_SDK_MEMORY_DEALLOCATE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_DEALLOCATE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_DEALLOCATE_HPP_INCLUDED
 
 #include <cstddef>
 #include <nt2/sdk/error/error.hpp>
@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace memory
 
     // Compute alignment values for fixing address
     BOOST_STATIC_CONSTANT(std::size_t, size  = sizeof(value_type)       );
-    BOOST_STATIC_CONSTANT(std::size_t, align = NT2_CONFIG_ALIGNMENT     );
+    BOOST_STATIC_CONSTANT(std::size_t, align = BOOST_SIMD_CONFIG_ALIGNMENT     );
 
     // How many elements are needed ot store proper number of bytes
     std::size_t nelems = align_on<size>(nbytes+align+sizeof(void*))/size;

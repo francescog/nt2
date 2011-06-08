@@ -6,14 +6,14 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_EXTENSIONS_SSE_HPP_INCLUDED
-#define NT2_SDK_SIMD_EXTENSIONS_SSE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_SSE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_EXTENSIONS_SSE_HPP_INCLUDED
 
 #include <nt2/sdk/simd/meta/as_simd.hpp>
 #include <nt2/sdk/simd/meta/extension_of.hpp>
 #include <nt2/sdk/simd/meta/is_simd_specific.hpp>
 
-#if !defined(NT2_SIMD_DETECTED)
+#if !defined(BOOST_SIMD_DETECTED)
 ////////////////////////////////////////////////////////////////////////////////
 // Check for the most recent SSE familly extension
 ////////////////////////////////////////////////////////////////////////////////
@@ -28,7 +28,7 @@
 #include <nt2/sdk/simd/extensions/sse/sse3.hpp>
 #include <nt2/sdk/simd/extensions/sse/sse2.hpp>
 
-#if defined(NT2_SIMD_SSE_FAMILY)
+#if defined(BOOST_SIMD_SSE_FAMILY)
 #include <nt2/sdk/simd/extensions/sse/types.hpp>
 #endif
 

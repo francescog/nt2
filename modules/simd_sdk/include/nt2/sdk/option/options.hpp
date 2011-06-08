@@ -6,8 +6,8 @@
 ///                 See accompanying file LICENSE.txt or copy at
 ///                     http://www.boost.org/LICENSE_1_0.txt
 //////////////////////////////////////////////////////////////////////////////
-#ifndef NT2_SDK_OPTION_OPTIONS_HPP_INCLUDED
-#define NT2_SDK_OPTION_OPTIONS_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_OPTION_OPTIONS_HPP_INCLUDED
+#define BOOST_SIMD_SDK_OPTION_OPTIONS_HPP_INCLUDED
 
 #include <nt2/sdk/option/option_pack.hpp>
 #include <nt2/sdk/option/option_expr.hpp>
@@ -20,7 +20,7 @@ namespace boost { namespace simd { namespace details
     template<class Opts>
     Opts const& operator[](Opts const& opts) const
     {
-      NT2_STATIC_ASSERT ( (boost::proto::matches<Opts, option_pack>::value)
+      BOOST_SIMD_STATIC_ASSERT ( (boost::proto::matches<Opts, option_pack>::value)
                         , UNKNOWN_NAMED_OPTIONS
                         , "Trying to retrieve unknown named option."
                         );
@@ -37,7 +37,7 @@ namespace boost { namespace simd
     details::options_ const options = {};
 } }
 
-#define NT2_REGISTER_PARAMETERS(NAME)                               \
+#define BOOST_SIMD_REGISTER_PARAMETERS(NAME)                               \
 struct NAME ## _ {};                                                \
 boost::simd::details::option_expr<                                  \
     boost::proto::terminal<boost::simd::details::option<NAME ## _> >::type  \

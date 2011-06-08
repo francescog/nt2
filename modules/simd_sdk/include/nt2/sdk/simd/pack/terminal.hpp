@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_PACK_TERMINAL_HPP_INCLUDED
-#define NT2_SDK_SIMD_PACK_TERMINAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_PACK_TERMINAL_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_PACK_TERMINAL_HPP_INCLUDED
 
 #include <iostream>
 #include <nt2/sdk/details/type_id.hpp>

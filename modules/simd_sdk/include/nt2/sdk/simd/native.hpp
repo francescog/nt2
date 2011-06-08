@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_NATIVE_HPP_INCLUDED
-#define NT2_SDK_SIMD_NATIVE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_NATIVE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_NATIVE_HPP_INCLUDED
 
 #include <nt2/sdk/meta/fusion.hpp>
 #include <nt2/sdk/simd/category.hpp>
@@ -107,7 +107,7 @@ namespace boost { namespace simd
     ////////////////////////////////////////////////////////////////////////////
     // new/delete operator to force alignment on heap of native values
     ////////////////////////////////////////////////////////////////////////////
-    NT2_MEMORY_OVERLOAD_NEW_DELETE(this_type)
+    BOOST_SIMD_MEMORY_OVERLOAD_NEW_DELETE(this_type)
 
     ////////////////////////////////////////////////////////////////////////////
     // Range interface

@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_PARAMETERS_HPP_INCLUDED
-#define NT2_SDK_MEMORY_PARAMETERS_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_PARAMETERS_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_PARAMETERS_HPP_INCLUDED
 
 #include <cstddef>
 #include <boost/detail/workaround.hpp>
@@ -17,16 +17,16 @@
 // On g++ before 4.3, alignment can't be more than 16
 ////////////////////////////////////////////////////////////////////////////////
 #if BOOST_WORKAROUND(__GNUC__, == 4) && BOOST_WORKAROUND(__GNUC_MINOR__, < 3)
-#undef  NT2_CONFIG_ALIGNMENT
-#define NT2_CONFIG_ALIGNMENT 16
+#undef  BOOST_SIMD_CONFIG_ALIGNMENT
+#define BOOST_SIMD_CONFIG_ALIGNMENT 16
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 // On some system, the qlignment detection fail, force it to be 16
 ////////////////////////////////////////////////////////////////////////////////
-#if (NT2_CONFIG_ALIGNMENT <= 1)
-#undef  NT2_CONFIG_ALIGNMENT
-#define NT2_CONFIG_ALIGNMENT 16
+#if (BOOST_SIMD_CONFIG_ALIGNMENT <= 1)
+#undef  BOOST_SIMD_CONFIG_ALIGNMENT
+#define BOOST_SIMD_CONFIG_ALIGNMENT 16
 #endif
 
 #endif

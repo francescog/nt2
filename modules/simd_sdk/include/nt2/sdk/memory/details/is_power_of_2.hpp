@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_DETAILS_IS_POWER_OF_2_HPP_INCLUDED
-#define NT2_SDK_MEMORY_DETAILS_IS_POWER_OF_2_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_DETAILS_IS_POWER_OF_2_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_DETAILS_IS_POWER_OF_2_HPP_INCLUDED
 
 #include <nt2/sdk/meta/mpl.hpp>
 #include <nt2/sdk/memory/details/category.hpp>
@@ -16,9 +16,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 // is_power_of_2 on integers
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_power_of_2_, tag::cpu_
-                      , (A0), (integer_<A0>)
-                      )
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_power_of_2_, tag::cpu_
+                             , (A0), (integer_<A0>)
+                             )
 
 namespace boost { namespace simd { namespace ext
 {
@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace ext
         : callable
   {
     typedef bool result_type;
-    NT2_FUNCTOR_CALL(1) { return (!(a0 & (a0 - 1)) && a0); }
+    BOOST_SIMD_FUNCTOR_CALL(1) { return (!(a0 & (a0 - 1)) && a0); }
   };
 
 } } }
@@ -35,9 +35,9 @@ namespace boost { namespace simd { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // is_power_of_2 on mpl integral
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_power_of_2_, tag::cpu_
-                      , (A0), (mpl_integral_< integer_<A0> >)
-                      )
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_power_of_2_, tag::cpu_
+                             , (A0), (mpl_integral_< integer_<A0> >)
+                             )
 
 namespace boost { namespace simd { namespace ext
 {
@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
         : callable
   {
     typedef bool result_type;
-    NT2_FUNCTOR_CALL(1) { return meta::is_power_of_2<A0>::value; }
+    BOOST_SIMD_FUNCTOR_CALL(1) { return meta::is_power_of_2<A0>::value; }
   };
 } } }
 

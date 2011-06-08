@@ -6,11 +6,11 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_PREPROCESSOR_VMX_HPP_INCLUDED
-#define NT2_SDK_SIMD_PREPROCESSOR_VMX_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_PREPROCESSOR_VMX_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_PREPROCESSOR_VMX_HPP_INCLUDED
 
-#if defined(NT2_SIMD_ALTIVEC)
-  #define NT2_SIMD_RELATIVE_INCLUDE_BASE(B,F) BOOST_PP_STRINGIZE(B()simd/vmx/altivec/F) 
+#if defined(BOOST_SIMD_ALTIVEC)
+  #define BOOST_SIMD_RELATIVE_INCLUDE_BASE(B,F) BOOST_PP_STRINGIZE(B()simd/vmx/altivec/F) 
 #endif
 
 #endif

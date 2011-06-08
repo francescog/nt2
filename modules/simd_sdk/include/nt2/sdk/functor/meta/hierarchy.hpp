@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_FUNCTOR_META_HIERARCHY_HPP_INCLUDED
-#define NT2_SDK_FUNCTOR_META_HIERARCHY_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_FUNCTOR_META_HIERARCHY_HPP_INCLUDED
+#define BOOST_SIMD_SDK_FUNCTOR_META_HIERARCHY_HPP_INCLUDED
 
 /*!
  * \file
@@ -39,8 +39,8 @@ namespace boost { namespace simd { namespace tag
   //============================================================================
   struct cpu_.: formal_ {};
 #else
-  NT2_HIERARCHY_CLASS(formal_, meta::unspecified_<formal_>);
-  NT2_HIERARCHY_CLASS(cpu_, formal_);
+  BOOST_SIMD_HIERARCHY_CLASS(formal_, meta::unspecified_<formal_>);
+  BOOST_SIMD_HIERARCHY_CLASS(cpu_, formal_);
 #endif
 } } }
 

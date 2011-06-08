@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_UNIT_MODULE_HPP_INCLUDED
-#define NT2_SDK_UNIT_MODULE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_UNIT_MODULE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_UNIT_MODULE_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Unit test framework
@@ -33,7 +33,7 @@ int main(int,char const**)
 ////////////////////////////////////////////////////////////////////////////////
 // Macro for starting a test module
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_TEST_CASE(FUNC)                                                   \
+#define BOOST_SIMD_TEST_CASE(FUNC)                                            \
 void BOOST_PP_CAT(test,FUNC)();                                               \
 boost::simd::details::test const                                              \
 BOOST_PP_CAT(FUNC,test) = { BOOST_PP_CAT(test,FUNC)                           \
@@ -46,12 +46,12 @@ void BOOST_PP_CAT(test,FUNC)()                                                \
 ////////////////////////////////////////////////////////////////////////////////
 // Generate a test case using template type list
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_PP_TPL_CASES(r,name,type)                                   \
-printf("With T =[%s]\n",boost::simd::type_id<NT2_PP_STRIP(type)>().c_str());  \
-BOOST_PP_CAT(tpl_test,name)<NT2_PP_STRIP(type)>();                      \
+#define BOOST_SIMD_PP_TPL_CASES(r,name,type)                                  \
+printf("With T =[%s]\n",boost::simd::type_id<BOOST_SIMD_PP_STRIP(type)>().c_str());  \
+BOOST_PP_CAT(tpl_test,name)<BOOST_SIMD_PP_STRIP(type)>();                     \
 /**/
 
-#define NT2_TEST_CASE_TPL(Name, Types)                                        \
+#define BOOST_SIMD_TEST_CASE_TPL(Name, Types)                                 \
 template<class T> void BOOST_PP_CAT(tpl_test,Name)();                         \
 void BOOST_PP_CAT(test,Name)();                                               \
 boost::simd::details::test const                                              \
@@ -61,7 +61,7 @@ BOOST_PP_CAT(Name,test) = { BOOST_PP_CAT(test,Name)                           \
                                ::main_suite.link(&BOOST_PP_CAT(Name,test)) }; \
 void BOOST_PP_CAT(test,Name)()                                                \
 {                                                                             \
-  BOOST_PP_SEQ_FOR_EACH(NT2_PP_TPL_CASES,Name,Types);                         \
+  BOOST_PP_SEQ_FOR_EACH(BOOST_SIMD_PP_TPL_CASES,Name,Types);                  \
 }                                                                             \
 template<class T> void BOOST_PP_CAT(tpl_test,Name)()                          \
 /**/

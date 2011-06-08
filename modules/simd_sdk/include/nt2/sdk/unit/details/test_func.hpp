@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_UNIT_DETAILS_TESTS_FUNC_HPP_INCLUDED
-#define NT2_SDK_UNIT_DETAILS_TESTS_FUNC_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_UNIT_DETAILS_TESTS_FUNC_HPP_INCLUDED
+#define BOOST_SIMD_SDK_UNIT_DETAILS_TESTS_FUNC_HPP_INCLUDED
 
 #include <boost/type_traits/common_type.hpp>
 #include <iostream>
@@ -15,7 +15,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Helpers for building implementation fo some predicate based tests
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_MAKE_TEST_FUNC(NAME,OP,COP)                                     \
+#define BOOST_SIMD_MAKE_TEST_FUNC(NAME,OP,COP)                                     \
   template<class T, class U>                                                \
   inline void NAME( char const* x1, char const* x2                          \
                   , int line, char const * fn                               \
@@ -47,7 +47,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Helpers for building implementation fo some predicate based tests
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_MAKE_TEST_NAN_FUNC(NAME,OP,COP)                                 \
+#define BOOST_SIMD_MAKE_TEST_NAN_FUNC(NAME,OP,COP)                                 \
   template<class T, class U>                                                \
   inline void NAME( char const* x1, char const* x2                          \
                   , int line, char const * fn                               \
@@ -79,12 +79,12 @@
 
 namespace boost { namespace simd { namespace details
 {
-  NT2_MAKE_TEST_NAN_FUNC(test_eq  , ==, !=  )
-  NT2_MAKE_TEST_FUNC(test_neq , !=, ==  )
-  NT2_MAKE_TEST_FUNC(test_lt  , < , >=  )
-  NT2_MAKE_TEST_FUNC(test_gt  , > , <=  )
-  NT2_MAKE_TEST_FUNC(test_le  , <= , >  )
-  NT2_MAKE_TEST_FUNC(test_ge  , >= , <  )
+  BOOST_SIMD_MAKE_TEST_NAN_FUNC(test_eq  , ==, !=  )
+  BOOST_SIMD_MAKE_TEST_FUNC(test_neq , !=, ==  )
+  BOOST_SIMD_MAKE_TEST_FUNC(test_lt  , < , >=  )
+  BOOST_SIMD_MAKE_TEST_FUNC(test_gt  , > , <=  )
+  BOOST_SIMD_MAKE_TEST_FUNC(test_le  , <= , >  )
+  BOOST_SIMD_MAKE_TEST_FUNC(test_ge  , >= , <  )
 } } }
 
 #endif

@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_BLOCK_HPP_INCLUDED
-#define NT2_SDK_MEMORY_BLOCK_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_BLOCK_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_BLOCK_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Multidimensional memory block with NRC style allocation
@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace memory
 ////////////////////////////////////////////////////////////////////////////////
 // Macro generating a chain of []
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_ACCESS(z,n,t)                                                     \
+#define BOOST_SIMD_ACCESS(z,n,t)                                              \
 [ boost::fusion::at_c <                                                       \
       boost::mpl::at_c<Storage,BOOST_PP_SUB(BOOST_PP_DEC(t),n)>::type::value  \
                       >(p)                                                    \
@@ -52,27 +52,27 @@ namespace boost { namespace simd { namespace memory
 ////////////////////////////////////////////////////////////////////////////////
 // Macro generating a chain of [] for under-access
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_UNDER_ACCESS(z,n,t)                                   \
+#define BOOST_SIMD_UNDER_ACCESS(z,n,t)                            \
 template<class Position, class Sz>                                \
 typename boost::enable_if_c<Sz::value == n,reference>::type       \
 access( Position const& p, Sz const& )                            \
 {                                                                 \
-  return data<n>() BOOST_PP_REPEAT(n,NT2_ACCESS,n);               \
+  return data<n>() BOOST_PP_REPEAT(n,BOOST_SIMD_ACCESS,n);        \
 }                                                                 \
 template<class Position, class Sz>                                \
 typename boost::enable_if_c<Sz::value == n,const_reference>::type \
 access( Position const& p, Sz const& ) const                      \
 {                                                                 \
-  return data<n>() BOOST_PP_REPEAT(n,NT2_ACCESS,n);               \
+  return data<n>() BOOST_PP_REPEAT(n,BOOST_SIMD_ACCESS,n);        \
 }                                                                 \
 /**/
 
 #define  BOOST_PP_FILENAME_1        "nt2/sdk/memory/block.hpp"
-#define  BOOST_PP_ITERATION_LIMITS  (1, NT2_MAX_DIMENSIONS)
+#define  BOOST_PP_ITERATION_LIMITS  (1, BOOST_SIMD_MAX_DIMENSIONS)
 #include BOOST_PP_ITERATE()
 
-#undef NT2_ACCESS
-#undef NT2_UNDER_ACCESS
+#undef BOOST_SIMD_ACCESS
+#undef BOOST_SIMD_UNDER_ACCESS
 
 #endif
 
@@ -95,17 +95,17 @@ namespace boost { namespace simd { namespace memory
     ////////////////////////////////////////////////////////////////////////////
     // Check that we don't pass incorrect Base/Size/Storage containers
     ////////////////////////////////////////////////////////////////////////////
-    NT2_STATIC_ASSERT ( (boost::mpl::size<Bases>::value == DIM)
+    BOOST_SIMD_STATIC_ASSERT ( (boost::mpl::size<Bases>::value == DIM)
                       , BOOST_PP_CAT(BASES_EXTENT_SIZE_NOT_EQUAL_TO_,DIM)
                       , "Block base dimension mismatch."
                       );
 
-    NT2_STATIC_ASSERT ( (boost::mpl::size<Sizes>::value == DIM)
+    BOOST_SIMD_STATIC_ASSERT ( (boost::mpl::size<Sizes>::value == DIM)
                       , BOOST_PP_CAT(BASES_EXTENT_SIZE_NOT_EQUAL_TO_,DIM)
                       , "Block size dimension mismatch."
                       );
 
-    NT2_STATIC_ASSERT ( (boost::mpl::size<Storage>::value == DIM)
+    BOOST_SIMD_STATIC_ASSERT ( (boost::mpl::size<Storage>::value == DIM)
                       , BOOST_PP_CAT(BASES_EXTENT_SIZE_NOT_EQUAL_TO_,DIM)
                       , "Block storage order dimension mismatch."
                       );
@@ -224,7 +224,7 @@ namespace boost { namespace simd { namespace memory
     operator()( Position const& p )
     {
       check_index(p,typename boost::mpl::size<Position>::type());
-      return data<DIM>() BOOST_PP_REPEAT(DIM,NT2_ACCESS,DIM);
+      return data<DIM>() BOOST_PP_REPEAT(DIM,BOOST_SIMD_ACCESS,DIM);
     }
 
     template<class Position>
@@ -234,7 +234,7 @@ namespace boost { namespace simd { namespace memory
     operator()( Position const& p ) const
     {
       check_index(p,dimension_value_type());
-      return  data<DIM>() BOOST_PP_REPEAT(DIM,NT2_ACCESS,DIM);
+      return  data<DIM>() BOOST_PP_REPEAT(DIM,BOOST_SIMD_ACCESS,DIM);
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -348,10 +348,10 @@ namespace boost { namespace simd { namespace memory
     typename boost::enable_if_c<Sz::value>::type
     check_index( Position const& p, Sz const&) const
     {
-      NT2_ASSERT(  boost::fusion::at_c<Sz::value-1>(p) >= lower<Sz::value>()
+      BOOST_SIMD_ASSERT(  boost::fusion::at_c<Sz::value-1>(p) >= lower<Sz::value>()
                 && "Index below lowest valid value"
                 );
-      NT2_ASSERT( boost::fusion::at_c<Sz::value-1>(p) <= upper<Sz::value>()
+      BOOST_SIMD_ASSERT( boost::fusion::at_c<Sz::value-1>(p) <= upper<Sz::value>()
                 && "Index above greatest valid value"
                 );
       check_index(p,boost::mpl::int_<Sz::value-1>() );
@@ -372,10 +372,10 @@ namespace boost { namespace simd { namespace memory
     typename boost::enable_if_c<Sz::value==1,reference>::type
     access( Position const& p, Sz const& )
     {
-      NT2_ASSERT(  boost::fusion::at_c<0>(p) >= data<1>().lower()
+      BOOST_SIMD_ASSERT(  boost::fusion::at_c<0>(p) >= data<1>().lower()
                 && "Index below lowest valid value"
                 );
-      NT2_ASSERT(  boost::fusion::at_c<0>(p) <= data<1>().upper()
+      BOOST_SIMD_ASSERT(  boost::fusion::at_c<0>(p) <= data<1>().upper()
                 && "Index above greatest valid value"
                 );
 
@@ -390,10 +390,10 @@ namespace boost { namespace simd { namespace memory
     typename boost::enable_if_c<Sz::value==1,const_reference>::type
     access( Position const& p, Sz const& ) const
     {
-      NT2_ASSERT(  boost::fusion::at_c<0>(p) >= data<1>().lower()
+      BOOST_SIMD_ASSERT(  boost::fusion::at_c<0>(p) >= data<1>().lower()
                 && "Index below lowest valid value"
                 );
-      NT2_ASSERT(  boost::fusion::at_c<0>(p) <= data<1>().upper()
+      BOOST_SIMD_ASSERT(  boost::fusion::at_c<0>(p) <= data<1>().upper()
                 && "Index above greatest valid value"
                 );
 
@@ -404,7 +404,7 @@ namespace boost { namespace simd { namespace memory
       return data<2>()[outer][lead];
     }
 
-    BOOST_PP_REPEAT_FROM_TO(2,DIM,NT2_UNDER_ACCESS,~)
+    BOOST_PP_REPEAT_FROM_TO(2,DIM,BOOST_SIMD_UNDER_ACCESS,~)
     #endif
 
     ////////////////////////////////////////////////////////////////////////////

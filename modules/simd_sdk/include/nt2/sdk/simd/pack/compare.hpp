@@ -6,12 +6,12 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_PACK_COMPARE_HPP_INCLUDED
-#define NT2_SDK_SIMD_PACK_COMPARE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_PACK_COMPARE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_PACK_COMPARE_HPP_INCLUDED
 
 namespace boost { namespace simd
 {
-  #define NT2_SIMD_COMPARE(Op)                                                \
+  #define BOOST_SIMD_COMPARE(Op)                                              \
   template<class X,class Y, class T, class C>                                 \
   bool operator Op ( expression<X,T,C> const& x, expression<Y,T,C> const& y ) \
   {                                                                           \
@@ -49,13 +49,13 @@ namespace boost { namespace simd
   }                                                                           \
   /**/
 
-  NT2_SIMD_COMPARE( == )
-  NT2_SIMD_COMPARE( != )
-  NT2_SIMD_COMPARE( >  )
-  NT2_SIMD_COMPARE( <  )
-  NT2_SIMD_COMPARE( >= )
-  NT2_SIMD_COMPARE( <= )
+  BOOST_SIMD_COMPARE( == )
+  BOOST_SIMD_COMPARE( != )
+  BOOST_SIMD_COMPARE( >  )
+  BOOST_SIMD_COMPARE( <  )
+  BOOST_SIMD_COMPARE( >= )
+  BOOST_SIMD_COMPARE( <= )
 
-  #undef NT2_SIMD_COMPARE
+  #undef BOOST_SIMD_COMPARE
 } }
 #endif

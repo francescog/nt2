@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_PACK_FORWARD_HPP_INCLUDED
-#define NT2_SDK_SIMD_PACK_FORWARD_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_PACK_FORWARD_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_PACK_FORWARD_HPP_INCLUDED
 
 #include <boost/proto/proto.hpp>
 #include <nt2/sdk/simd/meta/native_cardinal.hpp>

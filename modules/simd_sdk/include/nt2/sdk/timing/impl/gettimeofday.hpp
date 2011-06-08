@@ -6,14 +6,14 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_TIMING_IMPL_GETTIMEOFDAY_HPP_INCLUDED
-#define NT2_SDK_TIMING_IMPL_GETTIMEOFDAY_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_TIMING_IMPL_GETTIMEOFDAY_HPP_INCLUDED
+#define BOOST_SIMD_SDK_TIMING_IMPL_GETTIMEOFDAY_HPP_INCLUDED
 
-#if !defined(NT2_TIMING_DETECTED)
+#if !defined(BOOST_SIMD_TIMING_DETECTED)
 
 #if defined( BOOST_HAS_GETTIMEOFDAY )
 
-#define NT2_TIMING_DETECTED
+#define BOOST_SIMD_TIMING_DETECTED
 #include <sys/time.h>
 #include <boost/cstdint.hpp>
 

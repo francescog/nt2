@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_META_AS_INTEGER_HPP_INCLUDED
-#define NT2_SDK_META_AS_INTEGER_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_META_AS_INTEGER_HPP_INCLUDED
+#define BOOST_SIMD_SDK_META_AS_INTEGER_HPP_INCLUDED
 
 /*!
  * \file
@@ -70,12 +70,12 @@ namespace boost { namespace simd { namespace meta
                         factory_of<typename meta::strip<T>::type>::type
                       >
   {
-    NT2_STATIC_ASSERT
+    BOOST_SIMD_STATIC_ASSERT
     ( (is_fundamental < typename
                         meta::primitive_of<typename meta::strip<T>::type>::type
                       >::value
       )
-    , NT2_NON_FUNDAMENTAL_PRIMITIVE_USED_IN_META_AS_INTEGER
+    , BOOST_SIMD_NON_FUNDAMENTAL_PRIMITIVE_USED_IN_META_AS_INTEGER
     , "A type with a non-fundamental primitive is used in nt2::meta::as_integer."
     );
   };

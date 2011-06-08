@@ -6,12 +6,12 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_DETAILS_NATIVE_OPERATORS_HPP_INCLUDED
-#define NT2_SDK_SIMD_DETAILS_NATIVE_OPERATORS_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_OPERATORS_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_OPERATORS_HPP_INCLUDED
 
 #include <nt2/sdk/simd/category.hpp>
 
-#define NT2_MAKE_NATIVE_OP(TAG,OP)                                    \
+#define BOOST_SIMD_MAKE_NATIVE_OP(TAG,OP)                                    \
 template<class T1, class T2,class X> inline                           \
 typename boost::simd::meta::enable_call<TAG(native<T1,X>,native<T2,X>)>::type \
 OP(native<T1,X> const& a0, native<T2,X> const& a1)                    \
@@ -23,20 +23,20 @@ OP(native<T1,X> const& a0, native<T2,X> const& a1)                    \
 
 namespace boost { namespace simd
 {
-  NT2_MAKE_NATIVE_OP( boost::proto::tag::bitwise_and     , operator&  )
-  NT2_MAKE_NATIVE_OP( boost::proto::tag::bitwise_or      , operator|  )
-  NT2_MAKE_NATIVE_OP( boost::proto::tag::bitwise_xor     , operator^  )
-  NT2_MAKE_NATIVE_OP( boost::proto::tag::logical_and     , operator&& )
-  NT2_MAKE_NATIVE_OP( boost::proto::tag::logical_or      , operator|| )
-  NT2_MAKE_NATIVE_OP( boost::proto::tag::plus            , operator+  )
-  NT2_MAKE_NATIVE_OP( boost::proto::tag::minus           , operator-  )
-  NT2_MAKE_NATIVE_OP( boost::proto::tag::divides         , operator/  )
-  NT2_MAKE_NATIVE_OP( boost::proto::tag::multiplies      , operator*  )
-  NT2_MAKE_NATIVE_OP( boost::proto::tag::modulus         , operator%  )
-  NT2_MAKE_NATIVE_OP( boost::proto::tag::shift_left      , operator<< )
-  NT2_MAKE_NATIVE_OP( boost::proto::tag::shift_right     , operator>> )
+  BOOST_SIMD_MAKE_NATIVE_OP( boost::proto::tag::bitwise_and     , operator&  )
+  BOOST_SIMD_MAKE_NATIVE_OP( boost::proto::tag::bitwise_or      , operator|  )
+  BOOST_SIMD_MAKE_NATIVE_OP( boost::proto::tag::bitwise_xor     , operator^  )
+  BOOST_SIMD_MAKE_NATIVE_OP( boost::proto::tag::logical_and     , operator&& )
+  BOOST_SIMD_MAKE_NATIVE_OP( boost::proto::tag::logical_or      , operator|| )
+  BOOST_SIMD_MAKE_NATIVE_OP( boost::proto::tag::plus            , operator+  )
+  BOOST_SIMD_MAKE_NATIVE_OP( boost::proto::tag::minus           , operator-  )
+  BOOST_SIMD_MAKE_NATIVE_OP( boost::proto::tag::divides         , operator/  )
+  BOOST_SIMD_MAKE_NATIVE_OP( boost::proto::tag::multiplies      , operator*  )
+  BOOST_SIMD_MAKE_NATIVE_OP( boost::proto::tag::modulus         , operator%  )
+  BOOST_SIMD_MAKE_NATIVE_OP( boost::proto::tag::shift_left      , operator<< )
+  BOOST_SIMD_MAKE_NATIVE_OP( boost::proto::tag::shift_right     , operator>> )
 } }
 
-#undef NT2_MAKE_NATIVE_OP
+#undef BOOST_SIMD_MAKE_NATIVE_OP
 
 #endif

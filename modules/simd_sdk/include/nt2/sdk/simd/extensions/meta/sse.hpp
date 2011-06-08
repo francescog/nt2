@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_EXTENSIONS_META_SSE_HPP_INCLUDED
-#define NT2_SDK_SIMD_EXTENSIONS_META_SSE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_META_SSE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_EXTENSIONS_META_SSE_HPP_INCLUDED
 
 #include <nt2/sdk/config/types.hpp>
 #include <nt2/sdk/details/bitwise_cast.hpp>
@@ -21,13 +21,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace simd { namespace tag
 {
-  NT2_HIERARCHY_CLASS(sse_, cpu_);
-  NT2_HIERARCHY_CLASS(sse2_, sse_);
-  NT2_HIERARCHY_CLASS(sse3_, sse2_);
-  NT2_HIERARCHY_CLASS(ssse3_, sse3_);
-  NT2_HIERARCHY_CLASS(sse4a_, ssse3_);
-  NT2_HIERARCHY_CLASS(sse4_1_, ssse3_);
-  NT2_HIERARCHY_CLASS(sse4_2_, sse4_1_);
+  BOOST_SIMD_HIERARCHY_CLASS(sse_, cpu_);
+  BOOST_SIMD_HIERARCHY_CLASS(sse2_, sse_);
+  BOOST_SIMD_HIERARCHY_CLASS(sse3_, sse2_);
+  BOOST_SIMD_HIERARCHY_CLASS(ssse3_, sse3_);
+  BOOST_SIMD_HIERARCHY_CLASS(sse4a_, ssse3_);
+  BOOST_SIMD_HIERARCHY_CLASS(sse4_1_, ssse3_);
+  BOOST_SIMD_HIERARCHY_CLASS(sse4_2_, sse4_1_);
 } } }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -75,19 +75,19 @@ namespace boost { namespace simd { namespace meta
 namespace boost { namespace simd { namespace details
 {
     #if defined BOOST_MSVC || defined BOOST_INTEL
-        #define NT2_SSE_CONVERT union_cast
+        #define BOOST_SIMD_SSE_CONVERT union_cast
     #else
-        #define NT2_SSE_CONVERT convert_cast
+        #define BOOST_SIMD_SSE_CONVERT convert_cast
     #endif
 
-    template<> struct bitwise_cast<__m128 , __m128d> : NT2_SSE_CONVERT {};
-    template<> struct bitwise_cast<__m128 , __m128i> : NT2_SSE_CONVERT {};
-    template<> struct bitwise_cast<__m128d, __m128 > : NT2_SSE_CONVERT {};
-    template<> struct bitwise_cast<__m128d, __m128i> : NT2_SSE_CONVERT {};
-    template<> struct bitwise_cast<__m128i, __m128 > : NT2_SSE_CONVERT {};
-    template<> struct bitwise_cast<__m128i, __m128d> : NT2_SSE_CONVERT {};
+    template<> struct bitwise_cast<__m128 , __m128d> : BOOST_SIMD_SSE_CONVERT {};
+    template<> struct bitwise_cast<__m128 , __m128i> : BOOST_SIMD_SSE_CONVERT {};
+    template<> struct bitwise_cast<__m128d, __m128 > : BOOST_SIMD_SSE_CONVERT {};
+    template<> struct bitwise_cast<__m128d, __m128i> : BOOST_SIMD_SSE_CONVERT {};
+    template<> struct bitwise_cast<__m128i, __m128 > : BOOST_SIMD_SSE_CONVERT {};
+    template<> struct bitwise_cast<__m128i, __m128d> : BOOST_SIMD_SSE_CONVERT {};
 
-    #undef NT2_SSE_CONVERT
+    #undef BOOST_SIMD_SSE_CONVERT
 } } }
 
 #endif

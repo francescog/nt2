@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_EXTENSIONS_META_XOP_HPP_INCLUDED
-#define NT2_SDK_SIMD_EXTENSIONS_META_XOP_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_META_XOP_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_EXTENSIONS_META_XOP_HPP_INCLUDED
 
 #include <nt2/sdk/meta/set.hpp>
 #include <nt2/sdk/meta/has_key.hpp>
@@ -20,8 +20,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace simd { namespace tag
 {
-  NT2_HIERARCHY_CLASS(xop_, sse4a_);
-    NT2_HIERARCHY_CLASS(fma4_, xop_);
+  BOOST_SIMD_HIERARCHY_CLASS(xop_, sse4a_);
+  BOOST_SIMD_HIERARCHY_CLASS(fma4_, xop_);
 } } }
 
 ////////////////////////////////////////////////////////////////////////////////

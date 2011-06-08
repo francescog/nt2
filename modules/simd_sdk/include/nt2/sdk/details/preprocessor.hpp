@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_DETAILS_PREPROCESSOR_HPP_INCLUDED
-#define NT2_SDK_DETAILS_PREPROCESSOR_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_DETAILS_PREPROCESSOR_HPP_INCLUDED
+#define BOOST_SIMD_SDK_DETAILS_PREPROCESSOR_HPP_INCLUDED
 
 #include <boost/preprocessor/stringize.hpp>
 #include <boost/preprocessor/repetition/enum.hpp>
@@ -39,13 +39,13 @@
  * \param MACRO Macro to expand
  */
 //==============================================================================
-#define NT2_PP_DEBUG(MACRO) BOOST_PP_STRINGIZE( (MACRO) )
+#define BOOST_SIMD_PP_DEBUG(MACRO) BOOST_PP_STRINGIZE( (MACRO) )
 
 //==============================================================================
 // Enumeration macro for index and value. Used internally
 //==============================================================================
-#define NT2_PP_INDEX(z,n,t)             n
-#define NT2_PP_TEXT(z,n,t)              t
+#define BOOST_SIMD_PP_INDEX(z,n,t)             n
+#define BOOST_SIMD_PP_TEXT(z,n,t)              t
 
 //==============================================================================
 /*!
@@ -63,7 +63,7 @@
  * \code (6 , 6 , 6 , 6 , 6) \endcode
  */
 //==============================================================================
-#define NT2_PP_ENUM_VALUE(N,V)          BOOST_PP_ENUM(N,NT2_PP_TEXT,V)
+#define BOOST_SIMD_PP_ENUM_VALUE(N,V)          BOOST_PP_ENUM(N,BOOST_SIMD_PP_TEXT,V)
 
 //==============================================================================
 /*!
@@ -80,20 +80,20 @@
  * \include pp_include.cpp
  */
 //==============================================================================
-#define NT2_PP_INCLUDE(PATH,FILE) BOOST_PP_STRINGIZE(PATH()FILE)
+#define BOOST_SIMD_PP_INCLUDE(PATH,FILE) BOOST_PP_STRINGIZE(PATH()FILE)
 
-#define NT2_PP_DETAILS_APPLY(macro, args)   NT2_PP_DETAILS_APPLY_I(macro, args)
-#define NT2_PP_DETAILS_APPLY_I(macro, args) macro args
-#define NT2_PP_DETAILS_STRIP_PARENS_I(...) 1,1
-#define NT2_PP_DETAILS_EVAL(test, x) NT2_PP_DETAILS_EVAL_I(test, x)
-#define NT2_PP_DETAILS_EVAL_I(test, x) NT2_PP_DETAILS_MAYBE_STRIP_PARENS(NT2_PP_DETAILS_TEST_ARITY test, x)
-#define NT2_PP_DETAILS_TEST_ARITY(...) NT2_PP_DETAILS_APPLY(NT2_PP_DETAILS_TEST_ARITY_I, (__VA_ARGS__, 2, 1, 0))
-#define NT2_PP_DETAILS_TEST_ARITY_I(a,b,c,...) c
-#define NT2_PP_DETAILS_MAYBE_STRIP_PARENS(cond, x) NT2_PP_DETAILS_MAYBE_STRIP_PARENS_I(cond, x)
-#define NT2_PP_DETAILS_MAYBE_STRIP_PARENS_I(cond, x) BOOST_PP_CAT(NT2_PP_DETAILS_MAYBE_STRIP_PARENS_, cond)(x)
-#define NT2_PP_DETAILS_MAYBE_STRIP_PARENS_1(x) x
-#define NT2_PP_DETAILS_MAYBE_STRIP_PARENS_2(x) NT2_PP_DETAILS_APPLY(NT2_PP_DETAILS_MAYBE_STRIP_PARENS_2_I, x)
-#define NT2_PP_DETAILS_MAYBE_STRIP_PARENS_2_I(...) __VA_ARGS__
+#define BOOST_SIMD_PP_DETAILS_APPLY(macro, args)   BOOST_SIMD_PP_DETAILS_APPLY_I(macro, args)
+#define BOOST_SIMD_PP_DETAILS_APPLY_I(macro, args) macro args
+#define BOOST_SIMD_PP_DETAILS_STRIP_PARENS_I(...) 1,1
+#define BOOST_SIMD_PP_DETAILS_EVAL(test, x) BOOST_SIMD_PP_DETAILS_EVAL_I(test, x)
+#define BOOST_SIMD_PP_DETAILS_EVAL_I(test, x) BOOST_SIMD_PP_DETAILS_MAYBE_STRIP_PARENS(BOOST_SIMD_PP_DETAILS_TEST_ARITY test, x)
+#define BOOST_SIMD_PP_DETAILS_TEST_ARITY(...) BOOST_SIMD_PP_DETAILS_APPLY(BOOST_SIMD_PP_DETAILS_TEST_ARITY_I, (__VA_ARGS__, 2, 1, 0))
+#define BOOST_SIMD_PP_DETAILS_TEST_ARITY_I(a,b,c,...) c
+#define BOOST_SIMD_PP_DETAILS_MAYBE_STRIP_PARENS(cond, x) BOOST_SIMD_PP_DETAILS_MAYBE_STRIP_PARENS_I(cond, x)
+#define BOOST_SIMD_PP_DETAILS_MAYBE_STRIP_PARENS_I(cond, x) BOOST_PP_CAT(BOOST_SIMD_PP_DETAILS_MAYBE_STRIP_PARENS_, cond)(x)
+#define BOOST_SIMD_PP_DETAILS_MAYBE_STRIP_PARENS_1(x) x
+#define BOOST_SIMD_PP_DETAILS_MAYBE_STRIP_PARENS_2(x) BOOST_SIMD_PP_DETAILS_APPLY(BOOST_SIMD_PP_DETAILS_MAYBE_STRIP_PARENS_2_I, x)
+#define BOOST_SIMD_PP_DETAILS_MAYBE_STRIP_PARENS_2_I(...) __VA_ARGS__
 
 //==============================================================================
 /*!
@@ -118,7 +118,7 @@
  * \endcode
  */
 //==============================================================================
-#define NT2_PP_STRIP(X) NT2_PP_DETAILS_EVAL((NT2_PP_DETAILS_STRIP_PARENS_I X), X)
+#define BOOST_SIMD_PP_STRIP(X) BOOST_SIMD_PP_DETAILS_EVAL((BOOST_SIMD_PP_DETAILS_STRIP_PARENS_I X), X)
 //==============================================================================
 
 // Boost.Preprocessor author P. Mensodines confirmed on an Boost email thread
@@ -129,12 +129,12 @@
 
 // `checking_prefix ## tokens` expand to unary (e.g., `(1)`) iff `tokens` start
 // with keyword to check.
-#define NT2_PP_DETAILS_KEYWORD_FACILITY_IS_FRONT(tokens, checking_prefix) \
+#define BOOST_SIMD_PP_DETAILS_KEYWORD_FACILITY_IS_FRONT(tokens, checking_prefix) \
     BOOST_PP_IS_UNARY(BOOST_PP_CAT(checking_prefix, tokens))
 
 // `is_front_macro(tokens)` is 1 iff `tokens` start with keyword to remove.
 // `removing_prefix ## <keyword-to-remove>` must expand to nothing.
-#define NT2_PP_DETAILS_KEYWORD_FACILITY_REMOVE_FRONT( \
+#define BOOST_SIMD_PP_DETAILS_KEYWORD_FACILITY_REMOVE_FRONT( \
         tokens, is_front_macro, removing_prefix) \
     BOOST_PP_EXPAND( /* without EXPAND doesn't expand on MSVC */ \
         BOOST_PP_IIF(is_front_macro(tokens), \
@@ -144,14 +144,14 @@
         )(removing_prefix, tokens) \
     )
 
-#define NT2_PP_DETAILS_KEYWORD_TYPENAME_IS_typename (1) /* unary */
-#define typename_NT2_PP_DETAILS_KEYWORD_TYPENAME_IS (1) /* unary */
-#define NT2_PP_DETAILS_KEYWORD_TYPENAME_REMOVE_typename /* nothing */
-#define typename_NT2_PP_DETAILS_KEYWORD_TYPENAME_REMOVE /* nothing */
+#define BOOST_SIMD_PP_DETAILS_KEYWORD_TYPENAME_IS_typename (1) /* unary */
+#define typename_BOOST_SIMD_PP_DETAILS_KEYWORD_TYPENAME_IS (1) /* unary */
+#define BOOST_SIMD_PP_DETAILS_KEYWORD_TYPENAME_REMOVE_typename /* nothing */
+#define typename_BOOST_SIMD_PP_DETAILS_KEYWORD_TYPENAME_REMOVE /* nothing */
 
-#define NT2_PP_DETAILS_KEYWORD_IS_TYPENAME_FRONT(tokens) \
-    NT2_PP_DETAILS_KEYWORD_FACILITY_IS_FRONT(tokens, \
-            NT2_PP_DETAILS_KEYWORD_TYPENAME_IS_)
+#define BOOST_SIMD_PP_DETAILS_KEYWORD_IS_TYPENAME_FRONT(tokens) \
+    BOOST_SIMD_PP_DETAILS_KEYWORD_FACILITY_IS_FRONT(tokens, \
+            BOOST_SIMD_PP_DETAILS_KEYWORD_TYPENAME_IS_)
 
 //==============================================================================
 /*!
@@ -165,10 +165,10 @@
  * \param X Symbol to remove \c typename from
  */
 //==============================================================================
-#define NT2_PP_REMOVE_TYPENAME(X) \
-    NT2_PP_DETAILS_KEYWORD_FACILITY_REMOVE_FRONT(X, \
-            NT2_PP_DETAILS_KEYWORD_IS_TYPENAME_FRONT, \
-            NT2_PP_DETAILS_KEYWORD_TYPENAME_REMOVE_)
+#define BOOST_SIMD_PP_REMOVE_TYPENAME(X) \
+    BOOST_SIMD_PP_DETAILS_KEYWORD_FACILITY_REMOVE_FRONT(X, \
+            BOOST_SIMD_PP_DETAILS_KEYWORD_IS_TYPENAME_FRONT, \
+            BOOST_SIMD_PP_DETAILS_KEYWORD_TYPENAME_REMOVE_)
             
 
 #endif

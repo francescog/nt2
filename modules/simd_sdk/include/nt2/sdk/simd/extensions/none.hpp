@@ -6,25 +6,25 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_EXTENSIONS_NONE_HPP_INCLUDED
-#define NT2_SDK_SIMD_EXTENSIONS_NONE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_NONE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_EXTENSIONS_NONE_HPP_INCLUDED
 
 #include <nt2/sdk/simd/meta/as_simd.hpp>
 #include <nt2/sdk/simd/meta/extension_of.hpp>
 #include <nt2/sdk/simd/meta/is_simd_specific.hpp>
 
-#if !defined(NT2_SIMD_DETECTED)
-NT2_WARNING(No SIMD extensions detected)
-#define NT2_NO_SIMD
+#if !defined(BOOST_SIMD_DETECTED)
+BOOST_SIMD_WARNING(No SIMD extensions detected)
+#define BOOST_NO_SIMD
 
-#define NT2_SIMD_BYTES      8
-#define NT2_SIMD_BITS       64
-#define NT2_SIMD_STRING     "none"
-#define NT2_SIMD_CARDINALS (1)(2)(4)(8)
-#define NT2_SIMD_DEFAULT_EXTENSION ::boost::simd::tag::none_<boost::mpl::size_t<8> >
-#define NT2_SIMD_DEFAULT_SITE ::boost::simd::tag::cpu_
+#define BOOST_SIMD_BYTES      8
+#define BOOST_SIMD_BITS       64
+#define BOOST_SIMD_STRING     "none"
+#define BOOST_SIMD_CARDINALS (1)(2)(4)(8)
+#define BOOST_SIMD_DEFAULT_EXTENSION ::boost::simd::tag::none_<boost::mpl::size_t<8> >
+#define BOOST_SIMD_DEFAULT_SITE ::boost::simd::tag::cpu_
 
-#if !defined(NT2_SIMD_TYPES)
+#if !defined(BOOST_SIMD_TYPES)
 #include <nt2/sdk/simd/extensions/sse/types.hpp>
 #endif
 

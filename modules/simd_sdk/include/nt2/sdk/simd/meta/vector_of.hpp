@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_META_VECTOR_OF_HPP_INCLUDED
-#define NT2_SDK_SIMD_META_VECTOR_OF_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_META_VECTOR_OF_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_META_VECTOR_OF_HPP_INCLUDED
 
 #include <boost/array.hpp>
 #include <boost/mpl/sizeof.hpp>
@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
 /* We use boost::mpl::sizeof_ rather than sizeof because MSVC has trouble
  * with sizeof of dependent names in SFINAE contexts */
-#define NT2_LOCAL(z,d,r)                                                \
+#define BOOST_SIMD_LOCAL(z,d,r)                                         \
 template<class T,std::size_t Card>                                      \
 struct vector_of< T ,Card                                               \
                 , typename boost::                                      \
@@ -52,8 +52,8 @@ namespace boost { namespace simd { namespace meta
     typedef boost::array<T,Card> type;
   };
 
-#ifdef NT2_SIMD_DETECTED
-  BOOST_PP_SEQ_FOR_EACH(NT2_LOCAL,~,NT2_SIMD_TAG_SEQ)
+#ifdef BOOST_SIMD_DETECTED
+  BOOST_PP_SEQ_FOR_EACH(BOOST_SIMD_LOCAL,~,BOOST_SIMD_TAG_SEQ)
 #endif
 
 } } }

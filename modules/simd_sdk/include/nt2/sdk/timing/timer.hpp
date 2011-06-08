@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_TIMING_TIMER_HPP_INCLUDED
-#define NT2_SDK_TIMING_TIMER_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_TIMING_TIMER_HPP_INCLUDED
+#define BOOST_SIMD_SDK_TIMING_TIMER_HPP_INCLUDED
 
 #include <stack>
 #include <nt2/sdk/error/assert.hpp>
@@ -32,7 +32,7 @@ namespace boost
 
 	  type toc( bool display ) const
 	  {
-	    NT2_ASSERT(!empty() && "Unbalanced timing calls");
+	    BOOST_SIMD_ASSERT(!empty() && "Unbalanced timing calls");
 	    type t = time()-times().top();
 	    times().pop();
 	    if(display) timer_type::Print(t);

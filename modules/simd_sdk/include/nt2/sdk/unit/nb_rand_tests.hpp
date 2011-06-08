@@ -6,14 +6,14 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_UNIT_NB_RAND_TESTS_HPP_INCLUDED
-#define NT2_SDK_UNIT_NB_RAND_TESTS_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_UNIT_NB_RAND_TESTS_HPP_INCLUDED
+#define BOOST_SIMD_SDK_UNIT_NB_RAND_TESTS_HPP_INCLUDED
 
 // this is the number of tests in each loop in the unit tests
 // If you change that you had better choose a multiple of the
 // maximum number of items in an simd vector (currently 16) 
 
-#define NT2_NB_RANDOM_TEST 128
+#define BOOST_SIMD_NB_RANDOM_TEST 128
 
 #endif
 

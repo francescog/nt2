@@ -6,12 +6,12 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_META_ADAPTED_TRAITS_HPP_INCLUDED
-#define NT2_SDK_META_ADAPTED_TRAITS_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_META_ADAPTED_TRAITS_HPP_INCLUDED
+#define BOOST_SIMD_SDK_META_ADAPTED_TRAITS_HPP_INCLUDED
 
 /*!
  * \file
- * \brief Provides adaptation of some boost type traits for NT2 types
+ * \brief Provides adaptation of some boost type traits for BOOST_SIMD types
  */
 
 
@@ -31,7 +31,7 @@
 //==============================================================================
 /*!
  * \namespace boost::meta
- * Namespace containing all NT2 meta-functions and meta-function classes
+ * Namespace containing all BOOST_SIMD meta-functions and meta-function classes
  */
 //==============================================================================
 namespace boost { namespace simd { namespace meta

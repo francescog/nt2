@@ -6,15 +6,15 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_PACK_CALL_HPP_INCLUDED
-#define NT2_SDK_SIMD_PACK_CALL_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_PACK_CALL_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_PACK_CALL_HPP_INCLUDED
 
 #include <nt2/sdk/dsl/litteral.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register terminal handlers for SIMD expression - native case
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH(tag::terminal_,tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH(tag::terminal_,tag::cpu_
                      ,(A0)(A1)(A2)(X)(Y)
                      ,((simd_<arithmetic_<A0>,X>))
                       ((target_<simd_<arithmetic_<A1>,Y> >))
@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Register terminal handlers for SIMD expression - emulated case
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH_TPL (  tag::terminal_,tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH_TPL (  tag::terminal_,tag::cpu_
                           , (class A0)(class A1)(class A2)(std::size_t N)
                           , ((array_<arithmetic_<A0>,N>))
                             ((target_<array_<arithmetic_<A1>,N> >))

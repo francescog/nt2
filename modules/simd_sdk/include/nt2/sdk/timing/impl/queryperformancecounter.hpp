@@ -6,14 +6,14 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_TIMING_IMPL_QUERYPERFORMANCECOUNTER_HPP_INCLUDED
-#define NT2_SDK_TIMING_IMPL_QUERYPERFORMANCECOUNTER_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_TIMING_IMPL_QUERYPERFORMANCECOUNTER_HPP_INCLUDED
+#define BOOST_SIMD_SDK_TIMING_IMPL_QUERYPERFORMANCECOUNTER_HPP_INCLUDED
 
-#if !defined(NT2_TIMING_DETECTED)
+#if !defined(BOOST_SIMD_TIMING_DETECTED)
 
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
 
-#define NT2_TIMING_DETECTED
+#define BOOST_SIMD_TIMING_DETECTED
 #if !defined(VC_EXTRALEAN)
 #define VC_EXTRALEAN
 #endif

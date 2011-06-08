@@ -6,8 +6,8 @@
 ///                 See accompanying file LICENSE.txt or copy at
 ///                     http://www.boost.org/LICENSE_1_0.txt
 //////////////////////////////////////////////////////////////////////////////
-#ifndef NT2_SDK_MEMORY_ALIGNED_TYPE_HPP_INCLUDED
-#define NT2_SDK_MEMORY_ALIGNED_TYPE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_ALIGNED_TYPE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_ALIGNED_TYPE_HPP_INCLUDED
 
 #include <cstddef>
 #include <nt2/sdk/memory/parameters.hpp>
@@ -16,9 +16,9 @@
 // Intrinsic platform dependant alignment attribute
 ////////////////////////////////////////////////////////////////////////////////
 #if (defined(BOOST_MSVC))
-#define NT2_ALIGN_ON(x)  __declspec(align(x))
+#define BOOST_SIMD_ALIGN_ON(x)  __declspec(align(x))
 #elif (defined(__GNUC__)) || (defined(__xlC__))
-#define NT2_ALIGN_ON(x)  __attribute__(( __aligned__((x)) ))
+#define BOOST_SIMD_ALIGN_ON(x)  __attribute__(( __aligned__((x)) ))
 #elif !(defined(__WAVE__))
 #error boost::simd::aligned - No Supported alignment attribute
 #endif
@@ -26,6 +26,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Build an aligned type
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_ALIGNED_TYPE(T) T NT2_ALIGN_ON(NT2_CONFIG_ALIGNMENT)
+#define BOOST_SIMD_ALIGNED_TYPE(T) T BOOST_SIMD_ALIGN_ON(BOOST_SIMD_CONFIG_ALIGNMENT)
 
 #endif

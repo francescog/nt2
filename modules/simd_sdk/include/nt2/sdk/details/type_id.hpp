@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_DETAILS_TYPE_ID_HPP_INCLUDED
-#define NT2_SDK_DETAILS_TYPE_ID_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_DETAILS_TYPE_ID_HPP_INCLUDED
+#define BOOST_SIMD_SDK_DETAILS_TYPE_ID_HPP_INCLUDED
 
 /*!
  * \file
@@ -101,7 +101,7 @@ namespace boost
     //////////////////////////////////////////////////////////////////////////////
     template<typename T> inline std::string type_id(const T& expr = *((T*)0))
     {
-      nt2::ignore_unused(expr);
+      boost::simd::ignore_unused(expr);
       return details::demangle(typeid(T).name());
     }
 

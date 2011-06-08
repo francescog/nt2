@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_META_SET_HPP_INCLUDED
-#define NT2_SDK_META_SET_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_META_SET_HPP_INCLUDED
+#define BOOST_SIMD_SDK_META_SET_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // lightweight MPL set like class with minimal support
@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace meta
   //////////////////////////////////////////////////////////////////////////////
   #define M0(z,n,t) static boost::mpl::true_ key(BOOST_PP_CAT(A,n)*);
 
-  template<BOOST_PP_ENUM_BINARY_PARAMS( NT2_MAX_META_ARITY
+  template<BOOST_PP_ENUM_BINARY_PARAMS( BOOST_SIMD_MAX_META_ARITY
                                       , class A
                                       , = meta::na_ BOOST_PP_INTERCEPT
                                       )
@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace meta
     typedef void  is_set_type;
     typedef set   type;
     template<class T> static boost::mpl::false_ key(T*);
-    BOOST_PP_REPEAT(NT2_MAX_META_ARITY,M0,~)
+    BOOST_PP_REPEAT(BOOST_SIMD_MAX_META_ARITY,M0,~)
   };
 
   #define M1(z,n,t)                                       \
@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace meta
   //////////////////////////////////////////////////////////////////////////////
   // Generate all hierarchy specialization
   //////////////////////////////////////////////////////////////////////////////
-  BOOST_PP_REPEAT_FROM_TO(1,NT2_MAX_META_ARITY,M1,~)
+  BOOST_PP_REPEAT_FROM_TO(1,BOOST_SIMD_MAX_META_ARITY,M1,~)
 
   #undef M0
   #undef M1

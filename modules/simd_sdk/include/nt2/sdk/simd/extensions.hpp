@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_EXTENSIONS_HPP_INCLUDED
-#define NT2_SDK_SIMD_EXTENSIONS_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_EXTENSIONS_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Support for basic SIMD extensions - Note those are themselves extendables
@@ -31,7 +31,7 @@ namespace boost
     template<class Tag>
     struct default_site<Tag>
     {
-      typedef NT2_SIMD_DEFAULT_SITE type;
+      typedef BOOST_SIMD_DEFAULT_SITE type;
     };
   }
 }

@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_ERROR_ASSERT_HPP_INCLUDED
-#define NT2_SDK_ERROR_ASSERT_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_ERROR_ASSERT_HPP_INCLUDED
+#define BOOST_SIMD_SDK_ERROR_ASSERT_HPP_INCLUDED
 
 /*!
  * \file
@@ -27,7 +27,7 @@
  * \see NT2_DISABLE_ASSERTS
  */
 //==============================================================================
-#define NT2_ASSERTS_AS_EXCEPTIONS
+#define BOOST_SIMD_ASSERTS_AS_EXCEPTIONS
 
 //==============================================================================
 /*!
@@ -39,18 +39,21 @@
  * \see NT2_ASSERTS_AS_EXCEPTIONS
  */
 //==============================================================================
-#define NT2_DISABLE_ASSERTS
+#define BOOST_SIMD_DISABLE_ASSERTS
 #endif
 
 //==============================================================================
 // Make assertion into exceptions
 //==============================================================================
-#if  !defined(NT2_DISABLE_ERROR) || defined(DOXYGEN_ONLY)
+#if  !defined(BOOST_SIMD_DISABLE_ERROR) || defined(DOXYGEN_ONLY)
 
 #include <iosfwd>
 #include <nt2/sdk/error/error.hpp>
 
-namespace boost { namespace simd { namespace details { NT2_ERROR_INFO(assert_info, char const*); } } }
+namespace boost { namespace simd { namespace details
+{ 
+  BOOST_SIMD_ERROR_INFO(assert_info, char const*);
+} } }
 
 namespace boost
 {
@@ -80,7 +83,7 @@ namespace boost
 //==============================================================================
 // Debug mode has SIGTRAP to the assertion
 //==============================================================================
-#if defined(NT2_DEBUG) && !defined(NT2_ASSERTS_AS_EXCEPTIONS)
+#if defined(BOOST_SIMD_DEBUG) && !defined(BOOST_SIMD_ASSERTS_AS_EXCEPTIONS)
 #include <nt2/sdk/error/trap.hpp>
 #ifndef BOOST_ENABLE_ASSERT_HANDLER
 #define BOOST_ENABLE_ASSERT_HANDLER
@@ -95,28 +98,28 @@ namespace boost
 //==============================================================================
 /*!
  * \ingroup error
- * If NT2_DISABLE_ASSERTS is not defined, evaluates \c XPR and, if \c XPR
+ * If BOOST_SIMD_DISABLE_ASSERTS is not defined, evaluates \c XPR and, if \c XPR
  * evaluates to \c false, trigger a runtime assertion failure. If not, no
  * operationsa re performed.
  *
  * \param XPR Expression to assert.
  */
 //==============================================================================
-#define NT2_ASSERT(XPR) BOOST_ASSERT(XPR)
+#define BOOST_SIMD_ASSERT(XPR) BOOST_ASSERT(XPR)
 
 //==============================================================================
 /*!
  * \ingroup error
  * Evaluates \c XPR and, if \c XPR evaluates to \c false, trigger a runtime
- * assertion failure if and only if NT2_DISABLE_ASSERTS is not defined
+ * assertion failure if and only if BOOST_SIMD_DISABLE_ASSERTS is not defined
  *
  * \param XPR Expression to verify.
  */
 //==============================================================================
-#define NT2_VERIFY(XPR) BOOST_VERIFY(XPR)
+#define BOOST_SIMD_VERIFY(XPR) BOOST_VERIFY(XPR)
 
 #if defined(BOOST_ENABLE_ASSERT_HANDLER)
-#if defined(NT2_DEBUG)
+#if defined(BOOST_SIMD_DEBUG)
 #include <cstdio>
 #endif
 
@@ -127,13 +130,13 @@ namespace boost
     void inline
       assertion_failed(char const* expr,char const* fn,char const* f,int l)
       {
-#if defined(NT2_ASSERTS_AS_EXCEPTIONS) && !defined(NT2_DISABLE_ERROR)
+#if defined(BOOST_SIMD_ASSERTS_AS_EXCEPTIONS) && !defined(BOOST_SIMD_DISABLE_ERROR)
 	::boost::exception_detail
 	  ::throw_exception_(   ::nt2::assert_exception()
 	      <<  ::nt2::details::assert_info(expr)
 	      , fn,f,l
 	      );
-#elif defined(NT2_DEBUG)
+#elif defined(BOOST_SIMD_DEBUG)
 	fprintf(stderr,"%s:%d: %s: Assertion %s failed.\n",f,l,fn,expr);
 	::nt2::trap();
 #else

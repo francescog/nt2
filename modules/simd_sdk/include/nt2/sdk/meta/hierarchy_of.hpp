@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_META_HIERARCHY_OF_HPP_INCLUDED
-#define NT2_SDK_META_HIERARCHY_OF_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_META_HIERARCHY_OF_HPP_INCLUDED
+#define BOOST_SIMD_SDK_META_HIERARCHY_OF_HPP_INCLUDED
 
 #include <climits>
 #include <nt2/sdk/config/types.hpp>
@@ -59,7 +59,7 @@ namespace boost { namespace simd { namespace meta
 // User level macro to define a new hierarchy element taking advantage of the
 // type hierarchy lattice system.
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_REGISTER_HIERARCHY_PARENT(Name, Base)                                 \
+#define BOOST_SIMD_REGISTER_HIERARCHY_PARENT(Name, Base)                                 \
 namespace boost                                                                   \
 {                                                                                 \
   namespace simd                                                                  \
@@ -78,7 +78,7 @@ namespace boost                                                                 
 	typedef unspecified_<T> parent;                                           \
 	typedef tag::Name< tag::unspecified_ > type;                              \
       };                                                                          \
-      template<class T> struct Name< unknown_<T> > : NT2_PP_REMOVE_TYPENAME(Base) \
+      template<class T> struct Name< unknown_<T> > : BOOST_SIMD_PP_REMOVE_TYPENAME(Base) \
       {                                                                           \
 	typedef Base parent;                                                      \
       };                                                                          \
@@ -87,8 +87,8 @@ namespace boost                                                                 
 }                                                                                 \
 /**/
 
-#define NT2_REGISTER_HIERARCHY(Name)                                           \
-NT2_REGISTER_HIERARCHY_PARENT(Name, unknown_<T>)                               \
+#define BOOST_SIMD_REGISTER_HIERARCHY(Name)                                       \
+BOOST_SIMD_REGISTER_HIERARCHY_PARENT(Name, unknown_<T>)                           \
 /**/
 
 #endif

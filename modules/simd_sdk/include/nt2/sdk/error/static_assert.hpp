@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_ERROR_STATIC_ASSERT_HPP_INCLUDED
-#define NT2_SDK_ERROR_STATIC_ASSERT_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_ERROR_STATIC_ASSERT_HPP_INCLUDED
+#define BOOST_SIMD_SDK_ERROR_STATIC_ASSERT_HPP_INCLUDED
 
 /*!
  * \file
@@ -31,7 +31,7 @@
  * \param REASON a quoted string describing the reason of the error in details.
  */
 //==============================================================================
-#define NT2_STATIC_ASSERT(COND,ID,REASON)
+#define BOOST_SIMD_STATIC_ASSERT(COND,ID,REASON)
 
 //==============================================================================
 /*!
@@ -45,27 +45,27 @@
  * \param REASON a quoted string describing the reason of the error in details.
  */
 //==============================================================================
-#define NT2_STATIC_ASSERT_NOT(COND,ID,REASON)
+#define BOOST_SIMD_STATIC_ASSERT_NOT(COND,ID,REASON)
 #endif
 
 #if defined(BOOST_HAS_STATIC_ASSERT) && !defined(DOXYGEN_ONLY)
 //==============================================================================
 // C++0x maps over static_assert and display ID: REASON
 //==============================================================================
-#define NT2_STATIC_ASSERT(COND,ID,REASON)                 \
+#define BOOST_SIMD_STATIC_ASSERT(COND,ID,REASON)                 \
 static_assert(COND, BOOST_PP_STRINGIZE(ID) ": " REASON )  \
 /**/
-#define NT2_STATIC_ASSERT_NOT(COND,ID,REASON)                   \
+#define BOOST_SIMD_STATIC_ASSERT_NOT(COND,ID,REASON)                   \
 static_assert( (!(COND)), BOOST_PP_STRINGIZE(ID) ": " REASON )  \
 /**/
 #elif !defined(DOXYGEN_ONLY)
 //==============================================================================
 // C++03 maps over MPL_ASSERT_MSG and display the assert ID
 //==============================================================================
-#define NT2_STATIC_ASSERT(COND,ID,REASON) \
+#define BOOST_SIMD_STATIC_ASSERT(COND,ID,REASON) \
 BOOST_MPL_ASSERT_MSG((COND),ID,())        \
 /**/
-#define NT2_STATIC_ASSERT_NOT(COND,ID,REASON) \
+#define BOOST_SIMD_STATIC_ASSERT_NOT(COND,ID,REASON) \
 BOOST_MPL_ASSERT_MSG( (!(COND)),ID,())        \
 /**/
 #endif

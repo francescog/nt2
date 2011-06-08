@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //============================================================================== 
-#ifndef NT2_SDK_META_RESULT_OF_HPP_INCLUDED
-#define NT2_SDK_META_RESULT_OF_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_META_RESULT_OF_HPP_INCLUDED
+#define BOOST_SIMD_SDK_META_RESULT_OF_HPP_INCLUDED
 
 #include <nt2/extension/parameters.hpp>
 #include <boost/function_types/result_type.hpp>
@@ -18,7 +18,7 @@
 #include <boost/mpl/or.hpp>
 #include <boost/utility/enable_if.hpp>
 
-#if !defined(BOOST_HAS_VARIADIC_TMPL) || !defined(NT2_DONT_USE_PREPROCESSED_FILES) || (defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES))
+#if !defined(BOOST_HAS_VARIADIC_TMPL) || !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES) || (defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES))
 #include <nt2/extension/parameters.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
@@ -56,10 +56,10 @@ namespace boost { namespace simd { namespace meta
 #else
 namespace boost { namespace simd { namespace meta
 {
-#if !defined(NT2_DONT_USE_PREPROCESSED_FILES)
+#if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/sdk/meta/preprocessed/result_of.hpp>
 #else
-#if defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/result_of.hpp")
 #endif
     
@@ -82,10 +82,10 @@ namespace boost { namespace simd { namespace meta
       typedef typename F::template result<F(BOOST_PP_ENUM_PARAMS(n, A))>::type type;       \
     };
 
-    BOOST_PP_REPEAT(BOOST_PP_INC(NT2_MAX_ARITY), M0, ~)
+    BOOST_PP_REPEAT(BOOST_PP_INC(BOOST_SIMD_MAX_ARITY), M0, ~)
     #undef M0
     
-#if defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(output: null)
 #endif
 #endif

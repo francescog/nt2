@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_META_DETAILS_ALL_HPP_INCLUDED
-#define NT2_SDK_META_DETAILS_ALL_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_META_DETAILS_ALL_HPP_INCLUDED
+#define BOOST_SIMD_SDK_META_DETAILS_ALL_HPP_INCLUDED
 
 //==============================================================================
 // Internals for meta::all_
@@ -64,13 +64,13 @@ namespace boost { namespace simd { namespace details
   /**/
 
   template< class Pred
-          , BOOST_PP_ENUM_BINARY_PARAMS ( NT2_MAX_META_ARITY
+          , BOOST_PP_ENUM_BINARY_PARAMS ( BOOST_SIMD_MAX_META_ARITY
                                         , class A
                                         , = meta::na_ BOOST_PP_INTERCEPT
                                         )
           >
   struct  all_impl
-        : boost::mpl::bool_<true BOOST_PP_REPEAT(NT2_MAX_META_ARITY,M1,~)>
+        : boost::mpl::bool_<true BOOST_PP_REPEAT(BOOST_SIMD_MAX_META_ARITY,M1,~)>
   {};
 
   template< class Pred, class T>
@@ -94,7 +94,7 @@ namespace boost { namespace simd { namespace details
   {};                                                       \
   /**/
 
-  BOOST_PP_REPEAT_FROM_TO(2,NT2_MAX_META_ARITY,M0,~)
+  BOOST_PP_REPEAT_FROM_TO(2,BOOST_SIMD_MAX_META_ARITY,M0,~)
 
   #undef M1
   #undef M0

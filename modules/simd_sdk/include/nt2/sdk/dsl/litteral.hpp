@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_DSL_LITTERAL_HPP_INCLUDED
-#define NT2_SDK_DSL_LITTERAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_DSL_LITTERAL_HPP_INCLUDED
+#define BOOST_SIMD_SDK_DSL_LITTERAL_HPP_INCLUDED
 
 #include <nt2/sdk/dsl/category.hpp>
 #include <nt2/sdk/constant/category.hpp>
@@ -16,28 +16,28 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Litteral as usually splatted w/e the target
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::terminal_,tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::terminal_,tag::cpu_
                       , (A0)( A1)( A2)
                       , (arithmetic_<A0>)
                         ((target_<unspecified_<A1> >))
                         (integer_<A2>)
                       )
 
-NT2_REGISTER_DISPATCH ( tag::terminal_,tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::terminal_,tag::cpu_
                       , (A0)(A1)(A2)
                       , (constant_<A0>)
                         ((target_<unspecified_<A1> >))
                         (integer_<A2>)
                       )
 
-NT2_REGISTER_DISPATCH_TPL (  tag::terminal_,tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH_TPL (  tag::terminal_,tag::cpu_
                           , (class A0)(class A1)(class A2)(std::size_t N)
                           , (arithmetic_<A0>)
                             ((target_<array_<arithmetic_<A1>,N> >))
                             (integer_<A2>)
                           )
 
-NT2_REGISTER_DISPATCH_TPL (  tag::terminal_,tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH_TPL (  tag::terminal_,tag::cpu_
                           , (class A0)(class A1)(class A2)(std::size_t N)
                           , (constant_<A0>)
                             ((target_<array_<arithmetic_<A1>,N> >))

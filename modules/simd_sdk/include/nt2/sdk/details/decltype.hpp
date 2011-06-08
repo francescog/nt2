@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_DETAILS_DECLTYPE_HPP_INCLUDED
-#define NT2_SDK_DETAILS_DECLTYPE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_DETAILS_DECLTYPE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_DETAILS_DECLTYPE_HPP_INCLUDED
 
 /*!
  * \file
@@ -44,6 +44,6 @@
  *
  * \include decltype.cpp
  */
-#define NT2_DECLTYPE(EXPR, TYPE) BOOST_PROTO_DECLTYPE_(EXPR, TYPE)
+#define BOOST_SIMD_DECLTYPE(EXPR, TYPE) BOOST_PROTO_DECLTYPE_(EXPR, TYPE)
 
 #endif

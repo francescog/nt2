@@ -6,15 +6,15 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_EXTENSIONS_VMX_ALTIVEC_HPP_INCLUDED
-#define NT2_SDK_SIMD_EXTENSIONS_VMX_ALTIVEC_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_VMX_ALTIVEC_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_EXTENSIONS_VMX_ALTIVEC_HPP_INCLUDED
 
 #include <nt2/sdk/error/warning.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // No SIMD extensions have been found yet
 ////////////////////////////////////////////////////////////////////////////////
-#if !defined(NT2_SIMD_DETECTED) && defined(NT2_HAS_VMX_SUPPORT)
+#if !defined(BOOST_SIMD_DETECTED) && defined(BOOST_HAS_VMX_SUPPORT)
 
 ////////////////////////////////////////////////////////////////////////////////
 // Check for active Altivec extension
@@ -24,7 +24,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Report discovery of Altivec support
 ////////////////////////////////////////////////////////////////////////////////
-NT2_WARNING(AltiVec SIMD extension detected)
+BOOST_WARNING(AltiVec SIMD extension detected)
 
 ////////////////////////////////////////////////////////////////////////////////
 // Include the proper intrinsic include. Depending of the option used by the
@@ -42,17 +42,17 @@ NT2_WARNING(AltiVec SIMD extension detected)
 ////////////////////////////////////////////////////////////////////////////////
 // Altivec PPC extensions flags
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_SIMD_DETECTED
-#define NT2_SIMD_ALTIVEC
-#define NT2_SIMD_STRING             "Altivec"
-#define NT2_SIMD_STRING_LIST        "Altivec"
-#define NT2_SIMD_VMX_FAMILY
-#define NT2_SIMD_BYTES              16
-#define NT2_SIMD_BITS               128
-#define NT2_SIMD_CARDINALS          (4)(8)(16)
-#define NT2_SIMD_TAG_SEQ            (::boost::simd::tag::altivec_)
-#define NT2_SIMD_DEFAULT_EXTENSION  ::boost::simd::tag::altivec_
-#define NT2_SIMD_DEFAULT_SITE       ::boost::simd::tag::altivec_
+#define BOOST_SIMD_DETECTED
+#define BOOST_SIMD_ALTIVEC
+#define BOOST_SIMD_STRING             "Altivec"
+#define BOOST_SIMD_STRING_LIST        "Altivec"
+#define BOOST_SIMD_VMX_FAMILY
+#define BOOST_SIMD_BYTES              16
+#define BOOST_SIMD_BITS               128
+#define BOOST_SIMD_CARDINALS          (4)(8)(16)
+#define BOOST_SIMD_TAG_SEQ            (::boost::simd::tag::altivec_)
+#define BOOST_SIMD_DEFAULT_EXTENSION  ::boost::simd::tag::altivec_
+#define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::tag::altivec_
 
 #include <nt2/sdk/simd/extensions/meta/altivec.hpp>
 

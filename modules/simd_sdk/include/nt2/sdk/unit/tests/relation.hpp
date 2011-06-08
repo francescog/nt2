@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_UNIT_TESTS_RELATION_HPP_INCLUDED
-#define NT2_SDK_UNIT_TESTS_RELATION_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_UNIT_TESTS_RELATION_HPP_INCLUDED
+#define BOOST_SIMD_SDK_UNIT_TESTS_RELATION_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Comparison tests
@@ -18,28 +18,28 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Predicate based tests
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_TEST_EQUAL(A,B)           \
+#define BOOST_SIMD_TEST_EQUAL(A,B)           \
   /*r1 =  A;  r2 =  B;*/            \
   ( ::boost::simd::details::test_eq(#A, #B , __LINE__, BOOST_CURRENT_FUNCTION, A, B) ) \
 /**/
 
-#define NT2_TEST_NOT_EQUAL(A,B)                                               \
+#define BOOST_SIMD_TEST_NOT_EQUAL(A,B)                                               \
 ( ::boost::simd::details::test_neq(#A, #B , __LINE__, BOOST_CURRENT_FUNCTION, A, B) ) \
 /**/
 
-#define NT2_TEST_LESSER(A,B)                                                  \
+#define BOOST_SIMD_TEST_LESSER(A,B)                                                  \
 ( ::boost::simd::details::test_lt(#A, #B , __LINE__, BOOST_CURRENT_FUNCTION, A, B) )  \
 /**/
 
-#define NT2_TEST_GREATER(A,B)                                                 \
+#define BOOST_SIMD_TEST_GREATER(A,B)                                                 \
 ( ::boost:simd::details::test_gt(#A, #B , __LINE__, BOOST_CURRENT_FUNCTION, A, B) )  \
 /**/
 
-#define NT2_TEST_LESSER_EQUAL(A,B)                                           \
+#define BOOST_SIMD_TEST_LESSER_EQUAL(A,B)                                           \
 ( ::boost::simd::details::test_le(#A, #B , __LINE__, BOOST_CURRENT_FUNCTION, A, B) ) \
 /**/
 
-#define NT2_TEST_GREATER_EQUAL(A,B)                                           \
+#define BOOST_SIMD_TEST_GREATER_EQUAL(A,B)                                           \
 ( ::boost::simd::details::test_ge(#A, #B , __LINE__, BOOST_CURRENT_FUNCTION, A, B) )  \
 /**/
 

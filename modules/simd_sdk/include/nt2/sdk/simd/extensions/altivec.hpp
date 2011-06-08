@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_EXTENSIONS_ALTIVEC_HPP_INCLUDED
-#define NT2_SDK_SIMD_EXTENSIONS_ALTIVEC_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_ALTIVEC_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_EXTENSIONS_ALTIVEC_HPP_INCLUDED
 
 #include <nt2/sdk/simd/meta/as_simd.hpp>
 #include <nt2/sdk/simd/meta/extension_of.hpp>
@@ -16,11 +16,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 // No SIMD extensions have been found yet
 ////////////////////////////////////////////////////////////////////////////////
-#if !defined(NT2_SIMD_DETECTED)
+#if !defined(BOOST_SIMD_DETECTED)
 #include <nt2/sdk/simd/extensions/vmx/altivec.hpp>
 //#include <nt2/sdk/simd/extensions/vmx/spu.hpp>
 
-#if defined(NT2_SIMD_VMX_FAMILY)
+#if defined(BOOST_SIMD_VMX_FAMILY)
 #include <nt2/sdk/simd/extensions/vmx/types.hpp>
 #endif
 

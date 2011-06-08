@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_IS_ALIGNED_HPP_INCLUDED
-#define NT2_SDK_MEMORY_IS_ALIGNED_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_IS_ALIGNED_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_IS_ALIGNED_HPP_INCLUDED
 
 #include <nt2/sdk/meta/mpl.hpp>
 #include <nt2/sdk/error/assert.hpp>
@@ -29,7 +29,7 @@ namespace boost
       ////////////////////////////////////////////////////////////////////////////
       // align_on(a0) aligns a0 on the default alignement value
       ////////////////////////////////////////////////////////////////////////////
-      NT2_FUNCTION_IMPLEMENTATION(tag::is_aligned_, is_aligned, 1);
+      BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::is_aligned_, is_aligned, 1);
 
       ////////////////////////////////////////////////////////////////////////////
       // is_aligned(a0,a1) check if a0 is aligned on a1
@@ -38,7 +38,7 @@ namespace boost
       typename meta::enable_call<tag::is_aligned_(A0 const&, A1 const&)>::type
       is_aligned(A0 const& a0, A1 const& a1)
       {
-	NT2_ASSERT(   is_power_of_2(a1)
+	BOOST_SIMD_ASSERT(   is_power_of_2(a1)
                   &&  "Invalid alignment boundary. You tried to check if an "
                       "address or a value is aligned on a non-power of 2 boundary."
                   );
@@ -54,7 +54,7 @@ namespace boost
       meta::enable_call<tag::is_aligned_(A0 const&, boost::mpl::int_<N> const&)>::type
       is_aligned(A0 const& a0)
       {
-	NT2_STATIC_ASSERT ( meta::is_power_of_2_c<N>::value
+	BOOST_SIMD_STATIC_ASSERT ( meta::is_power_of_2_c<N>::value
                           , INVALID_ALIGNMENT_BOUNDARY
                           , "Invalid alignment boundary. You tried to check if an "
                             "address or a value is aligned on a non-power of 2 boundary."

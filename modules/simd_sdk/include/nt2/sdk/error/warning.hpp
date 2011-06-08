@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_ERROR_WARNING_HPP_INCLUDED
-#define NT2_SDK_ERROR_WARNING_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_ERROR_WARNING_HPP_INCLUDED
+#define BOOST_SIMD_SDK_ERROR_WARNING_HPP_INCLUDED
 
 /*!
  * \file
@@ -20,21 +20,21 @@
 //==============================================================================
 // Activate only in VERBOSE MODE
 //==============================================================================
-#if defined(NT2_VERBOSE)
+#if defined(BOOST_SIMD_VERBOSE)
 #if defined(BOOST_MSVC)
 //==============================================================================
 // #pragma message on MSVC is very light so we add some info
 //==============================================================================
-#define NT2_WARNING_LOCATION __FILE__ "(" BOOST_PP_STRINGIZE(__LINE__) ") :"
-#define NT2_WARN(exp) ( NT2_WARNING_LOCATION "[NT2 WARNING] -- "  BOOST_PP_STRINGIZE(exp) )
-#define NT2_WARNING(X) __pragma( message NT2_WARN(X) )
+#define BOOST_SIMD_WARNING_LOCATION __FILE__ "(" BOOST_PP_STRINGIZE(__LINE__) ") :"
+#define BOOST_SIMD_WARN(exp) ( BOOST_SIMD_WARNING_LOCATION "[BOOST_SIMD WARNING] -- "  BOOST_PP_STRINGIZE(exp) )
+#define BOOST_SIMD_WARNING(X) __pragma( message BOOST_SIMD_WARN(X) )
 
 #elif defined(__GNUC__)
 //==============================================================================
 // #pragma message on g++ just need a call to _Pragma
 //==============================================================================
-#define NT2_WARN(exp) "[NT2 WARNING] -- " #exp
-#define NT2_WARNING(X) _Pragma( BOOST_PP_STRINGIZE(message NT2_WARN(X)) )
+#define BOOST_SIMD_WARN(exp) "[NT2 WARNING] -- " #exp
+#define BOOST_SIMD_WARNING(X) _Pragma( BOOST_PP_STRINGIZE(message BOOST_SIMD_WARN(X)) )
 #endif
 #else
 //==============================================================================
@@ -50,7 +50,7 @@
  * \include ../local.hpp
  */
 //==============================================================================
-#define NT2_WARNING(MESSAGE)
+#define BOOST_SIMD_WARNING(MESSAGE)
 #endif
 
 #endif

@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_REPORT_HPP_INCLUDED
-#define NT2_SDK_MEMORY_REPORT_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_REPORT_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_REPORT_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Memory config header
@@ -22,10 +22,10 @@ namespace boost { namespace simd { namespace config
   //////////////////////////////////////////////////////////////////////////////
   inline void simd()
   {
-    #if defined(NT2_SIMD_DETECTED)
+    #if defined(BOOST_SIMD_DETECTED)
     puts(" SIMD support            : enabled");
-    puts(" Active extension        : " NT2_SIMD_STRING );
-    puts(" Available extensions    : " NT2_SIMD_STRING_LIST );
+    puts(" Active extension        : " BOOST_SIMD_STRING );
+    puts(" Available extensions    : " BOOST_SIMD_STRING_LIST );
     #else
     puts(" SIMD support            : disabled");
     puts(" Active extension        : none"    );
@@ -35,7 +35,7 @@ namespace boost { namespace simd { namespace config
     puts("");
   }
 
-  NT2_REGISTER_STATUS(simd);
+  BOOST_SIMD_REGISTER_STATUS(simd);
 } } }
 
 #endif

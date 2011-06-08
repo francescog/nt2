@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_UNIT_DETAILS_SUITE_HPP_INCLUDED
-#define NT2_SDK_UNIT_DETAILS_SUITE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_UNIT_DETAILS_SUITE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_UNIT_DETAILS_SUITE_HPP_INCLUDED
 
 #include <cstdio>
 #include <nt2/sdk/details/type_id.hpp>
@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace details
     ////////////////////////////////////////////////////////////////////////////
     ~suite()
     {
-      #if !defined(NT2_TEST_SILENT)
+      #if !defined(BOOST_SIMD_TEST_SILENT)
       int t = details::test_count();
       int e = details::error_count();
       printf( "Results:\n"
@@ -43,8 +43,8 @@ namespace boost { namespace simd { namespace details
     ////////////////////////////////////////////////////////////////////////////
     void process() const
     {
-      #if !defined(NT2_TEST_SILENT)
-      printf("[%s]\n",NT2_UNIT_MODULE);
+      #if !defined(BOOST_SIMD_TEST_SILENT)
+      printf("[%s]\n",BOOST_SIMD_UNIT_MODULE);
       puts("===============================================================");
       #endif
       if(tests) tests->process();

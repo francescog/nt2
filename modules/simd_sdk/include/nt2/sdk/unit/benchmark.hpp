@@ -6,14 +6,14 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_UNIT_BENCHMARK_HPP_INCLUDED
-#define NT2_SDK_UNIT_BENCHMARK_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_UNIT_BENCHMARK_HPP_INCLUDED
+#define BOOST_SIMD_SDK_UNIT_BENCHMARK_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Timing test function macros
 // Documentation: http://nt2.lri.fr/sdk/unit/benchmark.html
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_TEST_SILENT
+#define BOOST_SIMD_TEST_SILENT
 #include <nt2/include/timing.hpp>
 #include <nt2/sdk/unit/tests.hpp>
 #include <nt2/sdk/unit/module.hpp>
@@ -28,24 +28,24 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Benchmark parameters
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef NT2_TEST_DURATION
-#define NT2_TEST_DURATION 2.5
+#ifndef BOOST_SIMD_TEST_DURATION
+#define BOOST_SIMD_TEST_DURATION 2.5
 #endif
 
-#ifndef NT2_TEST_SAMPLES
-#define NT2_TEST_SAMPLES 100000
+#ifndef BOOST_SIMD_TEST_SAMPLES
+#define BOOST_SIMD_TEST_SAMPLES 100000
 #endif
 
-#if !defined(NT2_TEST_RANDOM_SEED)
-#define NT2_TEST_RANDOM_SEED (boost::simd::details::read_cycles())
+#if !defined(BOOST_SIMD_TEST_RANDOM_SEED)
+#define BOOST_SIMD_TEST_RANDOM_SEED (boost::simd::details::read_cycles())
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 // Benchmark entry point
 ////////////////////////////////////////////////////////////////////////////////
-NT2_TEST_CASE( benchmark )
+BOOST_SIMD_TEST_CASE( benchmark )
 {
-  int seed = static_cast<int>(NT2_TEST_RANDOM_SEED);
+  int seed = static_cast<int>(BOOST_SIMD_TEST_RANDOM_SEED);
   srand( seed );
   printf("Benchmark Random Seed: %d \n",seed);
 }
@@ -63,27 +63,27 @@ NT2_TEST_CASE( benchmark )
 ////////////////////////////////////////////////////////////////////////////////
 // Benchmark macros
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_MIN_MAX(r,d,e)                                \
+#define BOOST_SIMD_MIN_MAX(r,d,e)                                \
 , BOOST_PP_TUPLE_ELEM(3,1,e), BOOST_PP_TUPLE_ELEM(3,2,e)  \
 /**/
 
-#define NT2_TYPE(r,d,e) BOOST_PP_TUPLE_ELEM(3,0,e),  \
+#define BOOST_SIMD_TYPE(r,d,e) BOOST_PP_TUPLE_ELEM(3,0,e),  \
 /**/
 
 ////////////////////////////////////////////////////////////////////////////////
 // Perform runtime benchamrk of a given functor tag
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_TIMING(TAG,SEQ)                         \
-NT2_TEST_CASE( BOOST_PP_CAT(timing,__LINE__) )      \
+#define BOOST_SIMD_TIMING(TAG,SEQ)                         \
+BOOST_SIMD_TEST_CASE( BOOST_PP_CAT(timing,__LINE__) )      \
 {                                                   \
   typedef boost::simd::functor<TAG> callee_t;       \
   callee_t callee;                                  \
   timing_test                                       \
-  <BOOST_PP_SEQ_FOR_EACH(NT2_TYPE,~,SEQ)            \
+  <BOOST_PP_SEQ_FOR_EACH(BOOST_SIMD_TYPE,~,SEQ)     \
   void*                                             \
   >                                                 \
-  ( callee, NT2_TEST_SAMPLES                        \
-    BOOST_PP_SEQ_FOR_EACH(NT2_MIN_MAX,~,SEQ)        \
+  ( callee, BOOST_SIMD_TEST_SAMPLES                 \
+    BOOST_PP_SEQ_FOR_EACH(BOOST_SIMD_MIN_MAX,~,SEQ) \
   , BOOST_PP_STRINGIZE(TAG)                         \
   );                                                \
 }                                                   \
@@ -92,7 +92,7 @@ NT2_TEST_CASE( BOOST_PP_CAT(timing,__LINE__) )      \
 ////////////////////////////////////////////////////////////////////////////////
 // Perform runtime benchamrk of a given external function
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_TIMING_EXT(FUNC,RET,SEQ)                                          \
+#define BOOST_SIMD_TIMING_EXT(FUNC,RET,SEQ)                                   \
 struct BOOST_PP_CAT(wrapper_,__LINE__)                                        \
 {                                                                             \
   typedef RET result_type;                                                    \
@@ -104,15 +104,15 @@ struct BOOST_PP_CAT(wrapper_,__LINE__)                                        \
   }                                                                           \
 };                                                                            \
                                                                               \
-NT2_TEST_CASE(BOOST_PP_CAT(timing_,__LINE__))                                 \
+BOOST_SIMD_TEST_CASE(BOOST_PP_CAT(timing_,__LINE__))                          \
 {                                                                             \
   BOOST_PP_CAT(wrapper_,__LINE__) callee;                                     \
   timing_test                                                                 \
-  <BOOST_PP_SEQ_FOR_EACH(NT2_TYPE,~,SEQ)                                      \
+  <BOOST_PP_SEQ_FOR_EACH(BOOST_SIMD_TYPE,~,SEQ)                               \
   void*                                                                       \
   >                                                                           \
-  ( callee, NT2_TEST_SAMPLES                                                  \
-    BOOST_PP_SEQ_FOR_EACH(NT2_MIN_MAX,~,SEQ)                                  \
+  ( callee, BOOST_SIMD_TEST_SAMPLES                                           \
+    BOOST_PP_SEQ_FOR_EACH(BOOST_SIMD_MIN_MAX,~,SEQ)                           \
    , BOOST_PP_STRINGIZE(FUNC)                                                 \
   );                                                                          \
 }                                                                             \
