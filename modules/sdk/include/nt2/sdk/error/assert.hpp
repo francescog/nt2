@@ -99,7 +99,20 @@ namespace nt2
  * \param XPR Expression to assert.
  */
 //==============================================================================
-#define NT2_ASSERT(XPR) BOOST_ASSERT(XPR)
+#define NT2_ASSERT(XPR) BOOST_ASSERT((XPR))
+
+//==============================================================================
+/*!
+ * \ingroup error
+ * If NT2_DISABLE_ASSERTS is not defined, evaluates \c XPR and, if \c XPR
+ * evaluates to \c false, trigger a runtime assertion failure containing a
+ * custom message MSG. If not, no operations are performed.
+ *
+ * \param XPR Expression to assert.
+ * \param MSG Message to display
+ */
+//==============================================================================
+#define NT2_ASSERT_MSG(XPR,MSG) BOOST_ASSERT((XPR) && (MSG))
 
 //==============================================================================
 /*!
@@ -110,7 +123,20 @@ namespace nt2
  * \param XPR Expression to verify.
  */
 //==============================================================================
-#define NT2_VERIFY(XPR) BOOST_VERIFY(XPR)
+#define NT2_VERIFY(XPR) BOOST_VERIFY((XPR))
+
+//==============================================================================
+/*!
+ * \ingroup error
+ * Evaluates \c XPR and, if \c XPR evaluates to \c false, trigger a runtime
+ * assertion failure containing a custom message MSG if and only if
+ * NT2_DISABLE_ASSERTS is not defined
+ *
+ * \param XPR Expression to verify.
+ * \param MSG Message to display
+ */
+//==============================================================================
+#define NT2_VERIFY_MSG(XPR,MSG) BOOST_VERIFY((XPR) && (MSG))
 
 #if defined(BOOST_ENABLE_ASSERT_HANDLER)
 #if defined(NT2_DEBUG)

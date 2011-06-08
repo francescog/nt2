@@ -17,7 +17,7 @@ int main()
   b1[4]  = *(b1.begin()) + 1;
   b2[-3] = *(b2.begin()) + 1;
 
-  NT2_ASSERT( *(b1.begin()) == b1[0]  );
+  NT2_ASSERT( *(b1.begin()) == b1[0] );
   NT2_ASSERT( *(b2.begin()) == b2[-3] );
 
   std::cout << "Buffer 1 size  = " << b1.size()  << std::endl;

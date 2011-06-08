@@ -7,7 +7,7 @@ using namespace std;
 
 template<class T> T f(T const& v)
 {
-  NT2_ASSERT( v > 4 );
+  NT2_ASSERT_MSG( v > 4, "v is greater than 4" );
   return v;
 }
 

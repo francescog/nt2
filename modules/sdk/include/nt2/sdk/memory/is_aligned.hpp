@@ -36,10 +36,10 @@ namespace nt2
     typename meta::enable_call<tag::is_aligned_(A0 const&, A1 const&)>::type
     is_aligned(A0 const& a0, A1 const& a1)
     {
-      NT2_ASSERT(   is_power_of_2(a1)
-                &&  "Invalid alignment boundary. You tried to check if an "
-                    "address or a value is aligned on a non-power of 2 boundary."
-                );
+      NT2_ASSERT_MSG( is_power_of_2(a1)
+                    , "Invalid alignment boundary. You tried to check if an "
+                      "address or value is aligned on a non-power of 2 boundary."
+                    );
       typename make_functor<tag::is_aligned_, A0>::type callee;
       return callee(a0,a1);
     }
