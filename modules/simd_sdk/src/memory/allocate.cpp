@@ -10,7 +10,7 @@
 #include <nt2/simd_sdk/error/error.hpp>
 #include <nt2/simd_sdk/memory/forward.hpp>
 
-namespace nt2 { namespace simd { namespace memory
+namespace boost { namespace simd { namespace memory
 {
   byte* allocate( std::size_t nbytes )
   {

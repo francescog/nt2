@@ -21,7 +21,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <sys/time.h>
 
-namespace nt2 { namespace simd { namespace details
+namespace boost { namespace simd { namespace details
 {
   double now()
   {
@@ -37,7 +37,7 @@ namespace nt2 { namespace simd { namespace details
 ////////////////////////////////////////////////////////////////////////////////
 #include <windows.h>
 
-namespace nt2 { namespace simd { namespace details
+namespace boost { namespace simd { namespace details
 {
   double now()
   {
@@ -55,7 +55,7 @@ namespace nt2 { namespace simd { namespace details
 ////////////////////////////////////////////////////////////////////////////////
 #include <ctime>
 
-namespace nt2 { namespace simd { namespace details
+namespace boost { namespace simd { namespace details
 {
   double now() { return std::clock()/double(CLOCKS_PER_SEC); }
 } } }

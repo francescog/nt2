@@ -11,7 +11,7 @@
 #include <nt2/simd_sdk/timing/tic.hpp>
 #include <nt2/simd_sdk/timing/ctic.hpp>
 
-namespace nt2 { namespace simd { namespace details
+namespace boost { namespace simd { namespace details
 {
   void cycle_based_timer::Print(const cycles_t& val)
   {
