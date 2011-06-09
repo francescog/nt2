@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_CONFIG_VERSION_HPP_INCLUDED
 #define BOOST_SIMD_SDK_CONFIG_VERSION_HPP_INCLUDED
 
-#include <nt2/sdk/config/versioning.hpp>
+#include <nt2/sdk/simd_config/versioning.hpp>
 
 BOOST_SIMD_REGISTER_LIBRARY_VERSION(nt2,3_0)
 

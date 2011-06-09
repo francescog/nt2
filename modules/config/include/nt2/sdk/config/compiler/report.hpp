@@ -14,8 +14,8 @@
 // Defines architecture symbols for architecture related variation point.
 // Documentation: http://nt2.lri.fr/sdk/config/compiler.html
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/config/compiler.hpp>
-#include <nt2/sdk/config/details/reporter.hpp>
+#include <nt2/sdk/simd_config/compiler.hpp>
+#include <nt2/sdk/simd_config/details/reporter.hpp>
 
 namespace boost { namespace simd { namespace config
 {

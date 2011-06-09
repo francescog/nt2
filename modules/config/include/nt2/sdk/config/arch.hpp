@@ -16,16 +16,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/config.hpp>
 #include <boost/version.hpp>
-#include <nt2/sdk/config/bootstrap.hpp>
+#include <nt2/sdk/simd_config/bootstrap.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Include custom specific architectures from extensions folders
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/extension/sdk/config/arch.hpp>
-#include <nt2/sdk/config/arch/powerpc.hpp>
-#include <nt2/sdk/config/arch/x86.hpp>
-#include <nt2/sdk/config/arch/ia64.hpp>
-#include <nt2/sdk/config/arch/none.hpp>
+#include <nt2/sdk/simd_config/arch/powerpc.hpp>
+#include <nt2/sdk/simd_config/arch/x86.hpp>
+#include <nt2/sdk/simd_config/arch/ia64.hpp>
+#include <nt2/sdk/simd_config/arch/none.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Some other architecture specific informations
