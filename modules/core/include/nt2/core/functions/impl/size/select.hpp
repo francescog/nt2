@@ -11,6 +11,7 @@
 
 #include <boost/mpl/if.hpp>
 #include <nt2/sdk/meta/strip.hpp>
+#include <nt2/core/container/extent.hpp>
 #include <boost/fusion/include/fold.hpp>
 
 namespace nt2 { namespace details
