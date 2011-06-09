@@ -6,15 +6,15 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef BOOST_SIMD_SDK_CONFIG_OS_NIX_HPP_INCLUDED
-#define BOOST_SIMD_SDK_CONFIG_OS_NIX_HPP_INCLUDED
+#ifndef NT2_SDK_CONFIG_OS_NIX_HPP_INCLUDED
+#define NT2_SDK_CONFIG_OS_NIX_HPP_INCLUDED
 
-#if !defined(BOOST_SIMD_OS)
+#if !defined(NT2_OS)
   #if     defined(linux)      ||  defined(__linux)                          \
       ||  defined(__linux__)  ||  defined(__unix)  || defined(DOXYGEN_ONLY) \
 
-    #define BOOST_SIMD_OS_LINUX
-    #define BOOST_SIMD_OS BOOST_PLATFORM
+    #define NT2_OS_LINUX
+    #define NT2_OS BOOST_PLATFORM
 
   #endif
 #endif

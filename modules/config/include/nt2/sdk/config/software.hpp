@@ -6,13 +6,13 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef BOOST_SIMD_SDK_CONFIG_SOFTWARE_HPP_INCLUDED
-#define BOOST_SIMD_SDK_CONFIG_SOFTWARE_HPP_INCLUDED
+#ifndef NT2_SDK_CONFIG_SOFTWARE_HPP_INCLUDED
+#define NT2_SDK_CONFIG_SOFTWARE_HPP_INCLUDED
 
 #include <limits.h>
 #include <boost/preprocessor/stringize.hpp>
 
-namespace boost { namespace simd { namespace config
+namespace nt2 { namespace config
 {
   //////////////////////////////////////////////////////////////////////////////
   // Status header reporter - Head for the reporter list
@@ -36,6 +36,6 @@ namespace boost { namespace simd { namespace config
     puts(" Boost libraries version : " BOOST_LIB_VERSION  "\n");
   }
 
-  BOOST_SIMD_REGISTER_STATUS(syslib);
-} } }
+  NT2_REGISTER_STATUS(syslib);
+} }
 #endif

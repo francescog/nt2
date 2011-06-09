@@ -7,6 +7,6 @@
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
 
-#include <nt2/sdk/config/version.hpp>
+#include <nt2/sdk/simd_config/version.hpp>
 
-NT2_USE_LIBRARY_VERSION(nt2,3_0)
+BOOST_SIMD_USE_LIBRARY_VERSION(nt2,3_0)

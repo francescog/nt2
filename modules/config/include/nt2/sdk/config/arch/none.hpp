@@ -6,13 +6,13 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef BOOST_SIMD_SDK_CONFIG_ARCH_NONE_HPP_INCLUDED
-#define BOOST_SIMD_SDK_CONFIG_ARCH_NONE_HPP_INCLUDED
+#ifndef NT2_SDK_CONFIG_ARCH_NONE_HPP_INCLUDED
+#define NT2_SDK_CONFIG_ARCH_NONE_HPP_INCLUDED
 
-#if !defined(BOOST_SIMD_ARCH)
-  #define BOOST_SIMD_ARCH_UNKNOWN
-  #define BOOST_SIMD_ARCH "unknown"
-  #define BOOST_SIMD_ARCH_ALIGNMENT sizeof(void*)
+#if !defined(NT2_ARCH)
+  #define NT2_ARCH_UNKNOWN
+  #define NT2_ARCH "unknown"
+  #define NT2_ARCH_ALIGNMENT sizeof(void*)
 #endif
 
 #endif

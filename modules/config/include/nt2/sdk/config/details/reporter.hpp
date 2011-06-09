@@ -6,13 +6,13 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef BOOST_SIMD_SDK_CONFIG_DETAILS_REPORTER_HPP_INCLUDED
-#define BOOST_SIMD_SDK_CONFIG_DETAILS_REPORTER_HPP_INCLUDED
+#ifndef NT2_SDK_CONFIG_DETAILS_REPORTER_HPP_INCLUDED
+#define NT2_SDK_CONFIG_DETAILS_REPORTER_HPP_INCLUDED
 
 #include <cstdio>
 #include <boost/preprocessor/cat.hpp>
 
-namespace boost { namespace simd { namespace details
+namespace nt2 { namespace details
 {
   //////////////////////////////////////////////////////////////////////////////
   // status reporter structure
@@ -55,25 +55,25 @@ namespace boost { namespace simd { namespace details
     puts("\\****************************************************************/");
     puts(" Last compilation        : " __DATE__ " @ " __TIME__ "\n");
   }
-} } }
+} }
 
 ////////////////////////////////////////////////////////////////////////////////
 // status reporter global instance
 // When called, display the current list fo all status reporter
 // Documentation: http://nt2.lri.fr/sdk/config/function.html
 ////////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace simd { namespace config
+namespace nt2 { namespace config
 {
   details::reporter const status = {details::status_headers,0};
-} } }
+} }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Status reporter registration macro
 ////////////////////////////////////////////////////////////////////////////////
-#define BOOST_SIMD_REGISTER_STATUS(FUNC)                              \
-boost::simd::details::reporter const                                  \
+#define NT2_REGISTER_STATUS(FUNC)                                     \
+nt2::details::reporter const                                          \
 BOOST_PP_CAT(FUNC,_reporter) = { FUNC                                 \
-                               , boost::simd::config::status          \
+                               , nt2::config::status                  \
                                 .link(&BOOST_PP_CAT(FUNC,_reporter))  \
                               }                                       \
 /**/

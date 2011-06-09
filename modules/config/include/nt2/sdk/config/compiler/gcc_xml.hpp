@@ -6,15 +6,15 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef BOOST_SIMD_SDK_CONFIG_COMPILER_GCC_XML_HPP_INCLUDED
-#define BOOST_SIMD_SDK_CONFIG_COMPILER_GCC_XML_HPP_INCLUDED
+#ifndef NT2_SDK_CONFIG_COMPILER_GCC_XML_HPP_INCLUDED
+#define NT2_SDK_CONFIG_COMPILER_GCC_XML_HPP_INCLUDED
 
-#if !defined(BOOST_SIMD_COMPILER)
+#if !defined(NT2_COMPILER)
   #if defined(__GCCXML__) || defined(DOXYGEN_ONLY)
 
-    #define BOOST_SIMD_COMPILER_GNU_C
-    #define BOOST_SIMD_COMPILER_GNU_C_XML
-    #define BOOST_SIMD_COMPILER BOOST_COMPILER
+    #define NT2_COMPILER_GNU_C
+    #define NT2_COMPILER_GNU_C_XML
+    #define NT2_COMPILER BOOST_COMPILER
 
   #endif
 #endif

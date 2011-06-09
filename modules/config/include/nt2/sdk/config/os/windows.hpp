@@ -6,10 +6,10 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef BOOST_SIMD_SDK_CONFIG_OS_WINDOWS_HPP_INCLUDED
-#define BOOST_SIMD_SDK_CONFIG_OS_WINDOWS_HPP_INCLUDED
+#ifndef NT2_SDK_CONFIG_OS_WINDOWS_HPP_INCLUDED
+#define NT2_SDK_CONFIG_OS_WINDOWS_HPP_INCLUDED
 
-#if !defined(BOOST_SIMD_OS)
+#if !defined(NT2_OS)
   #if     defined(_WIN32) || defined(__WIN32__)     \
       ||  defined(WIN32)  || defined(DOXYGEN_ONLY)  \
 
@@ -21,8 +21,8 @@
     #define WIN32_LEAN_AND_MEAN
     #endif
 
-    #define BOOST_SIMD_OS_WINDOWS
-    #define BOOST_SIMD_OS BOOST_PLATFORM
+    #define NT2_OS_WINDOWS
+    #define NT2_OS BOOST_PLATFORM
 
   #endif
 #endif

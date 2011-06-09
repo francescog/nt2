@@ -6,18 +6,18 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef BOOST_SIMD_SDK_CONFIG_TYPES_HPP_INCLUDED
-#define BOOST_SIMD_SDK_CONFIG_TYPES_HPP_INCLUDED
+#ifndef NT2_SDK_CONFIG_TYPES_HPP_INCLUDED
+#define NT2_SDK_CONFIG_TYPES_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Types injection into nt2
-// Injects or define some basic types in boost::simd namespace for consistency sake.
+// Injects or define some basic types in NT2 namespace for consistency sake.
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/config.hpp>
 #include <boost/cstdint.hpp>
 #include <nt2/sdk/meta/make_integer.hpp>
 
-namespace boost { namespace { simd
+namespace nt2
 {
   typedef meta::make_integer<1,unsigned>::type uint8_t;
   typedef meta::make_integer<2,unsigned>::type uint16_t;

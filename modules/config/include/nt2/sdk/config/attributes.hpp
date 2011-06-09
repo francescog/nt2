@@ -6,35 +6,35 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef BOOST_SIMD_SDK_CONFIG_ATTRIBUTES_HPP_INCLUDED
-#define BOOST_SIMD_SDK_CONFIG_ATTRIBUTES_HPP_INCLUDED
+#ifndef NT2_SDK_CONFIG_ATTRIBUTES_HPP_INCLUDED
+#define NT2_SDK_CONFIG_ATTRIBUTES_HPP_INCLUDED
 
 #if defined(__GNUC__)
-#define BOOST_SIMD_ALWAYS_INLINE __attribute__((always_inline))
+#define NT2_ALWAYS_INLINE __attribute__((always_inline))
 #else
-#define BOOST_SIMD_ALWAYS_INLINE
+#define NT2_ALWAYS_INLINE
 #endif
 
 #if defined(_MSC_VER)
-#define BOOST_SIMD_FORCE_INLINE __forceinline
+#define NT2_FORCE_INLINE __forceinline
 #else
-#define BOOST_SIMD_FORCE_INLINE inline
+#define NT2_FORCE_INLINE inline
 #endif
 
 #if defined(__GNUC__)
-#define BOOST_SIMD_NO_INLINE __attribute__((noinline))
+#define NT2_NO_INLINE __attribute__((noinline))
 #elif defined(_MSC_VER)
-#define BOOST_SIMD_NO_INLINE __declspec(noinline)
+#define NT2_NO_INLINE __declspec(noinline)
 #else
-#define BOOST_SIMD_NO_INLINE
+#define NT2_NO_INLINE
 #endif
 
 #if defined(__GNUC__)
-#define BOOST_SIMD_DEPRECATED __attribute__((deprecated))
+#define NT2_DEPRECATED __attribute__((deprecated))
 #elif defined(_MSC_VER)
-#define BOOST_SIMD_DEPRECATED __declspec(deprecated)
+#define NT2_DEPRECATED __declspec(deprecated)
 #else
-#define BOOST_SIMD_DEPRECATED
+#define NT2_DEPRECATED
 #endif
 
 #endif

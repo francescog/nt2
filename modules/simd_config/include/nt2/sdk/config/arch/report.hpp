@@ -6,26 +6,26 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_ARCH_REPORT_HPP_INCLUDED
-#define NT2_SDK_CONFIG_ARCH_REPORT_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_ARCH_REPORT_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_ARCH_REPORT_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Architecture configuration headers report
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/config/arch.hpp>
-#include <nt2/sdk/config/details/reporter.hpp>
+#include <nt2/sdk/simd_config/arch.hpp>
+#include <nt2/sdk/simd_config/details/reporter.hpp>
 
-namespace nt2 { namespace config
+namespace boost { namespace simd { namespace config
 {
   //////////////////////////////////////////////////////////////////////////////
   // Status header reporter - Head for the reporter list
   //////////////////////////////////////////////////////////////////////////////
   inline void architecture()
   {
-    puts(" CPU Architecture        : " NT2_ARCH "\n");
+    puts(" CPU Architecture        : " BOOST_SIMD_ARCH "\n");
   }
 
-  NT2_REGISTER_STATUS(architecture);
-} }
+  BOOST_SIMD_REGISTER_STATUS(architecture);
+} } }
 
 #endif

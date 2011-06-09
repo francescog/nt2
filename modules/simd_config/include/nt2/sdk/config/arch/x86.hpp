@@ -6,31 +6,31 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_ARCH_X86_HPP_INCLUDED
-#define NT2_SDK_CONFIG_ARCH_X86_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_ARCH_X86_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_ARCH_X86_HPP_INCLUDED
 
-#if !defined(NT2_ARCH)
+#if !defined(BOOST_SIMD_ARCH)
 
   #if     defined(__x86_64__)     || defined(_M_X64)      \
       ||  defined(DOXYGEN_ONLY)
-    #define NT2_ARCH_X86_64
+    #define BOOST_SIMD_ARCH_X86_64
   #endif
   
-  #if     defined(NT2_ARCH_X86_64)                        \
+  #if     defined(BOOST_SIMD_ARCH_X86_64)                        \
       ||  defined(__i386__)       || defined(_M_IX86)     \
       ||  defined(__INTEL__)      || defined(_X86_)       \
       ||  defined(__THW_INTEL__)  || defined(DOXYGEN_ONLY)
-    #define NT2_ARCH_X86
+    #define BOOST_SIMD_ARCH_X86
   #endif
   
-  #if defined(NT2_ARCH_X86_64) ||  defined(DOXYGEN_ONLY)
-    #define NT2_ARCH "Intel x86_64"
-  #elif defined(NT2_ARCH_X86)
-    #define NT2_ARCH "Intel x86"
+  #if defined(BOOST_SIMD_ARCH_X86_64) ||  defined(DOXYGEN_ONLY)
+    #define BOOST_SIMD_ARCH "Intel x86_64"
+  #elif defined(BOOST_SIMD_ARCH_X86)
+    #define BOOST_SIMD_ARCH "Intel x86"
   #endif
   
-  #if defined(NT2_ARCH) || defined(DOXYGEN_ONLY)
-    #define NT2_ARCH_ALIGNMENT 16
+  #if defined(BOOST_SIMD_ARCH) || defined(DOXYGEN_ONLY)
+    #define BOOST_SIMD_ARCH_ALIGNMENT 16
   #endif
   
 #endif

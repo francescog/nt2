@@ -6,18 +6,18 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_ARCH_POWERPC_HPP_INCLUDED
-#define NT2_SDK_CONFIG_ARCH_POWERPC_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_ARCH_POWERPC_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_ARCH_POWERPC_HPP_INCLUDED
 
-#if !defined(NT2_ARCH)
+#if !defined(BOOST_SIMD_ARCH)
   #if   defined(__powerpc)    || defined(__powerpc__) \
     ||  defined(__POWERPC__)  || defined(__ppc__)     \
     ||  defined(_M_PPC)       || defined(_ARCH_PPC)   \
     ||  defined(DOXYGEN_ONLY)
 
-    #define NT2_ARCH_POWERPC
-    #define NT2_ARCH "Power PC"
-    #define NT2_ARCH_ALIGNMENT 16
+    #define BOOST_SIMD_ARCH_POWERPC
+    #define BOOST_SIMD_ARCH "Power PC"
+    #define BOOST_SIMD_ARCH_ALIGNMENT 16
 
   #endif
 #endif

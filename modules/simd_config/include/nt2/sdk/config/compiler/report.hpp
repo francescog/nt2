@@ -6,25 +6,25 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_COMPILER_REPORT_HPP_INCLUDED
-#define NT2_SDK_CONFIG_COMPILER_REPORT_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_COMPILER_REPORT_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_COMPILER_REPORT_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Architecture configuration headers
 // Defines architecture symbols for architecture related variation point.
 // Documentation: http://nt2.lri.fr/sdk/config/compiler.html
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/config/compiler.hpp>
-#include <nt2/sdk/config/details/reporter.hpp>
+#include <nt2/sdk/simd_config/compiler.hpp>
+#include <nt2/sdk/simd_config/details/reporter.hpp>
 
-namespace nt2 { namespace config
+namespace boost { namespace simd { namespace config
 {
   //////////////////////////////////////////////////////////////////////////////
   // Status header reporter - Head for the reporter list
   //////////////////////////////////////////////////////////////////////////////
   inline void compiler()
   {
-    puts(" Compiler                : " NT2_COMPILER);
+    puts(" Compiler                : " BOOST_SIMD_COMPILER);
     puts(" Rvalue references       : "
     #if   defined(BOOST_NO_RVALUE_REFERENCES)
           "unsupported"
@@ -43,7 +43,7 @@ namespace nt2 { namespace config
         );
   }
 
-  NT2_REGISTER_STATUS(compiler);
-} }
+  BOOST_SIMD_REGISTER_STATUS(compiler);
+} } }
 
 #endif

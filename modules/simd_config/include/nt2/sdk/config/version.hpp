@@ -6,11 +6,11 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_VERSION_HPP_INCLUDED
-#define NT2_SDK_CONFIG_VERSION_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_VERSION_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_VERSION_HPP_INCLUDED
 
-#include <nt2/sdk/config/versioning.hpp>
+#include <nt2/sdk/simd_config/versioning.hpp>
 
-NT2_REGISTER_LIBRARY_VERSION(nt2,3_0)
+BOOST_SIMD_REGISTER_LIBRARY_VERSION(nt2,3_0)
 
 #endif

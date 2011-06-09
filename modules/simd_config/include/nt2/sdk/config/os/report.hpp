@@ -6,27 +6,27 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_OS_REPORT_HPP_INCLUDED
-#define NT2_SDK_CONFIG_OS_REPORT_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_OS_REPORT_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_OS_REPORT_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // OS reporting
 // TODO: Documentation: http://nt2.lri.fr/doc/build/html/sdk/config/platform.html
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/config/os.hpp>
-#include <nt2/sdk/config/details/reporter.hpp>
+#include <nt2/sdk/simd_config/os.hpp>
+#include <nt2/sdk/simd_config/details/reporter.hpp>
 
-namespace nt2 { namespace config
+namespace boost { namespace simd { namespace config
 {
   //////////////////////////////////////////////////////////////////////////////
   // Status header reporter - Head for the reporter list
   //////////////////////////////////////////////////////////////////////////////
   inline void os()
   {
-    puts(" Operating System        : " NT2_OS );
+    puts(" Operating System        : " BOOST_SIMD_OS );
   }
 
-  NT2_REGISTER_STATUS(os);
-} }
+  BOOST_SIMD_REGISTER_STATUS(os);
+} } }
 
 #endif

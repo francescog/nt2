@@ -6,10 +6,10 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_COMPILER_VISUALC_HPP_INCLUDED
-#define NT2_SDK_CONFIG_COMPILER_VISUALC_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_COMPILER_VISUALC_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_COMPILER_VISUALC_HPP_INCLUDED
 
-#if !defined(NT2_COMPILER)
+#if !defined(BOOST_SIMD_COMPILER)
   #if defined(BOOST_MSVC)
 
   //////////////////////////////////////////////////////////////////////////////
@@ -20,8 +20,8 @@
   #pragma warning( disable : 4804 ) // unsafe use of >
   #pragma warning( disable : 4996 ) // unsafe iostream call
 
-  #define NT2_COMPILER_MSVC
-  #define NT2_COMPILER BOOST_COMPILER
+  #define BOOST_SIMD_COMPILER_MSVC
+  #define BOOST_SIMD_COMPILER BOOST_COMPILER
 
   #endif
 #endif

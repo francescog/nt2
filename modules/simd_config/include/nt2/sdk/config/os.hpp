@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_OS_HPP_INCLUDED
-#define NT2_SDK_CONFIG_OS_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_OS_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_OS_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Architecture configuration headers
@@ -17,12 +17,12 @@
 
 #include <boost/config.hpp>
 #include <boost/version.hpp>
-#include <nt2/sdk/config/bootstrap.hpp>
+#include <nt2/sdk/simd_config/bootstrap.hpp>
 
 #include <nt2/extension/sdk/config/os.hpp>
-#include <nt2/sdk/config/os/nix.hpp>
-#include <nt2/sdk/config/os/windows.hpp>
-#include <nt2/sdk/config/os/macos.hpp>
-#include <nt2/sdk/config/os/none.hpp>
+#include <nt2/sdk/simd_config/os/nix.hpp>
+#include <nt2/sdk/simd_config/os/windows.hpp>
+#include <nt2/sdk/simd_config/os/macos.hpp>
+#include <nt2/sdk/simd_config/os/none.hpp>
 
 #endif
