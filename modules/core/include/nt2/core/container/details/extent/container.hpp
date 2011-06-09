@@ -11,10 +11,10 @@
 
 /*!
  * \file
- * \brief Implemets the container behavior for extent and extent expressions
+ * \brief Implements the container behavior for extent and extent expressions
  */
 
-#include <boost/fusion/include/single_view.hpp>
+#include <boost/fusion/include/make_vector.hpp>
 
 namespace nt2 { namespace containers
 {
@@ -56,10 +56,39 @@ namespace nt2 { namespace containers
     typedef std::size_t                             value_type;
     typedef std::size_t                             const_reference;
     typedef std::size_t                             reference;
+    typedef std::size_t                             size_type;
+    typedef std::size_t                             difference_type;
 
-    const_reference operator()(std::size_t i) const
+    //==========================================================================
+    /*!
+     * Return the lowest valid index to access the ith dimension of current \ref
+     * extent.
+     *
+     * \param i Dimension to retrieve the lower index from.
+     * \return The lowest valid index of the \ref extent along this dimension.
+     *
+     * \see Container
+     */
+    //==========================================================================
+    static inline base_type lower(std::size_t i) { return 1; }
+
+    //==========================================================================
+    /*! Return the number of dimensions stored in the extent.                */
+    //==========================================================================
+    static inline size_type size() { return static_dimensions; }
+
+    //==========================================================================
+    /*! Return if an \ref extent is empty.                                   */
+    //==========================================================================
+    static inline bool empty() { return (size() == 0); }
+
+    #define NT2_ACCESS_CONST
+    //#include <nt2/core/container/details/access.hpp>
+
+    template<class Position>
+    const_reference operator()(Position const& p) const
     {
-      return nt2::value_at( *this, boost::fusion::single_view<int>(i) );
+      return nt2::value_at( *this, p );
     }
   };
 } }

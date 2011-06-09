@@ -51,10 +51,7 @@ namespace nt2 { namespace containers
     iterator        end()         { return iterator(0);       }
     const_iterator  end()   const { return const_iterator(0); }
 
-    inline size_type        size()                const { return 0;     }
-    inline bool             empty()               const { return true;  }
     inline size_type        size(std::size_t i)   const { return 1;     }
-    inline base_type        lower(std::size_t i)  const { return 1;     }
     inline difference_type  upper(std::size_t i)  const { return 1;     }
     inline std::size_t      nDims()               const { return 0;     }
   };

@@ -308,19 +308,20 @@ BOOST_PP_REPEAT(n,M1,~)                                                     \
      * \param i Index of the value to access
      */
     //==========================================================================
-    template<class Index> inline
-    typename
-    boost::enable_if_c<   (!Dimensions::is_static::value)
-    &&  (boost::is_integral<Index>::value)
+    #define NT2_ACCESS_NON_CONST
+    //#include <nt2/core/container/details/access.hpp>
+/*
+    template<class Position> inline
+    typename boost::enable_if_c
+    <     ( !Dimensions::is_static::value )
+      &&  ( boost::fusion::traits::is_sequence<Position>::value )
     , reference
     >::type
-    operator()(Index i)
+    operator()(Position const& p)
     {
-      // this should be part of container interface
-      NT2_ASSERT_ACCESS(1, i );
-      return boost::proto::value(*this)[i-1];
+      return boost::proto::value(*this)[boost::fusion::front(p)-1];
     }
-
+*/
     //==========================================================================
     /*!
      * Constant elementwise access to \ref extent value. For any index i
@@ -331,22 +332,15 @@ BOOST_PP_REPEAT(n,M1,~)                                                     \
      * \param i Index of the value to access
      */
     //==========================================================================
-    const_reference operator()(std::size_t i) const
+    const_reference operator()(difference_type i) const
     {
-      // this should be part of container interface
-      NT2_ASSERT_ACCESS(1, i );
       return boost::proto::value(*this)[i-1];
     }
 
-    //==========================================================================
-    /*! Return the number of dimensions stored in the extent.                */
-    //==========================================================================
-    static inline size_type size() { return parent::static_dimensions; }
-
-    //==========================================================================
-    /*! Return if an \ref extent is empty.                                   */
-    //==========================================================================
-    static inline bool empty() { return false; }
+    reference operator()(difference_type i)
+    {
+      return boost::proto::value(*this)[i-1];
+    }
 
     //==========================================================================
     /*!
@@ -393,19 +387,6 @@ BOOST_PP_REPEAT(n,M1,~)                                                     \
     {
       return (i<=1) ? parent::static_dimensions : 1;
     }
-
-    //==========================================================================
-    /*!
-     * Return the lowest valid index to access the ith dimension of current \ref
-     * extent.
-     *
-     * \param i Dimension to retrieve the lower index from.
-     * \return The lowest valid index of the \ref extent along this dimension.
-     *
-     * \see Container
-     */
-    //==========================================================================
-    inline base_type lower(std::size_t i)  const { return 1; }
 
     //==========================================================================
     /*!
