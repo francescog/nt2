@@ -13,7 +13,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::modulo_     , tag::cpu_, (A0)(A1)
                       , (integer_<A0>)(integer_<A1>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //============================================================================
   // Modulo
@@ -33,6 +33,6 @@ namespace nt2 { namespace ext
 
     BOOST_SIMD_FUNCTOR_CALL(2) { return a0 % a1; }
   };
-} }
+} } }
 
 #endif

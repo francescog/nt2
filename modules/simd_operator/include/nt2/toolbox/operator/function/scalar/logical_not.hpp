@@ -13,7 +13,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::logical_not_ , tag::cpu_, (A0)
                       , (fundamental_<A0>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //============================================================================
   // Logical not
@@ -32,6 +32,6 @@ namespace nt2 { namespace ext
 
     BOOST_SIMD_FUNCTOR_CALL(1) { return !a0; }
   };
-} }
+} } }
 
 #endif

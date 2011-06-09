@@ -19,7 +19,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::logical_and_, tag::cpu_, (A0)(A1)(X)
                         ((simd_<arithmetic_<A1>,X>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class X,class Dummy>
   struct  call< tag::logical_and_ ( tag::simd_<tag::arithmetic_,X> 
@@ -38,6 +38,6 @@ namespace nt2 { namespace ext
       return neq(a0, Zero<A0>()) & neq(a1, Zero<A0>());
     }
   };
-} }
+} } }
 
 #endif

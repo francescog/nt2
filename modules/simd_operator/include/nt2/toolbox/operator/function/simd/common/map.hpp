@@ -36,7 +36,7 @@
 BOOST_SIMD_REGISTER_DISPATCH ( tag::map_, tag::cpu_, (Func)(A0)(X)           \
                       , (unspecified_<Func>)BOOST_PP_REPEAT(n,M0,~)          \
                       )                                                      \
-namespace nt2 { namespace ext                                                \
+namespace boost { namespace simd { namespace ext                             \
 {                                                                            \
   template<class X, class Dummy>                                             \
   struct  call<tag::map_( tag::unspecified_                                  \
@@ -80,7 +80,7 @@ namespace nt2 { namespace ext                                                \
       return load<ntype>(&tmp[0], 0);                                        \
     }                                                                        \
   };                                                                         \
-} }                                                                          \
+} } }                                                                        \
 /**/
 
 BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_SIMD_MAX_ARITY),M4,~)

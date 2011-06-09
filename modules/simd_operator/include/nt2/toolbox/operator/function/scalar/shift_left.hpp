@@ -17,7 +17,7 @@ BOOST_SIMD_REGISTER_DISPATCH( tag::shift_left_, tag::cpu_
                      , (real_<A0>)(integer_<A1>)
                      );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call<tag::shift_left_(tag::real_,tag::integer_), tag::cpu_, Dummy>
@@ -34,14 +34,14 @@ namespace nt2 { namespace ext
       return t0.value;
     }
   };
-} }
+} } }
 
 BOOST_SIMD_REGISTER_DISPATCH( tag::shift_left_ , tag::cpu_
                      , (A0)(A1)
                      , (integer_<A0>)(integer_<A1>)
                      );
                      
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call<tag::shift_left_(tag::integer_,tag::integer_), tag::cpu_, Dummy>
@@ -58,6 +58,6 @@ namespace nt2 { namespace ext
 
     BOOST_SIMD_FUNCTOR_CALL(2) { return a0 << a1; }
   };
-} }
+} } }
 
 #endif

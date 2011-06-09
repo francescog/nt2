@@ -15,7 +15,7 @@
 
 #include <boost/proto/tags.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
@@ -25,7 +25,7 @@ namespace nt2
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::if_else_          , if_else         , 3 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::if_else_          , where           , 3 )
 
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/if_else.hpp>
 #include <nt2/toolbox/operator/function/simd/all/if_else.hpp>

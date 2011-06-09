@@ -15,7 +15,7 @@
 
 #include <boost/proto/tags.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
@@ -25,7 +25,7 @@ namespace nt2
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::divides_             , divides         , 2 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::divides_             , div             , 2 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::divides_             , rdiv            , 2 )
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/divides.hpp>
 #include <nt2/toolbox/operator/function/simd/all/divides.hpp>

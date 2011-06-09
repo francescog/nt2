@@ -23,7 +23,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::bitwise_xor_, tag::cpu_, (A0)(A1)
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::bitwise_xor_ ( tag::simd_<tag::arithmetic_,tag::altivec_>
@@ -44,6 +44,6 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 #endif

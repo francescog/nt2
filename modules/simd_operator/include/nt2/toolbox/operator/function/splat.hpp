@@ -12,7 +12,7 @@
 #include <nt2/toolbox/operator/include.hpp>
 #include <nt2/sdk/meta/as.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
@@ -26,7 +26,7 @@ namespace nt2
     typename make_functor<tag::splat_, A0>::type callee;
     return callee(a0, meta::as_<T>() );
   }
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/splat.hpp>
 #include <nt2/toolbox/operator/function/simd/all/splat.hpp>

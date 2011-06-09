@@ -18,7 +18,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::logical_not_, tag::cpu_, (A0)(A1)(X)
                         ((simd_<arithmetic_<A1>,X>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class X,class Dummy>
   struct  call< tag::logical_not_ ( tag::simd_<tag::arithmetic_,X> 
@@ -34,9 +34,9 @@ namespace nt2 { namespace ext
 
     BOOST_SIMD_FUNCTOR_CALL(1)
     {
-      return nt2::eq(a0,nt2::Zero<A0>());
+      return boost::simd::eq(a0,boost::simd::Zero<A0>());
     }
   };
-} }
+} } }
 
 #endif

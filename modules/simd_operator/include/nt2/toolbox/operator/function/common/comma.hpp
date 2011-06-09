@@ -21,7 +21,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::comma_,tag::cpu_
                       , (unspecified_<A0>)(unspecified_<A1>)
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //////////////////////////////////////////////////////////////////////////////
   // Comma basically evaluates its arguments and returns the second one
@@ -38,6 +38,6 @@ namespace nt2 { namespace ext
 
     BOOST_SIMD_FUNCTOR_CALL(2) { ignore_unused(a0); return a1; }
   };
-} }
+} } }
 
 #endif

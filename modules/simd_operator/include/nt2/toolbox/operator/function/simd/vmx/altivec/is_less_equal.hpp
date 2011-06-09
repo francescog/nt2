@@ -25,12 +25,12 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
-  struct  call< tag::is_less_equal_	( tag::simd_<tag::float_,tag::altivec_>
-																		, tag::simd_<tag::float_,tag::altivec_>
-																		)
+  struct  call< tag::is_less_equal_( tag::simd_<tag::float_,tag::altivec_>	
+                                   , tag::simd_<tag::float_,tag::altivec_
+                                   )
               , tag::cpu_, Dummy
               >
         : callable
@@ -44,7 +44,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
@@ -57,12 +57,12 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
-  struct  call< tag::is_less_equal_	( tag::simd_<tag::arithmetic_,tag::altivec_>
-																		, tag::simd_<tag::arithmetic_,tag::altivec_>
-																		)
+  struct  call< tag::is_less_equal_( tag::simd_<tag::arithmetic_,tag::altivec_>
+                                   , tag::simd_<tag::arithmetic_,tag::altivec_>
+				   )
               , tag::cpu_, Dummy
               >
         : callable
@@ -73,10 +73,10 @@ namespace nt2 { namespace ext
     BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 lt   = { simd::native_cast<A0>(vec_cmpgt(a0(),a1())) };
-      A0 that = { nt2::complement(lt) };
+      A0 that = { boost::simd::complement(lt) };
       return that;
     }
   };
-} }
+} } }
 
 #endif

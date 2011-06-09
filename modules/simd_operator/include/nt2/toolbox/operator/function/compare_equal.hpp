@@ -15,11 +15,11 @@
 
 #include <nt2/toolbox/operator/specific/compare_tags.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::compare_equal_, compare_equal , 2 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::compare_equal_, compare_eq    , 2 )
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/compare_equal.hpp>
 #include <nt2/toolbox/operator/function/simd/all/compare_equal.hpp>

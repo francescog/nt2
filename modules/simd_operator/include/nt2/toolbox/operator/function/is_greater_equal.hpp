@@ -15,7 +15,7 @@
 
 #include <boost/proto/tags.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
@@ -24,7 +24,7 @@ namespace nt2
   
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::is_greater_equal_, is_greater_equal , 2 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::is_greater_equal_, ge               , 2 )
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/is_greater_equal.hpp>
 #include <nt2/toolbox/operator/function/simd/all/is_greater_equal.hpp>

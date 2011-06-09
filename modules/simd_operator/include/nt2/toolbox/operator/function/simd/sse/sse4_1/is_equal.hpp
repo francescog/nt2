@@ -19,7 +19,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_equal_, tag::sse4_1_, (A0)
                         ((simd_<ints64_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_equal_( tag::simd_<tag::ints64_,tag::sse_>
@@ -39,7 +39,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 #endif
 

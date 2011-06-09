@@ -27,7 +27,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::store_
                         (integer_<A2>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class X, class Dummy>
   struct  call< tag::store_ ( tag::simd_<tag::fundamental_, X >
@@ -49,6 +49,6 @@ namespace nt2 { namespace ext
       return a0;
     }
   };
-} }
+} } }
 
 #endif

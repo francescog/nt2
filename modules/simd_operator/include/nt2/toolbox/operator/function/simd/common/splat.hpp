@@ -25,7 +25,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)(X)
                       , (unspecified_<A0>)
                         ((target_< simd_< unspecified_<A1>, X > >))
                       )
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class X, class Dummy>
   struct  call< tag::splat_ ( tag::unspecified_
@@ -52,6 +52,6 @@ namespace nt2 { namespace ext
       return load<ntype>(&tmp[0], 0);
     }
   };
-} }
+} } }
 
 #endif

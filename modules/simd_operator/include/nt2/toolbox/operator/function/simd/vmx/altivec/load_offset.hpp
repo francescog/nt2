@@ -22,7 +22,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::load_
                         (mpl_integral_< integer_<N> >)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::load_( tag::iterator_<tag::fundamental_>
@@ -69,7 +69,7 @@ namespace nt2 { namespace ext
       );
 
       typedef typename BOOST_SIMD_RETURN_TYPE(4)::type type;
-      return nt2::load<type>(a0,a1+offset);
+      return boost::simd::load<type>(a0,a1+offset);
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -120,6 +120,6 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 #endif

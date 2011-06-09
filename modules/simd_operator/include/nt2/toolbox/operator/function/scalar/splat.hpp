@@ -22,7 +22,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_
                       , (fundamental_<A0>)(target_< fundamental_<A1> >)
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::splat_(tag::fundamental_,tag::target_<tag::fundamental_>)
@@ -44,6 +44,6 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 #endif

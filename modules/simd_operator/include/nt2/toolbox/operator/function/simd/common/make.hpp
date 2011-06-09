@@ -22,7 +22,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)(X)
                       , ((target_< simd_< arithmetic_<A0>, X > >))
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class X, class Dummy>
   struct call< tag::make_ ( tag::target_<tag::simd_<tag::arithmetic_, X> >
@@ -44,6 +44,6 @@ namespace nt2 { namespace ext
     BOOST_SIMD_PP_REPEAT_POWER_OF_2(M0, ~)
     #undef M0
   };
-} }
+} } }
 
 #endif

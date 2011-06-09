@@ -30,7 +30,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::load_
                         ((target_< simd_< fundamental_<T>, X > >))
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class X, class Dummy>
   struct  call< tag::load_( tag::iterator_<tag::fundamental_>
@@ -54,7 +54,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over load_ on simd types with an offset
@@ -68,7 +68,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::load_
                         (mpl_integral_< integer_<Offset> >)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class X, class Dummy>
   struct  call< tag::load_( tag::iterator_<tag::fundamental_>
@@ -93,6 +93,6 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 #endif

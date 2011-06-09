@@ -12,7 +12,7 @@
 #include <nt2/toolbox/operator/include.hpp>
 #include <nt2/sdk/meta/as.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
@@ -69,7 +69,7 @@ namespace nt2
 
   BOOST_SIMD_PP_REPEAT_POWER_OF_2(M0, ~)
   #undef M0
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/make.hpp>
 #include <nt2/toolbox/operator/function/simd/all/make.hpp>

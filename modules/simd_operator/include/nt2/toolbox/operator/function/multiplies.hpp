@@ -15,7 +15,7 @@
 
 #include <boost/proto/tags.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
@@ -24,7 +24,7 @@ namespace nt2
   
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::multiplies_             , multiplies      , 2 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::multiplies_             , mul             , 2 )
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/multiplies.hpp>
 #include <nt2/toolbox/operator/function/simd/all/multiplies.hpp>

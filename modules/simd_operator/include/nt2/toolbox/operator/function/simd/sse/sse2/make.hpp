@@ -24,7 +24,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
                       , ((target_< simd_< double_<A0>, tag::sse_ > >))
                       )
                       
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct call< tag::make_ ( tag::target_<tag::simd_<tag::double_,tag::sse_> >
@@ -41,7 +41,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 /////////////////////////////////////////////////////////////////////////////
 // Implementation for float
@@ -50,7 +50,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
                       , ((target_< simd_< float_<A0>, tag::sse_ > >))
                       )
                       
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct call< tag::make_ ( tag::target_<tag::simd_<tag::float_,tag::sse_> >
@@ -67,7 +67,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 /////////////////////////////////////////////////////////////////////////////
 // Implementation for 64-bit integers
@@ -76,7 +76,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
                       , ((target_< simd_< ints64_<A0>, tag::sse_ > >))
                       )
                       
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct call< tag::make_ ( tag::target_<tag::simd_<tag::ints64_,tag::sse_> >
@@ -107,7 +107,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
   
 /////////////////////////////////////////////////////////////////////////////
 // Implementation for 32-bit integers
@@ -116,7 +116,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
                       , ((target_< simd_< ints32_<A0>, tag::sse_ > >))
                       )
   
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
  template<class Dummy>
   struct call< tag::make_ ( tag::target_<tag::simd_<tag::ints32_,tag::sse_> >
@@ -133,7 +133,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
   
 /////////////////////////////////////////////////////////////////////////////
 // Implementation for 16-bit integers
@@ -142,7 +142,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
                       , ((target_< simd_< ints16_<A0>, tag::sse_ > >))
                       )
                       
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct call< tag::make_ ( tag::target_<tag::simd_<tag::ints16_,tag::sse_> >
@@ -163,7 +163,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 /////////////////////////////////////////////////////////////////////////////
 // Implementation for 8-bit integers
@@ -172,7 +172,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
                       , ((target_< simd_< ints8_<A0>, tag::sse_ > >))
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct call< tag::make_ ( tag::target_<tag::simd_<tag::ints8_,tag::sse_> >
@@ -195,6 +195,6 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 #endif

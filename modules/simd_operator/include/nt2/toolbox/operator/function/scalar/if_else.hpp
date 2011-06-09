@@ -13,7 +13,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::if_else_ , tag::cpu_, (A0)(A1)(A2)
                       , (fundamental_<A0>)(fundamental_<A1>)(fundamental_<A2>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //============================================================================
   // Ternary operator
@@ -35,6 +35,6 @@ namespace nt2 { namespace ext
 
     BOOST_SIMD_FUNCTOR_CALL(3) { return a0 ? a1 : a2; }
   };
-} }
+} } }
 
 #endif

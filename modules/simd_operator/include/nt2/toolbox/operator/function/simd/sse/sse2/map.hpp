@@ -39,13 +39,13 @@
 #define M1(z,n,t) ,tag::simd_<tag::arithmetic_,tag::sse_>
 
 #define M0(z,n,t)                                                           \
-BOOST_SIMD_REGISTER_DISPATCH ( tag::map_,tag::cpu_                                 \
+BOOST_SIMD_REGISTER_DISPATCH ( tag::map_,tag::cpu_                          \
                       , (Func)BOOST_PP_REPEAT(n,M5,t)                       \
                       , (unspecified_<Func>)                                \
                         ((simd_<BOOST_PP_TUPLE_ELEM(2,0,t)<A0>,tag::sse_>)) \
                          BOOST_PP_REPEAT(BOOST_PP_DEC(n),M2,t)              \
                       )                                                     \
-namespace nt2 { namespace ext                                               \
+namespace boost { namespace simd { namespace ext                            \
 {                                                                           \
   template<class Dummy>                                                     \
   struct call < tag::map_ ( tag::unspecified_                               \
@@ -81,7 +81,7 @@ namespace nt2 { namespace ext                                               \
       return make<ntype>(BOOST_PP_ENUM(BOOST_PP_TUPLE_ELEM(2,1,t),M3,n));   \
     }                                                                       \
   };                                                                        \
-} }                                                                         \
+} } }                                                                       \
 /**/
 
 #define BOOST_SIMD_SIMD_MAP_CALL(T,C)                          \

@@ -13,14 +13,16 @@
 #include <nt2/include/functor.hpp>
 #include <nt2/toolbox/operator/include.hpp>
 
-namespace nt2 { namespace tag { struct map_ {}; } }
+namespace boost { namespace simd {
+  namespace tag { struct map_ {}; }
+}
 
-namespace nt2
+namespace boost { namespace simd
 {
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::map_,map,2)
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::map_,map,3)
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::map_,map,4)
-}
+} }
 
 #include <nt2/toolbox/operator/function/simd/all/map.hpp>
 

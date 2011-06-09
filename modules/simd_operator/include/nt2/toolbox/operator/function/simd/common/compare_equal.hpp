@@ -22,7 +22,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::compare_equal_, tag::cpu_, (A0)(X)
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class X, class Dummy>
   struct  call< tag::compare_equal_ ( tag::simd_<tag::arithmetic_,X>
@@ -42,6 +42,6 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 #endif

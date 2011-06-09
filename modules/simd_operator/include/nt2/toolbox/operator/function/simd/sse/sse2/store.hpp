@@ -28,7 +28,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::store_
                         (integer_<A2>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::store_ ( tag::simd_<tag::double_,tag::sse_>
@@ -50,7 +50,7 @@ namespace nt2 { namespace ext
       return a0;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over store for float SIMD types
@@ -63,7 +63,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::store_
                         (integer_<A2>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::store_ ( tag::simd_<tag::float_,tag::sse_>
@@ -85,7 +85,7 @@ namespace nt2 { namespace ext
       return a0;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over store for integral SIMD types
@@ -98,7 +98,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::store_
                         (integer_<A2>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::store_ ( tag::simd_<tag::integer_,tag::sse_>
@@ -120,6 +120,6 @@ namespace nt2 { namespace ext
       return a0;
     }
   };
-} }
+} } }
 
 #endif

@@ -36,7 +36,7 @@ BOOST_SIMD_REGISTER_DISPATCH_IF(tag::shift_right_, tag::cpu_,
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy,class X>
   struct  call< tag::shift_right_ ( tag::simd_<tag::arithmetic_,X> 
@@ -59,6 +59,6 @@ namespace nt2 { namespace ext
       return simd::native_cast<A0>(shift_right(simd::native_cast<int_type>(a0), a1));
     }
   };
-} }
+} } }
 
 #endif

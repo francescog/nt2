@@ -31,7 +31,7 @@ BOOST_SIMD_REGISTER_DISPATCH_IF(tag::bitwise_and_, tag::cpu_,
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy,class X>
   struct  call< tag::bitwise_and_ ( tag::simd_<tag::arithmetic_,X> 
@@ -53,6 +53,6 @@ namespace nt2 { namespace ext
       return bitwise_and(a0, simd::native_cast<A0>(a1));
     }
   };
-} }
+} } }
 
 #endif

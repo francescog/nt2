@@ -15,7 +15,7 @@
 
 #include <boost/proto/tags.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
@@ -24,7 +24,7 @@ namespace nt2
   
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::is_less_, is_less , 2 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::is_less_, lt      , 2 )
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/is_less.hpp>
 #include <nt2/toolbox/operator/function/simd/all/is_less.hpp>

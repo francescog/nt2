@@ -24,7 +24,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                         ((simd_<double_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_less_ ( tag::simd_<tag::double_,tag::sse_>
@@ -44,7 +44,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for float
@@ -54,7 +54,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                         ((simd_<float_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_less_ ( tag::simd_<tag::float_,tag::sse_>
@@ -74,7 +74,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for unsigned types
@@ -84,7 +84,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                         ((simd_<unsigned_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_less_ ( tag::simd_<tag::unsigned_,tag::sse_>
@@ -103,11 +103,11 @@ namespace nt2 { namespace ext
       typedef typename meta::as_integer<A0, signed>::type stype;
       stype tmp1 = simd::native_cast<stype>(a0) - Signmask<stype>();
       stype tmp2 = simd::native_cast<stype>(a1) - Signmask<stype>();
-      stype tmp = nt2::lt(tmp1,tmp2);
+      stype tmp = boost::simd::lt(tmp1,tmp2);
       return simd::native_cast<A0>(tmp);
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for int8 types
@@ -117,7 +117,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                         ((simd_<int8_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_less_ ( tag::simd_<tag::int8_,tag::sse_>
@@ -137,7 +137,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for int16 types
@@ -147,7 +147,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                         ((simd_<int16_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_less_ ( tag::simd_<tag::int16_,tag::sse_>
@@ -167,7 +167,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for int32 types
@@ -177,7 +177,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                         ((simd_<int32_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_less_ ( tag::simd_<tag::int32_,tag::sse_>
@@ -197,7 +197,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for int64 types
@@ -207,7 +207,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                         ((simd_<int64_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_less_ ( tag::simd_<tag::int64_,tag::sse_>
@@ -231,10 +231,10 @@ namespace nt2 { namespace ext
       type ah  = { _mm_shuffle_epi32(sa0, _MM_SHUFFLE(3, 3, 1, 1)) };
       type bh  = { _mm_shuffle_epi32(sa1, _MM_SHUFFLE(3, 3, 1, 1)) };
 
-      A0 that  = { nt2::lt(ah,bh) | (nt2::eq(ah,bh) & nt2::lt(al,bl)) };
+      A0 that  = { boost::simd::lt(ah,bh) | (boost::simd::eq(ah,bh) & boost::simd::lt(al,bl)) };
       return that;
     }
   };
-} }
+} } }
 
 #endif

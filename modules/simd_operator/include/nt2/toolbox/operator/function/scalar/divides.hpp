@@ -13,7 +13,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::divides_    , tag::cpu_, (A0)(A1)
                       , (arithmetic_<A0>)(arithmetic_<A1>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //============================================================================
   // Divides
@@ -33,6 +33,6 @@ namespace nt2 { namespace ext
 
     BOOST_SIMD_FUNCTOR_CALL(2) { return a0/a1; }
   };
-} }
+} } }
 
 #endif

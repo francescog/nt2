@@ -53,7 +53,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::multiplies_, tag::cpu_, (A0)
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::multiplies_( tag::simd_<tag::double_,tag::sse_>
@@ -186,7 +186,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 #endif
 

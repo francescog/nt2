@@ -14,7 +14,7 @@ BOOST_SIMD_REGISTER_DISPATCH( tag::compare_less_, tag::cpu_
                      , (fundamental_<A0>)(fundamental_<A1>)
                      );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call<tag::compare_less_(tag::fundamental_,tag::fundamental_), tag::cpu_, Dummy>
@@ -26,6 +26,6 @@ namespace nt2 { namespace ext
       return a0 < a1;
     }
   };
-} } 
+} } } 
 
 #endif

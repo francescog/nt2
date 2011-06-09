@@ -25,7 +25,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_not_equal_, tag::cpu_, (A0)
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_not_equal_( tag::simd_<tag::arithmetic_,tag::altivec_>
@@ -40,10 +40,10 @@ namespace nt2 { namespace ext
 
     BOOST_SIMD_FUNCTOR_CALL(2)
     {
-      A0 that = nt2::complement(nt2::eq(a0,a1));
+      A0 that = boost::simd::complement(boost::simd::eq(a0,a1));
       return that;
     }
   };
-} }
+} } }
 
 #endif

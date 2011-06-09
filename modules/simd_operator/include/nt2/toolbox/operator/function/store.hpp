@@ -18,11 +18,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/sdk/functor/preprocessor/function.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag { struct store_ {}; }
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::store_,store,3)
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/store.hpp>
 #include <nt2/toolbox/operator/function/simd/all/store.hpp>

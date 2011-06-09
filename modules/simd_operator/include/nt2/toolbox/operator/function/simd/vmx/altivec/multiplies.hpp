@@ -24,7 +24,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::multiplies_, tag::cpu_, (A0)
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::multiplies_( tag::simd_<tag::float_,tag::altivec_>
@@ -44,7 +44,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
@@ -57,7 +57,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::multiplies_, tag::cpu_, (A0)
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::multiplies_( tag::simd_<tag::type16_,tag::altivec_>
@@ -77,7 +77,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 /*
     BOOST_SIMD_FUNCTOR_CALL_EVAL_IF(2,type8_ )

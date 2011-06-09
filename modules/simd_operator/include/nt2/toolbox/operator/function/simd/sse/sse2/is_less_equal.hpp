@@ -22,7 +22,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
                         ((simd_<double_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_less_equal_ ( tag::simd_<tag::double_,tag::sse_>
@@ -42,7 +42,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for float
@@ -52,7 +52,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
                         ((simd_<float_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_less_equal_ ( tag::simd_<tag::float_,tag::sse_>
@@ -72,7 +72,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for integers
@@ -82,7 +82,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
                         ((simd_<integer_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_less_equal_ ( tag::simd_<tag::integer_,tag::sse_>
@@ -98,10 +98,10 @@ namespace nt2 { namespace ext
 
     BOOST_SIMD_FUNCTOR_CALL(2)
     {
-      A0 that = { nt2::complement(nt2::gt(a0,a1)) };
+      A0 that = { boost::simd::complement(boost::simd::gt(a0,a1)) };
       return that;
     }
   };
-} }
+} } }
 
 #endif

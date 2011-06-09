@@ -30,7 +30,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::load_
                         ((target_< simd_< double_<T>, tag::sse_ > >))
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::load_( tag::iterator_<tag::fundamental_>
@@ -54,7 +54,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over load_ on simd float
@@ -67,7 +67,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::load_
                         ((target_< simd_< float_<T>, tag::sse_ > >))
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::load_( tag::iterator_<tag::fundamental_>
@@ -91,7 +91,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over load_ on simd integers
@@ -104,7 +104,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::load_
                         ((target_< simd_< integer_<T>, tag::sse_ > >))
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::load_( tag::iterator_<tag::fundamental_>
@@ -128,7 +128,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 #include <nt2/toolbox/operator/function/simd/sse/sse2/load_offset.hpp>
 

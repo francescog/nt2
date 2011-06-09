@@ -26,7 +26,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::minus_ ( tag::simd_<tag::arithmetic_,tag::altivec_>
@@ -41,6 +41,6 @@ namespace nt2 { namespace ext
 
     BOOST_SIMD_FUNCTOR_CALL(2) { A0 that = { vec_sub(a0(),a1()) }; return that; }
   };
-} }
+} } }
 
 #endif

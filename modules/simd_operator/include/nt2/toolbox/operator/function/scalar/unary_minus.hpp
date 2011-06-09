@@ -18,7 +18,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::unary_minus_        , tag::cpu_, (A0)
                       , (arithmetic_<A0>)
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //============================================================================
   // Unary minus
@@ -37,7 +37,7 @@ namespace nt2 { namespace ext
 
     BOOST_SIMD_FUNCTOR_CALL(1) { return -a0; }
   };
-} }
+} } }
 
 #ifdef BOOST_MSVC
   #pragma warning(pop)

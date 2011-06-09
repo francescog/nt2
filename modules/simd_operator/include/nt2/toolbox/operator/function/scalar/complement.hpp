@@ -19,7 +19,7 @@
 BOOST_SIMD_REGISTER_DISPATCH(tag::complement_,tag::cpu_,(A0),(fundamental_<A0>));
 BOOST_SIMD_REGISTER_DISPATCH(tag::complement_,tag::cpu_,(A0),(real_<A0>));
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct call<tag::complement_(tag::fundamental_), tag::cpu_, Dummy> : callable
@@ -46,6 +46,6 @@ namespace nt2 { namespace ext
       return t0.value;
     }
   };
-} }
+} } }
 
 #endif

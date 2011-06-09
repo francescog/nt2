@@ -33,7 +33,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::compare_less_, tag::cpu_, (A0)
 ////////////////////////////////////////////////////////////////////////////////
 // Local shared helper
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   inline bool compare_less_helper(int mask_a_lt_b, int mask_a_gt_b)
   {
@@ -42,11 +42,11 @@ namespace nt2 { namespace details
               &&  (mask_a_lt_b <   mask_a_gt_b )
             );
   }
-} }
+} } }
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::compare_less_( tag::simd_<tag::double_,tag::sse_>
@@ -98,6 +98,6 @@ namespace nt2 { namespace ext
       return details::compare_less_helper(mask_a_lt_b,mask_a_gt_b);
     }
   };
-} }
+} } }
 
 #endif

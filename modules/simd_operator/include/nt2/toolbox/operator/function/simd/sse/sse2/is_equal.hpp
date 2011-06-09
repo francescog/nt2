@@ -24,7 +24,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_equal_, tag::cpu_, (A0)
                         ((simd_<double_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_equal_( tag::simd_<tag::double_,tag::sse_>
@@ -44,7 +44,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for float
@@ -54,7 +54,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_equal_, tag::cpu_, (A0)
                         ((simd_<float_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_equal_( tag::simd_<tag::float_,tag::sse_>
@@ -74,7 +74,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for ints8
@@ -84,7 +84,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_equal_, tag::cpu_, (A0)
                         ((simd_<ints8_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_equal_( tag::simd_<tag::ints8_,tag::sse_>
@@ -104,7 +104,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for ints16
@@ -114,7 +114,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_equal_, tag::cpu_, (A0)
                         ((simd_<ints16_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_equal_( tag::simd_<tag::ints16_,tag::sse_>
@@ -134,7 +134,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for ints32
@@ -144,7 +144,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_equal_, tag::cpu_, (A0)
                         ((simd_<ints32_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_equal_( tag::simd_<tag::ints32_,tag::sse_>
@@ -164,7 +164,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for ints64
@@ -174,7 +174,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::is_equal_, tag::cpu_, (A0)
                         ((simd_<ints64_<A0>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::is_equal_( tag::simd_<tag::ints64_,tag::sse_>
@@ -192,12 +192,12 @@ namespace nt2 { namespace ext
     {
       typedef typename meta::downgrade<A0, unsigned>::type  type;
       type tmp      = { a0 - a1 };
-      tmp           = nt2::eq(tmp,Zero<type>());
+      tmp           = boost::simd::eq(tmp,Zero<type>());
       type shuffled = { _mm_shuffle_epi32(tmp, _MM_SHUFFLE(2, 3, 0, 1)) };
       A0   that     = { tmp & shuffled };
       return that;
     }
   };
-} }
+} } }
 
 #endif

@@ -22,7 +22,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::unary_minus_, tag::cpu_, (A0)(X)
                       , ((simd_<arithmetic_<A0>,X>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //////////////////////////////////////////////////////////////////////////////
   // unary_minus is 0 - a0
@@ -43,7 +43,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for reals
 ////////////////////////////////////////////////////////////////////////////////
@@ -51,7 +51,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::unary_minus_, tag::cpu_, (A0)(X)
                       , ((simd_<real_<A0>,X>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //////////////////////////////////////////////////////////////////////////////
   // unary_minus is 0 - a0
@@ -71,6 +71,6 @@ namespace nt2 { namespace ext
       return b_xor(Mzero<A0>(),a0);
     }
   };
-} }
+} } }
 
 #endif

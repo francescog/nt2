@@ -28,7 +28,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::shift_left_, tag::cpu_, (A0)(A1)
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::shift_left_( tag::simd_<tag::integer_,tag::altivec_>
@@ -51,7 +51,7 @@ namespace nt2 { namespace ext
     }
 
   };
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
@@ -64,7 +64,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::shift_left_, tag::cpu_, (A0)(A1)
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::shift_left_( tag::simd_<tag::float_,tag::altivec_>
@@ -87,7 +87,7 @@ namespace nt2 { namespace ext
      return that;  
    }
   };
-} }
+} } }
 
 #endif
 

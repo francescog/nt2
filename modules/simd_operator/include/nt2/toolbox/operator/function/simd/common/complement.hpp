@@ -20,7 +20,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::complement_, tag::cpu_, (A0)(X)
                       , ((simd_<arithmetic_<A0>,X>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   //////////////////////////////////////////////////////////////////////////////
   // Implement ~ using xor
@@ -40,6 +40,6 @@ namespace nt2 { namespace ext
       return b_xor(True<A0>(), a0);
     }
   };
-} }
+} } }
 
 #endif

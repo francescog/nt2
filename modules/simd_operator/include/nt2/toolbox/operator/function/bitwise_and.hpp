@@ -15,7 +15,7 @@
 
 #include <boost/proto/tags.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
@@ -24,7 +24,7 @@ namespace nt2
   
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::bitwise_and_      , bitwise_and     , 2 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::bitwise_and_      , b_and           , 2 )
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/bitwise_and.hpp>
 #include <nt2/toolbox/operator/function/simd/all/bitwise_and.hpp>

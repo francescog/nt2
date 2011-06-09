@@ -15,7 +15,7 @@
 
 #include <boost/proto/tags.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
@@ -23,7 +23,7 @@ namespace nt2
   }
   
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::modulo_             , modulo      , 2 )
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/modulo.hpp>
 #include <nt2/toolbox/operator/function/simd/all/modulo.hpp>

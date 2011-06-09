@@ -19,7 +19,7 @@
 #include <nt2/sdk/meta/as.hpp>
 #include <nt2/sdk/functor/preprocessor/function.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag { struct load_ {}; }
 
@@ -52,7 +52,7 @@ namespace nt2
     typename make_functor<tag::load_, A0>::type callee;
     return callee(a0,a1,meta::as_<T>(),boost::mpl::int_<Offset>());
   }
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/load.hpp>
 #include <nt2/toolbox/operator/function/simd/all/load.hpp>

@@ -27,11 +27,11 @@
 #define M1(z,n,t) tag::simd_<tag::BOOST_PP_TUPLE_ELEM(2,0,t),tag::altivec_>
 
 #define M0(z,n,t)                                                       \
-BOOST_SIMD_REGISTER_DISPATCH ( tag::map_,tag::cpu_                             \
+BOOST_SIMD_REGISTER_DISPATCH ( tag::map_,tag::cpu_                      \
                       , (Func)(A0)                                      \
                       , (unspecified_<Func>)BOOST_PP_REPEAT(n,M2,t)     \
                       )                                                 \
-namespace nt2 { namespace ext                                           \
+namespace boost { namespace simd { namespace ext                        \
 {                                                                       \
   template<class Dummy>                                                 \
   struct call < tag::map_(tag::unspecified_,BOOST_PP_ENUM(n,M1,t))      \
@@ -46,7 +46,7 @@ namespace nt2 { namespace ext                                           \
       return that;                                                      \
     }                                                                   \
   };                                                                    \
-} }                                                                     \
+} } }                                                                   \
 /**/
 
 #define BOOST_SIMD_SIMD_MAP_CALL(T,C)                      \

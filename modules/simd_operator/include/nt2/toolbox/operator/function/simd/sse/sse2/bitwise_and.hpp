@@ -20,7 +20,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::bitwise_and_, tag::cpu_, (A0)(A1)
                         ((simd_<arithmetic_<A1>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::bitwise_and_ ( tag::simd_<tag::arithmetic_,tag::sse_>
@@ -43,7 +43,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 //////////////////////////////////////////////////////////////////////////////
 // double/double use the seemingly faster and_pd
@@ -53,7 +53,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::bitwise_and_, tag::cpu_, (A0)(A1)
                         ((simd_<double_<A1>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::bitwise_and_ ( tag::simd_<tag::double_,tag::sse_>
@@ -73,7 +73,7 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 //////////////////////////////////////////////////////////////////////////////
 // float/float use the seemingly faster and_ps
@@ -83,7 +83,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::bitwise_and_, tag::cpu_, (A0)(A1)
                         ((simd_<float_<A1>,tag::sse_>))
                       );
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::bitwise_and_ ( tag::simd_<tag::float_,tag::sse_>
@@ -103,6 +103,6 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 #endif

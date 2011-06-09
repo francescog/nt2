@@ -21,7 +21,7 @@ BOOST_SIMD_REGISTER_DISPATCH_IF ( tag::bitwise_xor_ , tag::cpu_, (A0)(A1)
                          , (fundamental_<A0>)(fundamental_<A1>)
                          )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct call<tag::bitwise_xor_(tag::fundamental_, tag::fundamental_), tag::cpu_, Dummy> : callable
@@ -40,6 +40,6 @@ namespace nt2 { namespace ext
       return t0.value;
     }
   };
-} }
+} } }
 
 #endif

@@ -15,7 +15,7 @@
 
 #include <boost/proto/tags.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
@@ -25,7 +25,7 @@ namespace nt2
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::complement_ , complement  , 1 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::complement_ , bitwise_not , 1 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::complement_ , b_not       , 1 )
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/complement.hpp>
 #include <nt2/toolbox/operator/function/simd/all/complement.hpp>

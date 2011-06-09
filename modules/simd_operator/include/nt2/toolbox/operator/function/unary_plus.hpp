@@ -15,7 +15,7 @@
 
 #include <boost/proto/tags.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
@@ -25,7 +25,7 @@ namespace nt2
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::unary_plus_ , unary_plus  , 1 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::unary_plus_ , identity    , 1 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::unary_plus_ , id          , 1 )
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/unary_plus.hpp>
 #include <nt2/toolbox/operator/function/simd/all/unary_plus.hpp>

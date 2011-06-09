@@ -15,7 +15,7 @@
 
 #include <boost/proto/tags.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
@@ -24,7 +24,7 @@ namespace nt2
   
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::logical_not_ , logical_not  , 1 )
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::logical_not_ , l_not        , 1 )
-}
+} }
 
 #include <nt2/toolbox/operator/function/scalar/logical_not.hpp>
 #include <nt2/toolbox/operator/function/simd/all/logical_not.hpp>

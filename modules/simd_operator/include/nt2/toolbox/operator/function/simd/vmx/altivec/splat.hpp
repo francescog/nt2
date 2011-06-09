@@ -24,14 +24,12 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
 ////////////////////////////////////////////////////////////////////////////////
 // Implements dispatches over splat_
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::splat_ ( tag::fundamental_
-                            , tag::target_<tag::simd_	<	tag::arithmetic_
-																											,	tag::altivec_
-																											> 
-																					>
+                            , tag::target_<tag::simd_<tag::arithmetic, tag::altivec_>
+			    >
                             )
               , tag::cpu_
               , Dummy
@@ -51,6 +49,6 @@ namespace nt2 { namespace ext
       return that;
     }
   };
-} }
+} } }
 
 #endif

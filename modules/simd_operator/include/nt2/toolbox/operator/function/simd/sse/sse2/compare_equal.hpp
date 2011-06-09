@@ -32,7 +32,7 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::compare_equal_, tag::cpu_, (A0)
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::compare_equal_ ( tag::simd_<tag::double_,tag::sse_>
@@ -69,6 +69,6 @@ namespace nt2 { namespace ext
     typedef bool result_type;
     BOOST_SIMD_FUNCTOR_CALL(2) { return _mm_movemask_epi8(eq(a0,a1)) == 0XFFFF; }
   };
-} }
+} } }
 
 #endif
