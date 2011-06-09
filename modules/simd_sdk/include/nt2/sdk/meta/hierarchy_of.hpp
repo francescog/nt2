@@ -10,10 +10,10 @@
 #define BOOST_SIMD_SDK_META_HIERARCHY_OF_HPP_INCLUDED
 
 #include <climits>
-#include <nt2/sdk/config/types.hpp>
-#include <nt2/sdk/meta/strip.hpp>
-#include <nt2/sdk/meta/hierarchy.hpp>
-#include <nt2/sdk/meta/enable_if_type.hpp>
+#include <nt2/simd_sdk/config/types.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/hierarchy.hpp>
+#include <nt2/simd_sdk/meta/enable_if_type.hpp>
 
 namespace boost { namespace simd { namespace details
 {
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace meta
   };
 } } }
 
-#include <nt2/sdk/meta/details/hierarchy_of.hpp>
+#include <nt2/simd_sdk/meta/details/hierarchy_of.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // User level macro to define a new hierarchy element taking advantage of the

@@ -9,10 +9,10 @@
 #ifndef BOOST_SIMD_SDK_SIMD_PACK_EVALUATION_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_PACK_EVALUATION_HPP_INCLUDED
 
-#include <nt2/sdk/dsl/compute.hpp>
-#include <nt2/sdk/dsl/category.hpp>
-#include <nt2/sdk/dsl/litteral.hpp>
-#include <nt2/sdk/dsl/evaluation.hpp>
+#include <nt2/simd_sdk/dsl/compute.hpp>
+#include <nt2/simd_sdk/dsl/category.hpp>
+#include <nt2/simd_sdk/dsl/litteral.hpp>
+#include <nt2/simd_sdk/dsl/evaluation.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Native pack

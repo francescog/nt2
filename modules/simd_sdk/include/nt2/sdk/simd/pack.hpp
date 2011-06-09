@@ -9,21 +9,21 @@
 #ifndef BOOST_SIMD_SDK_SIMD_PACK_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_PACK_HPP_INCLUDED
 
-#include <nt2/sdk/simd/extensions.hpp>
-#include <nt2/sdk/simd/pack/forward.hpp>
+#include <nt2/simd_sdk/simd/extensions.hpp>
+#include <nt2/simd_sdk/simd/pack/forward.hpp>
 
-#include <nt2/sdk/simd/pack/data.hpp>
-#include <nt2/sdk/simd/pack/grammar.hpp>
-#include <nt2/sdk/simd/pack/generator.hpp>
-#include <nt2/sdk/simd/pack/expression.hpp>
-#include <nt2/sdk/simd/pack/call.hpp>
-#include <nt2/sdk/simd/pack/domain.hpp>
-#include <nt2/sdk/simd/pack/pack.hpp>
-#include <nt2/sdk/simd/pack/load.hpp>
-#include <nt2/sdk/simd/pack/store.hpp>
-#include <nt2/sdk/simd/pack/splat.hpp>
-#include <nt2/sdk/simd/pack/io.hpp>
-#include <nt2/sdk/simd/pack/compare.hpp>
-#include <nt2/sdk/simd/pack/meta/terminal_of.hpp>
+#include <nt2/simd_sdk/simd/pack/data.hpp>
+#include <nt2/simd_sdk/simd/pack/grammar.hpp>
+#include <nt2/simd_sdk/simd/pack/generator.hpp>
+#include <nt2/simd_sdk/simd/pack/expression.hpp>
+#include <nt2/simd_sdk/simd/pack/call.hpp>
+#include <nt2/simd_sdk/simd/pack/domain.hpp>
+#include <nt2/simd_sdk/simd/pack/pack.hpp>
+#include <nt2/simd_sdk/simd/pack/load.hpp>
+#include <nt2/simd_sdk/simd/pack/store.hpp>
+#include <nt2/simd_sdk/simd/pack/splat.hpp>
+#include <nt2/simd_sdk/simd/pack/io.hpp>
+#include <nt2/simd_sdk/simd/pack/compare.hpp>
+#include <nt2/simd_sdk/simd/pack/meta/terminal_of.hpp>
 
 #endif

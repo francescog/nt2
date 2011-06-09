@@ -11,8 +11,8 @@
 
 #include <boost/mpl/placeholders.hpp>
 #include <boost/type_traits/is_same.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
-#include <nt2/sdk/error/static_assert.hpp>
+#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
+#include <nt2/simd_sdk/error/static_assert.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // A type factory is a MPL metafunction able to reconstruct it

@@ -13,7 +13,7 @@
 // Main config header
 // Documentation: http://nt2.lri.fr/doc/build/html/sdk/config.html
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/config.hpp>
-#include <nt2/sdk/config/types.hpp>
+#include <nt2/simd_sdk/config.hpp>
+#include <nt2/simd_sdk/config/types.hpp>
 
 #endif

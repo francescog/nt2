@@ -14,9 +14,9 @@
  * \brief Defines and implements \ref nt2::meta::as_unsigned
  */
 
-#include <nt2/sdk/meta/primitive_of.hpp>
-#include <nt2/sdk/meta/is_fundamental.hpp>
-#include <nt2/sdk/meta/details/as_unsigned.hpp>
+#include <nt2/simd_sdk/meta/primitive_of.hpp>
+#include <nt2/simd_sdk/meta/is_fundamental.hpp>
+#include <nt2/simd_sdk/meta/details/as_unsigned.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

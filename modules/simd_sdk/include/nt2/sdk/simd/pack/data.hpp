@@ -9,12 +9,12 @@
 #ifndef BOOST_SIMD_SDK_SIMD_PACK_DATA_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_PACK_DATA_HPP_INCLUDED
 
-#include <nt2/sdk/simd/native.hpp>
-#include <nt2/sdk/meta/fusion.hpp>
-#include <nt2/sdk/simd/meta/vector_of.hpp>
-#include <nt2/sdk/simd/meta/is_native.hpp>
+#include <nt2/simd_sdk/simd/native.hpp>
+#include <nt2/simd_sdk/meta/fusion.hpp>
+#include <nt2/simd_sdk/simd/meta/vector_of.hpp>
+#include <nt2/simd_sdk/simd/meta/is_native.hpp>
 #include <nt2/include/functions/splat.hpp>
-#include <nt2/sdk/simd/pack/evaluation.hpp>
+#include <nt2/simd_sdk/simd/pack/evaluation.hpp>
 
 namespace boost { namespace simd
 {

@@ -12,7 +12,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Setup SIMD extension specific boolean operations
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/simd/category.hpp>
+#include <nt2/simd_sdk/simd/category.hpp>
 #include <nt2/toolbox/operator/specific/compare_tags.hpp>
 
 #define BOOST_SIMD_MAKE_NATIVE_OP(TAG,OP)                                  \

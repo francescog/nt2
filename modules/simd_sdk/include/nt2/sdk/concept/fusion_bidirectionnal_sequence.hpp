@@ -14,10 +14,10 @@
 // Documentation:
 // http://www.boost.org/doc/libs/release/libs/fusion/doc/html/fusion/sequence/concepts/bidirectional_sequence.html
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/error/concepts.hpp>
+#include <nt2/simd_sdk/error/concepts.hpp>
 #include <boost/fusion/include/back.hpp>
-#include <nt2/sdk/details/ignore_unused.hpp>
-#include <nt2/sdk/concepts/fusion_forward_sequence.hpp>
+#include <nt2/simd_sdk/details/ignore_unused.hpp>
+#include <nt2/simd_sdk/concepts/fusion_forward_sequence.hpp>
 
 namespace boost
 {

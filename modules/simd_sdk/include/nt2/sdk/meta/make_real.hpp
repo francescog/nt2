@@ -15,7 +15,7 @@
 // See: http://nt2.metascale.org/sdk/meta/traits/make_real.html
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/mpl/apply.hpp>
-#include <nt2/sdk/meta/na.hpp>
+#include <nt2/simd_sdk/meta/na.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

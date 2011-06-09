@@ -44,7 +44,7 @@ extern "C"
   #include <tmmintrin.h>
 }
 
-#include <nt2/sdk/simd/extensions/meta/sse.hpp>
+#include <nt2/simd_sdk/simd/extensions/meta/sse.hpp>
 
 #endif
 #endif

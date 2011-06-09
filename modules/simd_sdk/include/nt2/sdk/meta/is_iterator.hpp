@@ -12,7 +12,7 @@
 #include <boost/mpl/bool.hpp>
 #include <boost/type_traits/is_function.hpp>
 #include <boost/type_traits/remove_pointer.hpp>
-#include <nt2/sdk/meta/enable_if_type.hpp>
+#include <nt2/simd_sdk/meta/enable_if_type.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

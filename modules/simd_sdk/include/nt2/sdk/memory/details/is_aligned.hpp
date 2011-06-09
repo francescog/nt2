@@ -9,11 +9,11 @@
 #ifndef BOOST_SIMD_SDK_MEMORY_DETAILS_IS_ALIGNED_HPP_INCLUDED
 #define BOOST_SIMD_SDK_MEMORY_DETAILS_IS_ALIGNED_HPP_INCLUDED
 
-#include <nt2/sdk/meta/mpl.hpp>
-#include <nt2/sdk/memory/parameters.hpp>
-#include <nt2/sdk/memory/meta/is_aligned.hpp>
-#include <nt2/sdk/memory/details/category.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/meta/mpl.hpp>
+#include <nt2/simd_sdk/memory/parameters.hpp>
+#include <nt2/simd_sdk/memory/meta/is_aligned.hpp>
+#include <nt2/simd_sdk/memory/details/category.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Check alignment of integer on integer

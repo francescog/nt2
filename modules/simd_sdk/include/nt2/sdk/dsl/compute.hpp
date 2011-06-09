@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_SDK_DSL_COMPUTE_HPP_INCLUDED
 #define BOOST_SIMD_SDK_DSL_COMPUTE_HPP_INCLUDED
 
-#include <nt2/sdk/dsl/compile.hpp>
-#include <nt2/sdk/functor/functor.hpp>
+#include <nt2/simd_sdk/dsl/compile.hpp>
+#include <nt2/simd_sdk/functor/functor.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // compute evaluates a nt2 AST by passing its elements through a raw functor

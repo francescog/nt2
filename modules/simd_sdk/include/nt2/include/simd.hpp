@@ -9,9 +9,9 @@
 #ifndef NT2_INCLUDE_SIMD_HPP_INCLUDED
 #define NT2_INCLUDE_SIMD_HPP_INCLUDED
 
-#include <nt2/sdk/config/types.hpp>
-#include <nt2/sdk/simd/extensions.hpp>
-#include <nt2/sdk/simd/io.hpp>
-#include <nt2/sdk/simd/native.hpp>
+#include <nt2/simd_sdk/config/types.hpp>
+#include <nt2/simd_sdk/simd/extensions.hpp>
+#include <nt2/simd_sdk/simd/io.hpp>
+#include <nt2/simd_sdk/simd/native.hpp>
 
 #endif

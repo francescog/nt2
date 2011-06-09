@@ -7,7 +7,7 @@
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
 #include <cstring>
-#include <nt2/sdk/memory/forward.hpp>
+#include <nt2/simd_sdk/memory/forward.hpp>
 
 namespace nt2 { namespace simd { namespace memory
 {
@@ -24,7 +24,7 @@ namespace nt2 { namespace simd { namespace memory
       //////////////////////////////////////////////////////////////////////////
       // MSVC systems use _aligned_realloc
       //////////////////////////////////////////////////////////////////////////
-      result = reinterpret_cast<byte*>(_aligned_realloc(ptr, nbytes, NT2_CONFIG_ALIGNMENT));
+      result = reinterpret_cast<byte*>(_aligned_realloc(ptr, nbytes, BOOST_SIMD_CONFIG_ALIGNMENT));
       #else
       //////////////////////////////////////////////////////////////////////////
       // Other systems allocate/copy/deallocate

@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_FUNCTOR_FORWARD_HPP_INCLUDED
 #define BOOST_SIMD_SDK_FUNCTOR_FORWARD_HPP_INCLUDED
 
-#include <nt2/sdk/functor/meta/hierarchy.hpp>
+#include <nt2/simd_sdk/functor/meta/hierarchy.hpp>
 #include <boost/proto/tags.hpp>
 
 namespace boost

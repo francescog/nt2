@@ -11,7 +11,7 @@
 
 #include <cstddef>
 #include <boost/detail/workaround.hpp>
-#include <nt2/sdk/config/bootstrap.hpp>
+#include <nt2/simd_sdk/config/bootstrap.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // On g++ before 4.3, alignment can't be more than 16

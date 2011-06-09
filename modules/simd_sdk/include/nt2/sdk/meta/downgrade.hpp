@@ -15,12 +15,12 @@
 // If the primitive type is floating-point, sign is ignored.
 // See: http://nt2.metascale.org/sdk/meta/traits/downgrade.html
 //////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/strip.hpp>
-#include <nt2/sdk/meta/sign_of.hpp>
-#include <nt2/sdk/meta/make_integer.hpp>
-#include <nt2/sdk/meta/primitive_of.hpp>
-#include <nt2/sdk/meta/factory_of.hpp>
-#include <nt2/sdk/meta/is_fundamental.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/sign_of.hpp>
+#include <nt2/simd_sdk/meta/make_integer.hpp>
+#include <nt2/simd_sdk/meta/primitive_of.hpp>
+#include <nt2/simd_sdk/meta/factory_of.hpp>
+#include <nt2/simd_sdk/meta/is_fundamental.hpp>
 #include <boost/mpl/apply.hpp>
 
 namespace boost { namespace simd { namespace details

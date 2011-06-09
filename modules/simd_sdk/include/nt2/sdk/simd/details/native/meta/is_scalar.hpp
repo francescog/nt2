@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_META_IS_SCALAR_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_META_IS_SCALAR_HPP_INCLUDED
 
-#include <nt2/sdk/meta/is_scalar.hpp>
+#include <nt2/simd_sdk/meta/is_scalar.hpp>
 
 namespace boost { namespace simd { namespace details
 {

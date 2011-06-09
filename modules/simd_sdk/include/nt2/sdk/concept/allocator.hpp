@@ -13,8 +13,8 @@
 // NT2 Allocator concept
 //* TODO: Documentation: http://nt2.lri.fr/sdk/concept/allocator.hpp
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/error/concepts.hpp>
-#include <nt2/sdk/concepts/same_type.hpp>
+#include <nt2/simd_sdk/error/concepts.hpp>
+#include <nt2/simd_sdk/concepts/same_type.hpp>
 
 namespace boost
 {

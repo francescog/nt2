@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_SDK_SIMD_RANGE_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_RANGE_HPP_INCLUDED
 
-#include <nt2/sdk/simd/end.hpp>
-#include <nt2/sdk/simd/begin.hpp>
+#include <nt2/simd_sdk/simd/end.hpp>
+#include <nt2/simd_sdk/simd/begin.hpp>
 #include <boost/range/iterator_range.hpp>
 
 namespace boost { namespace simd

@@ -21,8 +21,8 @@
  * This module gathers \metafunction required by \nt2 internal.
  */
 
-#include <nt2/sdk/meta/strip.hpp>
-#include <nt2/sdk/meta/behave_as.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/behave_as.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <boost/type_traits/is_integral.hpp>
 #include <boost/type_traits/is_floating_point.hpp>

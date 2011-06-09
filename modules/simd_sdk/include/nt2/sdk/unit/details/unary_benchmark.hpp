@@ -15,10 +15,10 @@
 #include <nt2/include/timing.hpp>
 #include <nt2/include/functions/load.hpp>
 #include <nt2/include/functions/store.hpp>
-#include <nt2/sdk/meta/scalar_of.hpp>
-#include <nt2/sdk/details/type_id.hpp>
-#include <nt2/sdk/meta/cardinal_of.hpp>
-#include <nt2/sdk/memory/allocator.hpp>
+#include <nt2/simd_sdk/meta/scalar_of.hpp>
+#include <nt2/simd_sdk/details/type_id.hpp>
+#include <nt2/simd_sdk/meta/cardinal_of.hpp>
+#include <nt2/simd_sdk/memory/allocator.hpp>
 
 template<class T0,class Dummy,class Func, class MN0, class MX0>
 void timing_test( Func callee, size_t size

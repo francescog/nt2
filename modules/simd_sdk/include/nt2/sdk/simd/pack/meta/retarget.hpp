@@ -11,7 +11,7 @@
 
 #include <boost/mpl/apply.hpp>
 #include <boost/proto/proto.hpp>
-#include <nt2/sdk/dsl/terminal_of.hpp>
+#include <nt2/simd_sdk/dsl/terminal_of.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

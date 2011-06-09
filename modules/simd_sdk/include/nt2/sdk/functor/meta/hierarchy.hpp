@@ -14,7 +14,7 @@
  * \brief Defines the basic evaluation context hierarchy for \ref nt2::functor
  */
 
-#include <nt2/sdk/meta/hierarchy.hpp>
+#include <nt2/simd_sdk/meta/hierarchy.hpp>
 
 namespace boost { namespace simd { namespace tag
 {

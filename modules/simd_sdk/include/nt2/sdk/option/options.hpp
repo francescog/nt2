@@ -9,9 +9,9 @@
 #ifndef BOOST_SIMD_SDK_OPTION_OPTIONS_HPP_INCLUDED
 #define BOOST_SIMD_SDK_OPTION_OPTIONS_HPP_INCLUDED
 
-#include <nt2/sdk/option/option_pack.hpp>
-#include <nt2/sdk/option/option_expr.hpp>
-#include <nt2/sdk/error/static_assert.hpp>
+#include <nt2/simd_sdk/option/option_pack.hpp>
+#include <nt2/simd_sdk/option/option_expr.hpp>
+#include <nt2/simd_sdk/error/static_assert.hpp>
 
 namespace boost { namespace simd { namespace details
 {

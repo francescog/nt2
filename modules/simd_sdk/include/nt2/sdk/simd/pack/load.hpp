@@ -12,11 +12,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 // load for SIMD packs
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/mpl.hpp>
-#include <nt2/sdk/simd/category.hpp>
-#include <nt2/sdk/meta/scalar_of.hpp>
-#include <nt2/sdk/meta/cardinal_of.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/meta/mpl.hpp>
+#include <nt2/simd_sdk/simd/category.hpp>
+#include <nt2/simd_sdk/meta/scalar_of.hpp>
+#include <nt2/simd_sdk/meta/cardinal_of.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
 #include <nt2/include/functions/load.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////

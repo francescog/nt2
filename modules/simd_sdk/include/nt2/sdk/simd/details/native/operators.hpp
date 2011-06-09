@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_OPERATORS_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_OPERATORS_HPP_INCLUDED
 
-#include <nt2/sdk/simd/category.hpp>
+#include <nt2/simd_sdk/simd/category.hpp>
 
 #define BOOST_SIMD_MAKE_NATIVE_OP(TAG,OP)                                    \
 template<class T1, class T2,class X> inline                           \

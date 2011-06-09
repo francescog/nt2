@@ -9,9 +9,9 @@
 #ifndef NT2_INCLUDE_FUNCTOR_HPP_INCLUDED
 #define NT2_INCLUDE_FUNCTOR_HPP_INCLUDED
 
-#include <nt2/sdk/config/types.hpp>
-#include <nt2/sdk/functor/functor.hpp>
-#include <nt2/sdk/functor/preprocessor/function.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/config/types.hpp>
+#include <nt2/simd_sdk/functor/functor.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/function.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
 
 #endif

@@ -14,9 +14,9 @@
  * \brief Define the \ref nt2::Hierarchizable Concept
  */
 
-#include <nt2/sdk/error/concepts.hpp>
-#include <nt2/sdk/meta/hierarchy.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
+#include <nt2/simd_sdk/error/concepts.hpp>
+#include <nt2/simd_sdk/meta/hierarchy.hpp>
+#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
 #include <boost/type_traits/is_same.hpp>
 
 #if defined(DOXYGEN_ONLY)

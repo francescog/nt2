@@ -17,7 +17,7 @@
 #include <boost/integer.hpp>
 #include <boost/cstdint.hpp>
 #include <boost/mpl/apply.hpp>
-#include <nt2/sdk/meta/na.hpp>
+#include <nt2/simd_sdk/meta/na.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

@@ -13,13 +13,13 @@
 // Compute the number of stride_ between inner and the Nth outer dimension
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/mpl/size_t.hpp>
-#include <nt2/sdk/meta/mpl.hpp>
-#include <nt2/sdk/meta/fusion.hpp>
-#include <nt2/sdk/memory/padding.hpp>
-#include <nt2/sdk/functor/functor.hpp>
+#include <nt2/simd_sdk/meta/mpl.hpp>
+#include <nt2/simd_sdk/meta/fusion.hpp>
+#include <nt2/simd_sdk/memory/padding.hpp>
+#include <nt2/simd_sdk/functor/functor.hpp>
 #include <boost/fusion/include/size.hpp>
-#include <nt2/sdk/memory/details/category.hpp>
-#include <nt2/sdk/functor/preprocessor/function.hpp>
+#include <nt2/simd_sdk/memory/details/category.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/function.hpp>
 
 namespace boost { namespace simd
 { 

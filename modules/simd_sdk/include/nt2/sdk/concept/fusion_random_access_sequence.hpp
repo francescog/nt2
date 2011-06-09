@@ -15,9 +15,9 @@
 // http://www.boost.org/doc/libs/release/libs/fusion/doc/html/fusion/sequence/concepts/random_access_sequence.html
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/fusion/include/at.hpp>
-#include <nt2/sdk/error/concepts.hpp>
-#include <nt2/sdk/details/ignore_unused.hpp>
-#include <nt2/sdk/concepts/fusion_bidirectionnal_sequence.hpp>
+#include <nt2/simd_sdk/error/concepts.hpp>
+#include <nt2/simd_sdk/details/ignore_unused.hpp>
+#include <nt2/simd_sdk/concepts/fusion_bidirectionnal_sequence.hpp>
 
 namespace boost
 {

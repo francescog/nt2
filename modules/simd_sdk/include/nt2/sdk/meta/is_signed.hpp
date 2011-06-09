@@ -14,8 +14,8 @@
 // See: http://nt2.metascale.org/sdk/meta/traits/is_signed.html
 //////////////////////////////////////////////////////////////////////////////
 #include <boost/mpl/not.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
-#include <nt2/sdk/meta/primitive_of.hpp>
+#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
+#include <nt2/simd_sdk/meta/primitive_of.hpp>
 #include <boost/type_traits/is_base_of.hpp>
 
 namespace boost { namespace simd { namespace meta

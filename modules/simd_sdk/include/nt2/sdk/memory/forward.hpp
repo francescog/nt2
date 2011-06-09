@@ -10,8 +10,8 @@
 #define BOOST_SIMD_SDK_MEMORY_FORWARD_HPP_INCLUDED
 
 #include <cstddef>
-#include <nt2/sdk/memory/config.hpp>
-#include <nt2/sdk/memory/parameters.hpp>
+#include <nt2/simd_sdk/memory/config.hpp>
+#include <nt2/simd_sdk/memory/parameters.hpp>
 
 namespace boost { namespace simd { namespace memory
 {

@@ -10,7 +10,7 @@
 #define BOOST_SIMD_SDK_TIMING_TIMER_HPP_INCLUDED
 
 #include <stack>
-#include <nt2/sdk/error/assert.hpp>
+#include <nt2/simd_sdk/error/assert.hpp>
 
 namespace boost
 {

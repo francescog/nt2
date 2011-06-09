@@ -10,9 +10,9 @@
 #define BOOST_SIMD_SDK_SIMD_PACK_META_TERMINAL_OF_HPP_INCLUDED
 
 #include <boost/mpl/always.hpp>
-#include <nt2/sdk/simd/pack/pack.hpp>
-#include <nt2/sdk/dsl/terminal_of.hpp>
-#include <nt2/sdk/simd/pack/domain.hpp>
+#include <nt2/simd_sdk/simd/pack/pack.hpp>
+#include <nt2/simd_sdk/dsl/terminal_of.hpp>
+#include <nt2/simd_sdk/simd/pack/domain.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

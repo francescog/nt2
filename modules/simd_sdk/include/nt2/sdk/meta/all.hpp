@@ -15,7 +15,7 @@
  */
 
 #include <boost/config.hpp>
-#include <nt2/sdk/meta/details/all.hpp>
+#include <nt2/simd_sdk/meta/details/all.hpp>
 
 #if !defined(BOOST_HAS_VARIADIC_TMPL)
 #include <boost/preprocessor/facilities/intercept.hpp>

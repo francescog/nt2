@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_SIMD_META_IS_REAL_CONVERTIBLE_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_META_IS_REAL_CONVERTIBLE_HPP_INCLUDED
 
-#include <nt2/sdk/meta/scalar_of.hpp>
+#include <nt2/simd_sdk/meta/scalar_of.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

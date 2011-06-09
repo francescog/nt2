@@ -11,7 +11,7 @@
 
 #include <string>
 #include <nt2/include/functions/splat.hpp>
-#include <nt2/sdk/details/type_id.hpp>
+#include <nt2/simd_sdk/details/type_id.hpp>
 #include <boost/algorithm/string/replace.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////

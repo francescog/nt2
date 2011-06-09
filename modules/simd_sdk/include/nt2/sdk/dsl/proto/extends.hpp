@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_DSL_PROTO_EXTENDS_HPP
 #define BOOST_SIMD_SDK_DSL_PROTO_EXTENDS_HPP
 
-#include <nt2/sdk/details/preprocessor.hpp>
+#include <nt2/simd_sdk/details/preprocessor.hpp>
 ////////////////////////////////////////////////////////////////////////////////
 // BOOST_PROTO_BASIC_EXTENDS working with template Domain
 ////////////////////////////////////////////////////////////////////////////////

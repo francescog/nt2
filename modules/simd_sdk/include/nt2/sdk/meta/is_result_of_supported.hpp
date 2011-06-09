@@ -11,7 +11,7 @@
 
 #include <boost/mpl/or.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <nt2/sdk/meta/enable_if_type.hpp>
+#include <nt2/simd_sdk/meta/enable_if_type.hpp>
 #include <boost/function_types/result_type.hpp>
 
 namespace boost

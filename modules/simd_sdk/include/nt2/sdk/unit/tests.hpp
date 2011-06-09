@@ -13,14 +13,14 @@
 // Unit test predicates macros
 // Documentation: http://nt2.lri.fr/sdk/unit/tests.html
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/details/preprocessor.hpp>
-#include <nt2/sdk/unit/details/random.hpp>
-#include <nt2/sdk/unit/details/stats.hpp>
-#include <nt2/sdk/unit/details/tests.hpp>
-#include <nt2/sdk/unit/details/ulpdist.hpp>
-#include <nt2/sdk/unit/tests/basic.hpp>
-#include <nt2/sdk/unit/tests/relation.hpp>
-#include <nt2/sdk/unit/nb_rand_tests.hpp>
+#include <nt2/simd_sdk/details/preprocessor.hpp>
+#include <nt2/simd_sdk/unit/details/random.hpp>
+#include <nt2/simd_sdk/unit/details/stats.hpp>
+#include <nt2/simd_sdk/unit/details/tests.hpp>
+#include <nt2/simd_sdk/unit/details/ulpdist.hpp>
+#include <nt2/simd_sdk/unit/tests/basic.hpp>
+#include <nt2/simd_sdk/unit/tests/relation.hpp>
+#include <nt2/simd_sdk/unit/nb_rand_tests.hpp>
 
 #define BOOST_SIMD_TEST_ULP_EQUAL(A,B,N)          \
   {                  \

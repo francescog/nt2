@@ -11,10 +11,10 @@
 //#include <nt2/include/functions/ulpdist.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/common_type.hpp>
-#include <nt2/sdk/unit/details/ulpdist.hpp>
+#include <nt2/simd_sdk/unit/details/ulpdist.hpp>
 #include <boost/fusion/tuple.hpp>
-#include <nt2/sdk/meta/upgrade.hpp>
-#include <nt2/sdk/functor/meta/call.hpp>
+#include <nt2/simd_sdk/meta/upgrade.hpp>
+#include <nt2/simd_sdk/functor/meta/call.hpp>
 #include <iostream>
 
 namespace boost { namespace simd { namespace details

@@ -9,21 +9,21 @@
 #ifndef BOOST_SIMD_SDK_FUNCTOR_DETAILS_DISPATCH_HPP_INCLUDED
 #define BOOST_SIMD_SDK_FUNCTOR_DETAILS_DISPATCH_HPP_INCLUDED
 
-#include <nt2/sdk/meta/strip.hpp>
-#include <nt2/sdk/meta/hierarchy.hpp>
-#include <nt2/sdk/functor/details/call.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
-#include <nt2/sdk/details/decltype.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/hierarchy.hpp>
+#include <nt2/simd_sdk/functor/details/call.hpp>
+#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
+#include <nt2/simd_sdk/details/decltype.hpp>
 
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/sdk/functor/details/preprocessed/dispatch.hpp>
+#include <nt2/simd_sdk/functor/details/preprocessed/dispatch.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/dispatch.hpp")
 #undef BOOST_SIMD_DECLTYPE
 #endif
 #include <nt2/extension/parameters.hpp>
-#include <nt2/sdk/details/preprocessor.hpp>
+#include <nt2/simd_sdk/details/preprocessor.hpp>
 #include <boost/preprocessor/seq/size.hpp>
 #include <boost/preprocessor/seq/elem.hpp>
 #include <boost/preprocessor/repetition/enum.hpp>

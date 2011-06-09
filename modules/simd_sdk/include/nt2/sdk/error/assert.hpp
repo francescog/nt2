@@ -13,8 +13,8 @@
  * \file
  * \brief Defines macros and functions controlling runtime assertions
  */
-#include <nt2/sdk/error/debug.hpp>
-#include <nt2/sdk/details/ignore_unused.hpp>
+#include <nt2/simd_sdk/error/debug.hpp>
+#include <nt2/simd_sdk/details/ignore_unused.hpp>
 
 #if defined(DOXYGEN_ONLY)
 //==============================================================================
@@ -48,7 +48,7 @@
 #if  !defined(BOOST_SIMD_DISABLE_ERROR) || defined(DOXYGEN_ONLY)
 
 #include <iosfwd>
-#include <nt2/sdk/error/error.hpp>
+#include <nt2/simd_sdk/error/error.hpp>
 
 namespace boost { namespace simd { namespace details
 { 
@@ -84,7 +84,7 @@ namespace boost
 // Debug mode has SIGTRAP to the assertion
 //==============================================================================
 #if defined(BOOST_SIMD_DEBUG) && !defined(BOOST_SIMD_ASSERTS_AS_EXCEPTIONS)
-#include <nt2/sdk/error/trap.hpp>
+#include <nt2/simd_sdk/error/trap.hpp>
 #ifndef BOOST_ENABLE_ASSERT_HANDLER
 #define BOOST_ENABLE_ASSERT_HANDLER
 #endif

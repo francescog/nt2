@@ -10,8 +10,8 @@
 #define BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_META_CARDINAL_OF_HPP_INCLUDED
 
 #include <boost/mpl/int.hpp>
-#include <nt2/sdk/simd/category.hpp>
-#include <nt2/sdk/meta/cardinal_of.hpp>
+#include <nt2/simd_sdk/simd/category.hpp>
+#include <nt2/simd_sdk/meta/cardinal_of.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

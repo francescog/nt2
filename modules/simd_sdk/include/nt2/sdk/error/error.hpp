@@ -27,7 +27,7 @@
  * This module gathers macros controling the configuration of error handling
  */
 
-#include <nt2/sdk/error/details/error.hpp>
+#include <nt2/simd_sdk/error/details/error.hpp>
 
 #if defined(DOXYGEN_ONLY)
 //==============================================================================
@@ -67,7 +67,7 @@
 // Enabled errors
 //==============================================================================
 #if !defined(BOOST_SIMD_DISABLE_ERROR)
-#include <nt2/sdk/error/details/exception.hpp>
+#include <nt2/simd_sdk/error/details/exception.hpp>
 #define BOOST_SIMD_THROW(EXP) BOOST_THROW_EXCEPTION( (EXP) ) \
 /**/
 

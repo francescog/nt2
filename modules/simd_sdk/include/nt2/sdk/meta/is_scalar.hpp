@@ -10,8 +10,8 @@
 #define BOOST_SIMD_SDK_META_IS_SCALAR_HPP_INCLUDED
 
 #include <boost/mpl/bool.hpp>
-#include <nt2/sdk/meta/strip.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
 
 namespace boost { namespace simd { namespace details
 {

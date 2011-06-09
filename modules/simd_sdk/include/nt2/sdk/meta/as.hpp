@@ -14,9 +14,9 @@
  * \brief Defines and implement the \ref nt2::meta::as_ generic type wrapper
  */
 
-#include <nt2/sdk/meta/factory_of.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
-#include <nt2/sdk/meta/primitive_of.hpp>
+#include <nt2/simd_sdk/meta/factory_of.hpp>
+#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
+#include <nt2/simd_sdk/meta/primitive_of.hpp>
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd { namespace meta

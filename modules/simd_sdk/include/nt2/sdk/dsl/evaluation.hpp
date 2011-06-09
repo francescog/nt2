@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_DSL_EVALUATION_HPP_INCLUDED
 #define BOOST_SIMD_SDK_DSL_EVALUATION_HPP_INCLUDED
 
-#include <nt2/sdk/functor/functor.hpp>
+#include <nt2/simd_sdk/functor/functor.hpp>
 
 namespace boost { namespace simd 
 {

@@ -14,7 +14,7 @@
 #include <boost/mpl/has_xxx.hpp>
 #include <boost/type_traits/is_function.hpp>
 #include <boost/type_traits/remove_pointer.hpp>
-#include <nt2/sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
 #include <boost/mpl/or.hpp>
 #include <boost/utility/enable_if.hpp>
 
@@ -57,7 +57,7 @@ namespace boost { namespace simd { namespace meta
 namespace boost { namespace simd { namespace meta
 {
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/sdk/meta/preprocessed/result_of.hpp>
+#include <nt2/simd_sdk/meta/preprocessed/result_of.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/result_of.hpp")

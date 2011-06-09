@@ -10,7 +10,7 @@
 #define BOOST_SIMD_SDK_SIMD_PACK_TERMINAL_HPP_INCLUDED
 
 #include <iostream>
-#include <nt2/sdk/details/type_id.hpp>
+#include <nt2/simd_sdk/details/type_id.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Terminal functor handling for pack based expressions

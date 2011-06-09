@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_SDK_TIMING_IMPL_CYCLES_HPP_INCLUDED
 #define BOOST_SIMD_SDK_TIMING_IMPL_CYCLES_HPP_INCLUDED
 
-#include <nt2/sdk/config/arch.hpp>
-#include <nt2/sdk/config/types.hpp>
+#include <nt2/simd_sdk/config/arch.hpp>
+#include <nt2/simd_sdk/config/types.hpp>
 
 #if    (defined(__GNUC__)     || defined(__ICC)        )      \
     && defined(BOOST_SIMD_ARCH_X86)
@@ -83,7 +83,7 @@ namespace boost
 }
 
 #elif !defined(_WIN32)
-#include <nt2/sdk/timing/now.hpp>
+#include <nt2/simd_sdk/timing/now.hpp>
 #include <sys/times.h>
 
 namespace boost

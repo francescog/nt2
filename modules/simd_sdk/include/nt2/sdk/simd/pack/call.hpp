@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_SIMD_PACK_CALL_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_PACK_CALL_HPP_INCLUDED
 
-#include <nt2/sdk/dsl/litteral.hpp>
+#include <nt2/simd_sdk/dsl/litteral.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register terminal handlers for SIMD expression - native case

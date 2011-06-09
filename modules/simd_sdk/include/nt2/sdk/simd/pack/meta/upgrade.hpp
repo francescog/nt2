@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_SDK_SIMD_PACK_META_UPGRADE_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_PACK_META_UPGRADE_HPP_INCLUDED
 
-#include <nt2/sdk/meta/upgrade.hpp>
-#include <nt2/sdk/simd/pack/forward.hpp>
+#include <nt2/simd_sdk/meta/upgrade.hpp>
+#include <nt2/simd_sdk/simd/pack/forward.hpp>
 
 namespace boost
 {

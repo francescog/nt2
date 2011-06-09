@@ -9,9 +9,9 @@
 #ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_NONE_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_EXTENSIONS_NONE_HPP_INCLUDED
 
-#include <nt2/sdk/simd/meta/as_simd.hpp>
-#include <nt2/sdk/simd/meta/extension_of.hpp>
-#include <nt2/sdk/simd/meta/is_simd_specific.hpp>
+#include <nt2/simd_sdk/simd/meta/as_simd.hpp>
+#include <nt2/simd_sdk/simd/meta/extension_of.hpp>
+#include <nt2/simd_sdk/simd/meta/is_simd_specific.hpp>
 
 #if !defined(BOOST_SIMD_DETECTED)
 BOOST_SIMD_WARNING(No SIMD extensions detected)
@@ -25,12 +25,12 @@ BOOST_SIMD_WARNING(No SIMD extensions detected)
 #define BOOST_SIMD_DEFAULT_SITE ::boost::simd::tag::cpu_
 
 #if !defined(BOOST_SIMD_TYPES)
-#include <nt2/sdk/simd/extensions/sse/types.hpp>
+#include <nt2/simd_sdk/simd/extensions/sse/types.hpp>
 #endif
 
-#include <nt2/sdk/functor/meta/hierarchy.hpp>
-#include <nt2/sdk/simd/meta/is_simd_specific.hpp>
-#include <nt2/sdk/simd/meta/as_simd.hpp>
+#include <nt2/simd_sdk/functor/meta/hierarchy.hpp>
+#include <nt2/simd_sdk/simd/meta/is_simd_specific.hpp>
+#include <nt2/simd_sdk/simd/meta/as_simd.hpp>
 
 #include <boost/array.hpp>
 #include <boost/mpl/times.hpp>

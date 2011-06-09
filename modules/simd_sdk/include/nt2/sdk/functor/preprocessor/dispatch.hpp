@@ -17,7 +17,7 @@
 #include <nt2/extension/parameters.hpp>
 #include <boost/preprocessor/seq/size.hpp>
 #include <boost/preprocessor/seq/elem.hpp>
-#include <nt2/sdk/details/preprocessor.hpp>
+#include <nt2/simd_sdk/details/preprocessor.hpp>
 #include <boost/preprocessor/repetition/enum.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/repeat_from_to.hpp>

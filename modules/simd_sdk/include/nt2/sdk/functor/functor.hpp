@@ -22,16 +22,16 @@
  */
 
 #include <boost/config.hpp>
-#include <nt2/sdk/meta/arithmetic.hpp>
-#include <nt2/sdk/meta/floating.hpp>
-#include <nt2/sdk/functor/forward.hpp>
-#include <nt2/sdk/error/static_assert.hpp>
-#include <nt2/sdk/functor/details/call.hpp>
-#include <nt2/sdk/functor/meta/enable_call.hpp>
-#include <nt2/sdk/functor/details/dispatch.hpp>
-#include <nt2/sdk/functor/meta/make_functor.hpp>
-#include <nt2/sdk/functor/preprocessor/dispatch.hpp>
-#include <nt2/sdk/meta/result_of.hpp>
+#include <nt2/simd_sdk/meta/arithmetic.hpp>
+#include <nt2/simd_sdk/meta/floating.hpp>
+#include <nt2/simd_sdk/functor/forward.hpp>
+#include <nt2/simd_sdk/error/static_assert.hpp>
+#include <nt2/simd_sdk/functor/details/call.hpp>
+#include <nt2/simd_sdk/functor/meta/enable_call.hpp>
+#include <nt2/simd_sdk/functor/details/dispatch.hpp>
+#include <nt2/simd_sdk/functor/meta/make_functor.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/dispatch.hpp>
+#include <nt2/simd_sdk/meta/result_of.hpp>
 
 #if !defined(BOOST_HAS_VARIADIC_TMPL) || !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES) || (defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES))
 #include <nt2/extension/parameters.hpp>
@@ -101,7 +101,7 @@ namespace boost { namespace simd
     #else
 
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/sdk/functor/preprocessed/functor.hpp>
+#include <nt2/simd_sdk/functor/preprocessed/functor.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/functor.hpp")

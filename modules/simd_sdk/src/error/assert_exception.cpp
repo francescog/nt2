@@ -8,7 +8,7 @@
 //==============================================================================
 
 #include <iostream>
-#include <nt2/sdk/error/assert.hpp>
+#include <nt2/simd_sdk/error/assert.hpp>
 
 #if !defined(NT2_DISABLE_ERROR)
 

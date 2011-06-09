@@ -7,23 +7,23 @@
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
 #include <cstdlib>
-#include <nt2/sdk/error/error.hpp>
-#include <nt2/sdk/memory/forward.hpp>
+#include <nt2/simd_sdk/error/error.hpp>
+#include <nt2/simd_sdk/memory/forward.hpp>
 
 namespace nt2 { namespace simd { namespace memory
 {
   byte* allocate( std::size_t nbytes )
   {
     void *result;
-    BOOST_STATIC_CONSTANT(std::size_t, align = NT2_CONFIG_ALIGNMENT );
+    BOOST_STATIC_CONSTANT(std::size_t, align = BOOST_SIMD_CONFIG_ALIGNMENT );
 
-    #if defined(NT2_CONFIG_SUPPORT_POSIX_MEMALIGN)
+    #if defined(BOOST_SIMD_CONFIG_SUPPORT_POSIX_MEMALIGN)
     //////////////////////////////////////////////////////////////////////////////
     // POSIX systems use posix_memalign
     //////////////////////////////////////////////////////////////////////////////
     if(posix_memalign(&result, align, nbytes))
     {
-      NT2_THROW( std::bad_alloc() );
+      BOOST_SIMD_THROW( std::bad_alloc() );
       result = 0;
     }
     #elif defined (_MSC_VER)
@@ -32,7 +32,7 @@ namespace nt2 { namespace simd { namespace memory
     //////////////////////////////////////////////////////////////////////////////
     if( !(result = _aligned_malloc(nbytes, align) ) )
     {
-      NT2_THROW( std::bad_alloc() );
+      BOOST_SIMD_THROW( std::bad_alloc() );
       result = 0;
     }
     #else
@@ -43,7 +43,7 @@ namespace nt2 { namespace simd { namespace memory
     BOOST_STATIC_CONSTANT(std::size_t, fix = ~(std::size_t(align-1)));
     if( !(base = ::malloc(nbytes+align+sizeof(void*))) )
     {
-      NT2_THROW( std::bad_alloc() );
+      BOOST_SIMD_THROW( std::bad_alloc() );
       result = 0;
     }
     else

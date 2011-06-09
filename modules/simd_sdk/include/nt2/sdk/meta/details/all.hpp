@@ -14,7 +14,7 @@
 //==============================================================================
 #include <boost/mpl/end.hpp>
 #include <boost/mpl/not.hpp>
-#include <nt2/sdk/meta/na.hpp>
+#include <nt2/simd_sdk/meta/na.hpp>
 #include <boost/mpl/apply.hpp>
 #include <boost/mpl/find_if.hpp>
 #include <boost/mpl/is_sequence.hpp>

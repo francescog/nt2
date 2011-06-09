@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_SDK_TIMING_CYCLE_TIMER_HPP_INCLUDED
 #define BOOST_SIMD_SDK_TIMING_CYCLE_TIMER_HPP_INCLUDED
 
-#include <nt2/sdk/timing/ctic.hpp>
-#include <nt2/sdk/timing/impl/cycles.hpp>
+#include <nt2/simd_sdk/timing/ctic.hpp>
+#include <nt2/simd_sdk/timing/impl/cycles.hpp>
 
 namespace boost { namespace simd { namespace time
 {

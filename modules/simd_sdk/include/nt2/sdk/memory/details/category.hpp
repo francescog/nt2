@@ -13,8 +13,8 @@
 // Various memory hierarchy stuff
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/pointee.hpp>
-#include <nt2/sdk/meta/is_iterator.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
+#include <nt2/simd_sdk/meta/is_iterator.hpp>
+#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
 #include <boost/type_traits/is_pointer.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -12,11 +12,11 @@
 #include <boost/mpl/apply.hpp>
 #include <boost/mpl/eval_if.hpp>
 #include <boost/mpl/identity.hpp>
-#include <nt2/sdk/meta/factory_of.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
-#include <nt2/sdk/meta/primitive_of.hpp>
+#include <nt2/simd_sdk/meta/factory_of.hpp>
+#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
+#include <nt2/simd_sdk/meta/primitive_of.hpp>
 #include <boost/type_traits/is_same.hpp>
-#include <nt2/sdk/meta/is_fundamental.hpp>
+#include <nt2/simd_sdk/meta/is_fundamental.hpp>
 #include <boost/type_traits/is_integral.hpp>
 #include <boost/type_traits/make_unsigned.hpp>
 

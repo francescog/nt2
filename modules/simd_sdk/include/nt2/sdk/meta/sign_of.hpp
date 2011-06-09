@@ -14,11 +14,11 @@
 // signed and 'unsigned' otherwise.
 // See: http://nt2.metascale.org/sdk/meta/traits/sign_of.html
 //////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/strip.hpp>
-#include <nt2/sdk/meta/is_signed.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
-#include <nt2/sdk/meta/primitive_of.hpp>
-#include <nt2/sdk/meta/is_fundamental.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/is_signed.hpp>
+#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
+#include <nt2/simd_sdk/meta/primitive_of.hpp>
+#include <nt2/simd_sdk/meta/is_fundamental.hpp>
 #include <boost/type_traits/is_base_of.hpp>
 
 namespace boost { namespace simd { namespace meta

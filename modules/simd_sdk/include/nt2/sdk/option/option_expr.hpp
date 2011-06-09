@@ -9,14 +9,14 @@
 #ifndef BOOST_SIMD_SDK_OPTION_OPTION_EXPR_HPP_INCLUDED
 #define BOOST_SIMD_SDK_OPTION_OPTION_EXPR_HPP_INCLUDED
 
-#include <nt2/sdk/option/option_expr_fwd.hpp>
-#include <nt2/sdk/option/option_domain.hpp>
-#include <nt2/sdk/option/option_not_found.hpp>
-#include <nt2/sdk/option/option_term.hpp>
-#include <nt2/sdk/option/option_pack.hpp>
+#include <nt2/simd_sdk/option/option_expr_fwd.hpp>
+#include <nt2/simd_sdk/option/option_domain.hpp>
+#include <nt2/simd_sdk/option/option_not_found.hpp>
+#include <nt2/simd_sdk/option/option_term.hpp>
+#include <nt2/simd_sdk/option/option_pack.hpp>
 
 #include <boost/proto/core.hpp>
-#include <nt2/sdk/error/static_assert.hpp>
+#include <nt2/simd_sdk/error/static_assert.hpp>
 
 namespace boost { namespace simd { namespace details
 {

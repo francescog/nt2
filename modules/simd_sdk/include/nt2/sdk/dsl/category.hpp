@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_SDK_DSL_CATEGORY_HPP_INCLUDED
 #define BOOST_SIMD_SDK_DSL_CATEGORY_HPP_INCLUDED
 
-#include <nt2/sdk/dsl/semantic_of.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
+#include <nt2/simd_sdk/dsl/semantic_of.hpp>
+#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
 
 namespace boost { namespace simd { namespace tag
 {

@@ -15,8 +15,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 #define BOOST_SIMD_TEST_SILENT
 #include <nt2/include/timing.hpp>
-#include <nt2/sdk/unit/tests.hpp>
-#include <nt2/sdk/unit/module.hpp>
+#include <nt2/simd_sdk/unit/tests.hpp>
+#include <nt2/simd_sdk/unit/module.hpp>
 
 #include <boost/preprocessor/seq/size.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
@@ -53,12 +53,12 @@ BOOST_SIMD_TEST_CASE( benchmark )
 ////////////////////////////////////////////////////////////////////////////////
 // Benchmark functions
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/unit/details/helpers.hpp>
-#include <nt2/sdk/unit/details/unary_benchmark.hpp>
-#include <nt2/sdk/unit/details/binary_benchmark.hpp>
-#include <nt2/sdk/unit/details/ternary_benchmark.hpp>
-#include <nt2/sdk/unit/details/_4_ary_benchmark.hpp>
-#include <nt2/sdk/unit/details/_5_ary_benchmark.hpp>
+#include <nt2/simd_sdk/unit/details/helpers.hpp>
+#include <nt2/simd_sdk/unit/details/unary_benchmark.hpp>
+#include <nt2/simd_sdk/unit/details/binary_benchmark.hpp>
+#include <nt2/simd_sdk/unit/details/ternary_benchmark.hpp>
+#include <nt2/simd_sdk/unit/details/_4_ary_benchmark.hpp>
+#include <nt2/simd_sdk/unit/details/_5_ary_benchmark.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Benchmark macros

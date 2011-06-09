@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_SIMD_PACK_STORE_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_PACK_STORE_HPP_INCLUDED
 
-#include <nt2/sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
 #include <nt2/include/functions/store.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////

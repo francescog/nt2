@@ -14,11 +14,11 @@
  * \brief Defines and implements \ref nt2::meta::as_real
  */
 
-#include <nt2/sdk/meta/strip.hpp>
-#include <nt2/sdk/meta/make_real.hpp>
-#include <nt2/sdk/meta/factory_of.hpp>
-#include <nt2/sdk/meta/primitive_of.hpp>
-#include <nt2/sdk/meta/is_fundamental.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/make_real.hpp>
+#include <nt2/simd_sdk/meta/factory_of.hpp>
+#include <nt2/simd_sdk/meta/primitive_of.hpp>
+#include <nt2/simd_sdk/meta/is_fundamental.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

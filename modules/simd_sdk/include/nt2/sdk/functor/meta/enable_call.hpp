@@ -15,11 +15,11 @@
  */
 
 #include <boost/config.hpp>
-#include <nt2/sdk/meta/enable_if_type.hpp>
+#include <nt2/simd_sdk/meta/enable_if_type.hpp>
 #include <boost/function_types/result_type.hpp>
-#include <nt2/sdk/functor/forward.hpp>
-#include <nt2/sdk/functor/details/dispatch.hpp>
-#include <nt2/sdk/meta/result_of.hpp>
+#include <nt2/simd_sdk/functor/forward.hpp>
+#include <nt2/simd_sdk/functor/details/dispatch.hpp>
+#include <nt2/simd_sdk/meta/result_of.hpp>
 
 #if !defined(BOOST_HAS_VARIADIC_TMPL) || !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES) || (defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES))
 #include <nt2/extension/parameters.hpp>
@@ -91,7 +91,7 @@ namespace boost { namespace simd { namespace meta
   #else
 
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/sdk/functor/meta/preprocessed/enable_call.hpp>
+#include <nt2/simd_sdk/functor/meta/preprocessed/enable_call.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/enable_call.hpp")

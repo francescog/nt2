@@ -12,8 +12,8 @@
 //////////////////////////////////////////////////////////////////////////////
 // TODO: DEPRECATED FILE TO REMOVE
 //////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/as_integer.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
+#include <nt2/simd_sdk/meta/as_integer.hpp>
+#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
 
 namespace boost { namespace simd { namespace details
 {

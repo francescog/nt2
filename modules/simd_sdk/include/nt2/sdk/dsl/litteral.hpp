@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_SDK_DSL_LITTERAL_HPP_INCLUDED
 #define BOOST_SIMD_SDK_DSL_LITTERAL_HPP_INCLUDED
 
-#include <nt2/sdk/dsl/category.hpp>
-#include <nt2/sdk/constant/category.hpp>
+#include <nt2/simd_sdk/dsl/category.hpp>
+#include <nt2/simd_sdk/constant/category.hpp>
 #include <nt2/include/functions/splat.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////

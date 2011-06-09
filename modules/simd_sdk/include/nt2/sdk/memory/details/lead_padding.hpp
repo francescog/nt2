@@ -12,13 +12,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Implementation of the no_padding strategy for memory allocation
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/fusion.hpp>
+#include <nt2/simd_sdk/meta/fusion.hpp>
 #include <boost/typeof/typeof.hpp>
-#include <nt2/sdk/memory/slice.hpp>
-#include <nt2/sdk/memory/stride.hpp>
-#include <nt2/sdk/memory/align_on.hpp>
-#include <nt2/sdk/memory/no_padding.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/memory/slice.hpp>
+#include <nt2/simd_sdk/memory/stride.hpp>
+#include <nt2/simd_sdk/memory/align_on.hpp>
+#include <nt2/simd_sdk/memory/no_padding.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

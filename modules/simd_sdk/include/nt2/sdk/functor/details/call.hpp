@@ -14,7 +14,7 @@
 // Documentation:http://nt2.lri.fr/extension/custom_function.html
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/type_traits/is_same.hpp>
-#include <nt2/sdk/error/static_assert.hpp>
+#include <nt2/simd_sdk/error/static_assert.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Forward declare the unknown_ tag and the error_with helper

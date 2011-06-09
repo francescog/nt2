@@ -10,7 +10,7 @@
 #define BOOST_SIMD_SDK_SIMD_META_NATIVE_CARDINAL_HPP_INCLUDED
 
 #include <boost/mpl/size_t.hpp>
-#include <nt2/sdk/simd/extensions.hpp>
+#include <nt2/simd_sdk/simd/extensions.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

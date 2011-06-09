@@ -10,9 +10,9 @@
 #define BOOST_SIMD_SDK_MEMORY_ALLOCATOR_ADAPTOR_HPP_INCLUDED
 
 #include <cstddef>
-#include <nt2/sdk/error/error.hpp>
-#include <nt2/sdk/memory/config.hpp>
-#include <nt2/sdk/memory/allocator.hpp>
+#include <nt2/simd_sdk/error/error.hpp>
+#include <nt2/simd_sdk/memory/config.hpp>
+#include <nt2/simd_sdk/memory/allocator.hpp>
 
 namespace boost { namespace simd { namespace memory
 {

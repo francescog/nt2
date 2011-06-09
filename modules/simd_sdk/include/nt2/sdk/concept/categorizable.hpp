@@ -9,9 +9,9 @@
 #ifndef BOOST_SIMD_SDK_CONCEPT_CATEGORIZABLE_HPP_INCLUDED
 #define BOOST_SIMD_SDK_CONCEPT_CATEGORIZABLE_HPP_INCLUDED
 
-#include <nt2/sdk/meta/unknown.hpp>
-#include <nt2/sdk/error/concepts.hpp>
-#include <nt2/sdk/meta/category_of.hpp>
+#include <nt2/simd_sdk/meta/unknown.hpp>
+#include <nt2/simd_sdk/error/concepts.hpp>
+#include <nt2/simd_sdk/meta/category_of.hpp>
 #include <boost/type_traits/is_same.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////

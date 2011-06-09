@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_SDK_CONCEPT_CATEGORY_HPP_INCLUDED
 #define BOOST_SIMD_SDK_CONCEPT_CATEGORY_HPP_INCLUDED
 
-#include <nt2/sdk/meta/unknown.hpp>
-#include <nt2/sdk/error/concepts.hpp>
+#include <nt2/simd_sdk/meta/unknown.hpp>
+#include <nt2/simd_sdk/error/concepts.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Categorizy concept: defines types usbale as NT2 category tag

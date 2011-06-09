@@ -7,13 +7,13 @@
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
 #include <cstdlib>
-#include <nt2/sdk/memory/forward.hpp>
+#include <nt2/simd_sdk/memory/forward.hpp>
 
 namespace nt2 { namespace simd { namespace memory
 {
   void deallocate( byte* ptr, std::size_t )
   {
-    #if defined(NT2_CONFIG_SUPPORT_POSIX_MEMALIGN)
+    #if defined(BOOST_SIMD_CONFIG_SUPPORT_POSIX_MEMALIGN)
     //////////////////////////////////////////////////////////////////////////////
     // POSIX systems use free
     //////////////////////////////////////////////////////////////////////////////

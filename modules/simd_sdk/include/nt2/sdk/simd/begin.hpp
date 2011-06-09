@@ -9,10 +9,10 @@
 #ifndef BOOST_SIMD_SDK_SIMD_BEGIN_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_BEGIN_HPP_INCLUDED
 
-#include <nt2/sdk/simd/iterator.hpp>
+#include <nt2/simd_sdk/simd/iterator.hpp>
 #include <boost/range/iterator_range.hpp>
 #include <boost/iterator/iterator_traits.hpp>
-#include <nt2/sdk/simd/meta/native_cardinal.hpp>
+#include <nt2/simd_sdk/simd/meta/native_cardinal.hpp>
 
 namespace boost { namespace simd
 {

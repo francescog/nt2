@@ -10,8 +10,8 @@
 #define BOOST_SIMD_SDK_MEMORY_OVERLOAD_HPP_INCLUDED
 
 #include <cstddef>
-#include <nt2/sdk/memory/allocate.hpp>
-#include <nt2/sdk/memory/deallocate.hpp>
+#include <nt2/simd_sdk/memory/allocate.hpp>
+#include <nt2/simd_sdk/memory/deallocate.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Macro for operator new/new[] overload with aligned allocation

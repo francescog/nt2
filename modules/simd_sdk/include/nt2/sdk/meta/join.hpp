@@ -13,7 +13,7 @@
 // Compute the lazy union of two types set
 // See: http://nt2.metascale.org/sdk/meta/set/join.hpp
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/has_key.hpp>
+#include <nt2/simd_sdk/meta/has_key.hpp>
 
 namespace boost { namespace simd { namespace meta
 {
