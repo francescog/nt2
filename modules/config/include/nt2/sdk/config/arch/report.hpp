@@ -15,7 +15,7 @@
 #include <nt2/sdk/config/arch.hpp>
 #include <nt2/sdk/config/details/reporter.hpp>
 
-namespace nt2 { namespace config
+namespace boost { namespace simd { namespace config
 {
   //////////////////////////////////////////////////////////////////////////////
   // Status header reporter - Head for the reporter list
@@ -26,6 +26,6 @@ namespace nt2 { namespace config
   }
 
   BOOST_SIMD_REGISTER_STATUS(architecture);
-} }
+} } }
 
 #endif

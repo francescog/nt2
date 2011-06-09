@@ -29,27 +29,27 @@
 // Define a library version
 ////////////////////////////////////////////////////////////////////////////////
 #define BOOST_SIMD_USE_LIBRARY_VERSION(S,V)             \
-namespace nt2 { namespace config                        \
+namespace boost { namespace simd { namespace config     \
 {                                                       \
   bool BOOST_SIMD_SDK_DECL                              \
   BOOST_PP_CAT(S,BOOST_PP_CAT(BOOST_SIMD_VERSION_MESSAGE,V))() \
   {                                                     \
     return true;                                        \
   }                                                     \
-} }                                                     \
+} } }                                                   \
 /**/
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register a version for the library using a given symbol absed on feature list
 ////////////////////////////////////////////////////////////////////////////////
 #define BOOST_SIMD_REGISTER_LIBRARY_VERSION(S,V)          \
-namespace nt2 { namespace config                          \
+namespace boost { namespace simd { namespace config       \
 {                                                         \
   bool BOOST_SIMD_SDK_DECL                                \
   BOOST_PP_CAT(S,BOOST_PP_CAT(BOOST_SIMD_VERSION_MESSAGE,V))();  \
   bool const BOOST_PP_CAT(check_,BOOST_PP_CAT(S,V)) =     \
   BOOST_PP_CAT(S,BOOST_PP_CAT(BOOST_SIMD_VERSION_MESSAGE,V))();  \
-} }                                                       \
+} } }                                                     \
 /**/
 
 #endif

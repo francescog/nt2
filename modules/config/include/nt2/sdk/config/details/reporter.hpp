@@ -12,7 +12,7 @@
 #include <cstdio>
 #include <boost/preprocessor/cat.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   //////////////////////////////////////////////////////////////////////////////
   // status reporter structure
@@ -55,25 +55,25 @@ namespace nt2 { namespace details
     puts("\\****************************************************************/");
     puts(" Last compilation        : " __DATE__ " @ " __TIME__ "\n");
   }
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // status reporter global instance
 // When called, display the current list fo all status reporter
 // Documentation: http://nt2.lri.fr/sdk/config/function.html
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace config
+namespace boost { namespace simd { namespace config
 {
   details::reporter const status = {details::status_headers,0};
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Status reporter registration macro
 ////////////////////////////////////////////////////////////////////////////////
 #define BOOST_SIMD_REGISTER_STATUS(FUNC)                              \
-nt2::details::reporter const                                          \
+boost::simd::details::reporter const                                  \
 BOOST_PP_CAT(FUNC,_reporter) = { FUNC                                 \
-                               , nt2::config::status                  \
+                               , boost::simd::config::status          \
                                 .link(&BOOST_PP_CAT(FUNC,_reporter))  \
                               }                                       \
 /**/

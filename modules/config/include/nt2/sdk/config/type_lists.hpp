@@ -13,11 +13,11 @@
 
 
 #if !defined(BOOST_SIMD_TYPES)
-#define BOOST_SIMD_TYPES  (nt2::uint64_t)    \
-    (nt2::int64_t)(double)		     \
-    (nt2::uint32_t)(nt2::int32_t)(float)     \
-    (nt2::uint16_t)(nt2::int16_t)	     \
-    (nt2::uint8_t) (nt2::int8_t)	     \
+#define BOOST_SIMD_TYPES  (boost::simd::uint64_t)        \
+    (boost::simd::int64_t)(double)		         \
+    (boost::simd::uint32_t)(boost::simd::int32_t)(float) \
+    (boost::simd::uint16_t)(boost::simd::int16_t)        \
+    (boost::simd::uint8_t) (boost::simd::int8_t)         \
 /**/
 #endif
 
@@ -30,41 +30,41 @@
 #endif
 
 #if !defined(BOOST_SIMD_REAL_CONVERTIBLE_TYPES)
-#define BOOST_SIMD_REAL_CONVERTIBLE_TYPES    \
-  (nt2::uint64_t)(nt2::int64_t)(double)	     \
-    (nt2::uint32_t)(nt2::int32_t)(float)     \
+#define BOOST_SIMD_REAL_CONVERTIBLE_TYPES                \
+  (boost::simd::uint64_t)(boost::simd::int64_t)(double)	 \
+    (boost::simd::uint32_t)(boost::simd::int32_t)(float) \
 /**/
 #endif
 
 #if !defined(BOOST_SIMD_INTEGRAL_SIGNED_TYPES)
-#define BOOST_SIMD_INTEGRAL_SIGNED_TYPES  (nt2::int64_t) \
-    (nt2::int32_t)					 \
-    (nt2::int16_t)					 \
-    (nt2::int8_t)					 \
+#define BOOST_SIMD_INTEGRAL_SIGNED_TYPES  (boost::simd::int64_t) \
+    (boost::simd::int32_t)					 \
+    (boost::simd::int16_t)					 \
+    (boost::simd::int8_t)					 \
 /**/
 #endif
 
 #if !defined(BOOST_SIMD_UNSIGNED_TYPES)
-#define BOOST_SIMD_UNSIGNED_TYPES  (nt2::uint64_t) \
-    (nt2::uint32_t)			           \
-    (nt2::uint16_t)			           \
-    (nt2::uint8_t)			           \
+#define BOOST_SIMD_UNSIGNED_TYPES  (boost::simd::uint64_t) \
+    (boost::simd::uint32_t)			           \
+    (boost::simd::uint16_t)			           \
+    (boost::simd::uint8_t)			           \
 /**/
 #endif
 
 #if !defined(BOOST_SIMD_INTEGRAL_TYPES)
-#define BOOST_SIMD_INTEGRAL_TYPES  (nt2::uint64_t)      \
-    (nt2::int64_t)(nt2::uint32_t)			\
-    (nt2::int32_t)(nt2::uint16_t)(nt2::int16_t)		\
-    (nt2::int8_t)(nt2::uint8_t)				\
+#define BOOST_SIMD_INTEGRAL_TYPES  (boost::simd::uint64_t)i             \
+    (boost::simd::int64_t)(boost::simd::uint32_t)			\
+    (boost::simd::int32_t)(boost::simd::uint16_t)(boost::simd::int16_t) \
+    (boost::simd::int8_t)(boost::simd::uint8_t)				\
 /**/
 #endif
 
 #if !defined(BOOST_SIMD_SIGNED_TYPES)
-#define BOOST_SIMD_SIGNED_TYPES (nt2::int64_t)(double) \
-    (nt2::int32_t)(float)			       \
-    (nt2::int16_t)				       \
-    (nt2::int8_t)				       \
+#define BOOST_SIMD_SIGNED_TYPES (boost::simd::int64_t)(double) \
+    (boost::simd::int32_t)(float)			       \
+    (boost::simd::int16_t)				       \
+    (boost::simd::int8_t)				       \
 /**/
 #endif
 

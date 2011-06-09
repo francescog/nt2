@@ -12,7 +12,7 @@
 #include <limits.h>
 #include <boost/preprocessor/stringize.hpp>
 
-namespace nt2 { namespace config
+namespace boost { namespace simd { namespace config
 {
   //////////////////////////////////////////////////////////////////////////////
   // Status header reporter - Head for the reporter list
@@ -37,5 +37,5 @@ namespace nt2 { namespace config
   }
 
   BOOST_SIMD_REGISTER_STATUS(syslib);
-} }
+} } }
 #endif

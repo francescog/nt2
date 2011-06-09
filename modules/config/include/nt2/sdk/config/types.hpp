@@ -17,7 +17,7 @@
 #include <boost/cstdint.hpp>
 #include <nt2/sdk/meta/make_integer.hpp>
 
-namespace nt2
+namespace boost { namespace { simd
 {
   typedef meta::make_integer<1,unsigned>::type uint8_t;
   typedef meta::make_integer<2,unsigned>::type uint16_t;
