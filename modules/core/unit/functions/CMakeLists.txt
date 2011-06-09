@@ -8,6 +8,7 @@
 ##############################################################################
 
 SET( SOURCES
+  length.cpp
   numel.cpp
   value_at.cpp
 # List of test files for core extent class
