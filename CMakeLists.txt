@@ -60,41 +60,46 @@ include(CPack)
 #                  )
 
 ################################################################################
-# Add super-targets
+# Enable testing if using Makefile generator or instructed to do so
 ################################################################################
-ENABLE_TESTING()
-ADD_CUSTOM_TARGET( bench
-                   WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/bench
-                 )
-ADD_CUSTOM_TARGET( examples
-                   WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/examples
-                 )
-ADD_CUSTOM_TARGET( unit
-                   WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/unit
-                 )
-ADD_CUSTOM_TARGET( cover
-                   WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/cover
-                 )
+if(CMAKE_GENERATOR MATCHES "Make" OR NT2_WITH_TESTS)
+  ENABLE_TESTING()
+endif()
 
 ################################################################################
 # Module inclusion
 ################################################################################
-
-macro(nt2_load_module module)
-  add_subdirectory(${PROJECT_SOURCE_DIR}/modules/${module})
-  add_dependencies(bench ${module}.bench)
-  add_dependencies(examples ${module}.examples)
-  add_dependencies(unit ${module}.unit)
-  add_dependencies(cover ${module}.cover)
-endmacro()
-
 set(NT2_SOURCE_ROOT ${PROJECT_SOURCE_DIR})
 
-file(GLOB MODULES RELATIVE ${PROJECT_SOURCE_DIR}/modules ${PROJECT_SOURCE_DIR}/modules/*/)
-foreach(module ${MODULES})
-  if(EXISTS ${PROJECT_SOURCE_DIR}/modules/${module}/CMakeLists.txt)
-    message(STATUS "[nt2] loading module ${module}")
-    nt2_load_module(${module})
+if(NOT NT2_MODULES)
+  file(GLOB NT2_MODULES RELATIVE ${PROJECT_SOURCE_DIR}/modules ${PROJECT_SOURCE_DIR}/modules/*/)
+  foreach(${module} NT2_MODULES)
+    if(NOT EXISTS ${PROJECT_SOURCE_DIR}/modules/${module}/CMakeLists.txt)
+      list(REMOVE_ITEM NT2_MODULES ${module})
+    endif()
+  endforeach()
+endif()
+if(NT2_MODULES_EXTRA)
+  list(APPEND NT2_MODULES ${NT2_MODULES_EXTRA})
+  list(REMOVE_DUPLICATES ${NT2_MODULES})
+endif()
+
+include(nt2.download)
+foreach(module ${NT2_MODULES})
+  list(FIND NT2_MODULES_BLACKLIST ${module} module_found)
+  if(module_found LESS 0)
+  
+    if(NOT IS_DIRECTORY ${PROJECT_SOURCE_DIR}/modules/${module})
+      nt2_download_module(${module})
+    endif()
+  
+    if(NOT IS_DIRECTORY ${PROJECT_SOURCE_DIR}/modules/${module})
+      message(STATUS "[nt2] module ${module} not found")
+    else()
+      message(STATUS "[nt2] loading module ${module}")
+      add_subdirectory(modules/${module})
+    endif()
+    
   endif()
 endforeach()
 
