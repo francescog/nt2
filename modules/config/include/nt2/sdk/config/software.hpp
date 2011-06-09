@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_SOFTWARE_HPP_INCLUDED
-#define NT2_SDK_CONFIG_SOFTWARE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_SOFTWARE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_SOFTWARE_HPP_INCLUDED
 
 #include <limits.h>
 #include <boost/preprocessor/stringize.hpp>
@@ -36,6 +36,6 @@ namespace nt2 { namespace config
     puts(" Boost libraries version : " BOOST_LIB_VERSION  "\n");
   }
 
-  NT2_REGISTER_STATUS(syslib);
+  BOOST_SIMD_REGISTER_STATUS(syslib);
 } }
 #endif

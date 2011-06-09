@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_DETAILS_REPORTER_HPP_INCLUDED
-#define NT2_SDK_CONFIG_DETAILS_REPORTER_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_DETAILS_REPORTER_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_DETAILS_REPORTER_HPP_INCLUDED
 
 #include <cstdio>
 #include <boost/preprocessor/cat.hpp>
@@ -70,7 +70,7 @@ namespace nt2 { namespace config
 ////////////////////////////////////////////////////////////////////////////////
 // Status reporter registration macro
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_REGISTER_STATUS(FUNC)                                     \
+#define BOOST_SIMD_REGISTER_STATUS(FUNC)                              \
 nt2::details::reporter const                                          \
 BOOST_PP_CAT(FUNC,_reporter) = { FUNC                                 \
                                , nt2::config::status                  \

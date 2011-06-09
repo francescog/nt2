@@ -6,12 +6,12 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_TYPES_HPP_INCLUDED
-#define NT2_SDK_CONFIG_TYPES_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_TYPES_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_TYPES_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Types injection into nt2
-// Injects or define some basic types in NT2 namespace for consistency sake.
+// Injects or define some basic types in boost::simd namespace for consistency sake.
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/config.hpp>
 #include <boost/cstdint.hpp>
