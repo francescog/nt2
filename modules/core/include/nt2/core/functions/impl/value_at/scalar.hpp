@@ -9,36 +9,65 @@
 #ifndef NT2_CORE_FUNCTIONS_IMPL_VALUE_AT_SCALAR_HPP_INCLUDED
 #define NT2_CORE_FUNCTIONS_IMPL_VALUE_AT_SCALAR_HPP_INCLUDED
 
-#include <nt2/sdk/meta/fusion.hpp>
+/////////////////////////////////////////////////////////////////////////////
+// Implementation when type A0 is fundamental adn rest is w/e
+/////////////////////////////////////////////////////////////////////////////
+#define M0(z,n,t) (BOOST_PP_CAT(A,n))
+#define M1(z,n,t) (unspecified_<BOOST_PP_CAT(A,n)>)
+#define M2(z,n,t)                                                             \
+NT2_REGISTER_DISPATCH_TO( tag::value_at_, tag::cpu_                           \
+                      , BOOST_PP_REPEAT(BOOST_PP_INC(n),M0,~)                 \
+                      , (tag::value_at_(tag::fundamental_,tag::unspecified_)) \
+                      , (fundamental_<A0>)                                    \
+                        BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(n),M1,~)       \
+                      )                                                       \
+/**/
 
-/////////////////////////////////////////////////////////////////////////////
-// Implementation when type A0 is fundamental
-/////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::value_at_, tag::cpu_
-                      , (A0)(A1)
-                      , (fundamental_<A0>)(fusion_sequence_<A1>)
-                      )
+BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M2,~)
 
 namespace nt2 { namespace ext
 {
   template<class Dummy>
-  struct call < tag::value_at_(tag::fundamental_,tag::fusion_sequence_)
+  struct call < tag::value_at_(tag::fundamental_,tag::unspecified_)
               , tag::cpu_, Dummy
               > : callable
   {
     template<class Sig> struct result;
-    template<class This,class A0,class A1>
-    struct result<This(A0,A1)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
-    {
-      /////////////////////////////////////////////////////////////////////////
-      // Scalar value acts as adaptative size container, so w/e the position
-      // we returnt he scalar value. Note that it is tied to the fact scalars
-      // value appears as "0D" elements while their dimension is [1 1]
-      /////////////////////////////////////////////////////////////////////////
-      return a0;
-    }
+  #define M3(z,n,t) \
+  template<class This,BOOST_PP_ENUM_PARAMS(BOOST_PP_INC(n),class A)>        \
+  struct result<This(BOOST_PP_ENUM_PARAMS(BOOST_PP_INC(n),A))>              \
+  { typedef A0 type; };                                                     \
+                                                                            \
+  template<BOOST_PP_ENUM_PARAMS(BOOST_PP_INC(n),class A)> inline A0&        \
+  operator()( A0& a0                                                        \
+            , BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS ( BOOST_PP_INC(n)         \
+                                                  , const A                 \
+                                                  , & BOOST_PP_INTERCEPT    \
+                                                  )                         \
+            ) const                                                         \
+  {                                                                         \
+    return a0;                                                              \
+  }                                                                         \
+                                                                            \
+  template<BOOST_PP_ENUM_PARAMS(BOOST_PP_INC(n),class A)> inline A0 const&  \
+  operator()( A0 const& a0                                                  \
+            , BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS ( BOOST_PP_INC(n)         \
+                                                  , const A                 \
+                                                  , & BOOST_PP_INTERCEPT    \
+                                                  )                         \
+            ) const                                                         \
+  {                                                                         \
+    return a0;                                                              \
+  }                                                                         \
+  /**/
+
+  BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M3,~)
+
+  #undef M3
+  #undef M2
+  #undef M1
+  #undef M0
   };
 } }
 

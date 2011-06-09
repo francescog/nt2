@@ -7,18 +7,15 @@
 ###                     http://www.boost.org/LICENSE_1_0.txt
 ##############################################################################
 
-################################################################################
-# Add global unit driver rules
-################################################################################
-ADD_CUSTOM_TARGET(core.extent.unit)
-ADD_CUSTOM_TARGET(core.table.unit)
-ADD_CUSTOM_TARGET(core.functions.unit)
-ADD_DEPENDENCIES(core.unit core.extent.unit core.table.unit core.functions.unit)
+SET( SOURCES
+  value_at.cpp
+# List of test files for core extent class
+   )
 
 ##****************************************************************************
-##*     Toolbox crlibm unit tests
+# For each filename
 ##****************************************************************************
-nt2_module_use_modules(unit core sdk arithmetic)
-ADD_SUBDIRECTORY(functions)
-ADD_SUBDIRECTORY(extent)
-ADD_SUBDIRECTORY(table)
+FOREACH( EXAMPLE ${SOURCES})
+  STRING(REGEX REPLACE ".cpp" "" EXAMPLE ${EXAMPLE})
+  nt2_module_add_unit(core.functions.${EXAMPLE}.unit ${EXAMPLE}.cpp)
+ENDFOREACH()

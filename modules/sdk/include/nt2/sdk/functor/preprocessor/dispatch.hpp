@@ -56,6 +56,30 @@ dispatching( Tag const&, Site const&                                        \
 
 //==============================================================================
 /*!
+ * Register an overload for function \c Tag on \c Site when called on types
+ * belonging to the hierarchies specified by \c (Types,Seq). Once defined, such
+ * an overload has to be implemented using the prorotype specified by \c Ret.
+ *
+ * \param Tag Function tag to register
+ * \param Site Evaluation context to use in this overload
+ * \param Types Preprocessor sequence of template types used in the hierarchy
+ * \param Ret Implementation target to select
+ * \param Seq Sequence of hierarchy defining the overload
+ */
+//==============================================================================
+#define NT2_REGISTER_DISPATCH_TO(Tag,Site,Types,Ret,Seq)                  \
+namespace nt2 { namespace meta {                                          \
+template<BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Types),NT2_DISPATCH_TYPE,Types)> \
+nt2::ext::call<NT2_PP_STRIP(Ret),Site>                                    \
+dispatching( Tag const&, Site const&                                      \
+        , BOOST_PP_ENUM(BOOST_PP_SEQ_SIZE(Seq),NT2_DISPATCH_ARG,Seq)      \
+        , adl_helper = adl_helper()                                       \
+        );                                                                \
+} }                                                                       \
+/**/
+
+//==============================================================================
+/*!
  * Register an overload for function Tag on Site when called on types belonging
  * to the hierarchies specified by (Types,Seq) where Seq can contain non-type
  * hierarchy template parameters. Once defined, such an overload has to be
@@ -82,7 +106,7 @@ dispatching( NT2_PP_STRIP(Tag) const&, Site const&                              
 //==============================================================================
 /*!
  * Register an overload for function \c Tag on \c Site when called on types
- * belonging to the hierarchies specified by \c (Types,Seq) ad dif the compile
+ * belonging to the hierarchies specified by \c (Types,Seq) and if the compile
  * time condition \c Cond is verified. Once defined, such an overload
  * has to be implemented using the prorotype specified by \c Ret.
  *
