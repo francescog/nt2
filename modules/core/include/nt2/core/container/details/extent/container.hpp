@@ -57,6 +57,7 @@ namespace nt2 { namespace containers
     typedef std::size_t                             const_reference;
     typedef std::size_t                             reference;
     typedef std::size_t                             size_type;
+    typedef size_type                               base_type;
     typedef std::size_t                             difference_type;
 
     //==========================================================================
