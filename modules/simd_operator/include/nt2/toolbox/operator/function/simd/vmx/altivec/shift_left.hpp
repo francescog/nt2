@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_SHIFT_LEFT_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_SHIFT_LEFT_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_SHIFT_LEFT_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_SHIFT_LEFT_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // operator binary shift left
@@ -20,7 +20,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::shift_left_, tag::cpu_, (A0)(A1)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::shift_left_, tag::cpu_, (A0)(A1)
                       , ((simd_<integer_<A0>,tag::altivec_>))
                         ((simd_<integer_<A1>,tag::altivec_>))
                       );
@@ -42,7 +42,7 @@ namespace nt2 { namespace ext
     template<class This,class A0,class A1>  
     struct result<This(A0,A1)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)  
+    BOOST_SIMD_FUNCTOR_CALL(2)  
     { 
      typedef typename meta::as_unsigned<A1>::type type;
      type shift = simd::native_cast<type>(a1);
@@ -56,7 +56,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::shift_left_, tag::cpu_, (A0)(A1)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::shift_left_, tag::cpu_, (A0)(A1)
                       , ((simd_<float_<A0>,tag::altivec_>))
                         ((simd_<ints32_<A1>,tag::altivec_>))
                       );
@@ -78,7 +78,7 @@ namespace nt2 { namespace ext
     template<class This,class A0,class A1>  
     struct result<This(A0,A1)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2) 
+    BOOST_SIMD_FUNCTOR_CALL(2) 
    { 
      typedef typename meta::as_unsigned<A1>::type type;
      type shift = simd::native_cast<type>(a1);

@@ -6,15 +6,15 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SCALAR_UNARY_MINUS_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SCALAR_UNARY_MINUS_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SCALAR_UNARY_MINUS_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SCALAR_UNARY_MINUS_HPP_INCLUDED
 
 #ifdef BOOST_MSVC
   #pragma warning(push)
   #pragma warning(disable: 4146) // unary minus applied to unsigned
 #endif
 
-NT2_REGISTER_DISPATCH ( tag::unary_minus_        , tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::unary_minus_        , tag::cpu_, (A0)
                       , (arithmetic_<A0>)
                       )
 
@@ -35,7 +35,7 @@ namespace nt2 { namespace ext
       typedef typename nested::type type;
     };
 
-    NT2_FUNCTOR_CALL(1) { return -a0; }
+    BOOST_SIMD_FUNCTOR_CALL(1) { return -a0; }
   };
 } }
 

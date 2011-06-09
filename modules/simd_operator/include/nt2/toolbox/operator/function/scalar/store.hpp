@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_DETAILS_STORE_HPP_INCLUDED
-#define NT2_SDK_MEMORY_DETAILS_STORE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_DETAILS_STORE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_DETAILS_STORE_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // store for scalar types
@@ -19,7 +19,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over load_
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::store_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::store_
                       , tag::cpu_
                       , (A0)(A1)(A2)
                       , (fundamental_<A0>)
@@ -43,7 +43,7 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1,class A2>
     struct result<This(A0,A1,A2)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(3)
+    BOOST_SIMD_FUNCTOR_CALL(3)
     {
       A1 that = a1;
       std::advance(that,a2);

@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_MAP_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_MAP_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_MAP_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_MAP_HPP_INCLUDED
 
 #include <nt2/sdk/simd/category.hpp>
 #include <nt2/extension/parameters.hpp>
@@ -27,7 +27,7 @@
 #define M1(z,n,t) tag::simd_<tag::BOOST_PP_TUPLE_ELEM(2,0,t),tag::altivec_>
 
 #define M0(z,n,t)                                                       \
-NT2_REGISTER_DISPATCH ( tag::map_,tag::cpu_                             \
+BOOST_SIMD_REGISTER_DISPATCH ( tag::map_,tag::cpu_                             \
                       , (Func)(A0)                                      \
                       , (unspecified_<Func>)BOOST_PP_REPEAT(n,M2,t)     \
                       )                                                 \
@@ -39,8 +39,8 @@ namespace nt2 { namespace ext                                           \
   {                                                                     \
     template<class Sig> struct result;                                  \
     template<class This,class F,class A>                                \
-    struct result<This(F,NT2_PP_ENUM_VALUE(n,A))> : meta::strip<A> {};  \
-    NT2_FUNCTOR_CALL(BOOST_PP_INC(n))                                   \
+    struct result<This(F,BOOST_SIMD_PP_ENUM_VALUE(n,A))> : meta::strip<A> {};  \
+    BOOST_SIMD_FUNCTOR_CALL(BOOST_PP_INC(n))                                   \
     {                                                                   \
       A1 that = {{BOOST_PP_ENUM(BOOST_PP_TUPLE_ELEM(2,1,t),M3,n)}};     \
       return that;                                                      \
@@ -49,16 +49,16 @@ namespace nt2 { namespace ext                                           \
 } }                                                                     \
 /**/
 
-#define NT2_SIMD_MAP_CALL(T,C)                      \
-BOOST_PP_REPEAT_FROM_TO(1,NT2_MAX_ARITY,M0, (T,C) ) \
+#define BOOST_SIMD_SIMD_MAP_CALL(T,C)                      \
+BOOST_PP_REPEAT_FROM_TO(1,BOOST_SIMD_MAX_ARITY,M0, (T,C) ) \
 /**/
 
-NT2_SIMD_MAP_CALL(float_  ,  4 )
-NT2_SIMD_MAP_CALL(ints32_ ,  4 )
-NT2_SIMD_MAP_CALL(ints16_ ,  8 )
-NT2_SIMD_MAP_CALL(ints8_  , 16 )
+BOOST_SIMD_SIMD_MAP_CALL(float_  ,  4 )
+BOOST_SIMD_SIMD_MAP_CALL(ints32_ ,  4 )
+BOOST_SIMD_SIMD_MAP_CALL(ints16_ ,  8 )
+BOOST_SIMD_SIMD_MAP_CALL(ints8_  , 16 )
 
-#undef NT2_SIMD_MAP_CALL
+#undef BOOST_SIMD_SIMD_MAP_CALL
 #undef MN64
 #undef M64
 #undef M4

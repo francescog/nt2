@@ -6,10 +6,10 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SCALAR_COMPARE_NOT_EQUAL_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SCALAR_COMPARE_NOT_EQUAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SCALAR_COMPARE_NOT_EQUAL_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SCALAR_COMPARE_NOT_EQUAL_HPP_INCLUDED
 
-NT2_REGISTER_DISPATCH( tag::compare_not_equal_, tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH( tag::compare_not_equal_, tag::cpu_
                      , (A0)(A1)
                      , (fundamental_<A0>)(fundamental_<A1>)
                      );
@@ -21,7 +21,7 @@ namespace nt2 { namespace ext
         : callable
   {
     typedef bool result_type;
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       return a0 != a1;
     }

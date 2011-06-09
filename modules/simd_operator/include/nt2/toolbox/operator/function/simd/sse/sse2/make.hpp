@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_MAKE_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_MAKE_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_MAKE_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_MAKE_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // make for SSE2 SIMD types
@@ -20,7 +20,7 @@
 /////////////////////////////////////////////////////////////////////////////
 // Implementation for double
 /////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
                       , ((target_< simd_< double_<A0>, tag::sse_ > >))
                       )
                       
@@ -46,7 +46,7 @@ namespace nt2 { namespace ext
 /////////////////////////////////////////////////////////////////////////////
 // Implementation for float
 /////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
                       , ((target_< simd_< float_<A0>, tag::sse_ > >))
                       )
                       
@@ -72,7 +72,7 @@ namespace nt2 { namespace ext
 /////////////////////////////////////////////////////////////////////////////
 // Implementation for 64-bit integers
 /////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
                       , ((target_< simd_< ints64_<A0>, tag::sse_ > >))
                       )
                       
@@ -112,7 +112,7 @@ namespace nt2 { namespace ext
 /////////////////////////////////////////////////////////////////////////////
 // Implementation for 32-bit integers
 /////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
                       , ((target_< simd_< ints32_<A0>, tag::sse_ > >))
                       )
   
@@ -138,7 +138,7 @@ namespace nt2 { namespace ext
 /////////////////////////////////////////////////////////////////////////////
 // Implementation for 16-bit integers
 /////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
                       , ((target_< simd_< ints16_<A0>, tag::sse_ > >))
                       )
                       
@@ -168,7 +168,7 @@ namespace nt2 { namespace ext
 /////////////////////////////////////////////////////////////////////////////
 // Implementation for 8-bit integers
 /////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)
                       , ((target_< simd_< ints8_<A0>, tag::sse_ > >))
                       )
 

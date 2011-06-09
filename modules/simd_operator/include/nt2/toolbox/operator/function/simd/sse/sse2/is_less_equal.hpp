@@ -6,8 +6,8 @@
 ///                 See accompanying file LICENSE.txt or copy at
 ///                     http://www.boost.org/LICENSE_1_0.txt
 //////////////////////////////////////////////////////////////////////////////
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_IS_LESS_EQUAL_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_IS_LESS_EQUAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_IS_LESS_EQUAL_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_IS_LESS_EQUAL_HPP_INCLUDED
 
 #include <nt2/sdk/meta/strip.hpp>
 #include <nt2/include/functions/minus.hpp>
@@ -17,7 +17,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for double
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
                       , ((simd_<double_<A0>,tag::sse_>))
                         ((simd_<double_<A0>,tag::sse_>))
                       );
@@ -36,7 +36,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0,A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_cmple_pd(a0,a1) };
       return that;
@@ -47,7 +47,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for float
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
                       , ((simd_<float_<A0>,tag::sse_>))
                         ((simd_<float_<A0>,tag::sse_>))
                       );
@@ -66,7 +66,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0,A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_cmple_ps(a0,a1) };
       return that;
@@ -77,7 +77,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for integers
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
                       , ((simd_<integer_<A0>,tag::sse_>))
                         ((simd_<integer_<A0>,tag::sse_>))
                       );
@@ -96,7 +96,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0,A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { nt2::complement(nt2::gt(a0,a1)) };
       return that;

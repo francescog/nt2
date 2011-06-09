@@ -6,8 +6,8 @@
 ///                 See accompanying file LICENSE.txt or copy at
 ///                     http://www.boost.org/LICENSE_1_0.txt
 //////////////////////////////////////////////////////////////////////////////
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_IS_LESS_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_IS_LESS_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_IS_LESS_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_IS_LESS_HPP_INCLUDED
 
 #include <nt2/sdk/meta/strip.hpp>
 #include <nt2/sdk/meta/downgrade.hpp>
@@ -19,7 +19,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for double
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                       , ((simd_<double_<A0>,tag::sse_>))
                         ((simd_<double_<A0>,tag::sse_>))
                       );
@@ -38,7 +38,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0,A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_cmplt_pd(a0,a1) };
       return that;
@@ -49,7 +49,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for float
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                       , ((simd_<float_<A0>,tag::sse_>))
                         ((simd_<float_<A0>,tag::sse_>))
                       );
@@ -68,7 +68,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0,A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_cmplt_ps(a0,a1) };
       return that;
@@ -79,7 +79,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for unsigned types
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                       , ((simd_<unsigned_<A0>,tag::sse_>))
                         ((simd_<unsigned_<A0>,tag::sse_>))
                       );
@@ -98,7 +98,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0,A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       typedef typename meta::as_integer<A0, signed>::type stype;
       stype tmp1 = simd::native_cast<stype>(a0) - Signmask<stype>();
@@ -112,7 +112,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for int8 types
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                       , ((simd_<int8_<A0>,tag::sse_>))
                         ((simd_<int8_<A0>,tag::sse_>))
                       );
@@ -131,7 +131,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0,A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_cmplt_epi8(a0,a1)  };
       return that;
@@ -142,7 +142,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for int16 types
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                       , ((simd_<int16_<A0>,tag::sse_>))
                         ((simd_<int16_<A0>,tag::sse_>))
                       );
@@ -161,7 +161,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0,A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_cmplt_epi16(a0,a1)  };
       return that;
@@ -172,7 +172,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for int32 types
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                       , ((simd_<int32_<A0>,tag::sse_>))
                         ((simd_<int32_<A0>,tag::sse_>))
                       );
@@ -191,7 +191,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0,A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_cmplt_epi32(a0,a1)  };
       return that;
@@ -202,7 +202,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for int64 types
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_, tag::cpu_, (A0)
                       , ((simd_<int64_<A0>,tag::sse_>))
                         ((simd_<int64_<A0>,tag::sse_>))
                       );
@@ -221,7 +221,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0,A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       typedef typename meta::downgrade<A0, signed>::type type;
       type sa0 = { a0 };

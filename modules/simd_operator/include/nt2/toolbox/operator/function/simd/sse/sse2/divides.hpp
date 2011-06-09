@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_DIVIDES_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_DIVIDES_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_DIVIDES_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_DIVIDES_HPP_INCLUDED
 
 #include <nt2/include/functions/map.hpp>
 #include <nt2/include/functions/bitwise_and.hpp>
@@ -20,17 +20,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
                       , ((simd_<double_<A0>,tag::sse_>))
                         ((simd_<double_<A0>,tag::sse_>))
                       );
 
-NT2_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
                       , ((simd_<float_<A0>,tag::sse_>))
                         ((simd_<float_<A0>,tag::sse_>))
                       );
 
-NT2_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
                       , ((simd_<integer_<A0>,tag::sse_>))
                         ((simd_<integer_<A0>,tag::sse_>))
                       );
@@ -56,7 +56,7 @@ namespace nt2 { namespace ext
     template<class This,class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0  that = { _mm_div_pd(a0,a1) };
       return b_or(b_and(eq(a0, Zero<A0>()), eq(a1, Zero<A0>())),that);
@@ -75,7 +75,7 @@ namespace nt2 { namespace ext
     template<class This,class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0  that = { _mm_div_ps(a0,a1) };
       return  b_or(b_and(eq(a0, Zero<A0>()), eq(a1, Zero<A0>())),that);
@@ -94,7 +94,7 @@ namespace nt2 { namespace ext
     template<class This,class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       const A0 iseqza1 = eq(a1, Zero<A0>());
       const A0 aa0 = (a0-b_and(iseqza1, a0));

@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_IS_LESS_EQUAL_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_IS_LESS_EQUAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_IS_LESS_EQUAL_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_IS_LESS_EQUAL_HPP_INCLUDED
 
 #include <nt2/sdk/meta/strip.hpp>
 #include <nt2/sdk/functor/preprocessor/call.hpp>
@@ -17,7 +17,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
                       , ((simd_<float_<A0>,tag::altivec_>))
                         ((simd_<float_<A0>,tag::altivec_>))
                       );
@@ -38,7 +38,7 @@ namespace nt2 { namespace ext
     template<class Sig>           struct result;
     template<class This,class A>  struct result<This(A,A)> : meta::strip<A> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that   = { simd::native_cast<A0>(vec_cmple(a0(),a1())) };
       return that;
@@ -49,7 +49,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::is_less_equal_, tag::cpu_, (A0)
                       , ((simd_<arithmetic_<A0>,tag::altivec_>))
                         ((simd_<arithmetic_<A0>,tag::altivec_>))
                       );
@@ -70,7 +70,7 @@ namespace nt2 { namespace ext
     template<class Sig>           struct result;
     template<class This,class A>  struct result<This(A,A)> : meta::strip<A> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 lt   = { simd::native_cast<A0>(vec_cmpgt(a0(),a1())) };
       A0 that = { nt2::complement(lt) };

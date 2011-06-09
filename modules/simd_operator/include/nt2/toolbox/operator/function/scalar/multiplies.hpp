@@ -6,10 +6,10 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SCALAR_MULTIPLIES_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SCALAR_MULTIPLIES_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SCALAR_MULTIPLIES_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SCALAR_MULTIPLIES_HPP_INCLUDED
 
-NT2_REGISTER_DISPATCH ( tag::multiplies_ , tag::cpu_, (A0)(A1)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::multiplies_ , tag::cpu_, (A0)(A1)
                       , (arithmetic_<A0>)(arithmetic_<A1>)
                       )
 
@@ -31,7 +31,7 @@ namespace nt2 { namespace ext
       typedef typename nested::type type;
     };
 
-    NT2_FUNCTOR_CALL(2) { return a0*a1; }
+    BOOST_SIMD_FUNCTOR_CALL(2) { return a0*a1; }
   };
 } }
 

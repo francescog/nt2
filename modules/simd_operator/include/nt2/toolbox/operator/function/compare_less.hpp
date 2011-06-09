@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_COMPARE_LESS_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_COMPARE_LESS_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_COMPARE_LESS_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_COMPARE_LESS_HPP_INCLUDED
 #include <nt2/include/simd.hpp>
 #include <nt2/include/functor.hpp>
 #include <nt2/toolbox/operator/include.hpp>
@@ -17,8 +17,8 @@
 
 namespace nt2
 {
-  NT2_FUNCTION_IMPLEMENTATION(tag::compare_less_, compare_less , 2 )
-  NT2_FUNCTION_IMPLEMENTATION(tag::compare_less_, compare_lt   , 2 )
+  BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::compare_less_, compare_less , 2 )
+  BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::compare_less_, compare_lt   , 2 )
 }
 
 #include <nt2/toolbox/operator/function/scalar/compare_less.hpp>

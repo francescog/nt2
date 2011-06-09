@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SCALAR_SPLAT_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SCALAR_SPLAT_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SCALAR_SPLAT_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SCALAR_SPLAT_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // splat for scalar types
@@ -16,7 +16,7 @@
 #include <nt2/sdk/functor/preprocessor/call.hpp>
 #include <nt2/sdk/details/ignore_unused.hpp>
 
-NT2_REGISTER_DISPATCH ( tag::splat_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_
                       , tag::cpu_
                       , (A0)(A1)
                       , (fundamental_<A0>)(target_< fundamental_<A1> >)
@@ -36,9 +36,9 @@ namespace nt2 { namespace ext
     template<class This,class A0, class Target>
     struct result<This(A0,Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
-      typedef typename NT2_RETURN_TYPE(2)::type result_type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(2)::type result_type;
       ignore_unused(a1); 
       result_type that = static_cast<result_type>(a0);
       return that;

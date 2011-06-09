@@ -6,15 +6,15 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_COMPARE_LESS_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_COMPARE_LESS_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_COMPARE_LESS_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_COMPARE_LESS_HPP_INCLUDED
 
 #include <nt2/sdk/meta/cardinal_of.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::compare_less_, tag::cpu_, (A0)(X)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::compare_less_, tag::cpu_, (A0)(X)
                       , ((simd_<arithmetic_<A0>,X>))
                         ((simd_<arithmetic_<A0>,X>))
                       );
@@ -34,7 +34,7 @@ namespace nt2 { namespace ext
   {
     typedef bool result_type;
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       for(std::size_t i=0;i<meta::cardinal_of<A0>::value;++i)
       {

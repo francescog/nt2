@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_SHIFT_LEFT_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_SHIFT_LEFT_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_SHIFT_LEFT_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_SHIFT_LEFT_HPP_INCLUDED
 
 #include <nt2/sdk/simd/native_cast.hpp>
 #include <nt2/sdk/meta/as_integer.hpp>
@@ -20,7 +20,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH_IF(tag::shift_left_, tag::cpu_,
+BOOST_SIMD_REGISTER_DISPATCH_IF(tag::shift_left_, tag::cpu_,
     (A0)(A1)(X),
     (boost::mpl::and_<
       boost::mpl::not_< boost::is_same<A0, A1> >,
@@ -53,7 +53,7 @@ namespace nt2 { namespace ext
     {
     };
     
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       typedef typename meta::as_integer<A0>::type int_type;
       return simd::native_cast<A0>(shift_left(simd::native_cast<int_type>(a0), a1));

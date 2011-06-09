@@ -6,13 +6,13 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SCALAR_SHIFT_RIGHT_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SCALAR_SHIFT_RIGHT_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SCALAR_SHIFT_RIGHT_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SCALAR_SHIFT_RIGHT_HPP_INCLUDED
 
 #include <nt2/sdk/meta/strip.hpp>
 #include <nt2/sdk/meta/as_bits.hpp>
 
-NT2_REGISTER_DISPATCH( tag::shift_right_, tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH( tag::shift_right_, tag::cpu_
                      , (A0)(A1)
                      , (real_<A0>)(integer_<A1>)
                      );
@@ -27,7 +27,7 @@ namespace nt2 { namespace ext
     template<class This,class A0, class A1>
     struct result<This(A0,A1)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       typename meta::as_bits<A0>::type t0 = {a0};
       t0.bits = t0.bits >> a1;
@@ -36,7 +36,7 @@ namespace nt2 { namespace ext
   };
 } }
 
-NT2_REGISTER_DISPATCH( tag::shift_right_ , tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH( tag::shift_right_ , tag::cpu_
                      , (A0)(A1)
                      , (integer_<A0>)(integer_<A1>)
                      );
@@ -56,7 +56,7 @@ namespace nt2 { namespace ext
       typedef typename nested::type type;
     };
 
-    NT2_FUNCTOR_CALL(2) { return a0 >> a1; }
+    BOOST_SIMD_FUNCTOR_CALL(2) { return a0 >> a1; }
   };
 } }
 

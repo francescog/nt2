@@ -6,8 +6,8 @@
 ///                 See accompanying file LICENSE.txt or copy at
 ///                     http://www.boost.org/LICENSE_1_0.txt
 //////////////////////////////////////////////////////////////////////////////
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_MULTIPLIES_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_MULTIPLIES_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_MULTIPLIES_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_MULTIPLIES_HPP_INCLUDED
 
 #include <nt2/sdk/meta/strip.hpp>
 #include <nt2/sdk/meta/scalar_of.hpp>
@@ -16,7 +16,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::multiplies_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::multiplies_, tag::cpu_, (A0)
                       , ((simd_<float_<A0>,tag::altivec_>))
                         ((simd_<float_<A0>,tag::altivec_>))
                       );
@@ -38,7 +38,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0,A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { vec_madd(a0(),a1(),Zero<A0>()()) };
       return that;
@@ -49,7 +49,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::multiplies_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::multiplies_, tag::cpu_, (A0)
                       , ((simd_<type16_<A0>,tag::altivec_>))
                         ((simd_<type16_<A0>,tag::altivec_>))
                       );
@@ -71,7 +71,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0,A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { vec_mladd(a0(),a1(),Zero<A0>()()) };
       return that;
@@ -80,7 +80,7 @@ namespace nt2 { namespace ext
 } }
 
 /*
-    NT2_FUNCTOR_CALL_EVAL_IF(2,type8_ )
+    BOOST_SIMD_FUNCTOR_CALL_EVAL_IF(2,type8_ )
     {
       A0 l = { vec_mule(a0,a1); }; // replace A0 by upgrade<A0>
       A0 r = { vec_mulo(a0,a1); };
@@ -88,7 +88,7 @@ namespace nt2 { namespace ext
       return that;
     }
 
-    NT2_FUNCTOR_CALL_EVAL_IF(2,int32_t )
+    BOOST_SIMD_FUNCTOR_CALL_EVAL_IF(2,int32_t )
     {
       static inline type_t Multiply( const type_t& a, const type_t& b, const ttt::boxed<2>&, const true_t&  )
       {
@@ -98,7 +98,7 @@ namespace nt2 { namespace ext
       }
     }
 
-    NT2_FUNCTOR_CALL_EVAL_IF(2,uint32_t )
+    BOOST_SIMD_FUNCTOR_CALL_EVAL_IF(2,uint32_t )
     {
 
       static inline type_t Multiply( const type_t& a, const type_t& b, const ttt::boxed<2>&, const false_t&  )

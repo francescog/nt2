@@ -6,28 +6,28 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_DIVIDES_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_DIVIDES_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_DIVIDES_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_DIVIDES_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register divides overload
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
                       , ((simd_<float_<A0>,tag::altivec_>))
                         ((simd_<float_<A0>,tag::altivec_>))
                       );
 /*
-NT2_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
                       , ((simd_<ints8_<A0>,tag::altivec_>))
                         ((simd_<ints8_<A0>,tag::altivec_>))
                       );
 
-NT2_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
                       , ((simd_<ints16_<A0>,tag::altivec_>))
                         ((simd_<ints16_<A0>,tag::altivec_>))
                       );
 
-NT2_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::divides_, tag::cpu_, (A0)
                       , ((simd_<ints32_<A0>,tag::altivec_>))
                         ((simd_<ints32_<A0>,tag::altivec_>))
                       );

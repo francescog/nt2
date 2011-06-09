@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_SDK_FUNCTOR_DETAILS_COMPLEMENT_HPP_INCLUDED
-#define NT2_SDK_FUNCTOR_DETAILS_COMPLEMENT_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_FUNCTOR_DETAILS_COMPLEMENT_HPP_INCLUDED
+#define BOOST_SIMD_SDK_FUNCTOR_DETAILS_COMPLEMENT_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // bitwise complement extended implementation
@@ -16,8 +16,8 @@
 #include <nt2/sdk/meta/as_bits.hpp>
 #include <nt2/sdk/functor/preprocessor/call.hpp>
 
-NT2_REGISTER_DISPATCH(tag::complement_,tag::cpu_,(A0),(fundamental_<A0>));
-NT2_REGISTER_DISPATCH(tag::complement_,tag::cpu_,(A0),(real_<A0>));
+BOOST_SIMD_REGISTER_DISPATCH(tag::complement_,tag::cpu_,(A0),(fundamental_<A0>));
+BOOST_SIMD_REGISTER_DISPATCH(tag::complement_,tag::cpu_,(A0),(real_<A0>));
 
 namespace nt2 { namespace ext
 {
@@ -28,7 +28,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(1) { return ~a0; }
+    BOOST_SIMD_FUNCTOR_CALL(1) { return ~a0; }
   };
 
 
@@ -39,7 +39,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       typename meta::as_bits<A0>::type t0 = {a0};
       t0.bits = ~t0.bits;

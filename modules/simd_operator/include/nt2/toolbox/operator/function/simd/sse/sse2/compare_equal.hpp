@@ -6,25 +6,25 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_COMPARE_EQUAL_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_COMPARE_EQUAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_COMPARE_EQUAL_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_COMPARE_EQUAL_HPP_INCLUDED
 
 #include <nt2/include/functions/is_equal.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::compare_equal_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::compare_equal_, tag::cpu_, (A0)
                       , ((simd_<double_<A0>,tag::sse_>))
                         ((simd_<double_<A0>,tag::sse_>))
                       );
 
-NT2_REGISTER_DISPATCH ( tag::compare_equal_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::compare_equal_, tag::cpu_, (A0)
                       , ((simd_<float_<A0>,tag::sse_>))
                         ((simd_<float_<A0>,tag::sse_>))
                       );
 
-NT2_REGISTER_DISPATCH ( tag::compare_equal_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::compare_equal_, tag::cpu_, (A0)
                       , ((simd_<integer_<A0>,tag::sse_>))
                         ((simd_<integer_<A0>,tag::sse_>))
                       );
@@ -43,7 +43,7 @@ namespace nt2 { namespace ext
         : callable
   {
     typedef bool result_type;
-    NT2_FUNCTOR_CALL(2) { return _mm_movemask_pd(eq(a0,a1)) == 0X03; }
+    BOOST_SIMD_FUNCTOR_CALL(2) { return _mm_movemask_pd(eq(a0,a1)) == 0X03; }
   };
 
   template<class Dummy>
@@ -55,7 +55,7 @@ namespace nt2 { namespace ext
         : callable
   {
     typedef bool result_type;
-    NT2_FUNCTOR_CALL(2) { return _mm_movemask_ps(eq(a0,a1)) == 0X0F; }
+    BOOST_SIMD_FUNCTOR_CALL(2) { return _mm_movemask_ps(eq(a0,a1)) == 0X0F; }
   };
 
   template<class Dummy>
@@ -67,7 +67,7 @@ namespace nt2 { namespace ext
         : callable
   {
     typedef bool result_type;
-    NT2_FUNCTOR_CALL(2) { return _mm_movemask_epi8(eq(a0,a1)) == 0XFFFF; }
+    BOOST_SIMD_FUNCTOR_CALL(2) { return _mm_movemask_epi8(eq(a0,a1)) == 0XFFFF; }
   };
 } }
 

@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_NEG_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_NEG_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_NEG_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_NEG_HPP_INCLUDED
 
 #include <nt2/sdk/meta/strip.hpp>
 #include <nt2/include/constants/real.hpp>
@@ -18,7 +18,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::unary_minus_, tag::cpu_, (A0)(X)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::unary_minus_, tag::cpu_, (A0)(X)
                       , ((simd_<arithmetic_<A0>,X>))
                       );
 
@@ -37,7 +37,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       A0 that = Zero<A0>() - a0;
       return that;
@@ -47,7 +47,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for reals
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::unary_minus_, tag::cpu_, (A0)(X)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::unary_minus_, tag::cpu_, (A0)(X)
                       , ((simd_<real_<A0>,X>))
                       );
 
@@ -66,7 +66,7 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct result<This(A0)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       return b_xor(Mzero<A0>(),a0);
     }

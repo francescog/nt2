@@ -6,14 +6,14 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_LOGICAL_NOT_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_LOGICAL_NOT_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_LOGICAL_NOT_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_LOGICAL_NOT_HPP_INCLUDED
 
 #include <nt2/sdk/meta/strip.hpp>
 #include <nt2/include/functions/is_equal.hpp>
 #include <nt2/include/constants/digits.hpp>
 
-NT2_REGISTER_DISPATCH ( tag::logical_not_, tag::cpu_, (A0)(A1)(X)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::logical_not_, tag::cpu_, (A0)(A1)(X)
                       , ((simd_<arithmetic_<A0>,X>))
                         ((simd_<arithmetic_<A1>,X>))
                       );
@@ -32,7 +32,7 @@ namespace nt2 { namespace ext
     template<class This,class A>
     struct result<This(A)> : meta::strip<A> {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       return nt2::eq(a0,nt2::Zero<A0>());
     }

@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_MINUS_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_MINUS_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_MINUS_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_MINUS_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // operator binary minus
@@ -18,32 +18,32 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
                       , ((simd_<double_<A0>,tag::sse_>))
                         ((simd_<double_<A0>,tag::sse_>))
                       );
 
-NT2_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
                       , ((simd_<float_<A0>,tag::sse_>))
                         ((simd_<float_<A0>,tag::sse_>))
                       );
 
-NT2_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
                       , ((simd_<ints8_<A0>,tag::sse_>))
                         ((simd_<ints8_<A0>,tag::sse_>))
                       );
 
-NT2_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
                       , ((simd_<ints16_<A0>,tag::sse_>))
                         ((simd_<ints16_<A0>,tag::sse_>))
                       );
 
-NT2_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
                       , ((simd_<ints32_<A0>,tag::sse_>))
                         ((simd_<ints32_<A0>,tag::sse_>))
                       );
 
-NT2_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::minus_, tag::cpu_, (A0)
                       , ((simd_<ints64_<A0>,tag::sse_>))
                         ((simd_<ints64_<A0>,tag::sse_>))
                       );
@@ -64,7 +64,7 @@ namespace nt2 { namespace ext
     template<class Sig>           struct result;
     template<class This,class A>  struct result<This(A,A)> : meta::strip<A> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_sub_pd(a0,a1) };
       return that;
@@ -82,7 +82,7 @@ namespace nt2 { namespace ext
     template<class Sig>           struct result;
     template<class This,class A>  struct result<This(A,A)> : meta::strip<A> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_sub_ps(a0,a1) };
       return that;
@@ -100,7 +100,7 @@ namespace nt2 { namespace ext
     template<class Sig>           struct result;
     template<class This,class A>  struct result<This(A,A)> : meta::strip<A> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_sub_epi8(a0,a1) };
       return that;
@@ -118,7 +118,7 @@ namespace nt2 { namespace ext
     template<class Sig>           struct result;
     template<class This,class A>  struct result<This(A,A)> : meta::strip<A> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_sub_epi16(a0,a1) };
       return that;
@@ -136,7 +136,7 @@ namespace nt2 { namespace ext
     template<class Sig>           struct result;
     template<class This,class A>  struct result<This(A,A)> : meta::strip<A> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_sub_epi32(a0,a1) };
       return that;
@@ -154,7 +154,7 @@ namespace nt2 { namespace ext
     template<class Sig>           struct result;
     template<class This,class A>  struct result<This(A,A)> : meta::strip<A> {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       A0 that = { _mm_sub_epi64(a0,a1) };
       return that;

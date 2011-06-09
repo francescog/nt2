@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_DETAILS_COMMON_HPP_INCLUDED
-#define NT2_SDK_SIMD_DETAILS_COMMON_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_DETAILS_COMMON_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_DETAILS_COMMON_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // By default, any SIMD implementation falls down to scalar map application if
@@ -17,7 +17,7 @@
 #include <nt2/sdk/functor/meta/call.hpp>
 #include <nt2/toolbox/operator/function/map.hpp>
 
-#if !defined(NT2_DONT_USE_PREPROCESSED_FILES)
+#if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/toolbox/operator/specific/preprocessed/common.hpp>
 #else
 #include <nt2/extension/parameters.hpp>
@@ -25,7 +25,7 @@
 #include <boost/preprocessor/repetition/enum.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#if defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/common.hpp")
 #endif
 
@@ -35,12 +35,12 @@
 #define M0(z,n,t) ((simd_< unspecified_<A0>, X >))
 
 #define M1(z,n,t)                                     \
-NT2_REGISTER_DISPATCH ( Tag , tag::cpu_, (A0)(Tag)(X) \
+BOOST_SIMD_REGISTER_DISPATCH ( Tag , tag::cpu_, (A0)(Tag)(X) \
                       , BOOST_PP_REPEAT(n,M0,~)       \
                       )                               \
 /**/
 
-BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_ARITY),M1,~)
+BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_SIMD_MAX_ARITY),M1,~)
 
 #undef M0
 #undef M1
@@ -61,7 +61,7 @@ namespace nt2 { namespace ext                                             \
     struct result<This(BOOST_PP_ENUM_PARAMS(n,A))>                        \
       : meta::call<tag::map_(functor<Tag>, BOOST_PP_ENUM_PARAMS(n,A))> {};\
                                                                           \
-    NT2_FUNCTOR_CALL(n)                                                   \
+    BOOST_SIMD_FUNCTOR_CALL(n)                                            \
     {                                                                     \
       return nt2::map( functor<Tag>(), BOOST_PP_ENUM_PARAMS(n,a));        \
     }                                                                     \
@@ -69,12 +69,12 @@ namespace nt2 { namespace ext                                             \
 } }                                                                       \
 /**/
 
-BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_ARITY),M1,~)
+BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_SIMD_MAX_ARITY),M1,~)
 
 #undef M1
 #undef M0
 
-#if defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(output: null)
 #endif
 #endif

@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_MEMORY_DETAILS_LOAD_HPP_INCLUDED
-#define NT2_SDK_MEMORY_DETAILS_LOAD_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_MEMORY_DETAILS_LOAD_HPP_INCLUDED
+#define BOOST_SIMD_SDK_MEMORY_DETAILS_LOAD_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // load for scalar types
@@ -19,7 +19,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over load_ without offset
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::load_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::load_
                       , tag::cpu_
                       , (A0)(A1)(T)
                       , (iterator_<fundamental_<A0> >)
@@ -43,7 +43,7 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1,class A2>
     struct result<This(A0,A1,A2)> : meta::strip<A2>::type {};
 
-    NT2_FUNCTOR_CALL(3)
+    BOOST_SIMD_FUNCTOR_CALL(3)
     {
       ignore_unused(a2);
       A0 that = a0;
@@ -56,7 +56,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over load_ with offset
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::load_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::load_
                       , tag::cpu_
                       , (A0)(A1)(T)(N)
                       , (iterator_<fundamental_<A0> >)
@@ -82,7 +82,7 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1,class A2,class A3>
     struct result<This(A0,A1,A2,A3)> : meta::strip<A2>::type {};
 
-    NT2_FUNCTOR_CALL(4)
+    BOOST_SIMD_FUNCTOR_CALL(4)
     {
       ignore_unused(a2);
       ignore_unused(a3);

@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_SPLAT_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_SPLAT_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_SPLAT_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_SPLAT_HPP_INCLUDED
 
 #include <nt2/sdk/simd/category.hpp>
 #include <nt2/sdk/meta/scalar_of.hpp>
@@ -16,7 +16,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Registers dispatches over splat_
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
                       , (fundamental_<A0>)
                         ((target_< simd_< arithmetic_<A1>, tag::altivec_ > >))
                       )
@@ -42,9 +42,9 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A1>::type {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
-      typedef typename NT2_RETURN_TYPE(2)::type type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(2)::type type;
       typename type::extraction_type v;
       v.s[0] = a0;
       type that = {vec_splat(v.v, 0)};

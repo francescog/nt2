@@ -6,8 +6,8 @@
 ///                 See accompanying file LICENSE.txt or copy at
 ///                     http://www.boost.org/LICENSE_1_0.txt
 //////////////////////////////////////////////////////////////////////////////
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_MAKE_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_MAKE_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_MAKE_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_MAKE_HPP_INCLUDED
 #include <nt2/include/simd.hpp>
 #include <nt2/toolbox/operator/include.hpp>
 #include <nt2/sdk/meta/as.hpp>
@@ -19,7 +19,7 @@ namespace nt2
     struct make_ {};
   }
   
-  #define NT2_PP_REPEAT_POWER_OF_2(m, data)                                                \
+  #define BOOST_SIMD_PP_REPEAT_POWER_OF_2(m, data)                                                \
   m( 1,  1, data)                                                                          \
   m( 2,  2, data)                                                                          \
   m( 4,  4, data)                                                                          \
@@ -54,7 +54,7 @@ namespace nt2
       return callee(BOOST_PP_ENUM(n, M1, ~));                                              \
     }
     
-    NT2_PP_REPEAT_POWER_OF_2(M0, ~)
+    BOOST_SIMD_PP_REPEAT_POWER_OF_2(M0, ~)
     #undef M0
     #undef M1
   };
@@ -67,7 +67,7 @@ namespace nt2
     return callee(BOOST_PP_ENUM_PARAMS(n, a), meta::as_<T>());                             \
   }
 
-  NT2_PP_REPEAT_POWER_OF_2(M0, ~)
+  BOOST_SIMD_PP_REPEAT_POWER_OF_2(M0, ~)
   #undef M0
 }
 

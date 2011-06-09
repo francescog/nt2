@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_SPLAT_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_SPLAT_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_SPLAT_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_SPLAT_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // splat for SSE2 SIMD types
@@ -21,32 +21,32 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatches over splat_
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
                       , (fundamental_<A0>)
                         ((target_< simd_< double_<A1>, tag::sse_ > >))
                       )
 
-NT2_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
                       , (fundamental_<A0>)
                         ((target_< simd_< float_<A1>, tag::sse_ > >))
                       )
 
-NT2_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
                       , (fundamental_<A0>)
                         ((target_< simd_< ints8_<A1>, tag::sse_ > >))
                       )
 
-NT2_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
                       , (fundamental_<A0>)
                         ((target_< simd_< ints16_<A1>, tag::sse_ > >))
                       )
 
-NT2_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
                       , (fundamental_<A0>)
                         ((target_< simd_< ints32_<A1>, tag::sse_ > >))
                       )
 
-NT2_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
+BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_, tag::cpu_, (A0)(A1)
                       , (fundamental_<A0>)
                         ((target_< simd_< ints64_<A1>, tag::sse_ > >))
                       )
@@ -69,10 +69,10 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A1>::type {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       ignore_unused(a1);
-      typedef typename NT2_RETURN_TYPE(2)::type type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(2)::type type;
       type that = { _mm_set1_pd(a0)  };
       return that;
     }
@@ -91,10 +91,10 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A1>::type {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       ignore_unused(a1);
-      typedef typename NT2_RETURN_TYPE(2)::type type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(2)::type type;
       type that = { _mm_set1_ps(a0)  };
       return that;
     }
@@ -113,10 +113,10 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A1>::type {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       ignore_unused(a1);
-      typedef typename NT2_RETURN_TYPE(2)::type type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(2)::type type;
       type that = { _mm_set1_epi8(a0)  };
       return that;
     }
@@ -135,10 +135,10 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A1>::type {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       ignore_unused(a1);
-      typedef typename NT2_RETURN_TYPE(2)::type type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(2)::type type;
       type that = { _mm_set1_epi16(a0)  };
       return that;
     }
@@ -157,10 +157,10 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A1>::type {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       ignore_unused(a1);
-      typedef typename NT2_RETURN_TYPE(2)::type type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(2)::type type;
       type that = { _mm_set1_epi32(a0)  };
       return that;
     }
@@ -179,7 +179,7 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A1>::type {};
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       ignore_unused(a1);
       return make<typename A1::type>(a0, a0);

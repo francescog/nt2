@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SCALAR_BITWISE_OR_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SCALAR_BITWISE_OR_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SCALAR_BITWISE_OR_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SCALAR_BITWISE_OR_HPP_INCLUDED
 
 #include <nt2/sdk/meta/strip.hpp>
 #include <nt2/sdk/meta/as_bits.hpp>
@@ -15,7 +15,7 @@
 #include <boost/mpl/equal_to.hpp>
 #include <boost/mpl/sizeof.hpp>
 
-NT2_REGISTER_DISPATCH_IF ( tag::bitwise_or_ , tag::cpu_, (A0)(A1)
+BOOST_SIMD_REGISTER_DISPATCH_IF ( tag::bitwise_or_ , tag::cpu_, (A0)(A1)
                          , (boost::mpl::equal_to< boost::mpl::sizeof_<A0>, boost::mpl::sizeof_<A1> >)
                          , tag::bitwise_or_(tag::fundamental_, tag::fundamental_)
                          , (fundamental_<A0>)(fundamental_<A1>)
@@ -32,7 +32,7 @@ namespace nt2 { namespace ext
     {
     };
 
-    NT2_FUNCTOR_CALL(2)
+    BOOST_SIMD_FUNCTOR_CALL(2)
     {
       typename meta::as_bits<A0>::type t0 = {a0};
       typename meta::as_bits<A1>::type t1 = {a1};

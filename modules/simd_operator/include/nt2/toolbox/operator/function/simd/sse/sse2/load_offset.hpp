@@ -6,15 +6,15 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_LOAD_OFFSET_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_LOAD_OFFSET_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_LOAD_OFFSET_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_LOAD_OFFSET_HPP_INCLUDED
 
 #include <nt2/sdk/simd/meta/as_simd.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over load_ on simd types with an offset
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::load_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::load_
                       , tag::cpu_
                       , (A0)(A1)(T)(N)
                       , (iterator_<fundamental_<A0> >)
@@ -60,7 +60,7 @@ namespace nt2 { namespace ext
     ////////////////////////////////////////////////////////////////////////////
     template<class A0,class A1,class A2,class A3>
     typename boost::lazy_enable_if_c< is_periodic<A2,A3>::value
-                                    , NT2_RETURN_TYPE(4)
+                                    , BOOST_SIMD_RETURN_TYPE(4)
                                     >::type
     inline  operator()(A0 const& a0, A1 const& a1, A2 const&, A3 const&) const
     {
@@ -69,7 +69,7 @@ namespace nt2 { namespace ext
       , offset = std::size_t(A3::value) / meta::cardinal_of<typename A2::type>::value
       );
 
-      typedef typename NT2_RETURN_TYPE(4)::type type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(4)::type type;
       return nt2::load<type>(a0,a1+offset);
     }
 
@@ -80,11 +80,11 @@ namespace nt2 { namespace ext
     typename boost::lazy_enable_if_c< (  !is_periodic<A2,A3>::value
                                       &&  is_forward<A3>::value
                                       )
-                                    , NT2_RETURN_TYPE(4)
+                                    , BOOST_SIMD_RETURN_TYPE(4)
                                     >::type
     inline  operator()(A0 const& a0, A1 const& a1, A2 const&, A3 const&) const
     {
-      typedef typename NT2_RETURN_TYPE(4)::type type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(4)::type type;
 
       BOOST_STATIC_CONSTANT( std::size_t, card    = meta::cardinal_of<type>::value);
       BOOST_STATIC_CONSTANT( std::size_t, offset  = std::size_t(A3::value)/card   );
@@ -110,11 +110,11 @@ namespace nt2 { namespace ext
     typename boost::lazy_enable_if_c< (  !is_periodic<A2,A3>::value
                                       && !is_forward<A3>::value
                                       )
-                                    , NT2_RETURN_TYPE(4)
+                                    , BOOST_SIMD_RETURN_TYPE(4)
                                     >::type
     inline  operator()(A0 const& a0, A1 const& a1, A2 const&, A3 const&) const
     {
-      typedef typename NT2_RETURN_TYPE(4)::type type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(4)::type type;
 
       BOOST_STATIC_CONSTANT( std::size_t, card    = meta::cardinal_of<type>::value           );
       BOOST_STATIC_CONSTANT( std::size_t, offset  = std::size_t(-A3::value)/card             );

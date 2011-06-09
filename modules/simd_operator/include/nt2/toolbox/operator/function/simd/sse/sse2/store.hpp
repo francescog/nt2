@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_STORE_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_STORE_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_STORE_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_STORE_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // store for SIMD types
@@ -20,7 +20,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over store for double SIMD types
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::store_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::store_
                       , tag::cpu_
                       , (A0)(A1)(A2)
                       , ((simd_< double_<A0>, tag::sse_ >))
@@ -44,7 +44,7 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1,class A2>
     struct result<This(A0,A1,A2)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(3)
+    BOOST_SIMD_FUNCTOR_CALL(3)
     {
       _mm_store_pd(a1+2*a2,a0);
       return a0;
@@ -55,7 +55,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over store for float SIMD types
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::store_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::store_
                       , tag::cpu_
                       , (A0)(A1)(A2)
                       , ((simd_< float_<A0>, tag::sse_ >))
@@ -79,7 +79,7 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1,class A2>
     struct result<This(A0,A1,A2)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(3)
+    BOOST_SIMD_FUNCTOR_CALL(3)
     {
       _mm_store_ps(a1+4*a2,a0);
       return a0;
@@ -90,7 +90,7 @@ namespace nt2 { namespace ext
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over store for integral SIMD types
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::store_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::store_
                       , tag::cpu_
                       , (A0)(A1)(A2)
                       , ((simd_< integer_<A0>, tag::sse_ >))
@@ -114,7 +114,7 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1,class A2>
     struct result<This(A0,A1,A2)> : meta::strip<A0> {};
 
-    NT2_FUNCTOR_CALL(3)
+    BOOST_SIMD_FUNCTOR_CALL(3)
     {
       _mm_store_si128((__m128i*)(a1)+a2, a0);
       return a0;

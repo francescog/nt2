@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_COMMON_COMMA_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_COMMON_COMMA_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_COMMON_COMMA_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_COMMON_COMMA_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // comma operator implementation
@@ -16,7 +16,7 @@
 #include <nt2/sdk/details/ignore_unused.hpp>
 #include <nt2/sdk/functor/preprocessor/call.hpp>
 
-NT2_REGISTER_DISPATCH ( tag::comma_,tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::comma_,tag::cpu_
                       , (A0)(A1)
                       , (unspecified_<A0>)(unspecified_<A1>)
                       );
@@ -36,7 +36,7 @@ namespace nt2 { namespace ext
     template<class This,class A0,class A1>
     struct result<This(A0,A1)> : meta::strip<A1> {};
 
-    NT2_FUNCTOR_CALL(2) { ignore_unused(a0); return a1; }
+    BOOST_SIMD_FUNCTOR_CALL(2) { ignore_unused(a0); return a1; }
   };
 } }
 

@@ -6,15 +6,15 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_MAP_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_MAP_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_MAP_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_MAP_HPP_INCLUDED
 
 #include <nt2/sdk/simd/category.hpp>
 #include <nt2/toolbox/operator/specific/details/maybe_genmask.hpp>
 #include <nt2/include/functions/load.hpp>
 #include <nt2/sdk/memory/aligned_type.hpp>
 
-#if !defined(NT2_DONT_USE_PREPROCESSED_FILES)
+#if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/toolbox/operator/function/simd/common/preprocessed/map.hpp>
 #else
 #include <nt2/extension/parameters.hpp>
@@ -23,7 +23,7 @@
 #include <boost/preprocessor/repetition/enum.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#if defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/map.hpp")
 #endif
 
@@ -33,7 +33,7 @@
 #define M3(z,n,t) a##n[i]
 
 #define M4(z,n,t)                                                            \
-NT2_REGISTER_DISPATCH ( tag::map_, tag::cpu_, (Func)(A0)(X)                  \
+BOOST_SIMD_REGISTER_DISPATCH ( tag::map_, tag::cpu_, (Func)(A0)(X)           \
                       , (unspecified_<Func>)BOOST_PP_REPEAT(n,M0,~)          \
                       )                                                      \
 namespace nt2 { namespace ext                                                \
@@ -72,7 +72,7 @@ namespace nt2 { namespace ext                                                \
       typedef typename result<call(Func, BOOST_PP_ENUM_PARAMS(n, A))>::type ntype;\
       typedef typename result<call(Func, BOOST_PP_ENUM_PARAMS(n, A))>::stype stype;\
                                                                              \
-      NT2_ALIGNED_TYPE(stype) tmp[meta::cardinal_of<A0>::value];             \
+      BOOST_SIMD_ALIGNED_TYPE(stype) tmp[meta::cardinal_of<A0>::value];             \
                                                                              \
       for(int i = 0; i != meta::cardinal_of<A0>::value; ++i)                 \
         tmp[i] = details::maybe_genmask<stype>(f(BOOST_PP_ENUM(n, M3, ~)));  \
@@ -83,7 +83,7 @@ namespace nt2 { namespace ext                                                \
 } }                                                                          \
 /**/
 
-BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_ARITY),M4,~)
+BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_SIMD_MAX_ARITY),M4,~)
 
 #undef M4
 #undef M3
@@ -91,7 +91,7 @@ BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_ARITY),M4,~)
 #undef M1
 #undef M0
 
-#if defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #pragma wave option(output: null)
 #endif
 #endif

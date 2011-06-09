@@ -6,13 +6,13 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_LOAD_HPP_INCLUDED
-#define NT2_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_LOAD_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_LOAD_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_LOAD_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over load_ on simd integers
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::load_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::load_
                       , tag::cpu_
                       , (A0)(A1)(T)
                       , (iterator_<fundamental_<A0> >)
@@ -36,9 +36,9 @@ namespace nt2 { namespace ext
     template<class This, class A0,class A1,class A2>
     struct result<This(A0,A1,A2)> : meta::strip<A2>::type {};
 
-    NT2_FUNCTOR_CALL(3)
+    BOOST_SIMD_FUNCTOR_CALL(3)
     {
-      typedef typename NT2_RETURN_TYPE(3)::type type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(3)::type type;
       type that = { vec_ld(a1*16,a0) };
       return that;
     }
