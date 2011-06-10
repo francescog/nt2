@@ -31,10 +31,15 @@ namespace nt2 { namespace containers
    * \return The modified output stream
    */
   //============================================================================
-  template<class D> inline
-  std::ostream& operator<<( std::ostream& os, extent<D> const& e )
+  template<class AST, class D> inline
+  std::ostream& operator<<( std::ostream& os
+                          , container<AST,tag::extent_,D> const& e
+                          )
   {
-    return os << "(" << boost::fusion::as_vector(e.data()) << ")";
+    os << "( ";
+    for(std::size_t i=1;i<=e.size();++i) os << e(i) << " ";
+    os << ")";
+    return os;
   }
 } }
 
