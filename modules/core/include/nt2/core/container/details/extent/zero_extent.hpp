@@ -20,7 +20,7 @@ namespace nt2 { namespace containers
   // values. It still models Container and Collection but acts as an ever empty
   // one. Values returned by various accessors are always 1.
   //============================================================================
-  template<> struct  extent<_0D> : ext::facade<tag::extent_,_0D,void>::type
+  template<> struct  extent<_0D> : public ext::facade<tag::extent_,_0D,void>::type
   {
     typedef ext::facade<tag::extent_,_0D,void>      facade_type;
     typedef tag::extent_                            fusion_tag;
@@ -51,8 +51,6 @@ namespace nt2 { namespace containers
     iterator        end()         { return iterator(0);       }
     const_iterator  end()   const { return const_iterator(0); }
 
-    inline size_type        size(std::size_t i)   const { return 1;     }
-    inline difference_type  upper(std::size_t i)  const { return 1;     }
     inline std::size_t      nDims()               const { return 0;     }
   };
 } }

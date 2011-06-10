@@ -375,36 +375,6 @@ BOOST_PP_REPEAT(n,M1,~)                                                     \
     inline const_iterator end() const { return boost::proto::value(*this).end(); }
 
     //==========================================================================
-    /*!
-     * Return the value of the size of current \ref extent along the ith
-     * dimension.
-     *
-     * \param i Dimension to retrieve the size from.
-     * \return The size of the \ref extent along this dimension.
-     */
-    //==========================================================================
-    inline size_type  size(std::size_t i) const
-    {
-      return (i<=1) ? parent::static_dimensions : 1;
-    }
-
-    //==========================================================================
-    /*!
-     * Return the highest valid index to access the ith dimension of current \ref
-     * extent.
-     *
-     * \param i Dimension to retrieve the lower index from.
-     * \return The highest valid index of the \ref extent along this dimension.
-     *
-     * \see Container
-     */
-    //==========================================================================
-    inline difference_type  upper(std::size_t i)  const
-    {
-      return (i==1) ? parent::static_dimensions : 1;
-    }
-
-    //==========================================================================
     // to be moved to a free function
     //==========================================================================
     inline std::size_t nDims() const
