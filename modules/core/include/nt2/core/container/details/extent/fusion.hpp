@@ -55,10 +55,11 @@ namespace boost { namespace fusion
       template<typename Sequence, typename Index>
       struct apply
       {
+        typedef typename nt2::meta::strip<Sequence>::type             base;
         typedef typename mpl::if_ < is_const<Sequence>
-                                  , typename Sequence::const_reference
-                                  , typename Sequence::reference
-                                  >::type                                 type;
+                                  , typename base::const_reference
+                                  , typename base::reference
+                                  >::type                             type;
 
         static type call(Sequence& seq) { return seq(Index::value+1); }
       };
