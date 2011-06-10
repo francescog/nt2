@@ -51,6 +51,33 @@ namespace nt2 { namespace containers
     BOOST_PROTO_EXTENDS_USING_ASSIGN(container)
 
     //==========================================================================
+    // Callable Object conformance
+    //==========================================================================
+    template<class Sig> struct result;
+    template<class This, class Position>
+    struct  result<This(Position)>
+          : meta::call<tag::value_at_(This,Position)>
+    {};
+
+    template<class Pos>
+    typename boost::lazy_enable_if< boost::fusion::traits::is_sequence<Pos>
+                                  , result<container(Pos const&)>
+                                  >::type
+    operator()(Pos const& p) const
+    {
+      return nt2::value_at( *this, p );
+    }
+
+    template<class Pos>
+    typename boost::lazy_enable_if< boost::fusion::traits::is_sequence<Pos>
+                                  , result<container(Pos const&)>
+                                  >::type&
+    operator()(Pos const& p)
+    {
+      return nt2::value_at( *this, p );
+    }
+
+    //==========================================================================
     // Sequence conformance
     //==========================================================================
     typedef std::size_t                             value_type;
@@ -155,11 +182,6 @@ namespace nt2 { namespace containers
     #define NT2_ACCESS_CONST
     //#include <nt2/core/container/details/access.hpp>
 
-    template<class Position>
-    const_reference operator()(Position const& p) const
-    {
-      return nt2::value_at( *this, p );
-    }
   };
 } }
 

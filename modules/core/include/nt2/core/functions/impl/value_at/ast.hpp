@@ -12,26 +12,26 @@
 #include <nt2/sdk/dsl/call.hpp>
 
 /////////////////////////////////////////////////////////////////////////////
-// Implementation when type A0 is an ast and rest is w/e
+// Implementation when type A0 is an ast and rest are all integral types
 /////////////////////////////////////////////////////////////////////////////
-/*
-#define M0(z,n,t) (BOOST_PP_CAT(A,n))
-#define M1(z,n,t) (unspecified_<BOOST_PP_CAT(A,n)>)
-#define M3(z,n,t)                                                       \
-NT2_REGISTER_DISPATCH_TO( tag::value_at_, tag::cpu_                     \
-                      , BOOST_PP_REPEAT(BOOST_PP_INC(n),M0,~)           \
-                      , (tag::value_at_(tag::ast_,tag::unspecified_))   \
-                      , (ast_<A0>)                                      \
-                        BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(n),M1,~) \
-                      )                                                 \
-/**/
-/*
-BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M2,~)
+//#define M0(z,n,t) (BOOST_PP_CAT(A,n))
+//#define M1(z,n,t) (integer_<BOOST_PP_CAT(A,n)>)
+//#define M2(z,n,t)                                                       \
+//NT2_REGISTER_DISPATCH_TO( tag::value_at_, tag::cpu_                     \
+//                      , BOOST_PP_REPEAT(BOOST_PP_INC(n),M0,~)           \
+//                      , (tag::value_at_(tag::ast_,tag::integer_))       \
+//                      , (ast_<A0>)                                      \
+//                        BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(n),M1,~) \
+//                      )                                                 \
+///**/
+//
+//BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M2,~)
 
+/*
 namespace nt2 { namespace ext
 {
   template<class Dummy>
-  struct call < tag::value_at_(tag::ast_,tag::unspecified_)
+  struct call < tag::value_at_(tag::ast_,tag::integer_)
               , tag::cpu_, Dummy
               > : callable
   {
@@ -67,11 +67,12 @@ namespace nt2 { namespace ext
 /*
   BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(NT2_MAX_DIMENSIONS),M3,~)
 
-  #undef M3
+  #undef M3*/
   #undef M2
   #undef M1
   #undef M0
+/*
   };
-} }
-*/
+} }*/
+
 #endif

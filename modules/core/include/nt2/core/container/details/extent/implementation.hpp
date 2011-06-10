@@ -342,6 +342,8 @@ BOOST_PP_REPEAT(n,M1,~)                                                     \
       return boost::proto::value(*this)[i-1];
     }
 
+    using parent::operator();
+
     //==========================================================================
     /*!
      * Return an iterator pointing to the first element stored in current

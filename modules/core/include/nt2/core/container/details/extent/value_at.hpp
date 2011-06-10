@@ -52,8 +52,30 @@ namespace nt2 { namespace ext
       meta::as_<void>                                           target;
       meta::compile< meta::compute<boost::mpl::_1,tag::cpu_> >  callee;
 
-      int32_t idx = boost::fusion::front(a1) - 1;
+      typedef boost::mpl::size<A1> sz_;
+      nt2::int32_t idx = boost::fusion::at_c<(sz_::value < 2 ? 0 : 1)>(a1) - 1;
       return callee(a0,target,idx);
+    }
+  };
+
+  template<class D, class Sema, class Dummy>
+  struct call < tag::value_at_
+                ( tag::expr_< containers::domain < tag::extent_, D >
+                            , tag::extent_, Sema
+                            >
+                , tag::fusion_sequence_
+                )
+              , tag::cpu_, Dummy
+              > : callable
+  {
+    typedef std::size_t& result_type;
+
+    template<class A0,class A1> inline result_type
+    operator()(A0& a0, A1 const& a1) const
+    {
+      typedef boost::mpl::size<A1> sz_;
+      std::size_t idx = boost::fusion::at_c<(sz_::value < 2 ? 0 : 1)>(a1) - 1;
+      return boost::proto::value(a0)[ idx ];
     }
   };
 } }
