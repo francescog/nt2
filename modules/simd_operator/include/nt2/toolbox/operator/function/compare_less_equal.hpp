@@ -10,10 +10,10 @@
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_COMPARE_LESS_EQUAL_HPP_INCLUDED
 #include <nt2/include/simd.hpp>
 #include <nt2/include/functor.hpp>
-#include <nt2/toolbox/operator/include.hpp>
-#include <nt2/toolbox/operator/specific/common.hpp>
+#include <nt2/toolbox/simd_operator/include.hpp>
+#include <nt2/toolbox/simd_operator/specific/common.hpp>
 
-#include <nt2/toolbox/operator/specific/compare_tags.hpp>
+#include <nt2/toolbox/simd_operator/specific/compare_tags.hpp>
 
 namespace boost { namespace simd
 {
@@ -21,7 +21,7 @@ namespace boost { namespace simd
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::compare_less_equal_, compare_le         , 2 )
 } }
 
-#include <nt2/toolbox/operator/function/scalar/compare_less_equal.hpp>
-#include <nt2/toolbox/operator/function/simd/all/compare_less_equal.hpp>
+#include <nt2/toolbox/simd_operator/function/scalar/compare_less_equal.hpp>
+#include <nt2/toolbox/simd_operator/function/simd/all/compare_less_equal.hpp>
 
 #endif

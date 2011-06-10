@@ -9,10 +9,10 @@
 #ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_MULTIPLIES_HPP_INCLUDED
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_MULTIPLIES_HPP_INCLUDED
 
-#include <nt2/sdk/meta/strip.hpp>
-#include <nt2/sdk/meta/scalar_of.hpp>
-#include <nt2/sdk/meta/upgrade.hpp>
-#include <nt2/sdk/simd/native_cast.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/scalar_of.hpp>
+#include <nt2/simd_sdk/meta/upgrade.hpp>
+#include <nt2/simd_sdk/simd/native_cast.hpp>
 
 #include <nt2/include/functions/bitwise_or.hpp>
 #include <nt2/include/constants/digits.hpp>

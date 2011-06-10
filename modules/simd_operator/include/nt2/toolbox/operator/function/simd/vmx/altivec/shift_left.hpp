@@ -12,10 +12,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 // operator binary shift left
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/strip.hpp>
-#include <nt2/sdk/meta/as_unsigned.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
-#include <nt2/sdk/simd/native_cast.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/as_unsigned.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/simd/native_cast.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration

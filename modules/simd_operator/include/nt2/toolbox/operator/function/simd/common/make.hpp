@@ -12,10 +12,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 // make for SIMD types
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/as.hpp>
-#include <nt2/sdk/simd/category.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
-#include <nt2/sdk/memory/aligned_type.hpp>
+#include <nt2/simd_sdk/meta/as.hpp>
+#include <nt2/simd_sdk/simd/category.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/memory/aligned_type.hpp>
 #include <nt2/include/functions/load.hpp>
 
 BOOST_SIMD_REGISTER_DISPATCH ( tag::make_, tag::cpu_, (A0)(X)

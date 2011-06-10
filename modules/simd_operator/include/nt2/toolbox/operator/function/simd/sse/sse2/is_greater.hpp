@@ -9,10 +9,10 @@
 #ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_IS_GREATER_HPP_INCLUDED
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_IS_GREATER_HPP_INCLUDED
 
-#include <nt2/sdk/meta/strip.hpp>
-#include <nt2/sdk/meta/downgrade.hpp>
-#include <nt2/sdk/meta/as_integer.hpp>
-#include <nt2/sdk/simd/native_cast.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/downgrade.hpp>
+#include <nt2/simd_sdk/meta/as_integer.hpp>
+#include <nt2/simd_sdk/simd/native_cast.hpp>
 #include <nt2/include/constants/properties.hpp>
 #include <nt2/include/functions/is_equal.hpp>
 #include <nt2/include/functions/minus.hpp>

@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_IS_GREATER_EQUAL_HPP_INCLUDED
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_IS_GREATER_EQUAL_HPP_INCLUDED
 
-#include <nt2/sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
 #include <nt2/include/functions/complement.hpp>
 #include <nt2/include/functions/is_less.hpp>
 

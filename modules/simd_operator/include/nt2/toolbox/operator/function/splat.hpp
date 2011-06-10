@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SPLAT_HPP_INCLUDED
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SPLAT_HPP_INCLUDED
 #include <nt2/include/simd.hpp>
-#include <nt2/toolbox/operator/include.hpp>
-#include <nt2/sdk/meta/as.hpp>
+#include <nt2/toolbox/simd_operator/include.hpp>
+#include <nt2/simd_sdk/meta/as.hpp>
 
 namespace boost { namespace simd
 {
@@ -28,7 +28,7 @@ namespace boost { namespace simd
   }
 } }
 
-#include <nt2/toolbox/operator/function/scalar/splat.hpp>
-#include <nt2/toolbox/operator/function/simd/all/splat.hpp>
+#include <nt2/toolbox/simd_operator/function/scalar/splat.hpp>
+#include <nt2/toolbox/simd_operator/function/simd/all/splat.hpp>
 
 #endif

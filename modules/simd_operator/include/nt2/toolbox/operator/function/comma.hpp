@@ -10,8 +10,8 @@
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_COMMA_HPP_INCLUDED
 #include <nt2/include/simd.hpp>
 #include <nt2/include/functor.hpp>
-#include <nt2/toolbox/operator/include.hpp>
-#include <nt2/toolbox/operator/specific/common.hpp>
+#include <nt2/toolbox/simd_operator/include.hpp>
+#include <nt2/toolbox/simd_operator/specific/common.hpp>
 
 #include <boost/proto/tags.hpp>
 
@@ -26,6 +26,6 @@ namespace boost { namespace simd
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::comma_ , then   , 2 )
 } }
 
-#include <nt2/toolbox/operator/function/common/comma.hpp>
+#include <nt2/toolbox/simd_operator/function/common/comma.hpp>
 
 #endif

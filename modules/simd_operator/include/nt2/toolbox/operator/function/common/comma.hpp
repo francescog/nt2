@@ -13,8 +13,8 @@
 // comma operator implementation
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/mpl/bool.hpp>
-#include <nt2/sdk/details/ignore_unused.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/details/ignore_unused.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
 
 BOOST_SIMD_REGISTER_DISPATCH ( tag::comma_,tag::cpu_
                       , (A0)(A1)

@@ -10,10 +10,10 @@
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_COMPARE_GREATER_HPP_INCLUDED
 #include <nt2/include/simd.hpp>
 #include <nt2/include/functor.hpp>
-#include <nt2/toolbox/operator/include.hpp>
-#include <nt2/toolbox/operator/specific/common.hpp>
+#include <nt2/toolbox/simd_operator/include.hpp>
+#include <nt2/toolbox/simd_operator/specific/common.hpp>
 
-#include <nt2/toolbox/operator/specific/compare_tags.hpp>
+#include <nt2/toolbox/simd_operator/specific/compare_tags.hpp>
 
 namespace boost { namespace simd
 {
@@ -21,7 +21,7 @@ namespace boost { namespace simd
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::compare_greater_, compare_gt      , 2 )
 } }
 
-#include <nt2/toolbox/operator/function/scalar/compare_greater.hpp>
-#include <nt2/toolbox/operator/function/simd/all/compare_greater.hpp>
+#include <nt2/toolbox/simd_operator/function/scalar/compare_greater.hpp>
+#include <nt2/toolbox/simd_operator/function/simd/all/compare_greater.hpp>
 
 #endif

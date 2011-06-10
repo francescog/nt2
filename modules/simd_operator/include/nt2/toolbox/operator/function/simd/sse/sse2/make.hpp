@@ -12,10 +12,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 // make for SSE2 SIMD types
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/as.hpp>
-#include <nt2/sdk/simd/category.hpp>
-#include <nt2/sdk/details/ignore_unused.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/meta/as.hpp>
+#include <nt2/simd_sdk/simd/category.hpp>
+#include <nt2/simd_sdk/details/ignore_unused.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
                       
 /////////////////////////////////////////////////////////////////////////////
 // Implementation for double

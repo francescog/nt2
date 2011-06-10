@@ -8,7 +8,7 @@
 //==============================================================================
 #ifndef BOOST_SIMD_TOOLBOX_OPERATOR_INCLUDE_HPP_INCLUDED
 #define BOOST_SIMD_TOOLBOX_OPERATOR_INCLUDE_HPP_INCLUDED
-#include <nt2/sdk/simd/preprocessor/include.hpp>
+#include <nt2/simd_sdk/simd/preprocessor/include.hpp>
 
 #define BOOST_SIMD_OPERATOR_BASE() nt2/toolbox/operator/function/scalar/
 #define BOOST_SIMD_OPERATOR_RELATIVE() nt2/toolbox/operator/function/

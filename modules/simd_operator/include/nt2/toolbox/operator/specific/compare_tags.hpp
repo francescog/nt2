@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_TOOLBOX_OPERATOR_SPECIFIC_COMPARE_TAGS_HPP_INCLUDED
 #define BOOST_SIMD_TOOLBOX_OPERATOR_SPECIFIC_COMPARE_TAGS_HPP_INCLUDED
 
-namespace nt2
+namespace boost { namespace simd 
 {
   namespace tag
   {
@@ -17,6 +17,6 @@ namespace nt2
     struct compare_greater_ {};    struct compare_greater_equal_ {};
     struct compare_less_    {};    struct compare_less_equal_    {};
   }
-}
+} }
 
 #endif

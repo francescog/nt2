@@ -10,13 +10,13 @@
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_STORE_HPP_INCLUDED
 #include <nt2/include/simd.hpp>
 #include <nt2/include/functor.hpp>
-#include <nt2/toolbox/operator/include.hpp>
+#include <nt2/toolbox/simd_operator/include.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Store a value in memory functor and function
 // Documentation: http://nt2.lri.fr/sdk/memory/function/store.html
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/functor/preprocessor/function.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/function.hpp>
 
 namespace boost { namespace simd
 {
@@ -24,7 +24,7 @@ namespace boost { namespace simd
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::store_,store,3)
 } }
 
-#include <nt2/toolbox/operator/function/scalar/store.hpp>
-#include <nt2/toolbox/operator/function/simd/all/store.hpp>
+#include <nt2/toolbox/simd_operator/function/scalar/store.hpp>
+#include <nt2/toolbox/simd_operator/function/simd/all/store.hpp>
 
 #endif

@@ -14,9 +14,9 @@
 // TODO : Documentation for simd store
 // TODO : Make them work properly with ContiguousRandomAccessIterator
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/mpl.hpp>
-#include <nt2/sdk/memory/details/category.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/meta/mpl.hpp>
+#include <nt2/simd_sdk/memory/details/category.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over store for arithmetic SIMD types

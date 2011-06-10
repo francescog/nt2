@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_COMPLEMENT_HPP_INCLUDED
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_COMPLEMENT_HPP_INCLUDED
 
-#include <nt2/sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register divides overload

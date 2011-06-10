@@ -9,9 +9,9 @@
 #ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_IS_LESS_EQUAL_HPP_INCLUDED
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_IS_LESS_EQUAL_HPP_INCLUDED
 
-#include <nt2/sdk/meta/strip.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
-#include <nt2/sdk/simd/native_cast.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/simd/native_cast.hpp>
 #include <nt2/include/functions/complement.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////

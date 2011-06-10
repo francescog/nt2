@@ -12,6 +12,6 @@
 // Please do not remove or modify the next line comment
 // This toolbox is of sys type
 #include <nt2/nt2.hpp>
-#include <nt2/toolbox/operator/operator.hpp>
+#include <nt2/toolbox/simd_operator/operator.hpp>
 
 #endif

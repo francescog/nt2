@@ -9,9 +9,9 @@
 #ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE4_2_IS_GREATER_HPP_INCLUDED
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE4_2_IS_GREATER_HPP_INCLUDED
 
-#include <nt2/toolbox/operator/function/simd/sse/sse4_1/is_greater.hpp>
+#include <nt2/toolbox/simd_operator/function/simd/sse/sse4_1/is_greater.hpp>
 
-#include <nt2/sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overloads implementation for int64 types

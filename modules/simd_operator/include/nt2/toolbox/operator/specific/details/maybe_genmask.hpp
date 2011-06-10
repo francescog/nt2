@@ -16,7 +16,7 @@
 #include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 
-namespace nt2 { namespace details
+namespace boost { namespace simd { namespace details
 {
   template<typename F, typename R, typename A0, typename Enable = void>
   struct as_native
@@ -68,6 +68,6 @@ namespace nt2 { namespace details
     return maybe_genmask_impl<T>()(t);
   }
   
-} }
+} } }
 
 #endif

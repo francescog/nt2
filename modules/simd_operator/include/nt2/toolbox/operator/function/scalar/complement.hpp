@@ -12,9 +12,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 // bitwise complement extended implementation
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/strip.hpp>
-#include <nt2/sdk/meta/as_bits.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/as_bits.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
 
 BOOST_SIMD_REGISTER_DISPATCH(tag::complement_,tag::cpu_,(A0),(fundamental_<A0>));
 BOOST_SIMD_REGISTER_DISPATCH(tag::complement_,tag::cpu_,(A0),(real_<A0>));

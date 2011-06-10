@@ -12,9 +12,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 // splat for scalar types
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/as.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
-#include <nt2/sdk/details/ignore_unused.hpp>
+#include <nt2/simd_sdk/meta/as.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/details/ignore_unused.hpp>
 
 BOOST_SIMD_REGISTER_DISPATCH ( tag::splat_
                       , tag::cpu_

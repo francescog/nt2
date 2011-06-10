@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_BITWISE_AND_HPP_INCLUDED
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_BITWISE_AND_HPP_INCLUDED
 
-#include <nt2/sdk/meta/as_integer.hpp>
-#include <nt2/sdk/simd/native_cast.hpp>
+#include <nt2/simd_sdk/meta/as_integer.hpp>
+#include <nt2/simd_sdk/simd/native_cast.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Generic overload implementation

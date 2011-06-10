@@ -8,7 +8,7 @@
  ******************************************************************************/
 #ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_LOAD_OFFSET_HPP_INCLUDED
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_VMX_ALTIVEC_LOAD_OFFSET_HPP_INCLUDED
-#include <nt2/sdk/simd/meta/as_simd.hpp>
+#include <nt2/simd_sdk/simd/meta/as_simd.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over load_ on simd types with an offset

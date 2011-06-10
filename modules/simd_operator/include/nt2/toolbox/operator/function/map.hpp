@@ -11,7 +11,7 @@
 
 #include <nt2/include/simd.hpp>
 #include <nt2/include/functor.hpp>
-#include <nt2/toolbox/operator/include.hpp>
+#include <nt2/toolbox/simd_operator/include.hpp>
 
 namespace boost { namespace simd {
   namespace tag { struct map_ {}; }
@@ -24,6 +24,6 @@ namespace boost { namespace simd
   BOOST_SIMD_FUNCTION_IMPLEMENTATION(tag::map_,map,4)
 } }
 
-#include <nt2/toolbox/operator/function/simd/all/map.hpp>
+#include <nt2/toolbox/simd_operator/function/simd/all/map.hpp>
 
 #endif

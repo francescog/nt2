@@ -13,15 +13,15 @@
 // By default, any SIMD implementation falls down to scalar map application if
 // nothing is implemented for doing otherwise.
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/simd/category.hpp>
-#include <nt2/sdk/functor/meta/call.hpp>
-#include <nt2/toolbox/operator/function/map.hpp>
+#include <nt2/simd_sdk/simd/category.hpp>
+#include <nt2/simd_sdk/functor/meta/call.hpp>
+#include <nt2/toolbox/simd_operator/function/map.hpp>
 
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/toolbox/operator/specific/preprocessed/common.hpp>
+#include <nt2/toolbox/simd_operator/specific/preprocessed/common.hpp>
 #else
 #include <nt2/extension/parameters.hpp>
-#include <nt2/sdk/details/preprocessor.hpp>
+#include <nt2/simd_sdk/details/preprocessor.hpp>
 #include <boost/preprocessor/repetition/enum.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/repeat_from_to.hpp>
@@ -51,7 +51,7 @@ BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_SIMD_MAX_ARITY),M1,~)
 #define M0(z,n,t) tag::simd_<tag::unspecified_,X>
 
 #define M1(z,n,t)                                                         \
-namespace nt2 { namespace ext                                             \
+namespace boost { namespace simd { namespace ext                          \
 {                                                                         \
   template<class Tag, class X, class Dummy>                               \
   struct call<Tag( BOOST_PP_ENUM(n,M0,~) ), tag::cpu_, Dummy> : callable  \
@@ -66,7 +66,7 @@ namespace nt2 { namespace ext                                             \
       return nt2::map( functor<Tag>(), BOOST_PP_ENUM_PARAMS(n,a));        \
     }                                                                     \
   };                                                                      \
-} }                                                                       \
+} } }                                                                     \
 /**/
 
 BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_SIMD_MAX_ARITY),M1,~)

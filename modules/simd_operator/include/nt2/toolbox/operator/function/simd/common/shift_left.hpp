@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_SHIFT_LEFT_HPP_INCLUDED
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_COMMON_SHIFT_LEFT_HPP_INCLUDED
 
-#include <nt2/sdk/simd/native_cast.hpp>
-#include <nt2/sdk/meta/as_integer.hpp>
+#include <nt2/simd_sdk/simd/native_cast.hpp>
+#include <nt2/simd_sdk/meta/as_integer.hpp>
 
 #include <boost/mpl/logical.hpp>
 #include <boost/mpl/equal_to.hpp>
