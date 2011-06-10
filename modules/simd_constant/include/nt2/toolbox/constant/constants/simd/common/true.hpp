@@ -6,23 +6,23 @@
 ///                 See accompanying file LICENSE.txt or copy at
 ///                     http://www.boost.org/LICENSE_1_0.txt
 //////////////////////////////////////////////////////////////////////////////
-#ifndef NT2_SDK_SIMD_DETAILS_IMPL_COMMON_TRUE_HPP_INCLUDED
-#define NT2_SDK_SIMD_DETAILS_IMPL_COMMON_TRUE_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_DETAILS_IMPL_COMMON_TRUE_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_DETAILS_IMPL_COMMON_TRUE_HPP_INCLUDED
 
-#include <nt2/sdk/details/ignore_unused.hpp>
+#include <nt2/simd_sdk/details/ignore_unused.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // in SIMD, True is not !0 but ~0 whatever the type
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( tag::true_, tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::true_, tag::cpu_
                       , (A0)(X), ((target_< simd_< real_<A0> ,X> >))
                       )
 
-NT2_REGISTER_DISPATCH ( tag::true_, tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH ( tag::true_, tag::cpu_
                       , (A0)(X), ((target_< simd_< integer_<A0> ,X> >))
                       )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class X, class Dummy>
   struct  call< tag::true_( tag::target_<tag::simd_<tag::real_,X> >)
@@ -35,10 +35,10 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct  result<This(A0)> : meta::strip<A0>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
-      typedef typename NT2_RETURN_TYPE(1)::type result_type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(1)::type result_type;
       typedef typename meta::scalar_of<result_type>::type type;
       typedef typename meta::as_integer<type>::type    int_type;
       typename meta::from_bits<type>::type that = { ~int_type(0) };
@@ -57,14 +57,14 @@ namespace nt2 { namespace ext
     template<class This,class A0>
     struct  result<This(A0)> : meta::strip<A0>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
-      typedef typename NT2_RETURN_TYPE(1)::type result_type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(1)::type result_type;
       typedef typename meta::scalar_of<result_type>::type type;
       return splat<result_type>(~type(0));
     }
   };
-} }
+} } }
 
 #endif

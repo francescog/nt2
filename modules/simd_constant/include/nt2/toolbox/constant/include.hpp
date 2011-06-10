@@ -6,13 +6,13 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_TOOLBOX_CONSTANT_INCLUDE_HPP_INCLUDED
-#define NT2_TOOLBOX_CONSTANT_INCLUDE_HPP_INCLUDED
-#include <nt2/sdk/simd/preprocessor/include.hpp>
+#ifndef BOOST_SIMD_TOOLBOX_CONSTANT_INCLUDE_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_CONSTANT_INCLUDE_HPP_INCLUDED
+#include <nt2/simd_sdk/simd/preprocessor/include.hpp>
 
-#define NT2_CONSTANT_BASE() nt2/toolbox/constant/constants/scalar/
-#define NT2_CONSTANT_RELATIVE() nt2/toolbox/constant/constants/
+#define BOOST_SIMD_CONSTANT_BASE() nt2/toolbox/simdconstant/constants/scalar/
+#define BOOST_SIMD_CONSTANT_RELATIVE() nt2/toolbox/simdconstant/constants/
 
-#define NT2_CONSTANT_INCLUDE(F) NT2_SIMD_RELATIVE_INCLUDE(NT2_CONSTANT_RELATIVE, F)
+#define BOOST_SIMD_CONSTANT_INCLUDE(F) BOOST_SIMD_SIMD_RELATIVE_INCLUDE(BOOST_SIMD_CONSTANT_RELATIVE, F)
 
 #endif

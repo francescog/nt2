@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_CONSTANT_CONSTANTS_DSL_DIGITS_HPP_INCLUDED
-#define NT2_TOOLBOX_CONSTANT_CONSTANTS_DSL_DIGITS_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DSL_DIGITS_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DSL_DIGITS_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Turn some digits consatnt into DSL terminals
@@ -16,7 +16,7 @@
 #include <nt2/include/constants/digits.hpp>
 #include <nt2/sdk/constant/category.hpp>
 
-namespace nt2
+namespace boost { namespace simd {
 {
   boost::proto::terminal< constant_<tag::digit_< -10 > > >::type mten_    = {{}};
   boost::proto::terminal< constant_<tag::digit_< -9 > > >::type mnine_    = {{}};
@@ -46,6 +46,6 @@ namespace nt2
   boost::proto::terminal< constant_<tag::digit_< 45 > > >::type fortyfive_        = {{}};
   boost::proto::terminal< constant_<tag::digit_< 90 > > >::type ninety_           = {{}};
   boost::proto::terminal< constant_<tag::digit_< 180> > >::type onehundredeighty_ = {{}};
-}
+} }
 
 #endif

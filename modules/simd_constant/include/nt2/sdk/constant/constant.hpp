@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONSTANT_CONSTANT_HPP_INCLUDED
-#define NT2_SDK_CONSTANT_CONSTANT_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONSTANT_CONSTANT_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONSTANT_CONSTANT_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Main generic constant class
@@ -19,13 +19,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Generate a constant function as Name<Type>()
 ////////////////////////////////////////////////////////////////////////////////
-#define NT2_CONSTANT_IMPLEMENTATION(TAG,NAME)                       \
+#define BOOST_SIMD_CONSTANT_IMPLEMENTATION(TAG,NAME)                \
 template<class Target> inline                                       \
-typename nt2::meta::enable_call<TAG(nt2::meta::as_<Target>)>::type  \
+typename boost::simd::meta::enable_call<TAG(nt2::meta::as_<Target>)>::type \
 NAME()                                                              \
 {                                                                   \
-  typename nt2::make_functor<TAG, Target>::type callee;             \
-  return callee( nt2::meta::as_<Target>() );                        \
+  typename boost::simd::make_functor<TAG, Target>::type callee;     \
+  return callee( boost::simd::meta::as_<Target>() );                \
 }                                                                   \
 /**/
 

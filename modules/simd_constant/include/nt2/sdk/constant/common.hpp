@@ -6,21 +6,21 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_SIMD_DETAILS_NATIVE_CONSTANTS_HPP_INCLUDED
-#define NT2_SDK_SIMD_DETAILS_NATIVE_CONSTANTS_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_CONSTANTS_HPP_INCLUDED
+#define BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_CONSTANTS_HPP_INCLUDED
 
-#include <nt2/sdk/meta/result_of.hpp>
-#include <nt2/sdk/meta/as.hpp>
-#include <nt2/sdk/simd/category.hpp>
-#include <nt2/sdk/meta/from_bits.hpp>
-#include <nt2/sdk/details/ignore_unused.hpp>
+#include <nt2/simd_sdk/meta/result_of.hpp>
+#include <nt2/simd_sdk/meta/as.hpp>
+#include <nt2/simd_sdk/simd/category.hpp>
+#include <nt2/simd_sdk/meta/from_bits.hpp>
+#include <nt2/simd_sdk/details/ignore_unused.hpp>
 #include <nt2/include/functions/splat.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Forward all constant call to the simd version of themselves that splat
 // the appropriate scalar constants into a proper SIMD vector.
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH ( Tag, tag::cpu_
+BOOST_SIMD_REGISTER_DISPATCH ( Tag, tag::cpu_
                       , (Tag)(A0)(X)
                       , ((target_< simd_< arithmetic_<A0>,X> >))
                       )
@@ -44,12 +44,12 @@ namespace nt2 { namespace ext
       typedef typename target::template cast<results>::type      type;
     };
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       typedef typename meta::strip<A0>::type::type        target;
       typedef typename meta::scalar_of<target>::type      type;
-      typedef typename NT2_RETURN_TYPE(1)::type           result_type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(1)::type    result_type;
       functor<Tag> callee;
       return splat<result_type>(callee( nt2::meta::as_<type>()));
     }

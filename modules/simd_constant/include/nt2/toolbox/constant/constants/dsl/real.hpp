@@ -16,7 +16,7 @@
 #include <nt2/include/constants/real.hpp>
 #include <nt2/sdk/constant/category.hpp>
 
-namespace nt2
+namespace boost { namespace simd {
 {
   boost::proto::terminal< constant_<tag::pi_ > >::type          pi_         = {{}};
   boost::proto::terminal< constant_<tag::nan_> >::type          nan_        = {{}};
@@ -29,6 +29,6 @@ namespace nt2
   boost::proto::terminal< constant_<tag::half_> >::type         half_       = {{}};
   boost::proto::terminal< constant_<tag::third_> >::type        third_      = {{}};
   boost::proto::terminal< constant_<tag::quarter_> >::type      quarter_    = {{}};
-}
+} }
 
 #endif

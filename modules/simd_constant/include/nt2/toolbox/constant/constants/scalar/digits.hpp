@@ -6,15 +6,15 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_DIGITS_HPP_INCLUDED
-#define NT2_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_DIGITS_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_DIGITS_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_DIGITS_HPP_INCLUDED
 
 #include <nt2/include/functions/splat.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Register dispatch over digits<N>
 ////////////////////////////////////////////////////////////////////////////////
-NT2_REGISTER_DISPATCH_TPL ( tag::digit_<N>
+BOOST_SIMD_REGISTER_DISPATCH_TPL ( tag::digit_<N>
                           , tag::cpu_
                           , (nt2::int64_t N)(class A0)
                           , (target_< fundamental_<A0> >)
@@ -24,7 +24,7 @@ NT2_REGISTER_DISPATCH_TPL ( tag::digit_<N>
 // call to digits<N> : reuse splat so the code stay generic anc can be reused
 // in non-scalar cases later (see SIMD for example)
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template< nt2::int64_t N, class Dummy >
   struct  call< tag::digit_<N>(tag::target_<tag::fundamental_> )
@@ -37,14 +37,14 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
-      typedef typename NT2_RETURN_TYPE(1)::type result_type;
+      typedef typename BOOST_SIMD_RETURN_TYPE(1)::type result_type;
       result_type that = splat<result_type>(N);
       return that;
     }
   };
-} }
+} } }
 
 #endif

@@ -6,24 +6,24 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_CONSTANT_CONSTANTS_TRUE_HPP_INCLUDED
-#define NT2_TOOLBOX_CONSTANT_CONSTANTS_TRUE_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_TRUE_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_TRUE_HPP_INCLUDED
 #include <nt2/include/simd.hpp>
 #include <nt2/sdk/constant/constant.hpp>
-#include <nt2/toolbox/constant/include.hpp>
+#include <nt2/toolbox/simd_constant/include.hpp>
 #include <nt2/sdk/constant/common.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
     struct true_  {};
   }
   
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::true_, True)
-}
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::true_, True)
+} }
 
-#include <nt2/toolbox/constant/constants/scalar/true.hpp>
-#include <nt2/toolbox/constant/constants/simd/all/true.hpp>
+#include <nt2/toolbox/simd_constant/constants/scalar/true.hpp>
+#include <nt2/toolbox/simd_constant/constants/simd/all/true.hpp>
 
 #endif

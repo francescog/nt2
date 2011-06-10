@@ -16,10 +16,10 @@
 #include <nt2/include/constants/infinites.hpp>
 #include <nt2/sdk/constant/category.hpp>
 
-namespace nt2
+namespace boost { namespace simd {
 {
   boost::proto::terminal< constant_<tag::inf_ > >::type   inf_  = {{}};
   boost::proto::terminal< constant_<tag::m_inf_> >::type  minf_ = {{}};
-}
+} }
 
 #endif

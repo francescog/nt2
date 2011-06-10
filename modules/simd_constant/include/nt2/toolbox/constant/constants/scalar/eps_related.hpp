@@ -6,16 +6,16 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_EPS_RELATED_HPP_INCLUDED
-#define NT2_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_EPS_RELATED_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_EPS_RELATED_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_EPS_RELATED_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Base class for generating an EPS related constant
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/from_bits.hpp>
+#include <nt2/simd_sdk/meta/from_bits.hpp>
 #include <nt2/include/functions/splat.hpp>
-#include <nt2/sdk/meta/scalar_of.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/meta/scalar_of.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
 
 #define LOCAL_CALL_INT(TAG, SEL, VAL)                               \
 template<class Dummy>                                               \
@@ -24,10 +24,10 @@ struct call< TAG(tag::target_<SEL> ), tag::cpu_, Dummy>  : callable \
   template<class Sig> struct result;                                \
   template<class This, class A0>                                    \
   struct  result<This(A0)>  : meta::strip<A0>::type {};             \
-  NT2_FUNCTOR_CALL(1)                                               \
+  BOOST_SIMD_FUNCTOR_CALL(1)                                        \
   {                                                                 \
     ignore_unused(a0);                                              \
-    typedef typename  NT2_RETURN_TYPE(1)::type type;                \
+    typedef typename  BOOST_SIMD_RETURN_TYPE(1)::type type;         \
     return splat<type>(VAL);                                        \
   }                                                                 \
 }                                                                   \
@@ -40,10 +40,10 @@ struct call< TAG(tag::target_<SEL>), tag::cpu_, Dummy>  : callable  \
   template<class Sig> struct result;                                \
   template<class This, class A0>                                    \
   struct  result<This(A0)>  : meta::strip<A0>::type {};             \
-  NT2_FUNCTOR_CALL(1)                                               \
+  BOOST_SIMD_FUNCTOR_CALL(1)                                        \
   {                                                                 \
     ignore_unused(a0);                                              \
-    typedef typename  NT2_RETURN_TYPE(1)::type type;                \
+    typedef typename  BOOST_SIMD_RETURN_TYPE(1)::type type;         \
     typename meta::from_bits<type>::type const that = {VAL};        \
     return splat<typename A0::type>(that.value);                    \
   }                                                                 \
@@ -51,15 +51,15 @@ struct call< TAG(tag::target_<SEL>), tag::cpu_, Dummy>  : callable  \
 /**/
 
 #define LOCAL_CONST(TAG, VD, VF,VI)                                       \
-NT2_REGISTER_DISPATCH(TAG,tag::cpu_,(A0), (target_< double_<A0>      > ) ) \
-NT2_REGISTER_DISPATCH(TAG,tag::cpu_,(A0), (target_< float_<A0>       > ) ) \
-NT2_REGISTER_DISPATCH(TAG,tag::cpu_,(A0), (target_< arithmetic_<A0>  > ) ) \
-namespace nt2 { namespace ext                                             \
+BOOST_SIMD_REGISTER_DISPATCH(TAG,tag::cpu_,(A0), (target_< double_<A0>      > ) ) \
+BOOST_SIMD_REGISTER_DISPATCH(TAG,tag::cpu_,(A0), (target_< float_<A0>       > ) ) \
+BOOST_SIMD_REGISTER_DISPATCH(TAG,tag::cpu_,(A0), (target_< arithmetic_<A0>  > ) ) \
+namespace boost { namespace simd { namespace ext                          \
 {                                                                         \
   LOCAL_CALL(TAG, tag::double_        , VD);                              \
   LOCAL_CALL(TAG, tag::float_         , VF);                              \
   LOCAL_CALL_INT(TAG, tag::arithmetic_, VI);                              \
-} }                                                                       \
+} } }                                                                     \
 /**/
 
 

@@ -6,20 +6,20 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONSTANT_CATEGORY_HPP_INCLUDED
-#define NT2_SDK_CONSTANT_CATEGORY_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONSTANT_CATEGORY_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONSTANT_CATEGORY_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Category for constants
 //* TODO:  Documentation: http://nt2.lri.fr/sdk/constant/meta/category.html
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/as.hpp>
-#include <nt2/sdk/meta/hierarchy_of.hpp>
+#include <nt2/simd_sdk/meta/as.hpp>
+#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // constant_ wraps a constant type into a EDSL element and has its own hierarchy
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2
+namespace boost { namespace simd {
 {
   namespace tag { template<class ID> struct constant_ { typedef ID type; }; }
   namespace meta
@@ -30,12 +30,12 @@ namespace nt2
       typedef tag::constant_<T> type;
     };
   }
-}
+} }
 
-namespace nt2
+namespace boost { namespace simd {
 {
   template<class ID>
   struct constant_ { typedef meta::constant_<ID> nt2_hierarchy_tag; };
-}
+} }
 
 #endif

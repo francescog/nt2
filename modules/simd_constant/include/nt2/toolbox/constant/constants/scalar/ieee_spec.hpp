@@ -6,15 +6,15 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_IEEE_SPEC_HPP_INCLUDED
-#define NT2_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_IEEE_SPEC_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_IEEE_SPEC_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_IEEE_SPEC_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Base class for generating an integral constant
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/meta/strip.hpp>
 #include <nt2/include/functions/splat.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
 
 #define LOCAL_CALL(TAG, SEL, VAL)                                           \
 template<class Dummy>                                                       \
@@ -24,22 +24,22 @@ struct call< TAG(tag::target_<SEL>), tag::cpu_, Dummy>  : callable          \
   template<class This, class A0>                                            \
   struct  result<This(A0)>                                                  \
         : meta::as_integer<typename meta::strip<A0>::type::type,signed> {}; \
-  NT2_FUNCTOR_CALL(1)                                                       \
+  BOOST_SIMD_FUNCTOR_CALL(1)                                                \
   {                                                                         \
     ignore_unused(a0);                                                      \
-    typedef typename  NT2_RETURN_TYPE(1)::type type;                        \
+    typedef typename  BOOST_SIMD_RETURN_TYPE(1)::type type;                 \
     return splat<type>(VAL);                                                \
   }                                                                         \
 }                                                                           \
 /**/
 
 #define LOCAL_CONST(TAG, VD, VF)                                        \
-NT2_REGISTER_DISPATCH(TAG,tag::cpu_,(A0), (target_< double_<A0> > ) )    \
-NT2_REGISTER_DISPATCH(TAG,tag::cpu_,(A0), (target_< float_<A0>  > ) )    \
-namespace nt2 { namespace ext                                           \
+BOOST_SIMD_REGISTER_DISPATCH(TAG,tag::cpu_,(A0), (target_< double_<A0> > ) )    \
+BOOST_SIMD_REGISTER_DISPATCH(TAG,tag::cpu_,(A0), (target_< float_<A0>  > ) )    \
+namespace boost { namespace simd { namespace ext                        \
 {                                                                       \
   LOCAL_CALL(TAG, tag::double_, VD);  LOCAL_CALL(TAG, tag::float_, VF); \
-} }                                                                     \
+} } }                                                                   \
 /**/
 
 LOCAL_CONST(tag::nb_mantissa_bits_,                  52,         23);

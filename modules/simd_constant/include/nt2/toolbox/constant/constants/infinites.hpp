@@ -6,30 +6,30 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_CONSTANT_CONSTANTS_INFINITES_HPP_INCLUDED
-#define NT2_TOOLBOX_CONSTANT_CONSTANTS_INFINITES_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_INFINITES_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_INFINITES_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Generating an infinite constant
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/include/simd.hpp>
 #include <nt2/sdk/constant/constant.hpp>
-#include <nt2/toolbox/constant/include.hpp>
+#include <nt2/toolbox/simd_constant/include.hpp>
 #include <nt2/sdk/constant/common.hpp>
 
-namespace nt2 { namespace tag
+namespace boost { namespace simd { namespace tag
 {
   struct inf_   {}; struct m_inf_ {}; struct nan_  {};
-} }
+} } }
 
-namespace nt2
+namespace boost { namespace simd {
 {
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::inf_    , Inf   )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::m_inf_  , Minf  )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::nan_    , Nan   )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::inf_    , Inf   )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::m_inf_  , Minf  )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::nan_    , Nan   )
 }
 
-#include <nt2/toolbox/constant/constants/scalar/infinites.hpp>
-#include <nt2/toolbox/constant/constants/simd/all/infinites.hpp>
+#include <nt2/toolbox/simd_constant/constants/scalar/infinites.hpp>
+#include <nt2/toolbox/simd_constant/constants/simd/all/infinites.hpp>
 
 #endif

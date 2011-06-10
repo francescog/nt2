@@ -6,31 +6,31 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_INFINITES_HPP_INCLUDED
-#define NT2_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_INFINITES_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_INFINITES_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_INFINITES_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Base class for generating infinites constant
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/from_bits.hpp>
+#include <nt2/simd_sdk/meta/from_bits.hpp>
 #include <nt2/include/functions/splat.hpp>
-#include <nt2/sdk/meta/scalar_of.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/meta/scalar_of.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
 #include <nt2/include/constants/properties.hpp>
 
-NT2_REGISTER_DISPATCH(tag::inf_,tag::cpu_,(A0), (target_< double_<A0>      > ) )
-NT2_REGISTER_DISPATCH(tag::inf_,tag::cpu_,(A0), (target_< float_<A0>       > ) )
-NT2_REGISTER_DISPATCH(tag::inf_,tag::cpu_,(A0), (target_< arithmetic_<A0>  > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::inf_,tag::cpu_,(A0), (target_< double_<A0>      > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::inf_,tag::cpu_,(A0), (target_< float_<A0>       > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::inf_,tag::cpu_,(A0), (target_< arithmetic_<A0>  > ) )
 
-NT2_REGISTER_DISPATCH(tag::m_inf_,tag::cpu_,(A0), (target_< double_<A0>     > ) )
-NT2_REGISTER_DISPATCH(tag::m_inf_,tag::cpu_,(A0), (target_< float_<A0>      > ) )
-NT2_REGISTER_DISPATCH(tag::m_inf_,tag::cpu_,(A0), (target_< arithmetic_<A0> > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::m_inf_,tag::cpu_,(A0), (target_< double_<A0>     > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::m_inf_,tag::cpu_,(A0), (target_< float_<A0>      > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::m_inf_,tag::cpu_,(A0), (target_< arithmetic_<A0> > ) )
 
-NT2_REGISTER_DISPATCH(tag::nan_,tag::cpu_,(A0), (target_< double_<A0>     > ) )
-NT2_REGISTER_DISPATCH(tag::nan_,tag::cpu_,(A0), (target_< float_<A0>      > ) )
-NT2_REGISTER_DISPATCH(tag::nan_,tag::cpu_,(A0), (target_< arithmetic_<A0> > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::nan_,tag::cpu_,(A0), (target_< double_<A0>     > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::nan_,tag::cpu_,(A0), (target_< float_<A0>      > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::nan_,tag::cpu_,(A0), (target_< arithmetic_<A0> > ) )
   
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::inf_(tag::target_<tag::double_>)
@@ -43,7 +43,7 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       meta::from_bits<double>::type const that = {0x7FF0000000000000LL};
@@ -62,7 +62,7 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       meta::from_bits<float>::type const that = {0x7F800000};
@@ -81,7 +81,7 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       return Valmax<typename A0::type>();
@@ -99,7 +99,7 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       meta::from_bits<double>::type const that = {0xFFF0000000000000LL};
@@ -118,7 +118,7 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       meta::from_bits<float>::type const that = {0xFF800000};
@@ -137,7 +137,7 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       return Valmin<typename A0::type>();
@@ -155,7 +155,7 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       meta::from_bits<double>::type const that = {0xFFFFFFFFFFFFFFFFLL};
@@ -174,13 +174,13 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       meta::from_bits<float>::type const that = {0xFFFFFFFF};
       return splat<typename A0::type>(that.value);
     }
   };
-} }
+} } }
 
 #endif

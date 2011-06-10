@@ -6,29 +6,29 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_CONSTANT_CONSTANTS_SIGNMASK_HPP_INCLUDED
-#define NT2_TOOLBOX_CONSTANT_CONSTANTS_SIGNMASK_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_SIGNMASK_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_SIGNMASK_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Make some real based constants
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/include/simd.hpp>
 #include <nt2/sdk/constant/constant.hpp>
-#include <nt2/toolbox/constant/include.hpp>
+#include <nt2/toolbox/simd_constant/include.hpp>
 #include <nt2/sdk/constant/common.hpp>
 
-namespace nt2
+namespace boost { namespace simd
 {
   namespace tag
   {
     struct signmask_ {};
   }
   
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::signmask_, Signmask)
-}
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::signmask_, Signmask)
+} }
 
-#include <nt2/toolbox/constant/constants/scalar/signmask.hpp>
-#include <nt2/toolbox/constant/constants/simd/all/signmask.hpp>
+#include <nt2/toolbox/simd_constant/constants/scalar/signmask.hpp>
+#include <nt2/toolbox/simd_constant/constants/simd/all/signmask.hpp>
 
 #endif
 

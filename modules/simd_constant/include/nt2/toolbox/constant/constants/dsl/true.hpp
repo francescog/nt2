@@ -16,9 +16,9 @@
 #include <nt2/include/constants/true.hpp>
 #include <nt2/sdk/constant/category.hpp>
 
-namespace nt2
+namespace boost { namespace simd {
 {
   boost::proto::terminal< constant_<tag::true_ > >::type true_  = {{}};
-}
+} }
 
 #endif

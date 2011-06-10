@@ -6,24 +6,24 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_SIGNMASK_HPP_INCLUDED
-#define NT2_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_SIGNMASK_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_SIGNMASK_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DETAILS_SIGNMASK_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Base class for generating signmask constant
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/meta/from_bits.hpp>
+#include <nt2/simd_sdk/meta/from_bits.hpp>
 #include <nt2/include/functions/splat.hpp>
-#include <nt2/sdk/meta/adapted_traits.hpp>
-#include <nt2/sdk/meta/as_unsigned.hpp>
-#include <nt2/sdk/functor/preprocessor/call.hpp>
+#include <nt2/simd_sdk/meta/adapted_traits.hpp>
+#include <nt2/simd_sdk/meta/as_unsigned.hpp>
+#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
 
-NT2_REGISTER_DISPATCH(tag::signmask_,tag::cpu_,(A0), (target_< double_<A0>    > ) )
-NT2_REGISTER_DISPATCH(tag::signmask_,tag::cpu_,(A0), (target_< float_<A0>     > ) )
-NT2_REGISTER_DISPATCH(tag::signmask_,tag::cpu_,(A0), (target_< unsigned_<A0>  > ) )
-NT2_REGISTER_DISPATCH(tag::signmask_,tag::cpu_,(A0), (target_< signed_<A0>    > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::signmask_,tag::cpu_,(A0), (target_< double_<A0>    > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::signmask_,tag::cpu_,(A0), (target_< float_<A0>     > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::signmask_,tag::cpu_,(A0), (target_< unsigned_<A0>  > ) )
+BOOST_SIMD_REGISTER_DISPATCH(tag::signmask_,tag::cpu_,(A0), (target_< signed_<A0>    > ) )
 
-namespace nt2 { namespace ext
+namespace boost { namespace simd { namespace ext
 {
   template<class Dummy>
   struct  call< tag::signmask_(tag::target_<tag::double_>)
@@ -36,7 +36,7 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       meta::from_bits<double>::type const that = {0x8000000000000000LL};
@@ -55,7 +55,7 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       meta::from_bits<float>::type const that = {0x80000000};
@@ -74,7 +74,7 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       typedef typename meta::scalar_of<typename A0::type>::type base;
@@ -93,7 +93,7 @@ namespace nt2 { namespace ext
     template<class This, class Target>
     struct result<This(Target)> : meta::strip<Target>::type {};
 
-    NT2_FUNCTOR_CALL(1)
+    BOOST_SIMD_FUNCTOR_CALL(1)
     {
       ignore_unused(a0);
       typedef typename meta::scalar_of<typename A0::type>::type base;
@@ -102,6 +102,6 @@ namespace nt2 { namespace ext
       return splat<typename A0::type>(base(value));
     }
   };
-} }
+} } }
 
 #endif

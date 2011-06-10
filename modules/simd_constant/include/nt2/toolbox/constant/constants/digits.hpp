@@ -6,69 +6,69 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_TOOLBOX_CONSTANT_CONSTANTS_DIGITS_HPP_INCLUDED
-#define NT2_TOOLBOX_CONSTANT_CONSTANTS_DIGITS_HPP_INCLUDED
+#ifndef BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DIGITS_HPP_INCLUDED
+#define BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_DIGITS_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // List all basic -10,-9,...,0,...,10,100,1000 constants
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/include/simd.hpp>
 #include <nt2/sdk/constant/constant.hpp>
-#include <nt2/toolbox/constant/include.hpp>
+#include <nt2/toolbox/simd_constant/include.hpp>
 #include <nt2/sdk/constant/common.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Constant tag
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2 { namespace tag
+namespace boost { namespace simd { namespace tag
 {
   template<nt2::int64_t N> struct digit_ {};
-} }
+} } }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Natural numbers between -10 and 10
 ////////////////////////////////////////////////////////////////////////////////
-namespace nt2
+namespace boost { namespace simd
 {
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<-10> , Mten  )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<-9 > , Mnine )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<-8 > , Meight)
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<-7 > , Mseven)
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<-6 > , Msix  )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<-5 > , Mfive )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<-4 > , Mfour )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<-3 > , Mthree)
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<-2 > , Mtwo  )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<-1 > , Mone  )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 0 > , Zero  )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 1 > , One   )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 2 > , Two   )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 3 > , Three )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 4 > , Four  )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 5 > , Five  )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 6 > , Six   )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 7 > , Seven )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 8 > , Eight )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 9 > , Nine  )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 10> , Ten   )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 20> , Twenty)
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<-10> , Mten  )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<-9 > , Mnine )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<-8 > , Meight)
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<-7 > , Mseven)
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<-6 > , Msix  )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<-5 > , Mfive )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<-4 > , Mfour )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<-3 > , Mthree)
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<-2 > , Mtwo  )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<-1 > , Mone  )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 0 > , Zero  )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 1 > , One   )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 2 > , Two   )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 3 > , Three )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 4 > , Four  )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 5 > , Five  )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 6 > , Six   )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 7 > , Seven )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 8 > , Eight )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 9 > , Nine  )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 10> , Ten   )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 20> , Twenty)
 
   ////////////////////////////////////////////////////////////////////////////////
   // Larger values
   ////////////////////////////////////////////////////////////////////////////////
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 100> , Hundred  )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<1000> , Thousand )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 100> , Hundred  )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<1000> , Thousand )
 
   ////////////////////////////////////////////////////////////////////////////////
   // Values useful for trigo and what not
   ////////////////////////////////////////////////////////////////////////////////
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 45> , Fortyfive         )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 90> , Ninety            )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<180> , Onehundredeighty  )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<180> , C_180             )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 45> , _45               )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_< 90> , _90               )
-  NT2_CONSTANT_IMPLEMENTATION(nt2::tag::digit_<180> , _180              )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 45> , Fortyfive         )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 90> , Ninety            )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<180> , Onehundredeighty  )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<180> , C_180             )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 45> , _45               )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_< 90> , _90               )
+  BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::digit_<180> , _180              )
 
   ////////////////////////////////////////////////////////////////////////////////
   // Local digit based constant generator
@@ -77,12 +77,12 @@ namespace nt2
   typename meta::enable_call<tag::digit_<N>(meta::as_<Target>)>::type
   integral_constant()
   {
-    nt2::functor< tag::digit_<N> > callee;
-    return callee( nt2::meta::as_<Target>() );
+    boost::simd::functor< tag::digit_<N> > callee;
+    return callee( boost::simd::meta::as_<Target>() );
   }
-}
+} }
 
-#include <nt2/toolbox/constant/constants/scalar/digits.hpp>
-#include <nt2/toolbox/constant/constants/simd/all/digits.hpp>
+#include <nt2/toolbox/simd_constant/constants/scalar/digits.hpp>
+#include <nt2/toolbox/simd_constant/constants/simd/all/digits.hpp>
 
 #endif
