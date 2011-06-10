@@ -56,7 +56,7 @@ namespace nt2 { namespace containers
     template<class Sig> struct result;
     template<class This, class Position>
     struct  result<This(Position)>
-          : meta::call<tag::value_at_(This,Position)>
+          : meta::call<tag::value_at_(This const&,Position)>
     {};
 
     template<class Pos>
