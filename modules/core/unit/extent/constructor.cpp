@@ -167,7 +167,7 @@ NT2_TEST_CASE_TPL ( expression_ctor, DYN_DIM_LIST )
 
   for(std::size_t i= 2; i<= dims;++i)
   {
-    NT2_TEST_EQUAL( x(i)      , y(i)+10*y(i)+1);
+    NT2_TEST_EQUAL( x(i) , y(i)+10*y(i)+1);
   }
 
   for(std::size_t i= 3; i<= dims;++i)

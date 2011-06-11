@@ -252,7 +252,7 @@ BOOST_PP_REPEAT(n,M1,~)                                                     \
     template<class XPR, class D> inline
     explicit extent( container<XPR, tag::extent_,D> const& src )
     {
-      nt2::evaluate(*this, src);
+      nt2::evaluate<tag::cpu_>(*this, src);
     }
 
     //==========================================================================
@@ -285,7 +285,7 @@ BOOST_PP_REPEAT(n,M1,~)                                                     \
     template<class XPR, class D> inline
     extent& operator=( container<XPR, tag::extent_,D> const& src )
     {
-      nt2::evaluate(*this, src);
+      nt2::evaluate<tag::cpu_>(*this, src);
       return *this;
     }
 
