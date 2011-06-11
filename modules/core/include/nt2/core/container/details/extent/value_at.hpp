@@ -79,10 +79,11 @@ namespace nt2 { namespace ext
     template<class This,class A0,class A1>
     struct  result<This(A0,A1)>
     {
-      typedef typename boost::remove_reference<A0>::type base;
+      typedef typename boost::remove_reference<A0>::type  base;
+      typedef typename meta::strip<A0>::type              raw;
       typedef typename boost::mpl::if_< boost::is_const<base>
-                                      , std::size_t
-                                      , std::size_t&
+                                      , typename raw::const_reference
+                                      , typename raw::reference
                                       >::type type;
     };
 
@@ -101,6 +102,29 @@ namespace nt2 { namespace ext
       std::size_t idx = boost::fusion::at_c<(sz_::value < 2 ? 0 : 1)>(a1) - 1;
       return boost::proto::value(a0)[ idx ];
     }
+  };
+
+  //============================================================================
+  // terminal case for _0D
+  //============================================================================
+  template<class Sema, class Dummy>
+  struct call < tag::value_at_
+                ( tag::expr_< containers::domain< tag::extent_
+                                                , boost::mpl::size_t<0>
+                                                >
+                            , tag::extent_, Sema
+                            >
+                , tag::fusion_sequence_
+                )
+              , tag::cpu_, Dummy
+              > : callable
+  {
+    typedef std::size_t result_type;
+
+    template<class A0,class A1> inline result_type
+    operator()(A0& a0, A1 const& a1) const { return 1; }
+
+    NT2_FUNCTOR_CALL(2) { return 1; }
   };
 } }
 
