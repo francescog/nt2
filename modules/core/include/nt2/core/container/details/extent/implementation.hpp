@@ -66,7 +66,7 @@ namespace nt2 { namespace containers
     typedef tag::extent_                              fusion_tag;
 
     //==========================================================================
-    // Container interface
+    // Collection interface
     //==========================================================================
     typedef typename data_type::value_type      value_type;
     typedef typename data_type::reference       reference;

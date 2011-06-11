@@ -53,36 +53,29 @@ namespace nt2 { namespace containers
     //==========================================================================
     // Callable Object conformance
     //==========================================================================
-    template<class Sig> struct result;
-    template<class This, class Position>
-    struct  result<This(Position)>
-          : meta::call<tag::value_at_(This const&,Position)>
-    {};
-
-    template<class Pos>
-    typename boost::lazy_enable_if< boost::fusion::traits::is_sequence<Pos>
-                                  , result<container(Pos const&)>
-                                  >::type
-    operator()(Pos const& p) const
+    template<class Position>
+    typename boost::
+    lazy_enable_if< boost::fusion::traits::is_sequence<Position>
+                  , meta::call<tag::value_at_(container const&,Position)>
+                  >::type
+    operator()(Position const& p) const
     {
       return nt2::value_at( *this, p );
     }
 
-    template<class Pos>
-    typename boost::lazy_enable_if< boost::fusion::traits::is_sequence<Pos>
-                                  , result<container(Pos const&)>
-                                  >::type&
-    operator()(Pos const& p)
+    template<class Position>
+    typename boost::
+    lazy_enable_if< boost::fusion::traits::is_sequence<Position>
+                  , meta::call<tag::value_at_(container&,Position)>
+                  >::type
+    operator()(Position const& p)
     {
       return nt2::value_at( *this, p );
     }
 
     //==========================================================================
-    // Sequence conformance
+    // MultiCollection conformance
     //==========================================================================
-    typedef std::size_t                             value_type;
-    typedef std::size_t                             const_reference;
-    typedef std::size_t                             reference;
     typedef std::size_t                             size_type;
     typedef size_type                               base_type;
     typedef std::ptrdiff_t                          difference_type;
