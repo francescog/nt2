@@ -28,7 +28,8 @@ NT2_TEST_CASE ( default_ctor_0d )
 
   NT2_TEST( x.empty() );
   NT2_TEST_EQUAL( x.size()  , 0);
-  NT2_TEST_EQUAL( x.size(0) , 1);
+  NT2_TEST_EQUAL( x.size(1) , 1);
+  NT2_TEST_EQUAL( x.size(2) , 1);
   NT2_TEST_EQUAL( x.lower(0), 1);
   NT2_TEST_EQUAL( x.upper(0), 1);
   NT2_TEST_EQUAL( x.nDims() , 0);
@@ -44,15 +45,17 @@ NT2_TEST_CASE_TPL ( default_ctor, DYN_DIM_LIST )
 
   NT2_TEST( !x.empty() );
   NT2_TEST_EQUAL( x.size()  , dims  );
-  NT2_TEST_EQUAL( x.size(0) , dims  );
   NT2_TEST_EQUAL( x.nDims() , dims  );
 
   NT2_TEST_EQUAL( x(1)      , 0     );
-  NT2_TEST_EQUAL( x.size(1) , dims  );
+  NT2_TEST_EQUAL( x.size(1) , 1     );
+  NT2_TEST_EQUAL( x.size(2) , dims  );
   NT2_TEST_EQUAL( x.lower(1), 1     );
-  NT2_TEST_EQUAL( x.upper(1), dims  );
+  NT2_TEST_EQUAL( x.lower(2), 1     );
+  NT2_TEST_EQUAL( x.upper(1), 1     );
+  NT2_TEST_EQUAL( x.upper(2), dims  );
 
-  for(std::size_t i= 2; i<= dims;++i)
+  for(std::size_t i= 3; i<= dims;++i)
   {
     NT2_TEST_EQUAL( x(i)      , 1 );
     NT2_TEST_EQUAL( x.size(i) , 1 );
@@ -70,15 +73,17 @@ NT2_TEST_CASE_TPL ( value_ctor, DYN_DIM_LIST )
 
   NT2_TEST( !x.empty() );
   NT2_TEST_EQUAL( x.size()  , dims  );
-  NT2_TEST_EQUAL( x.size(0) , dims  );
   NT2_TEST_EQUAL( x.nDims() , dims  );
 
   NT2_TEST_EQUAL( x(1)      , 1     );
-  NT2_TEST_EQUAL( x.size(1) , dims  );
+  NT2_TEST_EQUAL( x.size(1) , 1     );
+  NT2_TEST_EQUAL( x.size(2) , dims  );
   NT2_TEST_EQUAL( x.lower(1), 1     );
-  NT2_TEST_EQUAL( x.upper(1), dims  );
+  NT2_TEST_EQUAL( x.lower(2), 1     );
+  NT2_TEST_EQUAL( x.upper(1), 1     );
+  NT2_TEST_EQUAL( x.upper(2), dims  );
 
-  for(std::size_t i= 2; i<= dims;++i)
+  for(std::size_t i= 3; i<= dims;++i)
   {
     NT2_TEST_EQUAL( x(i)      , i );
     NT2_TEST_EQUAL( x.size(i) , 1 );
@@ -99,13 +104,14 @@ NT2_TEST_CASE_TPL ( copy_ctor, DYN_DIM_LIST )
 
   NT2_TEST( !w.empty() );
   NT2_TEST_EQUAL( w.size()  , dims);
-  NT2_TEST_EQUAL( w.size(0) , dims);
+  NT2_TEST_EQUAL( w.size(1) , 1);
+  NT2_TEST_EQUAL( w.size(2) , dims);
   NT2_TEST_EQUAL( w.lower(0), 1);
   NT2_TEST_EQUAL( w.upper(0), 1);
   NT2_TEST_EQUAL( w.nDims() , dims);
   NT2_TEST_EQUAL( w(1)      , 1);
 
-  for(std::size_t i= 2; i<= dims;++i)
+  for(std::size_t i= 3; i<= dims;++i)
   {
     NT2_TEST_EQUAL( w(i)      , 1 );
     NT2_TEST_EQUAL( w.size(i) , 1 );
@@ -119,15 +125,16 @@ NT2_TEST_CASE_TPL ( copy_ctor, DYN_DIM_LIST )
 
   NT2_TEST( !x.empty() );
   NT2_TEST_EQUAL( x.size()  , dims  );
-  NT2_TEST_EQUAL( x.size(0) , dims  );
   NT2_TEST_EQUAL( x.nDims() , dims  );
-
   NT2_TEST_EQUAL( x(1)      , 1     );
-  NT2_TEST_EQUAL( x.size(1) , dims  );
+  NT2_TEST_EQUAL( x.size(1) , 1     );
+  NT2_TEST_EQUAL( x.size(2) , dims  );
   NT2_TEST_EQUAL( x.lower(1), 1     );
-  NT2_TEST_EQUAL( x.upper(1), dims  );
+  NT2_TEST_EQUAL( x.lower(2), 1     );
+  NT2_TEST_EQUAL( x.upper(1), 1     );
+  NT2_TEST_EQUAL( x.upper(2), dims  );
 
-  for(std::size_t i= 2; i<= dims;++i)
+  for(std::size_t i= 3; i<= dims;++i)
   {
     NT2_TEST_EQUAL( x(i)      , i );
     NT2_TEST_EQUAL( x.size(i) , 1 );
@@ -148,20 +155,26 @@ NT2_TEST_CASE_TPL ( expression_ctor, DYN_DIM_LIST )
   extent<T> x( y+10*y+nt2::one_ );
 
   NT2_TEST( !x.empty() );
-  NT2_TEST_EQUAL( x.size()  , dims  );
-  NT2_TEST_EQUAL( x.size(0) , dims  );
-  NT2_TEST_EQUAL( x.nDims() , dims  );
-
-  NT2_TEST_EQUAL( x(1)      , y(1)+10*y(1)+1);
-  NT2_TEST_EQUAL( x.size(1) , dims  );
+  NT2_TEST_EQUAL( x.size()  , dims            );
+  NT2_TEST_EQUAL( x.nDims() , dims            );
+  NT2_TEST_EQUAL( x(1)      , y(1)+10*y(1)+1  );
+  NT2_TEST_EQUAL( x.size(1) , 1     );
+  NT2_TEST_EQUAL( x.size(2) , dims  );
   NT2_TEST_EQUAL( x.lower(1), 1     );
-  NT2_TEST_EQUAL( x.upper(1), dims  );
+  NT2_TEST_EQUAL( x.lower(2), 1     );
+  NT2_TEST_EQUAL( x.upper(1), 1     );
+  NT2_TEST_EQUAL( x.upper(2), dims  );
 
   for(std::size_t i= 2; i<= dims;++i)
   {
     NT2_TEST_EQUAL( x(i)      , y(i)+10*y(i)+1);
+  }
+
+  for(std::size_t i= 3; i<= dims;++i)
+  {
     NT2_TEST_EQUAL( x.size(i) , 1 );
     NT2_TEST_EQUAL( x.lower(i), 1 );
     NT2_TEST_EQUAL( x.upper(i), 1 );
   }
 }
+
