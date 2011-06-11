@@ -51,39 +51,62 @@ namespace nt2 { namespace containers
     BOOST_PROTO_EXTENDS_USING_ASSIGN(container)
 
     //==========================================================================
-    // Callable Object conformance
+    // Indexable conformance
+    //==========================================================================
+    typedef std::size_t                             size_type;
+    typedef size_type                               base_type;
+    typedef std::ptrdiff_t                          difference_type;
+    typedef container                               self_type;
+    typedef std::size_t                             value_type;
+    typedef std::size_t const&                      const_reference;
+    typedef typename boost::mpl::if_c < static_dimensions
+                                      , std::size_t&
+                                      , const_reference
+                                      >::type       reference;
+
+    //==========================================================================
+    /*!
+     * Constant elementwise access to \ref extent value. For any Position p,
+     * returns a constant reference to the {p[0],..,p[n]}th element of
+     * the \ref extent.
+     *
+     * \param i Position of the value to access
+     */
     //==========================================================================
     template<class Position>
     typename boost::
     lazy_enable_if< boost::fusion::traits::is_sequence<Position>
-                  , meta::call<tag::value_at_(container const&,Position)>
+                  , meta::call<tag::value_at_(self_type const&,Position)>
                   >::type
     operator()(Position const& p) const
     {
       return nt2::value_at( *this, p );
     }
 
+    //==========================================================================
+    /*!
+     * Non-constant elementwise access to \ref extent value. For any Position p,
+     * returns a reference to the {p[0],..,p[n]}th element of the \ref extent.
+     *
+     * \param i Position of the value to access
+     */
+    //==========================================================================
     template<class Position>
     typename boost::
     lazy_enable_if< boost::fusion::traits::is_sequence<Position>
-                  , meta::call<tag::value_at_(container&,Position)>
+                  , meta::call<tag::value_at_(self_type&,Position)>
                   >::type
     operator()(Position const& p)
     {
       return nt2::value_at( *this, p );
     }
 
-    //==========================================================================
-    // MultiCollection conformance
-    //==========================================================================
-    typedef std::size_t                             size_type;
-    typedef size_type                               base_type;
-    typedef std::ptrdiff_t                          difference_type;
+    #include <nt2/core/container/details/access.hpp>
 
     //==========================================================================
     /*! Validate a Position inside the current extent expression.
      *
-     * \param p A \fusionras containinga position inside curent extent
+     * \param p A \fusionras containing a position inside curent extent
      * \return \c true if \c p can be used safely to access an element of the
      * extent, \c false otherwise
      */
@@ -171,10 +194,6 @@ namespace nt2 { namespace containers
     {
       return (i==2 && static_dimensions) ? static_dimensions : 1;
     }
-
-    #define NT2_ACCESS_CONST
-    //#include <nt2/core/container/details/access.hpp>
-
   };
 } }
 

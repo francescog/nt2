@@ -26,9 +26,6 @@ namespace nt2 { namespace containers
     typedef tag::extent_                            fusion_tag;
     typedef facade_type::type                       parent;
     typedef boost::mpl::vector_c<std::size_t,1,1>   data_type;
-    typedef std::size_t                             value_type;
-    typedef std::size_t                             const_reference;
-    typedef std::size_t                             reference;
     typedef std::size_t                             size_type;
     typedef size_type                               base_type;
     typedef std::ptrdiff_t                          difference_type;
@@ -43,9 +40,7 @@ namespace nt2 { namespace containers
 
     extent& operator=( extent const& ) { return *this; }
 
-    data_type       data()                    const { return data_type();   }
-    const_reference operator()(std::size_t i) const { return 1;             }
-
+    data_type       data()  const { return data_type();       }
     iterator        begin()       { return iterator(0);       }
     const_iterator  begin() const { return const_iterator(0); }
     iterator        end()         { return iterator(0);       }

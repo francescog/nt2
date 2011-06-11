@@ -16,7 +16,6 @@
 
 #include <nt2/sdk/meta/assign.hpp>
 #include <boost/fusion/include/is_sequence.hpp>
-#include <nt2/core/container/details/access.hpp>
 #include <nt2/core/container/details/extent/facade.hpp>
 #include <nt2/core/container/details/extent/evaluation.hpp>
 
@@ -68,9 +67,6 @@ namespace nt2 { namespace containers
     //==========================================================================
     // Collection interface
     //==========================================================================
-    typedef typename data_type::value_type      value_type;
-    typedef typename data_type::reference       reference;
-    typedef typename data_type::const_reference const_reference;
     typedef typename data_type::size_type       size_type;
     typedef size_type                           base_type;
     typedef typename data_type::difference_type difference_type;
@@ -297,52 +293,6 @@ BOOST_PP_REPEAT(n,M1,~)                                                     \
     //==========================================================================
     data_type const&  data()  const { return boost::proto::value(*this); }
     data_type&        data()        { return boost::proto::value(*this); }
-
-    //==========================================================================
-    /*!
-     * Non-constant elementwise access to \ref extent value. For any index i
-     * which values is greater or equal than \ref lower(1) and lesser or equal
-     * to \ref upper(1), returns a non-constant reference to the ith element of
-     * the \ref extent. This access is disabled for static \ref extent.
-     *
-     * \param i Index of the value to access
-     */
-    //==========================================================================
-    #define NT2_ACCESS_NON_CONST
-    //#include <nt2/core/container/details/access.hpp>
-/*
-    template<class Position> inline
-    typename boost::enable_if_c
-    <     ( !Dimensions::is_static::value )
-      &&  ( boost::fusion::traits::is_sequence<Position>::value )
-    , reference
-    >::type
-    operator()(Position const& p)
-    {
-      return boost::proto::value(*this)[boost::fusion::front(p)-1];
-    }
-*/
-    //==========================================================================
-    /*!
-     * Constant elementwise access to \ref extent value. For any index i
-     * which values is greater or equal than \ref lower(1) and lesser or equal
-     * to \ref upper(1), returns a constant reference to the ith element of
-     * the \ref extent.
-     *
-     * \param i Index of the value to access
-     */
-    //==========================================================================
-    const_reference operator()(difference_type i) const
-    {
-      return boost::proto::value(*this)[i-1];
-    }
-
-    reference operator()(difference_type i)
-    {
-      return boost::proto::value(*this)[i-1];
-    }
-
-    using parent::operator();
 
     //==========================================================================
     /*!
