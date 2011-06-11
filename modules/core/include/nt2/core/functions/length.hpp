@@ -30,7 +30,7 @@ namespace nt2
   //============================================================================
   template<class T> inline std::size_t length( T const& xpr )
   {
-    return boost::fusion::fold(nt2::size(xpr), 0U, functor<tag::max_>() );
+     return boost::fusion::fold(nt2::size(xpr), 1U, functor<tag::max_>() );
   }
 }
 #endif
