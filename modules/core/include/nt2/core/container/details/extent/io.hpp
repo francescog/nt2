@@ -36,8 +36,11 @@ namespace nt2 { namespace containers
                           , container<AST,tag::extent_,D> const& e
                           )
   {
+    // _0D size shoudl display (1 1) so bounds is forced to 2 in this case.
+    const std::size_t bounds = e.size() ? e.size() : 2;
+
     os << "( ";
-    for(std::size_t i=1;i<=e.size();++i) os << e(i) << " ";
+    for(std::size_t i=1;i<=bounds;++i) os << e(i) << " ";
     os << ")";
     return os;
   }
