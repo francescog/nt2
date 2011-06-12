@@ -68,7 +68,6 @@ namespace nt2 { namespace containers
     // Collection interface
     //==========================================================================
     typedef typename data_type::size_type       size_type;
-    typedef size_type                           base_type;
     typedef typename data_type::difference_type difference_type;
     typedef typename data_type::iterator        iterator;
     typedef typename data_type::const_iterator  const_iterator;

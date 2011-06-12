@@ -26,9 +26,6 @@ namespace nt2 { namespace containers
     typedef tag::extent_                            fusion_tag;
     typedef facade_type::type                       parent;
     typedef boost::mpl::vector_c<std::size_t,1,1>   data_type;
-    typedef std::size_t                             size_type;
-    typedef size_type                               base_type;
-    typedef std::ptrdiff_t                          difference_type;
     typedef void*                                   iterator;
     typedef void*                                   const_iterator;
 
