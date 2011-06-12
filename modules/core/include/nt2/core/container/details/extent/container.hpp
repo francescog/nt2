@@ -19,7 +19,10 @@
 namespace nt2 { namespace containers
 {
   //============================================================================
-  // Domain-specific expression wrapper for extent expression
+  /*!
+   * Domain-specific expression wrapper for \ref extent expression.
+   * This class defines the common behavior of extent classes and expressions
+   */
   //============================================================================
   template<class AST, class Dims>
   struct  container<AST,tag::extent_,Dims>
@@ -51,7 +54,14 @@ namespace nt2 { namespace containers
     BOOST_PROTO_EXTENDS_USING_ASSIGN(container)
 
     //==========================================================================
-    // Indexable conformance
+    /*!
+     * \typedef size_type
+     * \typedef base_type
+     * \typedef difference_type
+     * \typedef value_type
+     * \typedef const_reference
+     * \typedef reference
+     */
     //==========================================================================
     typedef std::size_t                             size_type;
     typedef size_type                               base_type;
@@ -70,14 +80,18 @@ namespace nt2 { namespace containers
      * returns a constant reference to the {p[0],..,p[n]}th element of
      * the \ref extent.
      *
-     * \param i Position of the value to access
+     * \param p Position of the value to access
      */
     //==========================================================================
     template<class Position>
+#if !defined(DOXYGEN_ONLY)
     typename boost::
     lazy_enable_if< boost::fusion::traits::is_sequence<Position>
                   , meta::call<tag::value_at_(self_type const&,Position)>
                   >::type
+#else
+    const_reference
+#endif
     operator()(Position const& p) const
     {
       return nt2::value_at( *this, p );
@@ -92,10 +106,14 @@ namespace nt2 { namespace containers
      */
     //==========================================================================
     template<class Position>
+#if !defined(DOXYGEN_ONLY)
     typename boost::
     lazy_enable_if< boost::fusion::traits::is_sequence<Position>
                   , meta::call<tag::value_at_(self_type&,Position)>
                   >::type
+#else
+    reference
+#endif
     operator()(Position const& p)
     {
       return nt2::value_at( *this, p );

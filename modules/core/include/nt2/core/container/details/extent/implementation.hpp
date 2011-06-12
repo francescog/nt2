@@ -11,7 +11,7 @@
 
 /*!
  * \file
- * Implements the extent class
+ * \brief Implements the extent class
  */
 
 #include <nt2/sdk/meta/assign.hpp>
