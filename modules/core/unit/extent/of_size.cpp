@@ -32,7 +32,7 @@ NT2_TEST_CASE( of_size )
 {
   using nt2::of_size;
 
-  #define M0(z,n,t) \
+  #define M0(z,n,t)                                           \
   NT2_TEST( !of_size(NT2_PP_IOTA(1,n)).empty() );             \
   NT2_TEST_EQUAL( of_size(NT2_PP_IOTA(1,n)).size()  , n );    \
   NT2_TEST_EQUAL( of_size(NT2_PP_IOTA(1,n)).size(1) , 1 );    \
