@@ -71,7 +71,7 @@ namespace nt2 { namespace containers
     typedef std::size_t const&                      const_reference;
     typedef typename boost::mpl::if_c < static_dimensions
                                       , std::size_t&
-                                      , const_reference
+                                      , value_type
                                       >::type       reference;
 
     //==========================================================================
