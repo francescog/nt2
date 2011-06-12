@@ -15,7 +15,6 @@
  */
 
 #include <nt2/core/functions/size.hpp>
-#include <nt2/core/functions/of_size.hpp>
 
 namespace nt2
 {
