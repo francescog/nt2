@@ -10,6 +10,7 @@
 SET( SOURCES
   constructor.cpp
   fusion.cpp
+  of_size.cpp
 # List of test files for core extent class
    )
 
