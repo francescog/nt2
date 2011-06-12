@@ -45,8 +45,6 @@ namespace nt2 { namespace containers
     const_iterator  begin() const { return const_iterator(0); }
     iterator        end()         { return iterator(0);       }
     const_iterator  end()   const { return const_iterator(0); }
-
-    inline std::size_t      nDims()               const { return 0;     }
   };
 } }
 

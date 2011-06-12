@@ -325,16 +325,6 @@ BOOST_PP_REPEAT(n,M1,~)                                                     \
      */
     //==========================================================================
     inline const_iterator end() const { return boost::proto::value(*this).end(); }
-
-    //==========================================================================
-    // to be moved to a free function
-    //==========================================================================
-    inline std::size_t nDims() const
-    {
-      std::size_t i = parent::static_dimensions-1;
-      while(boost::proto::value(*this)[--i] == 1);
-      return i<0 ? i+1 : parent::static_dimensions;
-    }
   };
 } }
 
