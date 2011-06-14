@@ -16,10 +16,10 @@
 
 namespace nt2 { namespace containers
 {
-  template<class Tag>                             struct grammar;
-  template<class Tag, class Dimension>            struct domain;
-  template<class Tag, class Dimension>            struct generator;
-  template<class AST,class Tag,class Dimensions>  struct container;
+  template<class Tag>                                     struct grammar;
+  template<class Tag, class Dimension, class Dummy=void>  struct domain;
+  template<class Tag, class Dimension>                    struct generator;
+  template<class AST,class Tag,class Dimensions>          struct container;
 } }
 
 #endif

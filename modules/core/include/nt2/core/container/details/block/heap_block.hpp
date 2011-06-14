@@ -31,7 +31,7 @@ namespace nt2 { namespace containers
                 , heap_(Allocator)  , Padding
                 >
         : details::block_data<Type,heap_(Allocator)
-                              ,boost::mpl::size_t<Dimensions::static_dimension>
+                              ,boost::mpl::size_t<Dimensions::static_dimensions>
                               >
         , details::block_access<Type, StorageOrder>
   {
@@ -40,9 +40,9 @@ namespace nt2 { namespace containers
     // Collection
     ////////////////////////////////////////////////////////////////////////////
     typedef Dimensions                                            sizes_type;
-    typedef boost::array<int,Dimensions::static_dimension>        bases_type;
+    typedef boost::array<int,Dimensions::static_dimensions>       bases_type;
     typedef details::block_access<Type, StorageOrder>             access_type;
-    typedef boost::mpl::size_t<Dimensions::static_dimension> dimensions_type;
+    typedef boost::mpl::size_t<Dimensions::static_dimensions> dimensions_type;
     typedef details::block_data<Type,heap_(Allocator),dimensions_type> nrc_type;
 
     ////////////////////////////////////////////////////////////////////////////
@@ -97,7 +97,7 @@ namespace nt2 { namespace containers
     inline size_type size(std::size_t i) const
     {
       return  (i != 0) ?
-              ((i <= Dimensions::static_dimension) ? mSizes(i) : 1)
+              ((i <= Dimensions::static_dimensions) ? mSizes(i) : 1)
             : size();
     }
 
@@ -106,7 +106,7 @@ namespace nt2 { namespace containers
     ////////////////////////////////////////////////////////////////////////////
     inline difference_type lower(std::size_t i) const
     {
-      return (i <= Dimensions::static_dimension) ? mBases[i-1] : 1;
+      return (i <= Dimensions::static_dimensions) ? mBases[i-1] : 1;
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -114,7 +114,7 @@ namespace nt2 { namespace containers
     ////////////////////////////////////////////////////////////////////////////
     inline difference_type upper(std::size_t i) const
     {
-      return (i <= Dimensions::static_dimension) ? (size(i) + lower(i) - 1) : 1;
+      return (i <= Dimensions::static_dimensions) ? (size(i) + lower(i) - 1) : 1;
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -125,7 +125,7 @@ namespace nt2 { namespace containers
     {
       return access_type::at( p
                             , access_type::template
-                              data<Dimensions::static_dimension>()
+                              data<Dimensions::static_dimensions>()
                             );
     }
 
@@ -134,7 +134,7 @@ namespace nt2 { namespace containers
     {
       return access_type::at( p
                             , access_type::template
-                              data<Dimensions::static_dimension>()
+                              data<Dimensions::static_dimensions>()
                             );
     }
 

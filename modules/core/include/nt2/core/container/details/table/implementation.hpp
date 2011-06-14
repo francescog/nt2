@@ -1,42 +1,42 @@
-/*******************************************************************************
- *         Copyright 2003-2010 LASMEA UMR 6602 CNRS/U.B.P
- *         Copyright 2009-2010 LRI    UMR 8623 CNRS/Univ Paris Sud XI
- *
- *          Distributed under the Boost Software License, Version 1.0.
- *                 See accompanying file LICENSE.txt or copy at
- *                     http://www.boost.org/LICENSE_1_0.txt
- ******************************************************************************/
+//==============================================================================
+//         Copyright 2003 & onward LASMEA UMR 6602 CNRS/Univ. Clermont II
+//         Copyright 2009 & onward LRI    UMR 8623 CNRS/Univ Paris Sud XI
+//
+//          Distributed under the Boost Software License, Version 1.0.
+//                 See accompanying file LICENSE.txt or copy at
+//                     http://www.boost.org/LICENSE_1_0.txt
+//==============================================================================
 #ifndef NT2_CORE_CONTAINER_DETAILS_TABLE_IMPLEMENTATION_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_TABLE_IMPLEMENTATION_HPP_INCLUDED
 
 #include <nt2/core/container/forward.hpp>
 #include <nt2/core/container/details/table/facade.hpp>
 
-namespace nt2 { namespace container
+namespace nt2 { namespace containers
 {
   template<class Type, class Settings>
   struct  table
         : ext::facade<tag::table_,Type,Settings>::type
   {
-    ////////////////////////////////////////////////////////////////////////////
+    //==========================================================================
     // Basic sub-types needed elsewhere
-    ////////////////////////////////////////////////////////////////////////////
+    //==========================================================================
     typedef ext::facade<tag::table_,Type,Settings>        facade_type;
     typedef typename facade_type::type                    parent;
     typedef typename facade_type::data_type               data_type;
     typedef typename data_type::sizes_type                sizes_type;
     typedef typename data_type::bases_type                bases_type;
 
-    ////////////////////////////////////////////////////////////////////////////
+    //==========================================================================
     // Default constructor - tries to initialize if Size is static
-    ////////////////////////////////////////////////////////////////////////////
+    //==========================================================================
     table() : parent()
     {
       init( typename facade_type::extent_type()
           , typename facade_type::size_::is_static()
           );
     }
-
+/*
     ////////////////////////////////////////////////////////////////////////////
     // Constructor from extent
     ////////////////////////////////////////////////////////////////////////////
@@ -54,7 +54,7 @@ namespace nt2 { namespace container
     ////////////////////////////////////////////////////////////////////////////
     // Assignment from non-AST
     ////////////////////////////////////////////////////////////////////////////
-
+*/
     ////////////////////////////////////////////////////////////////////////////
     // Container API
     ////////////////////////////////////////////////////////////////////////////
@@ -67,7 +67,7 @@ namespace nt2 { namespace container
     }
 
     inline bool empty() const { return boost::proto::value(*this).empty(); }
-
+    /*
     ////////////////////////////////////////////////////////////////////////////
     // Size and Bases related accessor
     ////////////////////////////////////////////////////////////////////////////
@@ -80,7 +80,7 @@ namespace nt2 { namespace container
     {
       return boost::proto::value(*this).sizes();
     }
-
+*/
     ////////////////////////////////////////////////////////////////////////////
     // Return the starting index on the Nth dimension
     ////////////////////////////////////////////////////////////////////////////
@@ -96,8 +96,6 @@ namespace nt2 { namespace container
     {
       return boost::proto::value(*this).upper(i);
     }
-
-    using parent::operator=;
 
     protected:
 

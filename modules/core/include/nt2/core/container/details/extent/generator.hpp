@@ -9,8 +9,6 @@
 #ifndef NT2_CORE_CONTAINER_DETAILS_EXTENT_GENERATOR_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_DETAILS_EXTENT_GENERATOR_HPP_INCLUDED
 
-#include <nt2/core/functions/size.hpp>
-
 namespace nt2 { namespace containers
 {
   //////////////////////////////////////////////////////////////////////////////

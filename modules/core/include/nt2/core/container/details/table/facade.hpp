@@ -18,9 +18,9 @@
 #include <nt2/core/settings/storage_kind.hpp>
 #include <nt2/core/settings/storage_order.hpp>
 #include <nt2/core/container/details/block.hpp>
+#include <nt2/core/container/details/table/container.hpp>
 #include <nt2/core/container/details/table/domain.hpp>
 #include <nt2/core/container/details/table/generator.hpp>
-#include <nt2/core/container/dsl/expression.hpp>
 
 namespace nt2 { namespace ext
 {
@@ -35,7 +35,7 @@ namespace nt2 { namespace ext
     typedef typename meta::option<S,options::size_, _4D>::type  size_;
     typedef extent<size_>                                       extent_type;
 
-    typedef boost::mpl::size_t<extent_type::static_dimension> dimensions_type;
+    typedef boost::mpl::size_t<extent_type::static_dimensions> dimensions_type;
 
     ////////////////////////////////////////////////////////////////////////////
     // Find out Storage Order informations
@@ -59,21 +59,21 @@ namespace nt2 { namespace ext
 //    typedef meta::option<S,options::id_           , unnamed_ >          id_;
 
     // Builds the proper blocks
-    typedef block < T
-                  , extent_type
-                  , order_type
-                  , storage_kind_type
-                  , typename padding_::type::type
-                  >                                                 data_type;
+    typedef containers::block < T
+                              , extent_type
+                              , order_type
+                              , storage_kind_type
+                              , typename padding_::type::type
+                              >                                 data_type;
 
     // Here is the proto expression ready to be used
-    typedef container < typename boost::proto::nullary_expr < tag::table_
-                                                            , data_type
-                                                            >::type
-
-                      , tag::table_
-                      , dimensions_type
-                      >                                             type;
+    typedef containers::container < typename  boost::proto::
+                                              nullary_expr< tag::table_
+                                                          , data_type
+                                                          >::type
+                                  , tag::table_
+                                  , dimensions_type
+                                  >                             type;
   };
 } }
 

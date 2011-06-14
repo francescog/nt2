@@ -27,7 +27,7 @@ namespace nt2 { namespace containers
 
     template<class Expr>
     typename result<generator(Expr)>::type const
-    operator()(Expr const &xpr) const
+    operator()(Expr const& xpr) const
     {
       typename result<generator(Expr)>::type const that(xpr);
       return that;

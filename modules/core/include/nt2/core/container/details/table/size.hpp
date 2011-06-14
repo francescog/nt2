@@ -10,6 +10,8 @@
 #define NT2_CORE_CONTAINER_DETAILS_TABLE_SIZE_HPP_INCLUDED
 
 #include <nt2/sdk/meta/fusion.hpp>
+#include <nt2/core/functions/size.hpp>
+#include <nt2/core/settings/storage_kind.hpp>
 #include <nt2/core/container/details/block/category.hpp>
 
 /////////////////////////////////////////////////////////////////////////////
@@ -17,13 +19,13 @@
 /////////////////////////////////////////////////////////////////////////////
 NT2_REGISTER_DISPATCH ( tag::size_, tag::cpu_
                       , (A0)(Storage)
-                      , ((heap_<arithmetic_<A0>,Storage>))
+                      , ((block_<arithmetic_<A0>,Storage>))
                       )
 
 namespace nt2 { namespace ext
 {
   template<class Storage, class Dummy>
-  struct  call< tag::size_(tag::heap_<tag::arithmetic_,Storage>)
+  struct  call< tag::size_(tag::block_<tag::arithmetic_,Storage>)
               , tag::cpu_, Dummy
               >
         : callable
