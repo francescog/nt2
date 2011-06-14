@@ -9,7 +9,11 @@
 #ifndef NT2_CORE_CONTAINER_TABLE_HPP_INCLUDED
 #define NT2_CORE_CONTAINER_TABLE_HPP_INCLUDED
 
-#include <nt2/core/container/details/table/implementation.hpp>
+#include <nt2/core/container/forward.hpp>
+//#include <nt2/core/container/details/table/io.hpp>
+#include <nt2/core/container/details/table/size.hpp>
+#include <nt2/core/container/details/table/value_at.hpp>
+//#include <nt2/core/container/details/table/implementation.hpp>
 
 namespace nt2 { using containers::table; }
 
