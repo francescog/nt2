@@ -8,7 +8,7 @@
 ##############################################################################
 
 SET( SOURCES
- # constructors.cpp
+  constructor.cpp
 # List of test files for core extent class
    )
 
