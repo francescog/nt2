@@ -45,10 +45,10 @@
 //==============================================================================
 // Make assertion into exceptions
 //==============================================================================
-#if  !defined(BOOST_SIMD_DISABLE_ERROR) || defined(DOXYGEN_ONLY)
-
 #include <iosfwd>
 #include <nt2/simd_sdk/error/error.hpp>
+
+#if  !defined(BOOST_SIMD_DISABLE_ERROR) || defined(DOXYGEN_ONLY)
 
 namespace boost { namespace simd { namespace details
 { 
@@ -130,7 +130,7 @@ namespace boost
     void inline
       assertion_failed(char const* expr,char const* fn,char const* f,int l)
       {
-#if defined(BOOST_SIMD_ASSERTS_AS_EXCEPTIONS) && !defined(BOOST_SIMD_DISABLE_ERROR)
+#if defined(BOOST_SIMD_ASSERTS_AS_EXCEPTIONS) && !defined(BOOST_SIMD_NO_EXCEPTIONS)
 	::boost::exception_detail
 	  ::throw_exception_(   ::nt2::assert_exception()
 	      <<  ::nt2::details::assert_info(expr)

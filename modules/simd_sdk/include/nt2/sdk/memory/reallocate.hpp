@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_SDK_MEMORY_REALLOCATE_HPP_INCLUDED
 #define BOOST_SIMD_SDK_MEMORY_REALLOCATE_HPP_INCLUDED
 
+#include <cstring>
 #include <cstddef>
 #include <nt2/simd_sdk/error/error.hpp>
 #include <nt2/simd_sdk/memory/config.hpp>

@@ -21,7 +21,7 @@
 #include <nt2/simd_sdk/functor/details/dispatch.hpp>
 #include <nt2/simd_sdk/meta/result_of.hpp>
 
-#if !defined(BOOST_HAS_VARIADIC_TMPL) || !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES) || (defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES))
+#if (defined(BOOST_NO_VARIADIC_TEMPLATES) && defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)) || defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #include <nt2/extension/parameters.hpp>
 #include <boost/preprocessor/repetition/repeat_from_to.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
@@ -73,7 +73,7 @@ namespace boost { namespace simd { namespace meta
   struct enable_call
   {};
 
-  #if (defined(BOOST_HAS_VARIADIC_TMPL) && !defined(__WAVE__)) || defined(DOXYGEN_ONLY)
+  #if (!defined(BOOST_NO_VARIADIC_TEMPLATES) && !defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)) || defined(DOXYGEN_ONLY)
   template<class F, class Site, class... Args>
   struct enable_call< F(Args...), Site
                     , typename
@@ -93,7 +93,7 @@ namespace boost { namespace simd { namespace meta
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/simd_sdk/functor/meta/preprocessed/enable_call.hpp>
 #else
-#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES) && __INCLUDE_LEVEL__ == 0
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/enable_call.hpp")
 #endif
 

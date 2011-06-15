@@ -18,10 +18,6 @@
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/simd_sdk/functor/details/preprocessed/dispatch.hpp>
 #else
-#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/dispatch.hpp")
-#undef BOOST_SIMD_DECLTYPE
-#endif
 #include <nt2/extension/parameters.hpp>
 #include <nt2/simd_sdk/details/preprocessor.hpp>
 #include <boost/preprocessor/seq/size.hpp>
@@ -29,6 +25,10 @@
 #include <boost/preprocessor/repetition/enum.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/repeat_from_to.hpp>
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES) && __INCLUDE_LEVEL__ = 0
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/dispatch.hpp")
+#undef BOOST_SIMD_DECLTYPE
+#endif
 
 //==============================================================================
 // Local macro to generate the fall-through dispatch overload

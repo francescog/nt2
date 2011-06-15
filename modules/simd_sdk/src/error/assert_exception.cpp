@@ -10,7 +10,7 @@
 #include <iostream>
 #include <nt2/simd_sdk/error/assert.hpp>
 
-#if !defined(NT2_DISABLE_ERROR)
+#if !defined(BOOST_SIMD_NO_EXCEPTIONS)
 
 namespace boost
 {

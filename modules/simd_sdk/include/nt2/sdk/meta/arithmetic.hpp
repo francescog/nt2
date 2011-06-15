@@ -17,7 +17,7 @@
 #include <nt2/simd_sdk/meta/strip.hpp>
 #include <boost/typeof/typeof.hpp>
 
-#if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES) || (defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES))
+#if defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/extension/parameters.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace meta
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/simd_sdk/meta/preprocessed/arithmetic.hpp>
 #else
-#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES) && __INCLUDE_LEVEL__ == 0
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/arithmetic.hpp")
 #undef BOOST_TYPEOF_NESTED_TYPEDEF_TPL
 #endif

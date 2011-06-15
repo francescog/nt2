@@ -15,7 +15,7 @@
 // When exception are disabled via -fno-exceptions, one can specify how to
 // handle exception all together
 //==============================================================================
-#if defined(BOOST_NO_EXCEPTIONS)
+#if defined(BOOST_SIMD_NO_EXCEPTIONS)
 namespace boost
 {
   namespace simd

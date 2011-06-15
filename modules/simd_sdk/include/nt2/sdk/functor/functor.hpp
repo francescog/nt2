@@ -32,8 +32,10 @@
 #include <nt2/simd_sdk/functor/meta/make_functor.hpp>
 #include <nt2/simd_sdk/functor/preprocessor/dispatch.hpp>
 #include <nt2/simd_sdk/meta/result_of.hpp>
+#include <nt2/simd_sdk/config/attributes.hpp>
 
-#if !defined(BOOST_HAS_VARIADIC_TMPL) || !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES) || (defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES))
+#if (defined(BOOST_NO_VARIADIC_TEMPLATES) || defined(BOOST_NO_RVALUE_REFERENCES)) \
+ && defined (BOOST_SIMD_DONT_USE_PREPROCESSED_FILES) || defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #include <nt2/extension/parameters.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
@@ -74,7 +76,9 @@ namespace boost { namespace simd
   {
     template<class Sig> struct result;
 
-    #if (defined(BOOST_HAS_VARIADIC_TMPL) && !defined(__WAVE__)) || defined(DOXYGEN_ONLY)
+    #if (!defined(BOOST_NO_VARIADIC_TEMPLATES) && !defined(BOOST_NO_RVALUE_REFERENCES) && !defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)) \
+     || defined(DOXYGEN_ONLY)
+
     template<class This, class... Args>
     struct  result<This(Args...)>
     {
@@ -92,37 +96,88 @@ namespace boost { namespace simd
      * \return The result of the calculation of function \c Tag
      */
     //==========================================================================
-    template<class... Args> inline typename result<functor(Args...)>::type
-    operator()( Args const& ...args ) const
+    template<class... Args> BOOST_SIMD_FORCE_INLINE
+    typename meta::enable_call<Tag(Args...), EvalContext>::type
+    operator()( Args && ...args ) const
     {
       typename meta::dispatch_call<Tag(Args...),EvalContext>::type callee;
-      return callee( args... );
+      return callee( std::forward<Args>(args)... );
     }
+    #elif !defined(BOOST_NO_RVALUE_REFERENCES) && !defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES_NO_0X)
+    
+#if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
+#include <nt2/simd_sdk/functor/preprocessed/functor0x.hpp>
+#else
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES) && __INCLUDE_LEVEL__ == 0
+#pragma wave option(preserve: 2, line: 0, output: "preprocessed/functor0x.hpp")
+#undef BOOST_SIMD_FORCE_INLINE
+#endif
+
+    #define M1(z,n,t) std::forward<A##n>(a##n)
+
+    #define M0(z,n,t)                                                         \
+    template<class This, BOOST_PP_ENUM_PARAMS(n,class A) >                    \
+    struct result<This(BOOST_PP_ENUM_PARAMS(n,A))>                            \
+    {                                                                         \
+      typedef typename                                                        \
+      meta::dispatch_call<Tag(BOOST_PP_ENUM_PARAMS(n,A)),EvalContext>::type   \
+                                                                    callee;   \
+      typedef typename                                                        \
+      meta::result_of<callee(BOOST_PP_ENUM_PARAMS(n,A))>::type  type;         \
+    };                                                                        \
+                                                                              \
+    template<BOOST_PP_ENUM_PARAMS(n,class A)> BOOST_SIMD_FORCE_INLINE         \
+    typename meta::enable_call< Tag(BOOST_PP_ENUM_PARAMS(n,A))                \
+                              , EvalContext>::type                            \
+    operator()(BOOST_PP_ENUM_BINARY_PARAMS(n, A, && a)) const                 \
+    {                                                                         \
+      typename                                                                \
+      meta::dispatch_call<Tag(BOOST_PP_ENUM_PARAMS(n,A))                      \
+                         ,EvalContext                                         \
+                         >::type                                              \
+      callee;                                                                 \
+      return callee( BOOST_PP_ENUM(n, M1, ~) );                               \
+    }                                                                         \
+    /**/
+
+    BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_SIMD_MAX_ARITY),M0,~)
+    #undef M0
+    #undef M1
+
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
+#pragma wave option(output: null)
+#endif
+#endif
+
     #else
 
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/simd_sdk/functor/preprocessed/functor.hpp>
 #else
-#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES) && __INCLUDE_LEVEL__ == 0
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/functor.hpp")
+#undef BOOST_SIMD_FORCE_INLINE
 #endif
 
     #define param(r,_,i,b) BOOST_PP_COMMA_IF(i)                               \
-    BOOST_PP_CAT(A,i) BOOST_PP_CAT(c,b) & BOOST_PP_CAT(a,i)
-               
+    BOOST_PP_CAT(A,i) BOOST_PP_CAT(c,b) & BOOST_PP_CAT(a,i) \
+    /**/
+
+    #define arg_type(r,_,i,b) BOOST_PP_COMMA_IF(i) BOOST_PP_CAT(A,i) BOOST_PP_CAT(c,b) &
+           
     #define c0
     #define c1 const
     #define bits(z, n, _) ((0)(1))
     #define n_size(seq) BOOST_PP_SEQ_SIZE(seq)
     
     #define call_operator(r, constness)                                       \
-    template<BOOST_PP_ENUM_PARAMS(n_size(constness),class A)> inline          \
-    typename meta::enable_call< Tag(BOOST_PP_ENUM_PARAMS(n_size(constness),A))\
+    template<BOOST_PP_ENUM_PARAMS(n_size(constness),class A)> BOOST_SIMD_FORCE_INLINE \
+    typename meta::enable_call< Tag(BOOST_PP_SEQ_FOR_EACH_I_R(r,arg_type,~,constness)) \
                               , EvalContext>::type                            \
     operator()(BOOST_PP_SEQ_FOR_EACH_I_R(r,param,~,constness)) const          \
     {                                                                         \
       typename                                                                \
-      meta::dispatch_call<Tag(BOOST_PP_ENUM_PARAMS(n_size(constness),A))      \
+      meta::dispatch_call<Tag(BOOST_PP_SEQ_FOR_EACH_I_R(r,arg_type,~,constness)) \
                          ,EvalContext                                         \
                          >::type                                              \
       callee;                                                                 \
@@ -154,6 +209,7 @@ namespace boost { namespace simd
     #undef n_size
     #undef c1
     #undef c0
+    #undef param2
     #undef param
     #undef call_operator
     

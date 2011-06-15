@@ -16,10 +16,15 @@
 #include <boost/proto/proto.hpp>
 #include <nt2/simd_sdk/dsl/category.hpp>
 #include <nt2/simd_sdk/functor/functor.hpp>
-#include <nt2/extension/parameters.hpp>
 #include <nt2/simd_sdk/functor/meta/call.hpp>
 #include <nt2/simd_sdk/functor/meta/hierarchy.hpp>
+
+#if defined (BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
+#include <nt2/extension/parameters.hpp>
 #include <nt2/simd_sdk/functor/preprocessor/call.hpp>
+#include <boost/preprocessor/selection/min.hpp>
+#endif
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // Defines the catch-all call for proto expression
@@ -34,14 +39,12 @@ namespace boost { namespace simd { namespace details
     template<typename Expr>
     struct is_terminal< Expr
                       , typename boost::
-                        enable_if< boost::is_same< typename boost::proto::tag_of<Expr>::type
-                                                 , boost::proto::tag::terminal
-                                                 >
-                                 >::type
+		        enable_if< boost::proto::is_expr<Expr> >::type
                       >
-      : boost::mpl::true_
-    {
-    };
+      : boost::is_same< typename boost::proto::tag_of<Expr>::type
+                      , boost::proto::tag::terminal
+		      >::type
+    {};
 
     
     namespace result_of
@@ -94,7 +97,7 @@ namespace boost { namespace simd { namespace details
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/simd_sdk/dsl/preprocessed/call.hpp>
 #else
-#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES) && __INCLUDE_LEVEL__ == 0
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/call.hpp")
 #endif
 
@@ -136,14 +139,14 @@ BOOST_SIMD_FUNCTOR_CALL(n)                                      \
 }                                                               \
 /**/
 
-BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_PROTO_MAX_ARITY),M4,~)
+BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_PP_MIN(BOOST_SIMD_MAX_ARITY, BOOST_PROTO_MAX_ARITY)),M4,~)
 namespace boost { namespace simd { namespace ext
 {
   template<class Func,class Dummy>
   struct call<Func(tag::ast_),tag::formal_,Dummy> : callable
   {
     template<class Sig> struct result;
-    BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_PROTO_MAX_ARITY),M0,~)
+    BOOST_PP_REPEAT_FROM_TO(1,BOOST_PP_INC(BOOST_PP_MIN(BOOST_SIMD_MAX_ARITY, BOOST_PROTO_MAX_ARITY)),M0,~)
   };
 } } }
 

@@ -11,8 +11,8 @@
 
 #include <nt2/simd_sdk/simd/category.hpp>
 
-#define BOOST_SIMD_MAKE_NATIVE_OP(TAG,OP)                                    \
-template<class T1, class T2,class X> inline                           \
+#define BOOST_SIMD_MAKE_NATIVE_OP(TAG,OP)                             \
+template<class T1, class T2,class X> BOOST_SIMD_FORCE_INLINE          \
 typename boost::simd::meta::enable_call<TAG(native<T1,X>,native<T2,X>)>::type \
 OP(native<T1,X> const& a0, native<T2,X> const& a1)                    \
 {                                                                     \

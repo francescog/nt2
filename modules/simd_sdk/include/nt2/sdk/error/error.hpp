@@ -59,14 +59,15 @@
 // No exception means no error unless they got requalified
 //==============================================================================
 #include <boost/config.hpp>
-#if defined(BOOST_NO_EXCEPTIONS)
-#define BOOST_SIMD_DISABLE_ERROR
+
+#if defined(BOOST_SIMD_DISABLE_ERROR) || defined(BOOST_NO_EXCEPTIONS)
+#define BOOST_SIMD_NO_EXCEPTIONS
 #endif
 
 //==============================================================================
 // Enabled errors
 //==============================================================================
-#if !defined(BOOST_SIMD_DISABLE_ERROR)
+#if !defined(BOOST_SIMD_NO_EXCEPTIONS)
 #include <nt2/simd_sdk/error/details/exception.hpp>
 #define BOOST_SIMD_THROW(EXP) BOOST_THROW_EXCEPTION( (EXP) ) \
 /**/

@@ -14,9 +14,9 @@
  * \brief Defines the nt2::meta::strip \metafunction
  */
 
-#include <cstddef>
+#include <boost/config.hpp>
 
-namespace boost { namespace meta
+namespace boost { namespace simd { namespace meta
 {
   //============================================================================
   /*!
@@ -44,25 +44,19 @@ namespace boost { namespace meta
    */
   //============================================================================
   template<class T> struct strip                      { typedef T type; };
-  template<class T> struct strip<T const            > { typedef T type; };
-  template<class T> struct strip<T &                > { typedef T type; };
-  template<class T> struct strip<T const &          > { typedef T type; };
-  template<class T> struct strip<volatile T         > { typedef T type; };
-  template<class T> struct strip<volatile T const   > { typedef T type; };
-  template<class T> struct strip<volatile T &       > { typedef T type; };
-  template<class T> struct strip<volatile T const & > { typedef T type; };
+  template<class T> struct strip<T const            > : strip<T> {};
+  template<class T> struct strip<T volatile         > : strip<T> {};
+  template<class T> struct strip<T const volatile   > : strip<T> {};
+  template<class T> struct strip<T &                > : strip<T> {};
+#ifndef BOOST_NO_RVALUE_REFERENCES
+  template<class T> struct strip<T &&               > : strip<T> {};
+#endif
 
   //============================================================================
   // strip on C-style array
   //============================================================================
   template<class T, std::size_t N>
-  struct strip<T const[N]     > { typedef T type[N];  };
-
-  template<class T, std::size_t N>
-  struct strip<T (&)[N]       > { typedef T type[N];  };
-
-  template<class T, std::size_t N>
-  struct strip<T const (&)[N] > { typedef T type[N];  };
-} }
+  struct strip<T[N]> { typedef typename strip<T>::type type[N]; };
+} } }
 
 #endif
