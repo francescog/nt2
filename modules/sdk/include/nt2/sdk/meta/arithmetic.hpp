@@ -17,7 +17,7 @@
 #include <nt2/sdk/meta/strip.hpp>
 #include <boost/typeof/typeof.hpp>
 
-#if !defined(NT2_DONT_USE_PREPROCESSED_FILES) || (defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES))
+#if defined(NT2_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/extension/parameters.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
@@ -58,7 +58,7 @@ namespace nt2  { namespace meta
 #if !defined(NT2_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/sdk/meta/preprocessed/arithmetic.hpp>
 #else
-#if defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES)
+#if defined(__WAVE__) && defined(NT2_CREATE_PREPROCESSED_FILES) && __INCLUDE_LEVEL__ == 0
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/arithmetic.hpp")
 #undef BOOST_TYPEOF_NESTED_TYPEDEF_TPL
 #endif

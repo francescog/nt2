@@ -7,6 +7,8 @@
 #                     http://www.boost.org/LICENSE_1_0.txt
 ################################################################################
 
+include(CPack)
+
 macro(nt2_module_install_setup)
   if(NOT UNIX)
     set( NT2_INSTALL_SHARE_DIR .
@@ -67,13 +69,25 @@ macro(nt2_setup_variant)
   endif()
 endmacro()
 
+macro(nt2_module_dir dir)
+  if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${dir})
+      get_target_property(${dir}_exists ${dir} EXCLUDE_FROM_ALL)
+      if(${dir}_exists MATCHES "NOTFOUND$")
+        add_custom_target(${dir})
+      endif()
+      add_custom_target(${module}.${dir})
+      add_dependencies(${dir} ${module}.${dir})
+      add_subdirectory(${dir})
+    endif()
+endmacro()
+
 macro(nt2_module_main module)
   string(TOUPPER ${module} module_U)
   
   nt2_setup_variant()
   
   set(NT2_CURRENT_MODULE ${module})
-  nt2_module_use_modules(self ${module})
+  nt2_module_use_modules(${module})
   
   nt2_module_install_setup()
   
@@ -86,24 +100,12 @@ macro(nt2_module_main module)
   if(NT2_WITH_TESTS)
     ENABLE_TESTING()
     
-    if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bench)
-      add_custom_target(${module}.bench)
-      add_subdirectory(bench)
-    endif()
-  
-    if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/examples)
-      add_custom_target(${module}.examples)
-      add_subdirectory(examples)
-    endif()
-  
-    if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/unit)
-      add_custom_target(${module}.unit)
-      add_subdirectory(unit)
-    endif()
-
-    if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/cover)
-      add_custom_target(${module}.cover)
-      add_subdirectory(cover)
+    nt2_module_dir(bench)
+    nt2_module_dir(examples)
+    nt2_module_dir(unit)
+    
+    if(NT2_WITH_TESTS_COVER)
+      nt2_module_dir(cover)
     endif()
   endif()
   
@@ -146,12 +148,18 @@ macro(nt2_module_add_library libname)
   
 endmacro()
 
-macro(nt2_module_use_modules component)
-  #message(STATUS "[nt2.${NT2_CURRENT_MODULE}] ${component}: checking dependencies...")
+macro(nt2_module_use_modules)
+
+  string(REGEX REPLACE "^.*/(.*)$" "\\1" component "${CMAKE_CURRENT_SOURCE_DIR}")
+  if(NOT component STREQUAL ${NT2_CURRENT_MODULE})
+    set(component_ " ${component}:")
+  endif()
+
+  #message(STATUS "[nt2.${NT2_CURRENT_MODULE}]${component_} checking dependencies...")
   
   find_package(NT2 COMPONENTS ${ARGN})
   if(NOT NT2_FOUND)
-    message(STATUS "[nt2.${NT2_CURRENT_MODULE}] warning: ${component}: dependencies not met, skipping")
+    message(STATUS "[nt2.${NT2_CURRENT_MODULE}] warning:${component_} dependencies not met, skipping")
     nt2_find_transfer_parent()
     return()
   endif()

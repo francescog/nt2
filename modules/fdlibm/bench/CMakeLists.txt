@@ -12,6 +12,7 @@
 ##****************************************************************************
 
 ADD_CUSTOM_TARGET(fdlibm.scalar.bench)
-ADD_DEPENDENCIES(fdlibm.bench fdlibm.scalar.bench fdlibm.simd.bench)
+ADD_DEPENDENCIES(fdlibm.bench fdlibm.scalar.bench)
 
+nt2_module_use_modules(unit)
 ADD_SUBDIRECTORY(scalar)

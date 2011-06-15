@@ -25,8 +25,8 @@ namespace nt2 { namespace ext
               tag::cpu_, Dummy> : callable
   {
     template<class Sig> struct result;
-    template<class This,class A0>
-    struct result<This(A0,A0)> : meta::strip<A0>{};
+    template<class This,class A0,class A1>
+    struct result<This(A0,A1)> : meta::strip<A0>{};
 
     NT2_FUNCTOR_CALL(2)
     {
@@ -49,13 +49,13 @@ namespace nt2 { namespace ext
               tag::cpu_, Dummy> : callable
   {
     template<class Sig> struct result;
-    template<class This,class A0>
-    struct result<This(A0,A0)> : meta::strip<A0>{};
+    template<class This,class A0,class A1>
+    struct result<This(A0,A1)> : meta::strip<A0>{};
 
     NT2_FUNCTOR_CALL(2)
     {
       typedef typename meta::as_integer<A0, unsigned>::type utype; 
-      return rdivide( a0+ !((a1 + One<A0>()) | (utype)a0 + Valmin<A0>()), a1); 
+      return rdivide( a0+ !((a1 + One<A0>()) | ((utype)a0 + Valmin<A0>())), a1); 
     }
   };
 } }

@@ -11,10 +11,11 @@
 # Add global bench driver rules
 ################################################################################
 ADD_CUSTOM_TARGET(cephes.scalar.bench)
-ADD_DEPENDENCIES(cephes.bench cephes.scalar.bench cephes.simd.bench)
+ADD_DEPENDENCIES(cephes.bench cephes.scalar.bench)
 
 ##****************************************************************************
 ##*     Toolbox cephes bench tests
 ##****************************************************************************
 
+nt2_module_use_modules(unit)
 ADD_SUBDIRECTORY(scalar)

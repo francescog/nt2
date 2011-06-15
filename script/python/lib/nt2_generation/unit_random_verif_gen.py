@@ -60,9 +60,9 @@ class Random_verif_test_gen(Base_gen) :
             "  }",
             ],
         }
-    def __init__(self, base_gen,d,typ,mode="scalar") :
+    def __init__(self, base_gen,d,typ) :
         self.bg   = base_gen
-        self.mode = mode
+        self.mode = self.bg.get_fct_mode()
         self.__gen_result = self.__create_unit_txt(d,typ)
 
     def get_gen_result(self) : return  self.__gen_result
@@ -85,7 +85,7 @@ class Random_verif_test_gen(Base_gen) :
         "  static const uint32_t NR = %s;"%nb_rand,
         ]
 ##        print ("actual_ranges %s"%actual_ranges)
-##         print ("typ %s"%typ)
+##        print ("typ %s"%typ)
         if isinstance(actual_ranges[0][0],str) : actual_ranges = [actual_ranges]
         ##print("actual_ranges = %s"%actual_ranges)
         for r1 in actual_ranges :
@@ -133,13 +133,13 @@ class Random_verif_test_gen(Base_gen) :
   
     def __prepare(self,s,typ,d,actual_range) :
 #        print("s %s"%s)
-        df = d["functor"]
+        df = d.get("functor",self.Default_df)
         istpl = df.get("tpl","")
-        arity = int(df["arity"])
+        arity = int(df.get("arity","1"))
         s=re.sub("\$fct_name\$",self.bg.get_fct_name(),s)
         s=re.sub("\$plural\$", "s" if arity>1 else "",s)
         du = d["unit"]
-        ret_arity = int(d["functor"].get("ret_arity","0"))
+        ret_arity = int(df.get("ret_arity","0"))
         dur= du["verif_test"]
         no_ulp =du["global_header"].get("no_ulp",False)
         no_ulp = False if no_ulp == 'False' else no_ulp
@@ -216,7 +216,7 @@ class Random_verif_test_gen(Base_gen) :
                             s = beg+"NT2_TEST_EQUAL( $property_call$,$property_value$);"
                         else :
                             s = beg+"NT2_TEST_ULP_EQUAL( $property_call$,$property_value$,$ulp_thresh$);"
-                        thresh = durat.get(typ,durat.get("default",None))
+                        thresh = durat.get(typ,durat.get("default",["0"]))
                         j = i if len(thresh)>i else 0
                         s = re.sub('\$ulp_thresh\$',thresh[j],s)
                         #                    s=re.sub("\$fct_name\$",self.bg.get_fct_name(),s)
@@ -227,7 +227,7 @@ class Random_verif_test_gen(Base_gen) :
                         if not no_ulp : r.append(beg+"ulp0=nt2::max(ulpd,ulp0);")
                     return r
             else : ## simd
-                if ret_arity >= 1 :
+                if ret_arity > 1 :
                     length = len(durac.get(typ,durac.get("default",[])))
                     g = ','.join([ "a%d" % i for i in xrange(0, arity) ])
                     index = [ ('j' if self.__simd_get_typ(i,df) == 'iT' else 'k') for i in xrange(0, arity) ]

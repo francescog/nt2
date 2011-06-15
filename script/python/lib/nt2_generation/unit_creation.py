@@ -42,130 +42,128 @@ import re
 import shutil
 from pprint                          import PrettyPrinter
 
-def create_one_unit(tb_name,
-                    fct_name,
-                    mode,
-                    part) :
-    print("%s with %s with %s"%(fct_name,mode,part))
-    bg = Base_gen(tb_name,fct_name,mode)
-    ghg = Global_header_gen(bg,part)
-    r = ghg.get_gen_result()
-    if True:
+class Create_tests(Nt2_tb_props) :
+    Default_df = {
+        'arity' : '1',
+        'call_types' : [],
+        'ret_arity' : '0',
+        'rturn' : {
+            'default' : 'typename boost::result_of<nt2::meta::floating(T)>::type',
+            },
+        'simd_types' : ['real_'],
+        'type_defs' : [],
+        'types' : ['real_'],
+        }
+    def __init__(self, tb_name,
+                 fct_list=None,
+                 modes=['scalar','simd'],
+                 parts=["unit","cover"],
+                 show=True,
+                 write_files=False,
+                 check_on_write=True,
+                 backup_on_write=True,
+                 verbose=False) :
+        self.tb_name =tb_name
+        Nt2_tb_props.__init__(self,tb_name)
+        if fct_list is None :
+            self.fcts = self.get_fcts_list()
+        elif isinstance(fct_list,str ) :
+            self.fcts = [fct_list]
+        else :
+            self.fcts = fct_list
+        self.parts = parts
+        if  isinstance(self.parts,str ) : self.parts = [self.parts]
+        self.modes = modes
+        if  isinstance(self.modes,str ) : self.modes = [self.modes]    
+        self.show = show
+        self.write_files =write_files
+        self.check_on_write = check_on_write
+        self.backup_on_write = backup_on_write
+        self.verbose=verbose
+
+    def create_one_unit(self, fct_name, mode, part) :
+
+   #     if self.verbose :
+        print("%s with %s with %s"%(fct_name,mode,part))
+        bg = Base_gen(self.tb_name,fct_name,mode)
+        ghg = Global_header_gen(bg,part)
+        r = ghg.get_gen_result()
         dl = bg.get_fct_dict_list()
         for rank,d in enumerate(dl) :
             origin ="types" if mode == 'scalar' else 'simd_types'
-            if d["functor"].get('no_simd_tests',False) : return []
-            types = bg.recover(origin,d["functor"],["real_"])
-            ret_arity = int(d["functor"]["ret_arity"])
-            d_unit = d["unit"]
+            df = d.get('functor',False)
+            if not df : df = self.Default_df
+            if df.get('no_simd_tests',False) : return []
+            types = bg.recover(origin,df,["real_"])
+            ret_arity = int(df["ret_arity"])
+            d_unit = d.get("unit",{})
             for typ in types :
                 thg = Type_header_test_gen(bg,d,typ,rank)
                 r+=thg.get_gen_beg()
-                print("part = %s"%part)
+                if self.verbose : print("part = %s"%part)
                 if ("unit"==part) and d_unit.get("specific_values",None) :
-                    svt = Specific_values_test_gen(bg,d,typ,ret_arity,mode)
-                    r += svt.get_gen_result()
+                    svt = Specific_values_test_gen(bg,d,typ,ret_arity)
+                    s = svt.get_gen_result()
+##                    print(s)
+##                    raise SystemExit
+##                    if not s : return False
+                    r += s    
                 if ("cover" == part) and d_unit.get("verif_test",None) :
-                    vtg = Random_verif_test_gen(bg,d,typ,mode)
-                    r += vtg.get_gen_result()
+                    vtg = Random_verif_test_gen(bg,d,typ)
+                    s = vtg.get_gen_result()
+##                    print(s)
+##                    raise SystemExit
+##                    if not s : return False
+                    r += s    
                 r+=thg.get_gen_end()
         return r
 
-
-##def insert_after(token, txt, line2add) :
-##    """ insertion of a line after a line
-##    containing a token in a list of lines
-##    """
-##    pattern = re.compile(line2add)
-##    def find_index(p) :
-##        for i,l in enumerate(txt) :
-##            if p.match(l) : return i+1
-##        return 0
-##    if find_index(pattern) :
-##        return (False,txt)
-##    else :
-##        #### match for token
-##        pattern = re.compile(token)
-##        i = find_index(pattern)
-##        if i != 0 : txt.insert(i,line2add)
-##        return (True,txt)
-
-##def update_cmakelist(p,fct_name) :
-##    txt_orig = read(p)
-##    txt = "  %s.cpp"%fct_name
-##    done, new_txt = insert_after("SET\( SOURCES",txt_orig,txt)
-##    print("----------------------------------------------------------")
-##    print("new_txt %s"%new_txt)
-##    print("----------------------------------------------------------")
-   
-##    if not done :
-##        print("Warning : line\n  %s\nis already in CMakelists.txt file"%txt ) 
-##    else :
-##        if exist(p) :
-##            print("file\n  %s\nwill be updated"%p)
-##            write(p,new_txt,False)
-##            print("file\n  %s\nis now updated"%p)
-##        else :
-##            print("file\n  %s\n does not exist"%p)         
+    def create_units(self) :
+        for fct in self.fcts :
+            for mode in self.modes :
+                if self.verbose : print("fct=%s,mode=%s"%(fct,mode))
+                for part in self.parts :
+                    if self.verbose : print("fct=%s,part=%s"%(fct,part))
+                    r= self.create_one_unit(fct,mode,part)
+                    if r is None :
+                        print('error for %s' % fct)
+                    elif not r or len(r)==0 :
+                        print('no regeneration possible for %s %s-tests, please do it manually' % (fct,mode))
+                    else :
+                        just = "just" if show and not self.write_files else ""
+                        if show : 
+                            print("%s showing text of %s.cpp for %s-test: %s"% (just,fct,mode,part))
+                            print("<"+"="*40)
+                            PrettyPrinter().pprint(r)            
+                            print("="*40+">")
+                        if self.write_files :
+                            print("writing text of %s.cpp for %s-test"% (fct,mode))
+                            self.write_unit(fct,mode,part,r)
 
 
-def write_unit(tb_name,fct_name,mode,part,s,check=False,backup=True) :
-    nfp = Nt2_fct_props(tb_name,fct_name,mode)
-    p = nfp.get_fct_unit_path(mode,part)
-    print ('p = %s'%p)
-    if backup and exist(p) :
-        print("p=%s" %p)
-        i = 1;
-        while True :
-            pi = p+'.'+str(i)+'.bak'
-            if not(exist(pi)) : break
-            i += 1
-        print("backing to %s"% pi)
-        shutil.copy(p,pi)
-    print "writing to %s"%p
-    write(p,s,check)
-    p1 = os.path.join(os.path.split(p)[0],'CMakeLists.txt')
-    print("p1= %s"%p1)
-    addline=Add_line(p1,fct_name)
-    addline.update_file("SET\( SOURCES")
+    def write_unit(self,
+                   fct_name,
+                   mode,
+                   part,
+                   s) :
+        nfp = Nt2_fct_props(self.tb_name,fct_name,mode)
+        p = nfp.get_fct_unit_path(mode,part)
+        if self.verbose : print ('path = %s'%p)
+        if self.backup_on_write and exist(p) :
+            if self.verbose : print("backing up %s" %fct_name)
+            i = 1;
+            while True :
+                pi = p+'.'+str(i)+'.bak'
+                if not(exist(pi)) : break
+                i += 1
+            if self.verbose : print("to %s"% pi)
+            shutil.copy(p,pi)
+        elif self.verbose : print "writing to %s"%p
+        write(p,s,self.check_on_write)
+        p1 = os.path.join(os.path.split(p)[0],'CMakeLists.txt')
+        addline=Add_line(p1,fct_name)
+        addline.update_file("SET\( SOURCES")
  
-def create_unit(tb_name, fct_list=None,
-                modes=['scalar','simd'],
-                parts=["unit","cover"],
-                show=True,
-                write_files=False,
-                check_on_write=True,
-                backup_on_write=True) :
-    if fct_list is None :
-        fcts = Nt2_tb_props(tb_name).get_fcts_list()
-    elif isinstance(fct_list,str ) :
-        fcts = [fct_list]
-    else :
-        fcts = fct_list
-    if  isinstance(parts,str ) : parts = [parts]
-    if  isinstance(modes,str ) : modes = [modes]    
-    for fct in fcts :
-        for mode in modes :
-            print("fct=%s,mode=%s"%(fct,mode))
-            for part in parts :
-                print("fct=%s,part=%s"%(fct,part))
-                r= create_one_unit(tb_name,fct,mode,part)
-                if r is None :
-                    print('error for %s' % fct)
-                elif len(r)==0 :
-                    print('no regeneration possible for %s %s-tests, please do it manually' % (fct,mode))
-                else :
-                    just = "just" if show and not write_files else ""
-                    if show : 
-                        print("%s showing text of %s.cpp for %s-test: %s"% (just,fct,mode,part))
-                        print("<"+"="*40)
-                        PrettyPrinter().pprint(r)            
-                        print("="*40+">")
-                    if write_files :
-                        print("writing text of %s.cpp for %s-test"% (fct,mode))
-                        write_unit(tb_name,fct,mode,part,r,
-                                   check=check_on_write,
-                                   backup=backup_on_write)
 
         
 if __name__ == "__main__" :
@@ -173,4 +171,13 @@ if __name__ == "__main__" :
     fcts = Nt2_tb_props(tb_name).get_fcts_list()
     parts = ["unit","cover"]
     fcts = ["selsub","bitwise_notor"]
-    create_unit(tb_name,fct_list=fcts,show=True)
+    ct = Create_tests(tb_name,
+                     fcts,
+                     modes=['scalar','simd'],
+                     parts= ["unit"],
+                     show=True,
+                     write_files=False,
+                     check_on_write=True,
+                     backup_on_write=True,
+                     verbose=False) 
+    ct.create_units()

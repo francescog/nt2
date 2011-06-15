@@ -12,6 +12,7 @@
 ##****************************************************************************
 
 ADD_CUSTOM_TARGET(crlibm.scalar.bench)
-ADD_DEPENDENCIES(crlibm.bench crlibm.scalar.bench crlibm.simd.bench)
+ADD_DEPENDENCIES(crlibm.bench crlibm.scalar.bench)
 
+nt2_module_use_modules(unit)
 ADD_SUBDIRECTORY(scalar)
