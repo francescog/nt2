@@ -10,12 +10,8 @@
 #define BOOST_SIMD_SDK_CONFIG_ATTRIBUTES_HPP_INCLUDED
 
 #if defined(__GNUC__)
-#define BOOST_SIMD_ALWAYS_INLINE __attribute__((always_inline))
-#else
-#define BOOST_SIMD_ALWAYS_INLINE
-#endif
-
-#if defined(_MSC_VER)
+#define BOOST_SIMD_FORCE_INLINE __attribute__((always_inline))
+#elif defined(_MSC_VER)
 #define BOOST_SIMD_FORCE_INLINE __forceinline
 #else
 #define BOOST_SIMD_FORCE_INLINE inline
