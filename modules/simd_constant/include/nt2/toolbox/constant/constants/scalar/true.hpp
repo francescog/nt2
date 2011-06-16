@@ -10,6 +10,7 @@
 #define BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_SCALAR_TRUE_HPP_INCLUDED
 
 #include <nt2/simd_sdk/meta/strip.hpp>
+#include <nt2/simd_sdk/details/ignore_unused.hpp>
 #include <nt2/include/functions/splat.hpp>
 
 BOOST_SIMD_REGISTER_DISPATCH(tag::true_ ,tag::cpu_,(A0),(target_< fundamental_<A0> >))
@@ -29,6 +30,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_SIMD_FUNCTOR_CALL(1)
     {
+      ignore_unused(a0);
       return splat<typename A0::type>(true);
     }
   };
