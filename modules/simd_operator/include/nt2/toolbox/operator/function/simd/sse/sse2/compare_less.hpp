@@ -11,6 +11,7 @@
 
 #include <nt2/include/functions/is_less.hpp>
 #include <nt2/include/functions/is_greater.hpp>
+#include <nt2/include/functions/reversebits.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Overload registration
@@ -35,12 +36,11 @@ BOOST_SIMD_REGISTER_DISPATCH ( tag::compare_less_, tag::cpu_, (A0)
 ////////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace simd { namespace details
 {
-  inline bool compare_less_helper(int mask_a_lt_b, int mask_a_gt_b)
+  inline bool compare_less_helper(unsigned int mask_a_lt_b, unsigned int mask_a_gt_b)
   {
-  return    ( !mask_a_gt_b && mask_a_lt_b      )
-        ||  (    !(mask_a_gt_b && !mask_a_lt_b )
-              &&  (mask_a_lt_b <   mask_a_gt_b )
-            );
+    unsigned int mlt = nt2::reversebits(mask_a_lt_b);
+    unsigned int mgt = nt2::reversebits(mask_a_gt_b);
+    return (mlt > mgt) && mlt;
   }
 } } }
 ////////////////////////////////////////////////////////////////////////////////

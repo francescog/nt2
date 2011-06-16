@@ -33,6 +33,7 @@ namespace boost { namespace simd { namespace ext
         : callable
   {
     #define M0(z,n,t)                                                                      \
+    template<class A0>                                                                     \
     simd::native<A0, X> operator()(BOOST_PP_ENUM_PARAMS(n, A0 const& a)) const             \
     {                                                                                      \
       BOOST_SIMD_ALIGNED_TYPE(A0) tmp[n] = {                                               \
