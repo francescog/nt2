@@ -14,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/include/simd.hpp>
 #include <nt2/sdk/constant/constant.hpp>
-#include <nt2/toolbox/simd_constant/include.hpp>
+#include <nt2/toolbox/constant/include.hpp>
 #include <nt2/sdk/constant/common.hpp>
 
 namespace boost { namespace simd {
@@ -27,7 +27,7 @@ namespace boost { namespace simd {
   BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::val_max_, Valmax)
 } }
 
-#include <nt2/toolbox/simd_constant/constants/scalar/val_max.hpp>
-#include <nt2/toolbox/simd_constant/constants/simd/all/val_max.hpp>
+#include <nt2/toolbox/constant/constants/scalar/val_max.hpp>
+#include <nt2/toolbox/constant/constants/simd/all/val_max.hpp>
 
 #endif

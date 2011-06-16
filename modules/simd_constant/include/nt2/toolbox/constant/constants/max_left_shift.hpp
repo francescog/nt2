@@ -14,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/include/simd.hpp>
 #include <nt2/sdk/constant/constant.hpp>
-#include <nt2/toolbox/simd_constant/include.hpp>
+#include <nt2/toolbox/constant/include.hpp>
 #include <nt2/sdk/constant/common.hpp>
 
 namespace boost { namespace simd
@@ -27,8 +27,8 @@ namespace boost { namespace simd
   BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::max_left_shift_, Maxleftshift)
 } }
 
-#include <nt2/toolbox/simd_constant/constants/scalar/max_left_shift.hpp>
-#include <nt2/toolbox/simd_constant/constants/simd/all/max_left_shift.hpp>
+#include <nt2/toolbox/constant/constants/scalar/max_left_shift.hpp>
+#include <nt2/toolbox/constant/constants/simd/all/max_left_shift.hpp>
 
 #endif
 

@@ -14,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/include/simd.hpp>
 #include <nt2/sdk/constant/constant.hpp>
-#include <nt2/toolbox/simd_constant/include.hpp>
+#include <nt2/toolbox/constant/include.hpp>
 #include <nt2/sdk/constant/common.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -82,7 +82,7 @@ namespace boost { namespace simd
   }
 } }
 
-#include <nt2/toolbox/simd_constant/constants/scalar/digits.hpp>
-#include <nt2/toolbox/simd_constant/constants/simd/all/digits.hpp>
+#include <nt2/toolbox/constant/constants/scalar/digits.hpp>
+#include <nt2/toolbox/_constant/constants/simd/all/digits.hpp>
 
 #endif

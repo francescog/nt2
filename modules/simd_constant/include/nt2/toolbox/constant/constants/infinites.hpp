@@ -14,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/include/simd.hpp>
 #include <nt2/sdk/constant/constant.hpp>
-#include <nt2/toolbox/simd_constant/include.hpp>
+#include <nt2/toolbox/constant/include.hpp>
 #include <nt2/sdk/constant/common.hpp>
 
 namespace boost { namespace simd { namespace tag
@@ -29,7 +29,7 @@ namespace boost { namespace simd {
   BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::nan_    , Nan   )
 }
 
-#include <nt2/toolbox/simd_constant/constants/scalar/infinites.hpp>
-#include <nt2/toolbox/simd_constant/constants/simd/all/infinites.hpp>
+#include <nt2/toolbox/constant/constants/scalar/infinites.hpp>
+#include <nt2/toolbox/constant/constants/simd/all/infinites.hpp>
 
 #endif

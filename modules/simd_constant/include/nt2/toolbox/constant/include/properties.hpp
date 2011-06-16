@@ -8,9 +8,9 @@
  ******************************************************************************/
 #ifndef NT2_TOOLBOX_CONSTANT_INCLUDE_PROPERTIES_HPP_INCLUDED
 #define NT2_TOOLBOX_CONSTANT_INCLUDE_PROPERTIES_HPP_INCLUDED
-#include <nt2/toolbox/simd_constant/include/ieee_spec.hpp>
-#include <nt2/toolbox/simd_constant/include/max_left_shift.hpp>
-#include <nt2/toolbox/simd_constant/include/signmask.hpp>
-#include <nt2/toolbox/simd_constant/include/val_max.hpp>
-#include <nt2/toolbox/simd_constant/include/val_min.hpp>
+#include <nt2/toolbox/constant/include/ieee_spec.hpp>
+#include <nt2/toolbox/constant/include/max_left_shift.hpp>
+#include <nt2/toolbox/constant/include/signmask.hpp>
+#include <nt2/toolbox/constant/include/val_max.hpp>
+#include <nt2/toolbox/constant/include/val_min.hpp>
 #endif

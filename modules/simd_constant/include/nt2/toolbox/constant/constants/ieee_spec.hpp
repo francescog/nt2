@@ -14,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/include/simd.hpp>
 #include <nt2/sdk/constant/constant.hpp>
-#include <nt2/toolbox/simd_constant/include.hpp>
+#include <nt2/toolbox/constant/include.hpp>
 #include <nt2/sdk/constant/common.hpp>
 
 namespace boost { namespace simd {
@@ -34,7 +34,7 @@ namespace boost { namespace simd {
   BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::nb_digits_        , Nbdigits       )
 }
 
-#include <nt2/toolbox/simd_constant/constants/scalar/ieee_spec.hpp>
-#include <nt2/toolbox/simd_constant/constants/simd/all/ieee_spec.hpp>
+#include <nt2/toolbox/constant/constants/scalar/ieee_spec.hpp>
+#include <nt2/toolbox/constant/constants/simd/all/ieee_spec.hpp>
 
 #endif

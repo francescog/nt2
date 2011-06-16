@@ -13,8 +13,8 @@
 // OS reporting
 // TODO: Documentation: http://nt2.lri.fr/doc/build/html/sdk/config/platform.html
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/simd_config/os.hpp>
-#include <nt2/sdk/simd_config/details/reporter.hpp>
+#include <nt2/sdk/config/os.hpp>
+#include <nt2/sdk/config/details/reporter.hpp>
 
 namespace boost { namespace simd { namespace config
 {

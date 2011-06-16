@@ -15,10 +15,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <nt2/simd_sdk/simd/category.hpp>
 #include <nt2/simd_sdk/functor/meta/call.hpp>
-#include <nt2/toolbox/simd_operator/function/map.hpp>
+#include <nt2/toolbox/operator/function/map.hpp>
 
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/toolbox/simd_operator/specific/preprocessed/common.hpp>
+#include <nt2/toolbox/operator/specific/preprocessed/common.hpp>
 #else
 #include <nt2/extension/parameters.hpp>
 #include <nt2/simd_sdk/details/preprocessor.hpp>

@@ -10,7 +10,7 @@
 #define BOOST_SIMD_TOOLBOX_CONSTANT_CONSTANTS_TRUE_HPP_INCLUDED
 #include <nt2/include/simd.hpp>
 #include <nt2/sdk/constant/constant.hpp>
-#include <nt2/toolbox/simd_constant/include.hpp>
+#include <nt2/toolbox/constant/include.hpp>
 #include <nt2/sdk/constant/common.hpp>
 
 namespace boost { namespace simd
@@ -23,7 +23,7 @@ namespace boost { namespace simd
   BOOST_SIMD_CONSTANT_IMPLEMENTATION(boost::simd::tag::true_, True)
 } }
 
-#include <nt2/toolbox/simd_constant/constants/scalar/true.hpp>
-#include <nt2/toolbox/simd_constant/constants/simd/all/true.hpp>
+#include <nt2/toolbox/constant/constants/scalar/true.hpp>
+#include <nt2/toolbox/constant/constants/simd/all/true.hpp>
 
 #endif

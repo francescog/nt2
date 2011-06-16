@@ -10,8 +10,8 @@
 #define BOOST_SIMD_TOOLBOX_CONSTANT_INCLUDE_HPP_INCLUDED
 #include <nt2/simd_sdk/simd/preprocessor/include.hpp>
 
-#define BOOST_SIMD_CONSTANT_BASE() nt2/toolbox/simdconstant/constants/scalar/
-#define BOOST_SIMD_CONSTANT_RELATIVE() nt2/toolbox/simdconstant/constants/
+#define BOOST_SIMD_CONSTANT_BASE() nt2/toolbox/constant/constants/scalar/
+#define BOOST_SIMD_CONSTANT_RELATIVE() nt2/toolbox/constant/constants/
 
 #define BOOST_SIMD_CONSTANT_INCLUDE(F) BOOST_SIMD_SIMD_RELATIVE_INCLUDE(BOOST_SIMD_CONSTANT_RELATIVE, F)
 

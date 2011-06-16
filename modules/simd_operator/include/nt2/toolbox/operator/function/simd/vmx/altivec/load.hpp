@@ -45,6 +45,6 @@ namespace boost { namespace simd { namespace ext
   };
 } } }
 
-#include <nt2/toolbox/simd_operator/function/simd/vmx/altivec/load_offset.hpp>
+#include <nt2/toolbox/operator/function/simd/vmx/altivec/load_offset.hpp>
 
 #endif

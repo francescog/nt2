@@ -8,6 +8,6 @@
 //==============================================================================
 #ifndef NT2_TOOLBOX_CONSTANT_INCLUDE_TRUE_FALSE_HPP_INCLUDED
 #define NT2_TOOLBOX_CONSTANT_INCLUDE_TRUE_FALSE_HPP_INCLUDED
-#include <nt2/toolbox/simd_constant/include/true.hpp>
-#include <nt2/toolbox/simd_constant/include/false.hpp>
+#include <nt2/toolbox/constant/include/true.hpp>
+#include <nt2/toolbox/constant/include/false.hpp>
 #endif

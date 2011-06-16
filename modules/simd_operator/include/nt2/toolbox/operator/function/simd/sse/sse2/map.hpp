@@ -10,7 +10,7 @@
 #define BOOST_SIMD_TOOLBOX_OPERATOR_FUNCTION_SIMD_SSE_SSE2_MAP_HPP_INCLUDED
 
 #include <nt2/simd_sdk/simd/category.hpp>
-#include <nt2/toolbox/simd_operator/specific/details/maybe_genmask.hpp>
+#include <nt2/toolbox/operator/specific/details/maybe_genmask.hpp>
 #include <nt2/include/functions/make.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,7 +20,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/toolbox/simd_operator/function/simd/sse/sse2/preprocessed/map.hpp>
+#include <nt2/toolbox/operator/function/simd/sse/sse2/preprocessed/map.hpp>
 #else
 #include <nt2/extension/parameters.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
