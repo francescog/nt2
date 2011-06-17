@@ -6,17 +6,14 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_INCLUDE_ERROR_HPP_INCLUDED
-#define NT2_INCLUDE_ERROR_HPP_INCLUDED
+#ifndef BOOST_SIMD_INCLUDE_SYS_HPP_INCLUDED
+#define BOOST_SIMD_INCLUDE_SYS_HPP_INCLUDED
 
-#include <nt2/simd_sdk/config/types.hpp>
-
-#include <nt2/simd_sdk/error/trap.hpp>
-#include <nt2/simd_sdk/error/debug.hpp>
-#include <nt2/simd_sdk/error/error.hpp>
-#include <nt2/simd_sdk/error/assert.hpp>
-#include <nt2/simd_sdk/error/warning.hpp>
-#include <nt2/simd_sdk/error/concepts.hpp>
-#include <nt2/simd_sdk/error/static_assert.hpp>
+////////////////////////////////////////////////////////////////////////////////
+// Main system level components header
+// Documentation: http://nt2.lri.fr/sdk/sys.html
+////////////////////////////////////////////////////////////////////////////////
+//#include <boost/simd/sdk/sys/string.hpp>
+#include <boost/simd/sdk/sys/timestamp.hpp>
 
 #endif

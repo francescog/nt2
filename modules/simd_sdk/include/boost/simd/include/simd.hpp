@@ -6,14 +6,12 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_INCLUDE_SYS_HPP_INCLUDED
-#define NT2_INCLUDE_SYS_HPP_INCLUDED
+#ifndef BOOST_SIMD_INCLUDE_SIMD_HPP_INCLUDED
+#define BOOST_SIMD_INCLUDE_SIMD_HPP_INCLUDED
 
-////////////////////////////////////////////////////////////////////////////////
-// Main system level components header
-// Documentation: http://nt2.lri.fr/sdk/sys.html
-////////////////////////////////////////////////////////////////////////////////
-//#include <nt2/simd_sdk/sys/string.hpp>
-#include <nt2/simd_sdk/sys/timestamp.hpp>
+#include <boost/simd/sdk/config/types.hpp>
+#include <boost/simd/sdk/simd/extensions.hpp>
+#include <boost/simd/sdk/simd/io.hpp>
+#include <boost/simd/sdk/simd/native.hpp>
 
 #endif

@@ -6,12 +6,13 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_INCLUDE_SIMD_HPP_INCLUDED
-#define NT2_INCLUDE_SIMD_HPP_INCLUDED
+#ifndef BOOST_SIMD_INCLUDE_TIMING_HPP_INCLUDED
+#define BOOST_SIMD_INCLUDE_TIMING_HPP_INCLUDED
 
-#include <nt2/simd_sdk/config/types.hpp>
-#include <nt2/simd_sdk/simd/extensions.hpp>
-#include <nt2/simd_sdk/simd/io.hpp>
-#include <nt2/simd_sdk/simd/native.hpp>
+#include <boost/simd/sdk/config/types.hpp>
+#include <boost/simd/sdk/timing/tic.hpp>
+#include <boost/simd/sdk/timing/ctic.hpp>
+#include <boost/simd/sdk/timing/cycle_timer.hpp>
+#include <boost/simd/sdk/timing/second_timer.hpp>
 
 #endif

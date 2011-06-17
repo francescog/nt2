@@ -6,14 +6,14 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_INCLUDE_CONFIG_HPP_INCLUDED
-#define NT2_INCLUDE_CONFIG_HPP_INCLUDED
+#ifndef BOOST_SIMD_INCLUDE_CONFIG_HPP_INCLUDED
+#define BOOST_SIMD_INCLUDE_CONFIG_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Main config header
 // Documentation: http://nt2.lri.fr/doc/build/html/sdk/config.html
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/config.hpp>
-#include <nt2/simd_sdk/config/types.hpp>
+#include <boost/simd/sdk/config.hpp>
+#include <boost/simd/sdk/config/types.hpp>
 
 #endif

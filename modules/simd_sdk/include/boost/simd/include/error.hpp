@@ -6,13 +6,17 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_INCLUDE_TIMING_HPP_INCLUDED
-#define NT2_INCLUDE_TIMING_HPP_INCLUDED
+#ifndef BOOST_SIMD_INCLUDE_ERROR_HPP_INCLUDED
+#define BOOST_SIMD_INCLUDE_ERROR_HPP_INCLUDED
 
-#include <nt2/simd_sdk/config/types.hpp>
-#include <nt2/simd_sdk/timing/tic.hpp>
-#include <nt2/simd_sdk/timing/ctic.hpp>
-#include <nt2/simd_sdk/timing/cycle_timer.hpp>
-#include <nt2/simd_sdk/timing/second_timer.hpp>
+#include <boost/simd/sdk/config/types.hpp>
+
+#include <boost/simd/sdk/error/trap.hpp>
+#include <boost/simd/sdk/error/debug.hpp>
+#include <boost/simd/sdk/error/error.hpp>
+#include <boost/simd/sdk/error/assert.hpp>
+#include <boost/simd/sdk/error/warning.hpp>
+#include <boost/simd/sdk/error/concepts.hpp>
+#include <boost/simd/sdk/error/static_assert.hpp>
 
 #endif
