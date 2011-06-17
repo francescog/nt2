@@ -14,5 +14,5 @@ nt2_module_source_setup(simd_config)
 # Generate bootstrap.hpp
 ################################################################################
 nt2_module_configure_file(bootstrap.hpp.cmake
-                          nt2/sdk/config/bootstrap.hpp
+                          boost/simd/sdk/config/bootstrap.hpp
                          )

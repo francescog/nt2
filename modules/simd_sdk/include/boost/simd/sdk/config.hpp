@@ -18,10 +18,10 @@
 // NT2 configuration files
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/simd/sdk/config/os.hpp>
-#include <boost/simd/config/arch.hpp>
-#include <boost/simd/config/compiler.hpp>
-#include <boost/simd/config/attributes.hpp>
-#include <boost/simd/config/type_lists.hpp>
+#include <boost/simd/sdk/config/arch.hpp>
+#include <boost/simd/sdk/config/compiler.hpp>
+#include <boost/simd/sdk/config/attributes.hpp>
+#include <boost/simd/sdk/config/type_lists.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // External NT2 configuration files

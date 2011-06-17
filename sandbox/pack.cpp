@@ -1,6 +1,6 @@
 #include <iostream>
 #include <numeric>
-#include <nt2/sdk/simd/pack.hpp>
+#include <boost/simd/sdk/simd/pack.hpp>
 #include <nt2/sdk/simd/begin.hpp>
 #include <nt2/sdk/simd/end.hpp>
 #include <nt2/include/timing.hpp>

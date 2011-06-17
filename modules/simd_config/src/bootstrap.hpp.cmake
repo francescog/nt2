@@ -11,7 +11,7 @@
 
 #if defined(NT2_CUSTOM_BOOTSTRAP)
 #include <boost/preprocessor/stringize.hpp>
-#include <nt2/sdk/details/preprocessor.hpp>
+#include <boost/simd/sdk/details/preprocessor.hpp>
 
 #define NT2_CONFIG_BASE()	nt2/extension/config/
 #include NT2_PP_INCLUDE(NT2_CONFIG_BASE,NT2_CUSTOM_BOOTSTRAP)
