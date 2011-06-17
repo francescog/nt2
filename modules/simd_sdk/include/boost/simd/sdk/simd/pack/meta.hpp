@@ -9,9 +9,9 @@
 #ifndef BOOST_SIMD_SDK_SIMD_PACK_META_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_PACK_META_HPP_INCLUDED
 
-#include <nt2/simd_sdk/simd/pack/meta/factory_of.hpp>
-#include <nt2/simd_sdk/simd/pack/meta/primitive_of.hpp>
-#include <nt2/simd_sdk/simd/pack/meta/upgrade.hpp>
-#include <nt2/simd_sdk/simd/pack/meta/downgrade.hpp>
+#include <boost/simd/sdk/simd/pack/meta/factory_of.hpp>
+#include <boost/simd/sdk/simd/pack/meta/primitive_of.hpp>
+#include <boost/simd/sdk/simd/pack/meta/upgrade.hpp>
+#include <boost/simd/sdk/simd/pack/meta/downgrade.hpp>
 
 #endif

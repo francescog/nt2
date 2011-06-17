@@ -12,8 +12,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Coutn cycles
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/timing/now.hpp>
-#include <nt2/simd_sdk/timing/timer.hpp>
+#include <boost/simd/sdk/timing/now.hpp>
+#include <boost/simd/sdk/timing/timer.hpp>
 
 namespace boost { namespace simd { namespace details
 {

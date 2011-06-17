@@ -15,10 +15,10 @@
  */
 
 #include <boost/mpl/apply.hpp>
-#include <nt2/simd_sdk/meta/strip.hpp>
-#include <nt2/simd_sdk/meta/primitive_of.hpp>
-#include <nt2/simd_sdk/error/static_assert.hpp>
-#include <nt2/simd_sdk/meta/is_fundamental.hpp>
+#include <boost/simd/sdk/meta/strip.hpp>
+#include <boost/simd/sdk/meta/primitive_of.hpp>
+#include <boost/simd/sdk/error/static_assert.hpp>
+#include <boost/simd/sdk/meta/is_fundamental.hpp>
 
 namespace boost { namespace meta
 {

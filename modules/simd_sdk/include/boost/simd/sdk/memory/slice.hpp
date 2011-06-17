@@ -13,13 +13,13 @@
 // Compute the number of slice between inner adn the Nth outer dimension
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/mpl/size_t.hpp>
-#include <nt2/simd_sdk/meta/mpl.hpp>
-#include <nt2/simd_sdk/meta/fusion.hpp>
-#include <nt2/simd_sdk/memory/padding.hpp>
-#include <nt2/simd_sdk/functor/functor.hpp>
+#include <boost/simd/sdk/meta/mpl.hpp>
+#include <boost/simd/sdk/meta/fusion.hpp>
+#include <boost/simd/sdk/memory/padding.hpp>
+#include <boost/simd/sdk/functor/functor.hpp>
 #include <boost/fusion/include/size.hpp>
-#include <nt2/simd_sdk/memory/details/category.hpp>
-#include <nt2/simd_sdk/functor/preprocessor/function.hpp>
+#include <boost/simd/sdk/memory/details/category.hpp>
+#include <boost/simd/sdk/functor/preprocessor/function.hpp>
 
 namespace boost
 {

@@ -22,17 +22,17 @@
  */
 
 #include <boost/config.hpp>
-#include <nt2/simd_sdk/meta/arithmetic.hpp>
-#include <nt2/simd_sdk/meta/floating.hpp>
-#include <nt2/simd_sdk/functor/forward.hpp>
-#include <nt2/simd_sdk/error/static_assert.hpp>
-#include <nt2/simd_sdk/functor/details/call.hpp>
-#include <nt2/simd_sdk/functor/meta/enable_call.hpp>
-#include <nt2/simd_sdk/functor/details/dispatch.hpp>
-#include <nt2/simd_sdk/functor/meta/make_functor.hpp>
-#include <nt2/simd_sdk/functor/preprocessor/dispatch.hpp>
-#include <nt2/simd_sdk/meta/result_of.hpp>
-#include <nt2/simd_sdk/config/attributes.hpp>
+#include <boost/simd/sdk/meta/arithmetic.hpp>
+#include <boost/simd/sdk/meta/floating.hpp>
+#include <boost/simd/sdk/functor/forward.hpp>
+#include <boost/simd/sdk/error/static_assert.hpp>
+#include <boost/simd/sdk/functor/details/call.hpp>
+#include <boost/simd/sdk/functor/meta/enable_call.hpp>
+#include <boost/simd/sdk/functor/details/dispatch.hpp>
+#include <boost/simd/sdk/functor/meta/make_functor.hpp>
+#include <boost/simd/sdk/functor/preprocessor/dispatch.hpp>
+#include <boost/simd/sdk/meta/result_of.hpp>
+#include <boost/simd/sdk/config/attributes.hpp>
 
 #if (defined(BOOST_NO_VARIADIC_TEMPLATES) || defined(BOOST_NO_RVALUE_REFERENCES)) \
  && defined (BOOST_SIMD_DONT_USE_PREPROCESSED_FILES) || defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
@@ -106,7 +106,7 @@ namespace boost { namespace simd
     #elif !defined(BOOST_NO_RVALUE_REFERENCES) && !defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES_NO_0X)
     
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/simd_sdk/functor/preprocessed/functor0x.hpp>
+#include <boost/simd/sdk/functor/preprocessed/functor0x.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES) && __INCLUDE_LEVEL__ == 0
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/functor0x.hpp")
@@ -152,7 +152,7 @@ namespace boost { namespace simd
     #else
 
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/simd_sdk/functor/preprocessed/functor.hpp>
+#include <boost/simd/sdk/functor/preprocessed/functor.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES) && __INCLUDE_LEVEL__ == 0
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/functor.hpp")

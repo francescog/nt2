@@ -10,12 +10,12 @@
 #define BOOST_SIMD_SDK_MEMORY_ALLOCATOR_HPP_INCLUDED
 
 #include <cstddef>
-#include <nt2/simd_sdk/error/error.hpp>
-#include <nt2/simd_sdk/memory/config.hpp>
-#include <nt2/simd_sdk/memory/align_on.hpp>
-#include <nt2/simd_sdk/memory/allocate.hpp>
-#include <nt2/simd_sdk/memory/deallocate.hpp>
-#include <nt2/simd_sdk/memory/reallocate.hpp>
+#include <boost/simd/sdk/error/error.hpp>
+#include <boost/simd/sdk/memory/config.hpp>
+#include <boost/simd/sdk/memory/align_on.hpp>
+#include <boost/simd/sdk/memory/allocate.hpp>
+#include <boost/simd/sdk/memory/deallocate.hpp>
+#include <boost/simd/sdk/memory/reallocate.hpp>
 
 namespace boost { namespace simd { namespace memory
 {

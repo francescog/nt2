@@ -12,9 +12,9 @@
 #include <cstddef>
 #include <boost/mpl/size_t.hpp>
 #include <boost/mpl/integral_c.hpp>
-#include <nt2/simd_sdk/memory/parameters.hpp>
-#include <nt2/simd_sdk/error/static_assert.hpp>
-#include <nt2/simd_sdk/memory/meta/is_power_of_2.hpp>
+#include <boost/simd/sdk/memory/parameters.hpp>
+#include <boost/simd/sdk/error/static_assert.hpp>
+#include <boost/simd/sdk/memory/meta/is_power_of_2.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

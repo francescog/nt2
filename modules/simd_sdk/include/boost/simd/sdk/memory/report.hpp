@@ -12,8 +12,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Memory config header
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/memory/config.hpp>
-#include <nt2/simd_sdk/config/details/reporter.hpp>
+#include <boost/simd/sdk/memory/config.hpp>
+#include <boost/simd/sdk/config/details/reporter.hpp>
 
 namespace boost { namespace simd { namespace config
 {

@@ -13,8 +13,8 @@
  * \brief Defines the nt2::meta::primitive_of \metafunction
  */
 #include <boost/type_traits/is_same.hpp>
-#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
-#include <nt2/simd_sdk/error/static_assert.hpp>
+#include <boost/simd/sdk/meta/hierarchy_of.hpp>
+#include <boost/simd/sdk/error/static_assert.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

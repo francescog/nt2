@@ -10,7 +10,7 @@
 #define BOOST_SIMD_SDK_SIMD_PACK_FORWARD_HPP_INCLUDED
 
 #include <boost/proto/proto.hpp>
-#include <nt2/simd_sdk/simd/meta/native_cardinal.hpp>
+#include <boost/simd/sdk/simd/meta/native_cardinal.hpp>
 
 namespace boost { namespace simd
 {

@@ -10,7 +10,7 @@
 #define BOOST_SIMD_SDK_META_DETAILS_HIERARCHY_OF_HPP_INCLUDED
 
 #include <boost/utility/enable_if.hpp>
-#include <nt2/simd_sdk/meta/enable_if_type.hpp>
+#include <boost/simd/sdk/meta/enable_if_type.hpp>
 #include <boost/type_traits/is_signed.hpp>
 #include <boost/type_traits/is_integral.hpp>
 #include <boost/type_traits/is_floating_point.hpp>

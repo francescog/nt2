@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_VMX_ALTIVEC_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_EXTENSIONS_VMX_ALTIVEC_HPP_INCLUDED
 
-#include <nt2/simd_sdk/error/warning.hpp>
+#include <boost/simd/sdk/error/warning.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // No SIMD extensions have been found yet
@@ -54,7 +54,7 @@ BOOST_WARNING(AltiVec SIMD extension detected)
 #define BOOST_SIMD_DEFAULT_EXTENSION  ::boost::simd::tag::altivec_
 #define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::tag::altivec_
 
-#include <nt2/simd_sdk/simd/extensions/meta/altivec.hpp>
+#include <boost/simd/sdk/simd/extensions/meta/altivec.hpp>
 
 #endif
 #endif

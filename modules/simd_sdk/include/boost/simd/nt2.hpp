@@ -6,8 +6,8 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#ifndef NT2_NT2_HPP_INCLUDED
-#define NT2_NT2_HPP_INCLUDED
+#ifndef BOOST_SIMD_SIMD_HPP_INCLUDED
+#define BOOST_SIMD_SIMD_HPP_INCLUDED
 
 //==============================================================================
 /*! \mainpage NT2 Reference Manual
@@ -18,10 +18,10 @@
  * recommend you to look at the main user manual.
  */
 //==============================================================================
-#include <nt2/include/config.hpp>
-#include <nt2/include/error.hpp>
-#include <nt2/include/timing.hpp>
-#include <nt2/include/functor.hpp>
-#include <nt2/include/simd.hpp>
+#include <boost/simd/include/config.hpp>
+#include <boost/simd/include/error.hpp>
+#include <boost/simd/include/timing.hpp>
+#include <boost/simd/include/functor.hpp>
+#include <boost/simd/include/simd.hpp>
 
 #endif

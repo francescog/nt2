@@ -15,7 +15,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/apply.hpp>
-#include <nt2/simd_sdk/meta/na.hpp>
+#include <boost/simd/sdk/meta/na.hpp>
 #include <nt2/extension/parameters.hpp>
 #include <boost/preprocessor/facilities/intercept.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>

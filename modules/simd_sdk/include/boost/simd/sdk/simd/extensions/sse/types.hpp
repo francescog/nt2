@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_SSE_TYPES_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_EXTENSIONS_SSE_TYPES_HPP_INCLUDED
 
-#include <nt2/simd_sdk/config/type_lists.hpp>
+#include <boost/simd/sdk/config/type_lists.hpp>
 
 #define BOOST_SIMD_TYPES  (double)(nt2::uint64_t)(nt2::int64_t) \
                           (float)(nt2::uint32_t)(nt2::int32_t)  \

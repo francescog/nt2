@@ -10,8 +10,8 @@
 #define BOOST_SIMD_SDK_DSL_RECOGNITION_HPP_INCLUDED
 
 #include <boost/proto/proto.hpp>
-#include <nt2/simd_sdk/dsl/compile.hpp>
-#include <nt2/simd_sdk/functor/forward.hpp>
+#include <boost/simd/sdk/dsl/compile.hpp>
+#include <boost/simd/sdk/functor/forward.hpp>
 
 namespace boost { namespace simd
 {

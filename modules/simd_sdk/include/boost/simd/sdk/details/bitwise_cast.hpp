@@ -15,8 +15,8 @@
  */
 
 #include <cstring>
-#include <nt2/simd_sdk/error/static_assert.hpp>
-#include <nt2/simd_sdk/config/attributes.hpp>
+#include <boost/simd/sdk/error/static_assert.hpp>
+#include <boost/simd/sdk/config/attributes.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 
 namespace boost { namespace simd { namespace details

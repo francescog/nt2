@@ -14,12 +14,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/mpl/pair.hpp>
 #include <boost/typeof/typeof.hpp>
-#include <nt2/simd_sdk/meta/fusion.hpp>
-#include <nt2/simd_sdk/memory/slice.hpp>
-#include <nt2/simd_sdk/memory/stride.hpp>
+#include <boost/simd/sdk/meta/fusion.hpp>
+#include <boost/simd/sdk/memory/slice.hpp>
+#include <boost/simd/sdk/memory/stride.hpp>
 #include <boost/fusion/include/at.hpp>
 #include <boost/fusion/include/size.hpp>
-#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
+#include <boost/simd/sdk/functor/preprocessor/call.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // slice implementation for no_padding strategy

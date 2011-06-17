@@ -14,11 +14,11 @@
  * \brief Defines and implements \ref nt2::meta::as_integer
  */
 
-#include <nt2/simd_sdk/meta/sign_of.hpp>
-#include <nt2/simd_sdk/meta/factory_of.hpp>
-#include <nt2/simd_sdk/meta/make_integer.hpp>
-#include <nt2/simd_sdk/meta/primitive_of.hpp>
-#include <nt2/simd_sdk/meta/is_fundamental.hpp>
+#include <boost/simd/sdk/meta/sign_of.hpp>
+#include <boost/simd/sdk/meta/factory_of.hpp>
+#include <boost/simd/sdk/meta/make_integer.hpp>
+#include <boost/simd/sdk/meta/primitive_of.hpp>
+#include <boost/simd/sdk/meta/is_fundamental.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

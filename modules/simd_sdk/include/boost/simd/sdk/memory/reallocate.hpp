@@ -11,9 +11,9 @@
 
 #include <cstring>
 #include <cstddef>
-#include <nt2/simd_sdk/error/error.hpp>
-#include <nt2/simd_sdk/memory/config.hpp>
-#include <nt2/simd_sdk/memory/align_on.hpp>
+#include <boost/simd/sdk/error/error.hpp>
+#include <boost/simd/sdk/memory/config.hpp>
+#include <boost/simd/sdk/memory/align_on.hpp>
 
 namespace boost { namespace simd { namespace memory
 {

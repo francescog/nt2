@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_META_FLOATING_HPP_INCLUDED
 #define BOOST_SIMD_SDK_META_FLOATING_HPP_INCLUDED
 
-#include <nt2/simd_sdk/meta/make_real.hpp>
+#include <boost/simd/sdk/meta/make_real.hpp>
 
 #if defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/extension/parameters.hpp>
@@ -35,7 +35,7 @@ namespace boost  { namespace simd { namespace meta
     };
 
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/simd_sdk/meta/preprocessed/floating.hpp>
+#include <boost/simd/sdk/meta/preprocessed/floating.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES) && __INCLUDE_LEVEL__ = 0
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/floating.hpp")

@@ -7,11 +7,11 @@
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
 
-#include <nt2/simd_sdk/error/error.hpp>
+#include <boost/simd/sdk/error/error.hpp>
 #if !defined(NT2_DISABLE_ERROR)
 #include <sstream>
 #include <iostream>
-#include <nt2/simd_sdk/details/timestamp.hpp>
+#include <boost/simd/sdk/details/timestamp.hpp>
 
 namespace boost
 {

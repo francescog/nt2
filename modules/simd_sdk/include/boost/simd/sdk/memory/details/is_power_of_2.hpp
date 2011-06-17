@@ -9,9 +9,9 @@
 #ifndef BOOST_SIMD_SDK_MEMORY_DETAILS_IS_POWER_OF_2_HPP_INCLUDED
 #define BOOST_SIMD_SDK_MEMORY_DETAILS_IS_POWER_OF_2_HPP_INCLUDED
 
-#include <nt2/simd_sdk/meta/mpl.hpp>
-#include <nt2/simd_sdk/memory/details/category.hpp>
-#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
+#include <boost/simd/sdk/meta/mpl.hpp>
+#include <boost/simd/sdk/memory/details/category.hpp>
+#include <boost/simd/sdk/functor/preprocessor/call.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // is_power_of_2 on integers

@@ -14,7 +14,7 @@
 // The rationale is to provide an easy way to write common code for SIMD and scalar in various
 // situations of selection or test.
 //////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/meta/is_scalar.hpp>
+#include <boost/simd/sdk/meta/is_scalar.hpp>
 
 namespace boost
 {

@@ -9,11 +9,11 @@
 #ifndef BOOST_SIMD_SDK_MEMORY_IS_ALIGNED_HPP_INCLUDED
 #define BOOST_SIMD_SDK_MEMORY_IS_ALIGNED_HPP_INCLUDED
 
-#include <nt2/simd_sdk/meta/mpl.hpp>
-#include <nt2/simd_sdk/error/assert.hpp>
-#include <nt2/simd_sdk/functor/functor.hpp>
-#include <nt2/simd_sdk/memory/is_power_of_2.hpp>
-#include <nt2/simd_sdk/functor/preprocessor/function.hpp>
+#include <boost/simd/sdk/meta/mpl.hpp>
+#include <boost/simd/sdk/error/assert.hpp>
+#include <boost/simd/sdk/functor/functor.hpp>
+#include <boost/simd/sdk/memory/is_power_of_2.hpp>
+#include <boost/simd/sdk/functor/preprocessor/function.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Check if a value is aligned on some power of 2 alignment boundary
@@ -65,6 +65,6 @@ namespace boost
       }
 } } }
 
-#include <nt2/simd_sdk/memory/details/is_aligned.hpp>
+#include <boost/simd/sdk/memory/details/is_aligned.hpp>
 
 #endif

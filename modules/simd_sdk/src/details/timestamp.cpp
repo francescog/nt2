@@ -8,7 +8,7 @@
 //==============================================================================
 #include <time.h>
 #include <boost/config.hpp>
-#include <nt2/simd_sdk/details/timestamp.hpp>
+#include <boost/simd/sdk/details/timestamp.hpp>
 
 #if defined(BOOST_MSVC)
 #pragma warning(push)

@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_CONFIG_HPP_INCLUDED
-#define NT2_SDK_CONFIG_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Main config header
@@ -17,11 +17,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 // NT2 configuration files
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/config/os.hpp>
-#include <nt2/sdk/config/arch.hpp>
-#include <nt2/sdk/config/compiler.hpp>
-#include <nt2/sdk/config/attributes.hpp>
-#include <nt2/sdk/config/type_lists.hpp>
+#include <boost/simd/sdk/config/os.hpp>
+#include <boost/simd/config/arch.hpp>
+#include <boost/simd/config/compiler.hpp>
+#include <boost/simd/config/attributes.hpp>
+#include <boost/simd/config/type_lists.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // External NT2 configuration files
@@ -31,6 +31,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Build a nt2 versioning symbol for binary conformance
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/config/version.hpp>
+#include <boost/simd/sdk/config/version.hpp>
 
 #endif

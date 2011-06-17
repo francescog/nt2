@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_SDK_OPTION_OPTION_PACK_HPP_INCLUDED
 #define BOOST_SIMD_SDK_OPTION_OPTION_PACK_HPP_INCLUDED
 
-#include <nt2/simd_sdk/option/option_spec.hpp>
-#include <nt2/simd_sdk/option/option_not_found.hpp>
+#include <boost/simd/sdk/option/option_spec.hpp>
+#include <boost/simd/sdk/option/option_not_found.hpp>
 #include <boost/proto/core.hpp>
 #include <boost/proto/transform.hpp>
 

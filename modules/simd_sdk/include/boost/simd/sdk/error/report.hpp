@@ -12,8 +12,8 @@
 //==============================================================================
 // Configuration report for error handling settings
 //==============================================================================
-#include <nt2/simd_sdk/config.hpp>
-#include <nt2/simd_sdk/error/debug.hpp>
+#include <boost/simd/sdk/config.hpp>
+#include <boost/simd/sdk/error/debug.hpp>
 
 namespace boost { namespace simd { namespace config
 {

@@ -14,9 +14,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/integral_c_tag.hpp>
-#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
+#include <boost/simd/sdk/meta/hierarchy_of.hpp>
 #include <boost/type_traits/is_same.hpp>
-#include <nt2/simd_sdk/meta/enable_if_type.hpp>
+#include <boost/simd/sdk/meta/enable_if_type.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Some MPL introspection helpers

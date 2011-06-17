@@ -16,7 +16,7 @@
 
 #include <boost/config.hpp>
 #include <boost/function_types/result_type.hpp>
-#include <nt2/simd_sdk/functor/functor.hpp>
+#include <boost/simd/sdk/functor/functor.hpp>
 
 #if (defined(BOOST_NO_VARIADIC_TEMPLATES) && defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)) || defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES)
 #include <nt2/extension/parameters.hpp>
@@ -66,7 +66,7 @@ namespace boost { namespace simd { namespace meta
 #else
 
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/simd_sdk/functor/meta/preprocessed/call.hpp>
+#include <boost/simd/sdk/functor/meta/preprocessed/call.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES) && __INCLUDE_LEVEL__ == 0
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/call.hpp")

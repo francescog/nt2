@@ -10,10 +10,10 @@
 #define BOOST_SIMD_SDK_DSL_FROM_DOMAIN_HPP_INCLUDED
 
 #include <boost/proto/proto.hpp>
-#include <nt2/simd_sdk/dsl/category.hpp>
-#include <nt2/simd_sdk/functor/functor.hpp>
-#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
-#include <nt2/simd_sdk/functor/preprocessor/function.hpp>
+#include <boost/simd/sdk/dsl/category.hpp>
+#include <boost/simd/sdk/functor/functor.hpp>
+#include <boost/simd/sdk/functor/preprocessor/call.hpp>
+#include <boost/simd/sdk/functor/preprocessor/function.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // from_domain is a function that wraps an expression from domain X in domain Y

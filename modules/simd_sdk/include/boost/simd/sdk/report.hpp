@@ -6,8 +6,8 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef NT2_SDK_REPORT_HPP_INCLUDED
-#define NT2_SDK_REPORT_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_REPORT_HPP_INCLUDED
+#define BOOST_SIMD_SDK_REPORT_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Main report header
@@ -17,10 +17,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Internal NT2 configuration report
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/config/os/report.hpp>
-#include <nt2/sdk/config/arch/report.hpp>
-#include <nt2/sdk/config/compiler/report.hpp>
-#include <nt2/sdk/config/software.hpp>
+#include <boost/simd/sdk/config/os/report.hpp>
+#include <boost/simd/sdk/config/arch/report.hpp>
+#include <boost/simd/sdk/config/compiler/report.hpp>
+#include <boost/simd/sdk/config/software.hpp>
 
 namespace boost { namespace simd { namespace config
 {
@@ -40,9 +40,9 @@ namespace boost { namespace simd { namespace config
 ////////////////////////////////////////////////////////////////////////////////
 // SDK configuration report
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/simd/report.hpp>
-#include <nt2/sdk/memory/report.hpp>
-#include <nt2/sdk/error/report.hpp>
+#include <boost/simd/sdk/simd/report.hpp>
+#include <boost/simd/sdk/memory/report.hpp>
+#include <boost/simd/sdk/error/report.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // External NT2 configuration report

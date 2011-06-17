@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_SIMD_IO_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_IO_HPP_INCLUDED
 
-#include <nt2/simd_sdk/simd/native.hpp>
+#include <boost/simd/sdk/simd/native.hpp>
 
 namespace boost { namespace simd
 {

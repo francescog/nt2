@@ -10,9 +10,9 @@
 #define BOOST_SIMD_SDK_SIMD_PACK_PACK_HPP_INCLUDED
 
 #include <boost/proto/core.hpp>
-#include <nt2/simd_sdk/dsl/call.hpp>
-#include <nt2/simd_sdk/simd/pack/meta.hpp>
-#include <nt2/simd_sdk/meta/is_iterator.hpp>
+#include <boost/simd/sdk/dsl/call.hpp>
+#include <boost/simd/sdk/simd/pack/meta.hpp>
+#include <boost/simd/sdk/meta/is_iterator.hpp>
 #include <nt2/include/functions/load.hpp>
 
 namespace boost { namespace simd

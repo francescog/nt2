@@ -8,8 +8,8 @@
  ******************************************************************************/
 
 #include <iostream>
-#include <nt2/simd_sdk/timing/tic.hpp>
-#include <nt2/simd_sdk/timing/ctic.hpp>
+#include <boost/simd/sdk/timing/tic.hpp>
+#include <boost/simd/sdk/timing/ctic.hpp>
 
 namespace boost { namespace simd { namespace details
 {

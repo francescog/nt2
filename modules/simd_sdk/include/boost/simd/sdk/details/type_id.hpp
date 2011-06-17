@@ -33,7 +33,7 @@
 #include <cstdlib>
 #include <typeinfo>
 #include <iostream>
-#include <nt2/simd_sdk/details/ignore_unused.hpp>
+#include <boost/simd/sdk/details/ignore_unused.hpp>
 
 namespace boost { namespace simd { namespace details
 {

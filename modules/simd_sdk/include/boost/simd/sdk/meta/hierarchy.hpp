@@ -15,8 +15,8 @@
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_signed.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
-#include <nt2/simd_sdk/details/preprocessor.hpp>
-#include <nt2/simd_sdk/meta/details/hierarchy.hpp>
+#include <boost/simd/sdk/details/preprocessor.hpp>
+#include <boost/simd/sdk/meta/details/hierarchy.hpp>
 
 #define BOOST_SIMD_HIERARCHY_CLASS(Name, Parent)     \
 struct Name : Parent                          \

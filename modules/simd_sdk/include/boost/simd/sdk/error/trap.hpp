@@ -15,8 +15,8 @@
  */
 
 #include <boost/utility/enable_if.hpp>
-#include <nt2/simd_sdk/config/attributes.hpp>
-#include <nt2/simd_sdk/error/details/trap.hpp>
+#include <boost/simd/sdk/config/attributes.hpp>
+#include <boost/simd/sdk/error/details/trap.hpp>
 
 namespace boost
 {

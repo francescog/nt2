@@ -7,7 +7,7 @@
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
 #include <cstdlib>
-#include <nt2/simd_sdk/memory/forward.hpp>
+#include <boost/simd/sdk/memory/forward.hpp>
 
 namespace boost { namespace simd { namespace memory
 {

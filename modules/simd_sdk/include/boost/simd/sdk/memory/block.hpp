@@ -12,14 +12,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Multidimensional memory block with NRC style allocation
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/memory/slice.hpp>
-#include <nt2/simd_sdk/memory/stride.hpp>
+#include <boost/simd/sdk/memory/slice.hpp>
+#include <boost/simd/sdk/memory/stride.hpp>
 #include <boost/fusion/include/at.hpp>
 #include <nt2/extension/parameters.hpp>
 #include <boost/fusion/include/nview.hpp>
-#include <nt2/simd_sdk/error/static_assert.hpp>
+#include <boost/simd/sdk/error/static_assert.hpp>
 #include <boost/fusion/include/make_vector.hpp>
-#include <nt2/simd_sdk/memory/details/make_buffer.hpp>
+#include <boost/simd/sdk/memory/details/make_buffer.hpp>
 #include <boost/preprocessor/iteration/iterate.hpp>
 
 namespace boost { namespace simd { namespace memory

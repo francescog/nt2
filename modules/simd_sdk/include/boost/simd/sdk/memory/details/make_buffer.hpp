@@ -15,8 +15,8 @@
 #include <boost/mpl/at.hpp>
 #include <boost/typeof/typeof.hpp>
 #include <boost/mpl/push_back.hpp>
-#include <nt2/simd_sdk/memory/buffer.hpp>
-#include <nt2/simd_sdk/memory/slice.hpp>
+#include <boost/simd/sdk/memory/buffer.hpp>
+#include <boost/simd/sdk/memory/slice.hpp>
 #include <boost/fusion/include/mpl.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
 #include <boost/fusion/include/vector.hpp>

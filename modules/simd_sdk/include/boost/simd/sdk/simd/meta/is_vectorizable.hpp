@@ -10,8 +10,8 @@
 #define BOOST_SIMD_SDK_SIMD_META_IS_VECTORIZABLE_HPP_INCLUDED
 
 #include <boost/mpl/bool.hpp>
-#include <nt2/simd_sdk/meta/na.hpp>
-#include <nt2/simd_sdk/simd/extensions.hpp>
+#include <boost/simd/sdk/meta/na.hpp>
+#include <boost/simd/sdk/simd/extensions.hpp>
 #include <boost/type_traits/is_same.hpp>
 
 namespace boost { namespace simd { namespace meta

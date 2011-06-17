@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_META_HIERARCHY_OF_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_META_HIERARCHY_OF_HPP_INCLUDED
 
-#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
+#include <boost/simd/sdk/meta/hierarchy_of.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

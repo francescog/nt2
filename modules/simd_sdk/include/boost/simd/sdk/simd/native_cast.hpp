@@ -10,11 +10,11 @@
 #define BOOST_SIMD_SDK_SIMD_NATIVE_CAST_HPP_INCLUDED
 
 #include <boost/mpl/and.hpp>
-#include <nt2/simd_sdk/simd/native.hpp>
+#include <boost/simd/sdk/simd/native.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_same.hpp>
-#include <nt2/simd_sdk/simd/meta/is_native.hpp>
-#include <nt2/simd_sdk/details/bitwise_cast.hpp>
+#include <boost/simd/sdk/simd/meta/is_native.hpp>
+#include <boost/simd/sdk/details/bitwise_cast.hpp>
 
 namespace boost { namespace simd
 {

@@ -13,7 +13,7 @@
 // Padding strategies for memory allocation
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/mpl/pair.hpp>
-#include <nt2/simd_sdk/memory/padding.hpp>
+#include <boost/simd/sdk/memory/padding.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Various pre-made padding strategies
@@ -30,6 +30,6 @@ namespace boost { namespace simd {  namespace memory
   };
 } } }
 
-#include <nt2/simd_sdk/memory/details/global_padding.hpp>
+#include <boost/simd/sdk/memory/details/global_padding.hpp>
 
 #endif

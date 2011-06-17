@@ -10,7 +10,7 @@
 #define BOOST_SIMD_SDK_SIMD_DETAILS_NATIVE_META_FACTORY_OF_HPP_INCLUDED
 
 #include <boost/mpl/placeholders.hpp>
-#include <nt2/simd_sdk/meta/factory_of.hpp>
+#include <boost/simd/sdk/meta/factory_of.hpp>
 
 namespace boost { namespace simd { namespace meta
 {

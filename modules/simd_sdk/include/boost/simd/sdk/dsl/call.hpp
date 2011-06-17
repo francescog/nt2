@@ -12,16 +12,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 // This file generate basic EDSL expression wrapper over any nt2 function
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/meta/any.hpp>
+#include <boost/simd/sdk/meta/any.hpp>
 #include <boost/proto/proto.hpp>
-#include <nt2/simd_sdk/dsl/category.hpp>
-#include <nt2/simd_sdk/functor/functor.hpp>
-#include <nt2/simd_sdk/functor/meta/call.hpp>
-#include <nt2/simd_sdk/functor/meta/hierarchy.hpp>
+#include <boost/simd/sdk/dsl/category.hpp>
+#include <boost/simd/sdk/functor/functor.hpp>
+#include <boost/simd/sdk/functor/meta/call.hpp>
+#include <boost/simd/sdk/functor/meta/hierarchy.hpp>
 
 #if defined (BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
 #include <nt2/extension/parameters.hpp>
-#include <nt2/simd_sdk/functor/preprocessor/call.hpp>
+#include <boost/simd/sdk/functor/preprocessor/call.hpp>
 #include <boost/preprocessor/selection/min.hpp>
 #endif
 
@@ -95,7 +95,7 @@ namespace boost { namespace simd { namespace details
 } } }
 
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/simd_sdk/dsl/preprocessed/call.hpp>
+#include <boost/simd/sdk/dsl/preprocessed/call.hpp>
 #else
 #if defined(__WAVE__) && defined(BOOST_SIMD_CREATE_PREPROCESSED_FILES) && __INCLUDE_LEVEL__ == 0
 #pragma wave option(preserve: 2, line: 0, output: "preprocessed/call.hpp")

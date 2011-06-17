@@ -7,9 +7,9 @@
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
 
-#include <nt2/simd_sdk/timing/now.hpp>
-#include <nt2/simd_sdk/config/arch.hpp>
-#include <nt2/simd_sdk/config/types.hpp>
+#include <boost/simd/sdk/timing/now.hpp>
+#include <boost/simd/sdk/config/arch.hpp>
+#include <boost/simd/sdk/config/types.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // now returns elapsed time in seconds

@@ -13,9 +13,9 @@
 // Take a bit pattern and turn it into a value
 // See: http://nt2.metascale.org/sdk/meta/traits/from_bits.html
 //////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/meta/strip.hpp>
-#include <nt2/simd_sdk/meta/as_integer.hpp>
-#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
+#include <boost/simd/sdk/meta/strip.hpp>
+#include <boost/simd/sdk/meta/as_integer.hpp>
+#include <boost/simd/sdk/meta/hierarchy_of.hpp>
 
 namespace boost { namespace simd { namespace details
 {

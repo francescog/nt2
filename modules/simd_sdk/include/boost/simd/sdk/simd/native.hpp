@@ -9,14 +9,14 @@
 #ifndef BOOST_SIMD_SDK_SIMD_NATIVE_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_NATIVE_HPP_INCLUDED
 
-#include <nt2/simd_sdk/meta/fusion.hpp>
-#include <nt2/simd_sdk/simd/category.hpp>
+#include <boost/simd/sdk/meta/fusion.hpp>
+#include <boost/simd/sdk/simd/category.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <nt2/simd_sdk/memory/overload.hpp>
-#include <nt2/simd_sdk/error/static_assert.hpp>
-//#include <nt2/simd_sdk/functor/details/tags.hpp>
-#include <nt2/simd_sdk/simd/meta/is_vectorizable.hpp>
-#include <nt2/simd_sdk/simd/details/native/iterator.hpp>
+#include <boost/simd/sdk/memory/overload.hpp>
+#include <boost/simd/sdk/error/static_assert.hpp>
+//#include <boost/simd/sdk/functor/details/tags.hpp>
+#include <boost/simd/sdk/simd/meta/is_vectorizable.hpp>
+#include <boost/simd/sdk/simd/details/native/iterator.hpp>
 
 namespace boost { namespace simd
 {
@@ -219,12 +219,12 @@ namespace boost { namespace simd
 ////////////////////////////////////////////////////////////////////////////////
 // Related components
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/simd/details/native/meta.hpp>
-#include <nt2/simd_sdk/simd/details/native/fusion.hpp>
-//#include <nt2/simd_sdk/simd/details/native/constants.hpp>
-//#include <nt2/simd_sdk/simd/details/native/functions.hpp>
-#include <nt2/simd_sdk/simd/details/native/operators.hpp>
-#include <nt2/simd_sdk/simd/details/native/comparisons.hpp>
+#include <boost/simd/sdk/simd/details/native/meta.hpp>
+#include <boost/simd/sdk/simd/details/native/fusion.hpp>
+//#include <boost/simd/sdk/simd/details/native/constants.hpp>
+//#include <boost/simd/sdk/simd/details/native/functions.hpp>
+#include <boost/simd/sdk/simd/details/native/operators.hpp>
+#include <boost/simd/sdk/simd/details/native/comparisons.hpp>
 
 #if 0
 #include <nt2/include/constants/digits.hpp>

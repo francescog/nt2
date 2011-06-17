@@ -9,17 +9,17 @@
 #ifndef BOOST_SIMD_SDK_FUNCTOR_DETAILS_DISPATCH_HPP_INCLUDED
 #define BOOST_SIMD_SDK_FUNCTOR_DETAILS_DISPATCH_HPP_INCLUDED
 
-#include <nt2/simd_sdk/meta/strip.hpp>
-#include <nt2/simd_sdk/meta/hierarchy.hpp>
-#include <nt2/simd_sdk/functor/details/call.hpp>
-#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
-#include <nt2/simd_sdk/details/decltype.hpp>
+#include <boost/simd/sdk/meta/strip.hpp>
+#include <boost/simd/sdk/meta/hierarchy.hpp>
+#include <boost/simd/sdk/functor/details/call.hpp>
+#include <boost/simd/sdk/meta/hierarchy_of.hpp>
+#include <boost/simd/sdk/details/decltype.hpp>
 
 #if !defined(BOOST_SIMD_DONT_USE_PREPROCESSED_FILES)
-#include <nt2/simd_sdk/functor/details/preprocessed/dispatch.hpp>
+#include <boost/simd/sdk/functor/details/preprocessed/dispatch.hpp>
 #else
 #include <nt2/extension/parameters.hpp>
-#include <nt2/simd_sdk/details/preprocessor.hpp>
+#include <boost/simd/sdk/details/preprocessor.hpp>
 #include <boost/preprocessor/seq/size.hpp>
 #include <boost/preprocessor/seq/elem.hpp>
 #include <boost/preprocessor/repetition/enum.hpp>

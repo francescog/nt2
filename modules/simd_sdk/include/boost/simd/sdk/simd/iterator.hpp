@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_SDK_SIMD_ITERATOR_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_ITERATOR_HPP_INCLUDED
 
-#include <nt2/simd_sdk/simd/pack.hpp>
-#include <nt2/simd_sdk/memory/align_on.hpp>
+#include <boost/simd/sdk/simd/pack.hpp>
+#include <boost/simd/sdk/memory/align_on.hpp>
 #include <boost/iterator/iterator_adaptor.hpp>
 
 namespace boost { namespace simd

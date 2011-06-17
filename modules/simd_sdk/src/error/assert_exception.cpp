@@ -8,7 +8,7 @@
 //==============================================================================
 
 #include <iostream>
-#include <nt2/simd_sdk/error/assert.hpp>
+#include <boost/simd/sdk/error/assert.hpp>
 
 #if !defined(BOOST_SIMD_NO_EXCEPTIONS)
 

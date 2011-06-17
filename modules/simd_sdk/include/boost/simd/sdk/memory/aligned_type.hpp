@@ -10,7 +10,7 @@
 #define BOOST_SIMD_SDK_MEMORY_ALIGNED_TYPE_HPP_INCLUDED
 
 #include <cstddef>
-#include <nt2/simd_sdk/memory/parameters.hpp>
+#include <boost/simd/sdk/memory/parameters.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Intrinsic platform dependant alignment attribute

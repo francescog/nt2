@@ -9,10 +9,10 @@
 #ifndef BOOST_SIMD_SDK_MEMORY_ALIGN_ON_HPP_INCLUDED
 #define BOOST_SIMD_SDK_MEMORY_ALIGN_ON_HPP_INCLUDED
 
-#include <nt2/simd_sdk/error/assert.hpp>
-#include <nt2/simd_sdk/functor/functor.hpp>
-#include <nt2/simd_sdk/memory/is_power_of_2.hpp>
-#include <nt2/simd_sdk/functor/preprocessor/function.hpp>
+#include <boost/simd/sdk/error/assert.hpp>
+#include <boost/simd/sdk/functor/functor.hpp>
+#include <boost/simd/sdk/memory/is_power_of_2.hpp>
+#include <boost/simd/sdk/functor/preprocessor/function.hpp>
 
 namespace boost
 {
@@ -63,6 +63,6 @@ namespace boost
   }
 }
 
-#include <nt2/simd_sdk/memory/details/align_on.hpp>
+#include <boost/simd/sdk/memory/details/align_on.hpp>
 
 #endif

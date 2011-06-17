@@ -9,12 +9,12 @@
 #ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_META_SSE_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_EXTENSIONS_META_SSE_HPP_INCLUDED
 
-#include <nt2/simd_sdk/config/types.hpp>
-#include <nt2/simd_sdk/details/bitwise_cast.hpp>
+#include <boost/simd/sdk/config/types.hpp>
+#include <boost/simd/sdk/details/bitwise_cast.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/is_integral.hpp>
 
-#include <nt2/simd_sdk/functor/meta/hierarchy.hpp>
+#include <boost/simd/sdk/functor/meta/hierarchy.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Tag hierarchy for SSE extensions

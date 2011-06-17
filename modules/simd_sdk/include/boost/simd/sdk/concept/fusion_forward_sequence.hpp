@@ -14,12 +14,12 @@
 // Documentation:
 // http://www.boost.org/doc/libs/release/libs/fusion/doc/html/fusion/sequence/concepts/forward_sequence.html
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/error/concepts.hpp>
+#include <boost/simd/sdk/error/concepts.hpp>
 #include <boost/fusion/include/end.hpp>
 #include <boost/fusion/include/size.hpp>
 #include <boost/fusion/include/begin.hpp>
 #include <boost/fusion/include/front.hpp>
-#include <nt2/simd_sdk/details/ignore_unused.hpp>
+#include <boost/simd/sdk/details/ignore_unused.hpp>
 #include <boost/fusion/sequence/intrinsic/empty.hpp>
 
 namespace boost

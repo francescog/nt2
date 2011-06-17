@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_TIMING_EXCEPTIONS_HPP_INCLUDED
 #define BOOST_SIMD_SDK_TIMING_EXCEPTIONS_HPP_INCLUDED
 
-#include <nt2/simd_sdk/error/details/exception.hpp>
+#include <boost/simd/sdk/error/details/exception.hpp>
 
 namespace boost { namespace simd { namespace time
 {

@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_TIMING_NOW_HPP_INCLUDED
 #define BOOST_SIMD_SDK_TIMING_NOW_HPP_INCLUDED
 
-#include <nt2/simd_sdk/config/types.hpp>
+#include <boost/simd/sdk/config/types.hpp>
 
 namespace boost { namespace simd { namespace details
 {
@@ -17,6 +17,6 @@ namespace boost { namespace simd { namespace details
   double    now();
 } } }
 
-#include <nt2/simd_sdk/timing/impl/cycles.hpp>
+#include <boost/simd/sdk/timing/impl/cycles.hpp>
 
 #endif

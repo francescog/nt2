@@ -11,14 +11,14 @@
 #define BOOST_SIMD_SDK_SIMD_EXTENSIONS_META_ALTIVEC_HPP_INCLUDED
 
 #include <climits>
-#include <nt2/simd_sdk/meta/set.hpp>
-#include <nt2/simd_sdk/meta/has_key.hpp>
-#include <nt2/simd_sdk/config/types.hpp>
+#include <boost/simd/sdk/meta/set.hpp>
+#include <boost/simd/sdk/meta/has_key.hpp>
+#include <boost/simd/sdk/config/types.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/is_integral.hpp>
 #include <boost/type_traits/is_signed.hpp>
 
-#include <nt2/simd_sdk/functor/meta/hierarchy.hpp>
+#include <boost/simd/sdk/functor/meta/hierarchy.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Tag hierarchy for Altivec PPC extensions

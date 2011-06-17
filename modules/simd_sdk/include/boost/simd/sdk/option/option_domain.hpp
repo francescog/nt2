@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_OPTION_OPTION_DOMAIN_HPP_INCLUDED
 #define BOOST_SIMD_SDK_OPTION_OPTION_DOMAIN_HPP_INCLUDED
 
-#include <nt2/simd_sdk/option/option_expr_fwd.hpp>
+#include <boost/simd/sdk/option/option_expr_fwd.hpp>
 #include <boost/proto/core.hpp>
 
 namespace boost { namespace simd { namespace details

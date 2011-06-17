@@ -10,7 +10,7 @@
 #define BOOST_SIMD_SDK_DSL_COMPILE_HPP_INCLUDED
 
 #include <boost/proto/transform.hpp>
-#include <nt2/simd_sdk/dsl/proto/unpack.hpp>
+#include <boost/simd/sdk/dsl/proto/unpack.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // compile recursively traverse a nt2 AST to perform a given trasnformation

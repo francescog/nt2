@@ -44,7 +44,7 @@ extern "C"
   #include <smmintrin.h>
 }
 
-#include <nt2/simd_sdk/simd/extensions/meta/sse.hpp>
+#include <boost/simd/sdk/simd/extensions/meta/sse.hpp>
 
 #endif
 #endif

@@ -9,11 +9,11 @@
 #ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_META_XOP_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_EXTENSIONS_META_XOP_HPP_INCLUDED
 
-#include <nt2/simd_sdk/meta/set.hpp>
-#include <nt2/simd_sdk/meta/has_key.hpp>
-#include <nt2/simd_sdk/config/types.hpp>
+#include <boost/simd/sdk/meta/set.hpp>
+#include <boost/simd/sdk/meta/has_key.hpp>
+#include <boost/simd/sdk/config/types.hpp>
 
-#include <nt2/simd_sdk/functor/meta/hierarchy.hpp>
+#include <boost/simd/sdk/functor/meta/hierarchy.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Tag hierarchy for XOP extensions

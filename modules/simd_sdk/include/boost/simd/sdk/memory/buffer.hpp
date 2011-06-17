@@ -14,9 +14,9 @@
 // Basically a std::vector that copes well with bool and use NRC like allocation
 // interface and parametrization
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/error/assert.hpp>
-#include <nt2/simd_sdk/memory/allocator.hpp>
-#include <nt2/simd_sdk/memory/details/buffer_base.hpp>
+#include <boost/simd/sdk/error/assert.hpp>
+#include <boost/simd/sdk/memory/allocator.hpp>
+#include <boost/simd/sdk/memory/details/buffer_base.hpp>
 
 #ifdef BOOST_MSVC
 #pragma warning(push)

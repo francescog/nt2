@@ -9,27 +9,27 @@
 #ifndef BOOST_SIMD_SDK_SIMD_EXTENSIONS_SSE_HPP_INCLUDED
 #define BOOST_SIMD_SDK_SIMD_EXTENSIONS_SSE_HPP_INCLUDED
 
-#include <nt2/simd_sdk/simd/meta/as_simd.hpp>
-#include <nt2/simd_sdk/simd/meta/extension_of.hpp>
-#include <nt2/simd_sdk/simd/meta/is_simd_specific.hpp>
+#include <boost/simd/sdk/simd/meta/as_simd.hpp>
+#include <boost/simd/sdk/simd/meta/extension_of.hpp>
+#include <boost/simd/sdk/simd/meta/is_simd_specific.hpp>
 
 #if !defined(BOOST_SIMD_DETECTED)
 ////////////////////////////////////////////////////////////////////////////////
 // Check for the most recent SSE familly extension
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/simd/extensions/sse/xop.hpp>
-#include <nt2/simd_sdk/simd/extensions/sse/sse4a.hpp>
+#include <boost/simd/sdk/simd/extensions/sse/xop.hpp>
+#include <boost/simd/sdk/simd/extensions/sse/sse4a.hpp>
 
-//#include <nt2/simd_sdk/simd/extensions/sse/fma4.hpp>
-#include <nt2/simd_sdk/simd/extensions/sse/avx.hpp>
-#include <nt2/simd_sdk/simd/extensions/sse/sse4_2.hpp>
-#include <nt2/simd_sdk/simd/extensions/sse/sse4_1.hpp>
-#include <nt2/simd_sdk/simd/extensions/sse/ssse3.hpp>
-#include <nt2/simd_sdk/simd/extensions/sse/sse3.hpp>
-#include <nt2/simd_sdk/simd/extensions/sse/sse2.hpp>
+//#include <boost/simd/sdk/simd/extensions/sse/fma4.hpp>
+#include <boost/simd/sdk/simd/extensions/sse/avx.hpp>
+#include <boost/simd/sdk/simd/extensions/sse/sse4_2.hpp>
+#include <boost/simd/sdk/simd/extensions/sse/sse4_1.hpp>
+#include <boost/simd/sdk/simd/extensions/sse/ssse3.hpp>
+#include <boost/simd/sdk/simd/extensions/sse/sse3.hpp>
+#include <boost/simd/sdk/simd/extensions/sse/sse2.hpp>
 
 #if defined(BOOST_SIMD_SSE_FAMILY)
-#include <nt2/simd_sdk/simd/extensions/sse/types.hpp>
+#include <boost/simd/sdk/simd/extensions/sse/types.hpp>
 #endif
 
 #endif

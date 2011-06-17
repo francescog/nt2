@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_CONCEPT_SAME_TYPE_HPP_INCLUDED
 #define BOOST_SIMD_SDK_CONCEPT_SAME_TYPE_HPP_INCLUDED
 
-#include <nt2/simd_sdk/error/concepts.hpp>
+#include <boost/simd/sdk/error/concepts.hpp>
 #include <boost/type_traits/is_same.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////

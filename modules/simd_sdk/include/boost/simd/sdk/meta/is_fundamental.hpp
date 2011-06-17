@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_META_IS_FUNDAMENTAL_HPP_INCLUDED
 #define BOOST_SIMD_SDK_META_IS_FUNDAMENTAL_HPP_INCLUDED
 
-#include <nt2/simd_sdk/meta/hierarchy_of.hpp>
+#include <boost/simd/sdk/meta/hierarchy_of.hpp>
 #include <boost/type_traits/is_base_of.hpp>
 
 namespace boost { namespace simd { namespace meta

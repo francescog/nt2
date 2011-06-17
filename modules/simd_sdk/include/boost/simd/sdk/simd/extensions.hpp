@@ -12,18 +12,18 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Support for basic SIMD extensions - Note those are themselves extendables
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/config.hpp>
-#include <nt2/simd_sdk/error/warning.hpp>
+#include <boost/simd/sdk/config.hpp>
+#include <boost/simd/sdk/error/warning.hpp>
 #include <nt2/extension/sdk/simd/extensions.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Regular SIMD extensions
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/simd_sdk/simd/extensions/sse.hpp>
-#include <nt2/simd_sdk/simd/extensions/altivec.hpp>
-#include <nt2/simd_sdk/simd/extensions/none.hpp>
+#include <boost/simd/sdk/simd/extensions/sse.hpp>
+#include <boost/simd/sdk/simd/extensions/altivec.hpp>
+#include <boost/simd/sdk/simd/extensions/none.hpp>
 
-#include <nt2/simd_sdk/functor/forward.hpp>
+#include <boost/simd/sdk/functor/forward.hpp>
 namespace boost
 {
   namespace simd

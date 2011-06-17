@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_SDK_TIMING_SECOND_TIMER_HPP_INCLUDED
 #define BOOST_SIMD_SDK_TIMING_SECOND_TIMER_HPP_INCLUDED
 
-#include <nt2/simd_sdk/timing/tic.hpp>
+#include <boost/simd/sdk/timing/tic.hpp>
 
 namespace boost { namespace time
 {

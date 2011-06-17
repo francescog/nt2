@@ -14,7 +14,7 @@
  * \brief Defines macros for building a \ref nt2::ext::call specialization
  */
 
-#include <nt2/simd_sdk/meta/result_of.hpp>
+#include <boost/simd/sdk/meta/result_of.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
 
