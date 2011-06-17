@@ -32,6 +32,6 @@
 namespace boost { namespace simd { namespace memory
 {
   typedef nt2::uint8_t byte;
-} } }
+} } }
 
 #endif

@@ -1,14 +1,14 @@
 #include <iostream>
 #include <numeric>
 #include <boost/simd/sdk/simd/pack.hpp>
-#include <nt2/sdk/simd/begin.hpp>
-#include <nt2/sdk/simd/end.hpp>
+#include <boost/simd/sdk/simd/begin.hpp>
+#include <boost/simd/sdk/simd/end.hpp>
 #include <nt2/include/timing.hpp>
-#include <nt2/sdk/memory/buffer.hpp>
-#include <nt2/sdk/memory/aligned_type.hpp>
-#include <nt2/toolbox/constant/constants/dsl/digits.hpp>
+#include <boost/simd/sdk/memory/buffer.hpp>
+#include <boost/simd/sdk/memory/aligned_type.hpp>
+#include <boost/simd/toolbox/constant/constants/dsl/digits.hpp>
 #include <nt2/toolbox/reduction.hpp>
-#include <nt2/toolbox/operator.hpp>
+#include <boost/simd/toolbox/operator.hpp>
 #include <nt2/toolbox/arithmetic/include/tofloat.hpp>
 
 using namespace std;

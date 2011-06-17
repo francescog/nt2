@@ -47,7 +47,7 @@ namespace boost { namespace simd { namespace meta
   template<class T> struct strip<T const            > : strip<T> {};
   template<class T> struct strip<T volatile         > : strip<T> {};
   template<class T> struct strip<T const volatile   > : strip<T> {};
-  template<class T> struct strip<T &                > : strip<T> {};
+  template<class T> struct strip<T &                > : strip<T> {};
 #ifndef BOOST_NO_RVALUE_REFERENCES
   template<class T> struct strip<T &&               > : strip<T> {};
 #endif

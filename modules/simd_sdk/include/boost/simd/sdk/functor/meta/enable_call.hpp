@@ -124,6 +124,6 @@ namespace boost { namespace simd { namespace meta
 #endif
 
   #endif
-} } }
+} } }
 
 #endif

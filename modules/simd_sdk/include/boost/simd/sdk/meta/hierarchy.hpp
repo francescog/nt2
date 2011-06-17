@@ -18,7 +18,7 @@
 #include <boost/simd/sdk/details/preprocessor.hpp>
 #include <boost/simd/sdk/meta/details/hierarchy.hpp>
 
-#define BOOST_SIMD_HIERARCHY_CLASS(Name, Parent)     \
+#define BOOST_SIMD_HIERARCHY_CLASS(Name, Paren) \
 struct Name : Parent                          \
 {                                             \
   typedef Parent    parent;                   \

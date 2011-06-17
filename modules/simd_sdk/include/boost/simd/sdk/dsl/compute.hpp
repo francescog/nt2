@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace meta
                           )
               >
   {};
-} } }
+} } }
 
 namespace boost { namespace proto
 {

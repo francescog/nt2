@@ -59,7 +59,7 @@ namespace boost { namespace simd { namespace meta
 // User level macro to define a new hierarchy element taking advantage of the
 // type hierarchy lattice system.
 ////////////////////////////////////////////////////////////////////////////////
-#define BOOST_SIMD_REGISTER_HIERARCHY_PARENT(Name, Base)                                 \
+#define BOOST_SIMD_REGISTER_HIERARCHY_PARENT(Name, Base)                          \
 namespace boost                                                                   \
 {                                                                                 \
   namespace simd                                                                  \
@@ -83,7 +83,7 @@ namespace boost                                                                 
 	typedef Base parent;                                                      \
       };                                                                          \
     }                                                                             \
-  }                                                                               \
+  }                                                                               \
 }                                                                                 \
 /**/
 
