@@ -8,7 +8,7 @@
 ################################################################################
 
 include(NT2Module)
-nt2_module_source_setup(operator)
+nt2_module_source_setup(simd_operator)
 nt2_module_configure_toolbox(operator 1)
 
 include(nt2.preprocess)

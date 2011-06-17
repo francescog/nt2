@@ -7,18 +7,18 @@
 #                     http://www.boost.org/LICENSE_1_0.txt
 ################################################################################
 
-SET(SOURCES
-    architecture.cpp
-    compiler.cpp
-    platform.cpp
+#SET(SOURCES
+#    architecture.cpp
+#    compiler.cpp
+#    platform.cpp
 #    status.cpp
-   )
+#   )
 
 ################################################################################
 # For each filename
 ################################################################################
-FOREACH( EXAMPLE ${SOURCES})
-  STRING(REGEX REPLACE ".cpp" "" EXAMPLE ${EXAMPLE})
-  nt2_module_add_example(config.${EXAMPLE}.sample ${EXAMPLE}.cpp)
-ENDFOREACH()
+#FOREACH( EXAMPLE ${SOURCES})
+#  STRING(REGEX REPLACE ".cpp" "" EXAMPLE ${EXAMPLE})
+#  nt2_module_add_example(config.${EXAMPLE}.sample ${EXAMPLE}.cpp)
+#ENDFOREACH()
 

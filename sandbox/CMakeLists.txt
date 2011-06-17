@@ -10,7 +10,7 @@
 ################################################################################
 # Some global random test
 ################################################################################
-FIND_PACKAGE(NT2 COMPONENTS arithmetic core reduction)
+FIND_PACKAGE(NT2 COMPONENTS simd_sdk arithmetic core reduction)
 INCLUDE_DIRECTORIES(${PROJECT_BINARY_DIR}/include ${NT2_INCLUDE_DIR})
 LINK_DIRECTORIES(${NT2_LIBRARY_DIR})
 LINK_LIBRARIES(${NT2_LIBRARIES})

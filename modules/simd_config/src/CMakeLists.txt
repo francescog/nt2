@@ -8,7 +8,7 @@
 ################################################################################
 
 include(NT2Module)
-nt2_module_source_setup(config)
+nt2_module_source_setup(simd_config)
 
 ################################################################################
 # Generate bootstrap.hpp

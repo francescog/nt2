@@ -10,9 +10,9 @@
 ################################################################################
 # Add global unit driver rules
 ################################################################################
-ADD_CUSTOM_TARGET(operator.scalar.unit)
-ADD_CUSTOM_TARGET(operator.simd.unit)
-ADD_DEPENDENCIES(operator.unit operator.scalar.unit operator.simd.unit)
+#ADD_CUSTOM_TARGET(operator.scalar.unit)
+#ADD_CUSTOM_TARGET(operator.simd.unit)
+#ADD_DEPENDENCIES(operator.unit operator.scalar.unit operator.simd.unit)
 
-ADD_SUBDIRECTORY(scalar)
-ADD_SUBDIRECTORY(simd)
+#ADD_SUBDIRECTORY(scalar)
+#ADD_SUBDIRECTORY(simd)

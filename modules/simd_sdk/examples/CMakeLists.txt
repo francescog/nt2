@@ -7,14 +7,14 @@
 #                     http://www.boost.org/LICENSE_1_0.txt
 ################################################################################
 
-nt2_module_use_modules(examples predicates)
+#nt2_module_use_modules(examples predicates)
 
 #ADD_SUBDIRECTORY(config)
-ADD_SUBDIRECTORY(details)
+#ADD_SUBDIRECTORY(details)
 #ADD_SUBDIRECTORY(errors)
-ADD_SUBDIRECTORY(meta)
-ADD_SUBDIRECTORY(functor)
-ADD_SUBDIRECTORY(memory)
+#ADD_SUBDIRECTORY(meta)
+#ADD_SUBDIRECTORY(functor)
+#ADD_SUBDIRECTORY(memory)
 #ADD_SUBDIRECTORY(constants)
 #ADD_SUBDIRECTORY(simd)
-ADD_SUBDIRECTORY(timing)
+#ADD_SUBDIRECTORY(timing)

@@ -8,13 +8,13 @@
 ################################################################################
 
 include(NT2Module)
-nt2_module_source_setup(sdk)
+nt2_module_source_setup(simd_sdk)
 
 file( GLOB_RECURSE source_sdk_files
-      ${NT2_SDK_ROOT}/src/*
+  ${NT2_SDK_ROOT}/src/*
     )
-SET(SOURCES ${source_sdk_files} ${NT2_CONFIG_ROOT}/src/version.cpp)
-nt2_module_add_library(nt2 ${SOURCES})
+  SET(SOURCES ${source_sdk_files} ${NT2_CONFIG_ROOT}/src/version.cpp)
+  #nt2_module_add_library(nt2 ${SOURCES})
 
 nt2_preprocess(sdk0x.preprocess ${NT2_SDK_ROOT}/include/nt2/sdk/functor/functor.hpp
                                 ${NT2_SDK_ROOT}/include/nt2/sdk/functor/details/dispatch.hpp
@@ -30,4 +30,4 @@ nt2_preprocess(sdk03.preprocess ${NT2_SDK_ROOT}/include/nt2/sdk/functor/functor.
                OPTIONS -DNT2_CREATE_PREPROCESSED_FILES_NO_0X
               )
               
-add_custom_target(sdk.preprocess DEPENDS sdk0x.preprocess sdk03.preprocess)
+add_custom_target(simd_sdk.preprocess DEPENDS sdk0x.preprocess sdk03.preprocess)
