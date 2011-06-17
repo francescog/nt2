@@ -6,27 +6,44 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef BOOST_SIMD_SDK_CONFIG_OS_REPORT_HPP_INCLUDED
-#define BOOST_SIMD_SDK_CONFIG_OS_REPORT_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_COMPILER_REPORT_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_COMPILER_REPORT_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
-// OS reporting
-// TODO: Documentation: http://nt2.lri.fr/doc/build/html/sdk/config/platform.html
+// Architecture configuration headers
+// Defines architecture symbols for architecture related variation point.
+// Documentation: http://nt2.lri.fr/sdk/config/compiler.html
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/config/os.hpp>
-#include <nt2/sdk/config/details/reporter.hpp>
+#include <boost/simd/sdk/config/compiler.hpp>
+#include <boost/simd/sdk/config/details/reporter.hpp>
 
 namespace boost { namespace simd { namespace config
 {
   //////////////////////////////////////////////////////////////////////////////
   // Status header reporter - Head for the reporter list
   //////////////////////////////////////////////////////////////////////////////
-  inline void os()
+  inline void compiler()
   {
-    puts(" Operating System        : " BOOST_SIMD_OS );
+    puts(" Compiler                : " BOOST_SIMD_COMPILER);
+    puts(" Rvalue references       : "
+    #if   defined(BOOST_NO_RVALUE_REFERENCES)
+          "unsupported"
+    #else
+          "supported"
+    #endif
+        );
+
+    puts(" Variadic templates      : "
+    #if   defined(BOOST_NO_VARIADIC_TEMPLATES)
+          "unsupported"
+    #else
+          "supported"
+    #endif
+        "\n"
+        );
   }
 
-  BOOST_SIMD_REGISTER_STATUS(os);
+  BOOST_SIMD_REGISTER_STATUS(compiler);
 } } }
 
 #endif

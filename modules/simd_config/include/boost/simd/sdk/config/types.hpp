@@ -15,7 +15,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/config.hpp>
 #include <boost/cstdint.hpp>
-#include <nt2/sdk/meta/make_integer.hpp>
+#include <boost/simd/sdk/meta/make_integer.hpp>
 
 namespace boost { namespace { simd
 {

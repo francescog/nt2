@@ -6,23 +6,22 @@
  *                 See accompanying file LICENSE.txt or copy at
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
-#ifndef BOOST_SIMD_SDK_CONFIG_OS_HPP_INCLUDED
-#define BOOST_SIMD_SDK_CONFIG_OS_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_CONFIG_COMPILER_HPP_INCLUDED
+#define BOOST_SIMD_SDK_CONFIG_COMPILER_HPP_INCLUDED
 
 ////////////////////////////////////////////////////////////////////////////////
 // Architecture configuration headers
 // Defines architecture symbols for architecture related variation point.
-// Documentation: http://nt2.lri.fr/doc/build/html/sdk/config/platform.html
+// Documentation: http://nt2.lri.fr/sdk/config/compiler.html
 ////////////////////////////////////////////////////////////////////////////////
-
 #include <boost/config.hpp>
 #include <boost/version.hpp>
-#include <nt2/sdk/config/bootstrap.hpp>
+#include <boost/simd/sdk/config/bootstrap.hpp>
 
-#include <nt2/extension/sdk/config/os.hpp>
-#include <nt2/sdk/config/os/nix.hpp>
-#include <nt2/sdk/config/os/windows.hpp>
-#include <nt2/sdk/config/os/macos.hpp>
-#include <nt2/sdk/config/os/none.hpp>
+#include <boost/simd/sdk/config/compiler/gcc_xml.hpp>
+#include <nt2/extension/sdk/config/compiler.hpp>
+#include <boost/simd/sdk/config/compiler/gcc.hpp>
+#include <boost/simd/sdk/config/compiler/visualc.hpp>
+#include <boost/simd/sdk/config/compiler/none.hpp>
 
 #endif

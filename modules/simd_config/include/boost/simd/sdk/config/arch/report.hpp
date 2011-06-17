@@ -12,8 +12,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Architecture configuration headers report
 ////////////////////////////////////////////////////////////////////////////////
-#include <nt2/sdk/config/arch.hpp>
-#include <nt2/sdk/config/details/reporter.hpp>
+#include <boost/simd/sdk/config/arch.hpp>
+#include <boost/simd/sdk/config/details/reporter.hpp>
 
 namespace boost { namespace simd { namespace config
 {
